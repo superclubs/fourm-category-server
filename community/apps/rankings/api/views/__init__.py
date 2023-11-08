@@ -1,0 +1,1 @@
+from community.apps.rankings.api.views.community_ranking import CommunityRankingsViewSet

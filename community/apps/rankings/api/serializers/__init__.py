@@ -1,0 +1,1 @@
+from community.apps.rankings.api.serializers.index import CommunityRankingListSerializer

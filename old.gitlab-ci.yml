@@ -1,0 +1,50 @@
+stages:
+  - deploy
+
+before_script:
+  - echo "started by ${GITLAB_USER_NAME}"
+
+deploy-to-eb-live:
+  stage: deploy
+  image: python:latest
+  before_script:
+    - pip install awsebcli --upgrade --user
+  script:
+  - mkdir ~/.aws/
+  - touch ~/.aws/credentials
+  - printf "[eb-cli]\naws_access_key_id = %s\naws_secret_access_key = %s\n" "$AWS_ACCESS_KEY_ID" "$AWS_SECRET_ACCESS_KEY" >> ~/.aws/credentials
+  - touch ~/.aws/config
+  - printf "[profile eb-cli]\nregion=ap-northeast-2\noutput=json" >> ~/.aws/config
+  - /root/.local/bin/eb deploy $ENVIRONMENT_NAME
+  only:
+    - main
+
+deploy-to-eb-stg:
+  stage: deploy
+  image: python:latest
+  before_script:
+    - pip install awsebcli --upgrade --user
+  script:
+  - mkdir ~/.aws/
+  - touch ~/.aws/credentials
+  - printf "[eb-cli]\naws_access_key_id = %s\naws_secret_access_key = %s\n" "$AWS_ACCESS_KEY_ID" "$AWS_SECRET_ACCESS_KEY" >> ~/.aws/credentials
+  - touch ~/.aws/config
+  - printf "[profile eb-cli]\nregion=ap-northeast-2\noutput=json" >> ~/.aws/config
+  - /root/.local/bin/eb deploy $ENVIRONMENT_STAGING_NAME
+  only:
+    - staging
+
+deploy-to-eb-dev:
+  stage: deploy
+  image: python:latest
+  before_script:
+    - pip install awsebcli --upgrade --user
+  script:
+  - mkdir ~/.aws/
+  - touch ~/.aws/credentials
+  - printf "[eb-cli]\naws_access_key_id = %s\naws_secret_access_key = %s\n" "$AWS_ACCESS_KEY_ID" "$AWS_SECRET_ACCESS_KEY" >> ~/.aws/credentials
+  - touch ~/.aws/config
+  - printf "[profile eb-cli]\nregion=ap-northeast-2\noutput=json" >> ~/.aws/config
+  - /root/.local/bin/eb deploy $ENVIRONMENT_DEVELOP_NAME
+  only:
+  - develop
