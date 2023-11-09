@@ -6,7 +6,7 @@ from django.db import models
 from django.utils.translation import gettext_lazy as _
 
 # Utils
-from community.utils.media import upload_path
+from community.utils.medias import upload_path
 
 
 # Function Section

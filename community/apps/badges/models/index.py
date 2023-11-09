@@ -12,7 +12,7 @@ from community.bases.models import Model
 from community.modules.choices import MODEL_TYPE_CHOICES
 
 # Utils
-from community.utils.media import upload_path
+from community.utils.medias import upload_path
 
 
 # Function Section
