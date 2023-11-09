@@ -72,39 +72,21 @@ class CommunityViewSet(mixins.RetrieveModelMixin,
 
 class CommunitiesViewSet(mixins.ListModelMixin,
                          GenericViewSet):
-    serializer_class = CommunityListSerializer
+    serializers = {
+        'default': CommunityListSerializer,
+    }
     queryset = Community.available.all()
-    filter_backends = (AdvancedSearchFilter, DjangoFilterBackend, NullsLastOrderingFilter,)
+    filter_backends = (AdvancedSearchFilter, DjangoFilterBackend)
+    ordering_fields = ('created', 'order')
     filterset_class = CommunitiesFilter
-    search_fields = ('title', 'description', 'address', 'community_tags__title')
-    ordering_fields = ('point', 'created', 'live_rank', 'weekly_rank', 'monthly_rank', 'rising_rank')
-
-    def get_queryset(self):
-        if getattr(self, 'swagger_fake_view', False):
-            return None
-
-        queryset = Community.objects.filter(is_active=True).select_related('category')
-        user = self.request.user
-
-        if user.id:
-            badges = Badge.available.order_by('id')
-            posts = Post.available.filter(is_temporary=False)
-
-            queryset = queryset.prefetch_related(
-                Prefetch('badges', queryset=badges),
-                Prefetch('posts', queryset=posts),
-            )
-
-        return queryset
+    pagination_class = None
 
     @swagger_auto_schema(**swagger_decorator(tag='01. 커뮤니티',
                                              id='커뮤니티 리스트 조회',
                                              description='## < 커뮤니티 리스트 조회 API 입니다. > \n'
-                                                         '### `ordering`: point, created, live_rank, weekly_rank, monthly_rank, rising_rank \n'
-                                                         '### `search`: title, description, address, tag_title 검색 \n'
-                                                         '### `or`: 추가 검색어 \n'
-                                                         '### `and`: 필수 검색어 \n'
-                                                         '### `exclude`: 제외 검색어 \n',
+                                                         '### ordering : `created (생성순)` \n'
+                                                         '### `depth` : depth 로 필터링 가능합니다.\n'
+                                                         '### `community_id` : community_id 로 필터링 가능합니다.\n',
                                              response={200: CommunityListSerializer}
                                              ))
     def list(self, request, *args, **kwargs):
