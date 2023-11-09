@@ -29,6 +29,7 @@ class Community(CommunityPostModelMixin,
                              related_name='communities')
 
     # Main
+    depth = models.IntegerField(_('Depth'), default=1)
     title = models.CharField(_('Title'), max_length=30)
     description = models.CharField(_('Description'), max_length=200, null=True, blank=True)
     address = models.CharField(_('Address'), max_length=20)

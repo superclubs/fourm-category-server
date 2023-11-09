@@ -93,3 +93,8 @@ BOOM_PERIOD_CHOICES = Choices(
     ('1440', '1d'),
     ('10080', '7d'),
 )
+
+MEDIA_TYPE_CHOICES = Choices(
+    ('IMAGE', _('IMAGE')),
+    ('VIDEO', _('VIDEO')),
+)

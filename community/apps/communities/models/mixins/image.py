@@ -7,7 +7,7 @@ from django.db import models
 from django.conf import settings
 
 # Utils
-from community.utils.media import upload_path
+from community.utils.medias import upload_path
 
 
 # Function Section

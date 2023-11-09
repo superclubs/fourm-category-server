@@ -192,6 +192,7 @@ LOCAL_APPS = [
     "community.apps.boards.apps.BoardsConfig",
     "community.apps.bookmarks.apps.BookmarksConfig",
     "community.apps.communities.apps.CommunitiesConfig",
+    "community.apps.community_medias.apps.CommunityMediasConfig",
     "community.apps.comments.apps.CommentsConfig",
     "community.apps.friends.apps.FriendsConfig",
     "community.apps.likes.apps.LikesConfig",
@@ -369,10 +370,8 @@ ADMINS = [("""Leo Yunhyung Lee""", "leoyunhyung@gmail.com")]
 MANAGERS = ADMINS
 
 ADMIN_REORDER = (
-    'users', 'communities', 'reports', 'joins', 'profiles', 'posts', 'comments', 'likes', 'recommends',
-    'advertisements',
-    'rankings', 'labels', 'badges', 'categories', 'boards', 'tags', 'visits', 'bookmarks', 'shares', 'activates',
-    'friends', 'agendas'
+    'users', 'communities', 'reports', 'profiles', 'posts', 'comments', 'likes', 'rankings', 'badges', 'categories',
+    'boards', 'tags', 'visits', 'bookmarks', 'shares', 'community_medias'
 )
 
 # LOGGING
