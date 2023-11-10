@@ -198,7 +198,7 @@ class Post(PostCommentModelMixin,
                 self.board_title = self.board.title
                 self.read_permission = self.board.read_permission
                 self.board_group = self.board.board_group
-                self.board_group_title = self.board.board_group.title
+                # self.board_group_title = self.board.board_group.title
 
             if not self.is_temporary and not self.is_agenda and not self.is_reserved and self.public_type != 'ONLY_ME':
                 self.increase_related_model_post_count()
