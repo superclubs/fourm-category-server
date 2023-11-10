@@ -1,6 +1,5 @@
 # Django
 from django.utils.translation import gettext_lazy as _
-from django.db.models import Prefetch
 
 # Django Rest Framework
 from rest_framework import status
@@ -25,12 +24,10 @@ from community.apps.communities.api.views.filters import CommunitiesFilter, Comm
 from community.utils.decorators import swagger_decorator
 from community.utils.api.response import Response
 from community.utils.searches import AdvancedSearchFilter
-from community.utils.orderings import NullsLastOrderingFilter
 
 # Models
 from community.apps.communities.models import Community
-from community.apps.posts.models import Post
-from community.apps.badges.models import Badge
+from community.apps.profiles.models import Profile
 
 # Serializers
 from community.apps.communities.api.serializers import CommunityListSerializer, CommunityRetrieveSerializer, \
@@ -59,8 +56,13 @@ class CommunityViewSet(mixins.RetrieveModelMixin,
         serializer = self.get_serializer(instance)
 
         user = request.user
+
         if user.id:
-            instance.create_community_visit(user)
+            profile = instance.profiles.filter(user=user).first()
+            if not profile:
+                profile = Profile.objects.create(community=instance, user=user)
+
+            instance.create_community_visit(profile)
 
         return Response(
             status=status.HTTP_200_OK,
