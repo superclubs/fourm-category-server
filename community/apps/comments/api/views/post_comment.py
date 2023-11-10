@@ -36,7 +36,7 @@ class CommentsViewSet(mixins.ListModelMixin,
         queryset = Comment.active.filter(post=self.kwargs["post_pk"])
         return queryset
 
-    @swagger_auto_schema(**swagger_decorator(tag='04. 포스트',
+    @swagger_auto_schema(**swagger_decorator(tag='03. 포스트',
                                              id='댓글 리스트 조회',
                                              description='## < 댓글 리스트 조회 API 입니다. >\n'
                                                          '### ordering : `point (포인트순)`, `created (생성순)` \n',

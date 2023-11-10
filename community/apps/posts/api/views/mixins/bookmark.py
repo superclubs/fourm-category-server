@@ -20,7 +20,7 @@ from community.apps.posts.api.serializers import PostRetrieveSerializer
 
 # Main Section
 class PostBookmarkViewMixin:
-    @swagger_auto_schema(**swagger_decorator(tag='04. 포스트',
+    @swagger_auto_schema(**swagger_decorator(tag='03. 포스트',
                                              id='포스트 북마크',
                                              description='## < 포스트 북마크 API 입니다. >\n',
                                              request=no_body,
@@ -38,7 +38,7 @@ class PostBookmarkViewMixin:
             data=PostRetrieveSerializer(instance=post, context={'request': request}).data
         )
 
-    @swagger_auto_schema(**swagger_decorator(tag='04. 포스트',
+    @swagger_auto_schema(**swagger_decorator(tag='03. 포스트',
                                              id='포스트 언북마크',
                                              description='## < 포스트 언북마크 API 입니다. >\n',
                                              request=no_body,

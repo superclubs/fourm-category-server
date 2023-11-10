@@ -32,7 +32,7 @@ class CommentLikesViewSet(mixins.ListModelMixin,
         queryset = CommentLike.objects.filter(comment=self.kwargs["comment_pk"], is_active=True)
         return queryset
 
-    @swagger_auto_schema(**swagger_decorator(tag='05. 댓글',
+    @swagger_auto_schema(**swagger_decorator(tag='04. 댓글',
                                              id='댓글 좋아요 리스트 조회',
                                              description='## < 댓글 좋아요 리스트 조회 API 입니다. >',
                                              response={200: CommentLikeListSerializer}

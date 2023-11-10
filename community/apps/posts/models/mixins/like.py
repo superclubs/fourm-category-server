@@ -133,7 +133,7 @@ class PostLikeModelMixin(models.Model):
         profile = self.community.profiles.filter(user=user).first()
 
         if self.community and not profile:
-            profile = Profile.objects.create(community=self.community, user=user, is_joined=False)
+            profile = Profile.objects.create(community=self.community, user=user)
 
         post_dislike = self.post_dislikes.filter(user=user).first()
         if post_dislike:
@@ -162,7 +162,7 @@ class PostLikeModelMixin(models.Model):
         profile = self.community.profiles.filter(user=user).first()
 
         if self.community and not profile:
-            profile = Profile.objects.create(community=self.community, user=user, is_joined=False)
+            profile = Profile.objects.create(community=self.community, user=user)
 
         post_like = self.post_likes.filter(user=user).first()
         if post_like:

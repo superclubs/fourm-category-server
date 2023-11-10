@@ -30,6 +30,7 @@ class Community(CommunityPostModelMixin,
 
     # Main
     depth = models.IntegerField(_('Depth'), default=1)
+    order = models.IntegerField(_('Order'), default=1)
     title = models.CharField(_('Title'), max_length=30)
     description = models.CharField(_('Description'), max_length=200, null=True, blank=True)
     address = models.CharField(_('Address'), max_length=20)
@@ -42,7 +43,7 @@ class Community(CommunityPostModelMixin,
 
     class Meta:
         verbose_name = verbose_name_plural = _('Community')
-        ordering = ['-created']
+        ordering = ['created']
 
     def __str__(self):
         return f"{self.id} | {self.title}"

@@ -21,7 +21,7 @@ from community.apps.posts.api.serializers import PostListSerializer, PostLikeRes
 
 # Main Section
 class PostLikeViewMixin:
-    @swagger_auto_schema(**swagger_decorator(tag='04. 포스트',
+    @swagger_auto_schema(**swagger_decorator(tag='03. 포스트',
                                              id='포스트 좋아요',
                                              description='## < 포스트 좋아요 API 입니다. >\n',
                                              request=PostLikeCreateSerializer,
@@ -40,7 +40,7 @@ class PostLikeViewMixin:
             data=PostLikeResponseSerializer(instance=post, context={'request': request}).data
         )
 
-    @swagger_auto_schema(**swagger_decorator(tag='04. 포스트',
+    @swagger_auto_schema(**swagger_decorator(tag='03. 포스트',
                                              id='포스트 좋아요 취소',
                                              description='## < 포스트 좋아요 취소 API 입니다. >\n',
                                              request=no_body,
@@ -58,7 +58,7 @@ class PostLikeViewMixin:
             data=PostLikeResponseSerializer(instance=post, context={'request': request}).data
         )
 
-    @swagger_auto_schema(**swagger_decorator(tag='04. 포스트',
+    @swagger_auto_schema(**swagger_decorator(tag='03. 포스트',
                                              id='포스트 싫어요',
                                              description='## < 포스트 싫어요 API 입니다. >\n',
                                              request=no_body,
@@ -76,7 +76,7 @@ class PostLikeViewMixin:
             data=PostLikeResponseSerializer(instance=post, context={'request': request}).data
         )
 
-    @swagger_auto_schema(**swagger_decorator(tag='04. 포스트',
+    @swagger_auto_schema(**swagger_decorator(tag='03. 포스트',
                                              id='포스트 싫어요 취소',
                                              description='## < 포스트 싫어요 취소 API 입니다. >\n',
                                              request=no_body,

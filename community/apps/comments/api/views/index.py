@@ -32,7 +32,7 @@ from community.apps.comments.api.serializers import ChildCommentCreateSerializer
 
 # Main Section
 class CommentViewSet(CommentLikeViewMixin,
-                     CommentReportViewMixin,
+                     # CommentReportViewMixin,
                      mixins.UpdateModelMixin,
                      mixins.DestroyModelMixin,
                      GenericViewSet):
@@ -44,7 +44,7 @@ class CommentViewSet(CommentLikeViewMixin,
     filter_backends = (DjangoFilterBackend,)
     permission_classes = (IsAuthenticated,)
 
-    @swagger_auto_schema(**swagger_decorator(tag='05. 댓글',
+    @swagger_auto_schema(**swagger_decorator(tag='04. 댓글',
                                              id='댓글 수정',
                                              description='## < 댓글 수정 API 입니다. >',
                                              request=CommentUpdateSerializer,
@@ -66,7 +66,7 @@ class CommentViewSet(CommentLikeViewMixin,
                 data=ParentCommentListSerializer(instance=instance, context={'request': request}).data
             )
 
-    @swagger_auto_schema(**swagger_decorator(tag='05. 댓글',
+    @swagger_auto_schema(**swagger_decorator(tag='04. 댓글',
                                              id='댓글 삭제',
                                              description='## < 댓글 삭제 API 입니다. >',
                                              response={204: 'no content'}
@@ -103,7 +103,7 @@ class CommentViewSet(CommentLikeViewMixin,
             message=_('no content'),
         )
 
-    @swagger_auto_schema(**swagger_decorator(tag='05. 댓글',
+    @swagger_auto_schema(**swagger_decorator(tag='04. 댓글',
                                              id='대댓글 생성',
                                              description='## < 대댓글 생성 API 입니다. >\n'
                                                          '### 부모 댓글 `id` 입력',
@@ -119,7 +119,7 @@ class CommentViewSet(CommentLikeViewMixin,
         if parent_comment.parent_comment:
             parent_comment = parent_comment.parent_comment
 
-        profile = parent_comment.community.profiles.filter(user=user, is_joined=True).first()
+        profile = parent_comment.community.profiles.filter(user=user).first()
 
         serializer = ChildCommentCreateSerializer(data=request.data)
         if serializer.is_valid(raise_exception=True):

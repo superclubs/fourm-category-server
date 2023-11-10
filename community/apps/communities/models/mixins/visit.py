@@ -28,20 +28,23 @@ class CommunityVisitModelMixin(models.Model):
     def update_community_visit_count(self):
         self.visit_count = self.community_visits.filter(is_active=True).count()
 
-    def create_community_visit(self, user):
-        profile = self.profiles.filter(user=user, is_active=True).first()
+    # TODO: 프로필 비 활성화 or 밴 기획이 생기면 로직 변경 필요
+    def create_community_visit(self, profile):
+        if not profile:
+            return
 
-        if profile and profile.id:
-            community_visit = CommunityVisit.objects.filter(profile=profile, community=self).first()
+        community_visit = CommunityVisit.objects.filter(profile=profile, community=self).first()
 
-            if not community_visit:
+        if not community_visit:
+            CommunityVisit.objects.create(profile=profile, community=self)
+
+        else:
+            if community_visit and now() > community_visit.created + relativedelta(hours=3):
                 CommunityVisit.objects.create(profile=profile, community=self)
+
             else:
-                if community_visit and now() > community_visit.created + relativedelta(hours=3):
-                    CommunityVisit.objects.create(profile=profile, community=self)
-                else:
-                    community_visit.last_seen = now()
-                    community_visit.save(update_fields=['last_seen'])
+                community_visit.last_seen = now()
+                community_visit.save(update_fields=['last_seen'])
 
 
 class CommunityPostVisitModelMixin(models.Model):

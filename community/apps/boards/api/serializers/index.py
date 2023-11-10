@@ -9,4 +9,4 @@ from community.apps.boards.models import Board
 class BoardSerializer(ModelSerializer):
     class Meta:
         model = Board
-        fields = ('id', 'title')
+        fields = ('id', 'title', 'type', 'order', 'is_active')
