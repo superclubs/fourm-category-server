@@ -3,7 +3,7 @@ from django.db.models.signals import pre_save, post_save, post_delete
 from django.dispatch import receiver
 
 # Serializers
-from community.apps.boards.api.serializers import BoardListSerializer
+from community.apps.boards.api.serializers import BoardSerializer
 
 # Models
 from community.apps.boards.models import Board
@@ -31,17 +31,14 @@ from community.apps.boards.models import Board
 @receiver(post_save, sender=Board)
 def board_post_save(sender, instance, created, **kwargs):
     print('========== Board post_save ==========')
-    if created:
-        __community_board_data = instance.community.board_data
-        board_data = BoardListSerializer(instance=instance).data
 
-        if not __community_board_data:
-            instance.community.board_data = board_data
-        else:
-            instance.community.board_data = __community_board_data.append(board_data)
+    __community_board_data = instance.community.board_data
+
+    if created and not __community_board_data:
+        instance.community.board_data = BoardSerializer(instance=instance).data
 
     else:
-        instance.community.board_data = BoardListSerializer(instance.community.boards, many=True).data
+        instance.community.board_data = BoardSerializer(instance.community.boards, many=True).data
 
     instance.community.save()
 
@@ -50,5 +47,5 @@ def board_post_save(sender, instance, created, **kwargs):
 def board_post_delete(sender, instance, *args, **kwargs):
     print('========== Board post_delete ==========')
 
-    instance.community.board_data = BoardListSerializer(instance.community.boards, many=True).data
+    instance.community.board_data = BoardSerializer(instance.community.boards, many=True).data
     instance.community.save()
