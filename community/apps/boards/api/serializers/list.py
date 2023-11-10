@@ -22,7 +22,7 @@ class BoardListSerializer(ModelSerializer):
 
     class Meta:
         model = Board
-        fields = ('id', 'title', 'type', 'order', 'read_permission', 'write_permission', 'is_active', 'is_new_posted')
+        fields = ('id', 'title', 'type', 'order', 'is_active', 'is_new_posted')
 
     def get_is_new_posted(self, obj):
         q1 = Q(created__range=[get_start_today(), get_end_today()])
