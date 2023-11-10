@@ -23,10 +23,10 @@ from community.apps.boards.api.views import CommunityBoardsViewSet, BoardViewSet
 from community.apps.posts.api.views import PostViewSet, PostsViewSet, BoardPostsViewSet, CommunityPostsViewSet
 
 # Report
-from community.apps.reports.api.views import CommunityReportChoicesViewSet
+# from community.apps.reports.api.views import CommunityReportChoicesViewSet
 
 # Tag
-from community.apps.tags.api.views import TagsViewSet
+# from community.apps.tags.api.views import TagsViewSet
 
 # User
 from community.apps.users.api.views import UserViewSet, UsersViewSet, UserAdminViewSet
@@ -56,7 +56,7 @@ router.register(r"posts", PostsViewSet, basename='posts')
 router.register("comment", CommentViewSet)
 
 # Tag Section
-router.register("tags", TagsViewSet)
+# router.register("tags", TagsViewSet)
 
 # Friend Section
 router.register("friend-request", FriendRequestViewSet)
@@ -77,8 +77,8 @@ community_boards_router = routers.NestedSimpleRouter(router, r'community', looku
 community_boards_router.register(r'boards', CommunityBoardsViewSet, basename='community-boards')
 community_posts_router = routers.NestedSimpleRouter(router, r"community", lookup="community")
 community_posts_router.register(r'posts', CommunityPostsViewSet, basename='community-posts')
-community_report_router = routers.NestedSimpleRouter(router, r"community", lookup="community")
-community_report_router.register(r'report-choices', CommunityReportChoicesViewSet, basename='community-report-choices')
+# community_report_router = routers.NestedSimpleRouter(router, r"community", lookup="community")
+# community_report_router.register(r'report-choices', CommunityReportChoicesViewSet, basename='community-report-choices')
 
 # Community Admin Nested Router
 # router.register("admin/community", CommunityAdminViewSet, basename='community')
@@ -108,7 +108,7 @@ urlpatterns = [
                   # path("", include(community_board_groups_router.urls)),
                   path("", include(community_boards_router.urls)),
                   path("", include(community_posts_router.urls)),
-                  path("", include(community_report_router.urls)),
+                  # path("", include(community_report_router.urls)),
                   path("", include(board_posts_router.urls)),
                   path("", include(post_comments_router.urls)),
                   path("", include(post_likes_router.urls)),

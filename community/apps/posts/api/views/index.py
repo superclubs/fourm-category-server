@@ -99,7 +99,7 @@ class PostViewSet(mixins.RetrieveModelMixin,
                   PostShareViewMixin,
                   PostBookmarkViewMixin,
                   PostLikeViewMixin,
-                  PostReportViewMixin,
+                  # PostReportViewMixin,
                   GenericViewSet):
     serializers = {
         'default': PostRetrieveSerializer,
@@ -176,44 +176,44 @@ class PostViewSet(mixins.RetrieveModelMixin,
             message=_('no content'),
         )
 
-    @swagger_auto_schema(**swagger_decorator(tag='03. 포스트',
-                                             id='포스트 킵',
-                                             description='## < 포스트 킵 API 입니다. >',
-                                             request=no_body,
-                                             response={200: 'ok'}
-                                             ))
-    @action(detail=True, methods=['post'], url_path='keep', url_name='post_keep')
-    def post_keep(self, request, pk=None):
-        post = self.get_object()
-
-        if post.public_type == 'ONLY_ME':
-            raise ParseError('이미 킵한 포스트입니다.')
-
-        post.public_type = 'ONLY_ME'
-        post.save()
-        return Response(
-            status=status.HTTP_200_OK,
-            code=200,
-            message=_('ok'),
-        )
-
-    @swagger_auto_schema(**swagger_decorator(tag='03. 포스트',
-                                             id='포스트 언킵',
-                                             description='## < 포스트 언킵 API 입니다. >',
-                                             request=no_body,
-                                             response={200: 'ok'}
-                                             ))
-    @action(detail=True, methods=['post'], url_path='unkeep', url_name='post_unkeep')
-    def post_unkeep(self, request, pk=None):
-        post = self.get_object()
-
-        if not post.public_type == 'ONLY_ME':
-            raise ParseError('킵한 포스트이 아닙니다.')
-
-        post.public_type = 'PUBLIC'
-        post.save()
-        return Response(
-            status=status.HTTP_200_OK,
-            code=200,
-            message=_('ok'),
-        )
+    # @swagger_auto_schema(**swagger_decorator(tag='03. 포스트',
+    #                                          id='포스트 킵',
+    #                                          description='## < 포스트 킵 API 입니다. >',
+    #                                          request=no_body,
+    #                                          response={200: 'ok'}
+    #                                          ))
+    # @action(detail=True, methods=['post'], url_path='keep', url_name='post_keep')
+    # def post_keep(self, request, pk=None):
+    #     post = self.get_object()
+    #
+    #     if post.public_type == 'ONLY_ME':
+    #         raise ParseError('이미 킵한 포스트입니다.')
+    #
+    #     post.public_type = 'ONLY_ME'
+    #     post.save()
+    #     return Response(
+    #         status=status.HTTP_200_OK,
+    #         code=200,
+    #         message=_('ok'),
+    #     )
+    #
+    # @swagger_auto_schema(**swagger_decorator(tag='03. 포스트',
+    #                                          id='포스트 언킵',
+    #                                          description='## < 포스트 언킵 API 입니다. >',
+    #                                          request=no_body,
+    #                                          response={200: 'ok'}
+    #                                          ))
+    # @action(detail=True, methods=['post'], url_path='unkeep', url_name='post_unkeep')
+    # def post_unkeep(self, request, pk=None):
+    #     post = self.get_object()
+    #
+    #     if not post.public_type == 'ONLY_ME':
+    #         raise ParseError('킵한 포스트이 아닙니다.')
+    #
+    #     post.public_type = 'PUBLIC'
+    #     post.save()
+    #     return Response(
+    #         status=status.HTTP_200_OK,
+    #         code=200,
+    #         message=_('ok'),
+    #     )

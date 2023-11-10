@@ -32,7 +32,7 @@ from community.apps.comments.api.serializers import ChildCommentCreateSerializer
 
 # Main Section
 class CommentViewSet(CommentLikeViewMixin,
-                     CommentReportViewMixin,
+                     # CommentReportViewMixin,
                      mixins.UpdateModelMixin,
                      mixins.DestroyModelMixin,
                      GenericViewSet):
