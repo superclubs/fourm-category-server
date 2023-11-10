@@ -61,9 +61,7 @@ class PostCreateSerializer(ModelSerializer):
             if reserved_at:
                 boomed_at = datetime.fromisoformat(reserved_at) + timedelta(minutes=int(boomed_period))
             else:
-                print('머지?')
                 boomed_at = now() + timedelta(minutes=int(boomed_period))
-                print()
 
             additional_data['boomed_at'] = boomed_at
             additional_data['is_boomed'] = True

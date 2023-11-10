@@ -60,7 +60,7 @@ class PostFilter(django_filters.FilterSet):
         return queryset.filter(id__in=post_ids)
 
 
-class ClubPostFilter(django_filters.FilterSet):
+class CommunityPostFilter(django_filters.FilterSet):
     profile = NumberFilter(field_name='profile')
     tag_title = CharFilter(field_name='post_tags__tag__title')
     public_type = CharFilter(field_name='public_type')
