@@ -34,7 +34,7 @@ class PostReportModelMixin(models.Model):
             report_group = ReportGroup.objects.create(community=self.community, post=self, user=self.user,
                                                       profile=self.profile)
 
-        reporter = self.user.profiles.filter(community=self.community, is_joined=True).first()
+        reporter = self.user.profiles.filter(community=self.community).first()
         report = Report.objects.filter(report_group=report_group, post=self, user=user, profile=reporter).first()
 
         if report:

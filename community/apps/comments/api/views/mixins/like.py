@@ -21,7 +21,7 @@ from community.apps.comments.api.serializers import ParentCommentListSerializer
 
 # Main Section
 class CommentLikeViewMixin:
-    @swagger_auto_schema(**swagger_decorator(tag='05. 댓글',
+    @swagger_auto_schema(**swagger_decorator(tag='04. 댓글',
                                              id='댓글 좋아요',
                                              description='## < 댓글 좋아요 API 입니다. >',
                                              request=CommentLikeCreateSerializer,
@@ -40,7 +40,7 @@ class CommentLikeViewMixin:
             data=ParentCommentListSerializer(instance=comment, context={'request': request}).data
         )
 
-    @swagger_auto_schema(**swagger_decorator(tag='05. 댓글',
+    @swagger_auto_schema(**swagger_decorator(tag='04. 댓글',
                                              id='댓글 좋아요 취소',
                                              description='## < 댓글 좋아요 취소 API 입니다. >',
                                              request=no_body,
@@ -58,7 +58,7 @@ class CommentLikeViewMixin:
             data=ParentCommentListSerializer(instance=comment, context={'request': request}).data
         )
 
-    @swagger_auto_schema(**swagger_decorator(tag='05. 댓글',
+    @swagger_auto_schema(**swagger_decorator(tag='04. 댓글',
                                              id='댓글 싫어요',
                                              description='## < 댓글 싫어요 API 입니다. >',
                                              request=no_body,
@@ -76,7 +76,7 @@ class CommentLikeViewMixin:
             data=ParentCommentListSerializer(instance=comment, context={'request': request}).data
         )
 
-    @swagger_auto_schema(**swagger_decorator(tag='05. 댓글',
+    @swagger_auto_schema(**swagger_decorator(tag='04. 댓글',
                                              id='댓글 싫어요 취소',
                                              description='## < 댓글 싫어요 취소 API 입니다. >',
                                              request=no_body,

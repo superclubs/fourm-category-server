@@ -19,7 +19,7 @@ from community.apps.comments.api.serializers import CommentListSerializer
 
 # Main Section
 class CommentReportViewMixin:
-    @swagger_auto_schema(**swagger_decorator(tag='05. 댓글',
+    @swagger_auto_schema(**swagger_decorator(tag='04. 댓글',
                                              id='댓글 신고',
                                              description='## < 댓글 신고 API 입니다. >',
                                              request=ReportCreateSerializer,

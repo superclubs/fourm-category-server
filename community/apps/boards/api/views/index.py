@@ -99,7 +99,7 @@ class BoardsViewSet(mixins.ListModelMixin,
     filterset_class = BoardFilter
     search_fields = ('title',)
 
-    @swagger_auto_schema(**swagger_decorator(tag='03. 보드',
+    @swagger_auto_schema(**swagger_decorator(tag='02. 보드',
                                              id='보드 리스트 조회',
                                              description='## < 보드 리스트 조회 API 입니다. > \n'
                                                          '### `community` : 커뮤니티 id 입력 시, 해당 보드 필터링 \n'
@@ -121,7 +121,7 @@ class BoardViewSet(mixins.RetrieveModelMixin,
     queryset = Board.objects.all()
     filter_backends = (DjangoFilterBackend,)
 
-    @swagger_auto_schema(**swagger_decorator(tag='03. 보드',
+    @swagger_auto_schema(**swagger_decorator(tag='02. 보드',
                                              id='보드 객체 조회',
                                              description='## < 보드 객체 조회 API 입니다. >',
                                              response={200: BoardRetrieveSerializer}))
@@ -140,7 +140,7 @@ class BoardAdminViewSet(mixins.UpdateModelMixin,
     queryset = Board.objects.all()
     filter_backends = (DjangoFilterBackend,)
 
-    @swagger_auto_schema(**swagger_decorator(tag='03. 보드 - 어드민',
+    @swagger_auto_schema(**swagger_decorator(tag='02. 보드 - 어드민',
                                              id='보드 수정',
                                              description='## < 보드 수정 API 입니다. >',
                                              request=BoardCreateSerializer,
@@ -148,7 +148,7 @@ class BoardAdminViewSet(mixins.UpdateModelMixin,
     def partial_update(self, request, *args, **kwargs):
         return super().partial_update(request, *args, **kwargs)
 
-    @swagger_auto_schema(**swagger_decorator(tag='03. 보드 - 어드민',
+    @swagger_auto_schema(**swagger_decorator(tag='02. 보드 - 어드민',
                                              id='보드 삭제',
                                              description='## < 보드 삭제 API 입니다. >',
                                              response={200: BoardRetrieveSerializer}))

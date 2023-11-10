@@ -39,7 +39,7 @@ class CommentReportModelMixin(models.Model):
         if report:
             raise ParseError('이미 신고한 댓글입니다.')
         else:
-            user_profile = self.community.profiles.filter(user=user, is_joined=True).first()
+            user_profile = self.community.profiles.filter(user=user).first()
             report = Report.objects.create(**data, post=self.post, profile=user_profile, report_group=report_group,
                                            comment=self, user=user)
 

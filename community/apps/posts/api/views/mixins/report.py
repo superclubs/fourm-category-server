@@ -21,7 +21,7 @@ from community.utils.decorators import swagger_decorator
 
 # Main Section
 class PostReportViewMixin:
-    @swagger_auto_schema(**swagger_decorator(tag='04. 포스트',
+    @swagger_auto_schema(**swagger_decorator(tag='03. 포스트',
                                              id='포스트 신고',
                                              description='## < 포스트 신고 API 입니다. >\n',
                                              request=ReportCreateSerializer,

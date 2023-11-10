@@ -21,7 +21,7 @@ from community.utils.api.response import Response
 # Main Section
 class PostCommentViewMixin:
 
-    @swagger_auto_schema(**swagger_decorator(tag='04. 포스트',
+    @swagger_auto_schema(**swagger_decorator(tag='03. 포스트',
                                              id='댓글 생성',
                                              description='## < 댓글 생성 API 입니다. >\n',
                                              request=CommentCreateSerializer,
@@ -32,7 +32,7 @@ class PostCommentViewMixin:
         user = request.user
         post = self.get_object()
 
-        profile = post.community.profiles.filter(user=user, is_joined=True).first()
+        profile = post.community.profiles.filter(user=user).first()
 
         serializer = CommentCreateSerializer(data=request.data)
         if serializer.is_valid(raise_exception=True):

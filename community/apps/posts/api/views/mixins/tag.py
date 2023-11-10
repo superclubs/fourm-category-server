@@ -21,7 +21,7 @@ from community.utils.api.response import Response
 
 # Main Section
 class PostTagViewMixin:
-    @swagger_auto_schema(**swagger_decorator(tag='04. 포스트',
+    @swagger_auto_schema(**swagger_decorator(tag='03. 포스트',
                                              id='포스트 태그 수정',
                                              description='## < 포스트 태그 수정 API 입니다. >\n',
                                              request=PostTagUpdateSerializer,

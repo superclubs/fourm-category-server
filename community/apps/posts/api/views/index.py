@@ -5,7 +5,6 @@ from django.utils.translation import gettext_lazy as _
 from rest_framework import status
 from rest_framework.decorators import action
 from rest_framework.exceptions import ParseError
-from rest_framework.permissions import IsAuthenticated
 from django_filters.rest_framework import DjangoFilterBackend
 
 # Third Party
@@ -55,7 +54,7 @@ class PostsViewSet(mixins.ListModelMixin,
         queryset = PostListSerializer().prefetch_related(queryset, user=self.request.user)
         return queryset
 
-    @swagger_auto_schema(**swagger_decorator(tag='04. 포스트',
+    @swagger_auto_schema(**swagger_decorator(tag='03. 포스트',
                                              id='포스트 리스트 조회',
                                              description='## < 포스트 리스트 조회 API 입니다. >\n'
                                                          '### `date`: week, month, year 기간 내 생성된 커뮤니티 필터링 \n'
@@ -67,7 +66,6 @@ class PostsViewSet(mixins.ListModelMixin,
                                                          '### `public_type__not` : PUBLIC, FRIEND, ONLY_ME 제외 필터링 \n'
                                                          '### `is_temporary` : true 입력 시, 임시글 필터링 \n'
                                                          '### `is_notice` : true 입력 시, 공지글 필터링 \n'
-                                                         '### `is_joined` : true 입력 시, 가입한 커뮤니티의 포스트 필터링 \n'
                                                          '### `is_subscribed` : true 입력 시, 구독 포스트 필터링 \n'
                                                          '### `ordering` : created, live_rank, weekly_rank, monthly_rank, rising_rank \n'
                                                          '### `search` : title, content, tag_title 검색 \n'
@@ -111,7 +109,7 @@ class PostViewSet(mixins.RetrieveModelMixin,
 
     queryset = Post.objects.all()
 
-    @swagger_auto_schema(**swagger_decorator(tag='04. 포스트',
+    @swagger_auto_schema(**swagger_decorator(tag='03. 포스트',
                                              id='포스트 조회',
                                              description='## < 포스트 조회 API 입니다. >',
                                              response={200: PostRetrieveSerializer}
@@ -129,7 +127,7 @@ class PostViewSet(mixins.RetrieveModelMixin,
             data=serializer.data
         )
 
-    @swagger_auto_schema(**swagger_decorator(tag='04. 포스트',
+    @swagger_auto_schema(**swagger_decorator(tag='03. 포스트',
                                              id='포스트 수정',
                                              description='## < 포스트 수정 API 입니다. >',
                                              request=PostUpdateSerializer,
@@ -137,12 +135,9 @@ class PostViewSet(mixins.RetrieveModelMixin,
                                              ))
     def partial_update(self, request, *args, **kwargs):
         post = self.get_object()
-        user = request.user
         serializer = self.get_serializer(instance=post, data=request.data, partial=True)
         if serializer.is_valid(raise_exception=True):
             post = serializer.save()
-            community = post.community
-
             return Response(
                 status=status.HTTP_200_OK,
                 code=200,
@@ -150,7 +145,7 @@ class PostViewSet(mixins.RetrieveModelMixin,
                 data=PostUpdateSerializer(instance=post, context={'request': request}).data
             )
 
-    @swagger_auto_schema(**swagger_decorator(tag='04. 포스트',
+    @swagger_auto_schema(**swagger_decorator(tag='03. 포스트',
                                              id='포스트 삭제',
                                              description='## < 포스트 삭제 API 입니다. >',
                                              response={204: 'no content'}
@@ -164,7 +159,7 @@ class PostViewSet(mixins.RetrieveModelMixin,
             message=_('no content'),
         )
 
-    @swagger_auto_schema(**swagger_decorator(tag='04. 포스트',
+    @swagger_auto_schema(**swagger_decorator(tag='03. 포스트',
                                              id='임시글 객체 삭제',
                                              description='## < 임시글 객체 삭제 API 입니다. >',
                                              response={204: 'no content'}
@@ -181,7 +176,7 @@ class PostViewSet(mixins.RetrieveModelMixin,
             message=_('no content'),
         )
 
-    @swagger_auto_schema(**swagger_decorator(tag='04. 포스트',
+    @swagger_auto_schema(**swagger_decorator(tag='03. 포스트',
                                              id='포스트 킵',
                                              description='## < 포스트 킵 API 입니다. >',
                                              request=no_body,
@@ -202,7 +197,7 @@ class PostViewSet(mixins.RetrieveModelMixin,
             message=_('ok'),
         )
 
-    @swagger_auto_schema(**swagger_decorator(tag='04. 포스트',
+    @swagger_auto_schema(**swagger_decorator(tag='03. 포스트',
                                              id='포스트 언킵',
                                              description='## < 포스트 언킵 API 입니다. >',
                                              request=no_body,

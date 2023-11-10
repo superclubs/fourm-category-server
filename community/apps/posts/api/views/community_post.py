@@ -14,7 +14,7 @@ from community.utils.api.response import Response
 from community.utils.decorators import swagger_decorator
 
 # Filters
-from community.apps.posts.api.views.filters.index import PostsAdminFilter
+from community.apps.posts.api.views.filters import CommunityPostFilter, PostsAdminFilter
 
 # Bases
 from community.bases.api import mixins
@@ -34,6 +34,7 @@ class CommunityPostsViewSet(mixins.ListModelMixin,
         'default': PostListSerializer,
     }
     filter_backends = (DjangoFilterBackend, NullsLastOrderingFilter,)
+    filterset_class = CommunityPostFilter
     ordering_fields = ('created', 'live_rank', 'weekly_rank', 'monthly_rank', 'rising_rank')
 
     def get_queryset(self):

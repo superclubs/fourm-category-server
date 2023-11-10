@@ -57,7 +57,7 @@ class BoardPostsViewSet(mixins.ListModelMixin,
         queryset = PostListSerializer().prefetch_related(queryset, user=self.request.user)
         return queryset
 
-    @swagger_auto_schema(**swagger_decorator(tag='03. 보드',
+    @swagger_auto_schema(**swagger_decorator(tag='02. 보드',
                                              id='포스트 리스트 조회',
                                              description='## < 포스트 리스트 조회 API 입니다. >\n'
                                                          '### `date`: week, month, year 기간 내 생성된 커뮤니티 필터링 \n'

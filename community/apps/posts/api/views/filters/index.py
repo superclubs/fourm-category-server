@@ -48,13 +48,13 @@ class PostFilter(django_filters.FilterSet):
             return queryset.filter(created__range=[year_ago, today])
 
     def profile_liked_filter(self, queryset, title, value):
-        profile = Profile.objects.filter(id=value, is_joined=True).first()
+        profile = Profile.objects.filter(id=value).first()
         if profile:
             post_ids = PostLike.objects.filter(profile=profile, is_active=True).values_list('post_id', flat=True)
         return queryset.filter(id__in=post_ids)
 
     def profile_commented_filter(self, queryset, title, value):
-        profile = Profile.objects.filter(id=value, is_joined=True).first()
+        profile = Profile.objects.filter(id=value).first()
         if profile:
             post_ids = Comment.objects.filter(profile=profile, is_active=True).values_list('post_id', flat=True)
         return queryset.filter(id__in=post_ids)
