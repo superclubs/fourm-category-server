@@ -10,7 +10,7 @@ def forwards_insert_default_community_data(apps, schema_editor):
     # Depth1
     depth1_community_list = [
         '게임', '만화/애니', '방송', '문화/예술', '영화', '음악', '팬클럽', '스포츠', '동물', '취미', '패션/미용', '건강', '가족/육아',
-        '디지털/IT', '금융', '정치/사회', '종교'
+        '디지털/IT', '금융', '교육', '정치/사회', '종교'
     ]
 
     for depth1 in depth1_community_list:
@@ -113,7 +113,7 @@ def forwards_insert_default_community_data(apps, schema_editor):
     total_depth2_list.append(depth2_religion_community_list)
 
     for idx, depth2_list in enumerate(total_depth2_list):
-        depth1_community = Community.objects.filter(id=idx + 1).first()
+        depth1_community = Community.objects.filter(id=idx+1).first()
         for depth2 in depth2_list:
             Community.objects.create(title=depth2, parent_community=depth1_community, depth=2)
 
@@ -126,7 +126,7 @@ def forwards_insert_default_community_data(apps, schema_editor):
         Community.objects.create(title=depth3, parent_community=depth2_community, depth=3)
 
     depth3_fps_community_list = [
-        '포트리스', '아케이드', '아레나', '배틀 로얄', '밀리터리', '영웅', '플랫폼', '로그라이크', '기츠타'
+        '포트리스', '아케이드', '아레나', '배틀 로얄', '밀리터리', '영웅', '플랫폼', '로그라이크', '기타'
     ]
     for depth3 in depth3_fps_community_list:
         depth2_community = Community.objects.filter(title='FPS/슈팅').first()
