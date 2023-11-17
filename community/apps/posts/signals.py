@@ -14,6 +14,9 @@ from community.apps.posts.models import Post
 from community.apps.badges.models import Badge
 from community.apps.profiles.models import Profile
 
+# Tasks
+from community.apps.posts.tasks import sync_post_task
+
 
 # Main Section
 @receiver(pre_save, sender=Post)
@@ -26,33 +29,33 @@ def post_pre_save_sync_post(sender, instance, *args, **kwargs):
         if instance.profile:
             instance.profile_data = ProfileSerializer(instance.profile).data
 
-    # else:
-    #     _instance = Post.objects.filter(id=instance.id).first()
-    #     if _instance:
-    #         for field in [
-    #             # Main
-    #             'content_summary', 'public_type', 'password', 'reserved_at', 'boomed_at', 'point',
-    #
-    #             # Count
-    #             'comment_count', 'total_like_count', 'dislike_count',
-    #
-    #             # Boolean
-    #             'password',
-    #             'is_active', 'is_notice', 'is_event', 'is_temporary', 'is_secret',
-    #             'is_search', 'is_share', 'is_comment', 'is_reserved', 'is_boomed',
-    #
-    #             # Date
-    #             'achieved_20_points_at',
-    #         ]:
-    #             _value = getattr(_instance, field)
-    #             value = getattr(instance, field)
-    #
-    #             if _value != value:
-    #                 print('========================= sync_post_task =========================')
-    #                 try:
-    #                     sync_post_task.apply_async((instance.id,), countdown=2)
-    #                 except:
-    #                     pass
+    else:
+        _instance = Post.objects.filter(id=instance.id).first()
+        if _instance:
+            for field in [
+                # Main
+                'content_summary', 'public_type', 'password', 'reserved_at', 'boomed_at', 'point',
+
+                # Count
+                'comment_count', 'total_like_count', 'dislike_count',
+
+                # Boolean
+                'password',
+                'is_active', 'is_notice', 'is_event', 'is_temporary', 'is_secret',
+                'is_search', 'is_share', 'is_comment', 'is_reserved', 'is_boomed',
+
+                # Date
+                'achieved_20_points_at',
+            ]:
+                _value = getattr(_instance, field)
+                value = getattr(instance, field)
+
+                if _value != value:
+                    print('========================= sync_post_task =========================')
+                    try:
+                        sync_post_task.apply_async((instance.id,), countdown=2)
+                    except:
+                        pass
 
 
 @receiver(post_save, sender=Post)
@@ -76,14 +79,15 @@ def post_post_save_set_web_url(sender, instance, created, **kwargs):
 def post_post_save_set_web_url(sender, instance, created, **kwargs):
     print('========== Post post_save: Create Profile ==========')
     if created:
-        if instance.profile is None:
+        profile = Profile.objects.filter(user=instance.user, community=instance.community).first()
+        if profile is None:
             profile = Profile.objects.create(user=instance.user, community=instance.community)
             instance.profile_data = ProfileSerializer(instance=profile).data
 
-#
-# @receiver(post_save, sender=Post)
-# def post_post_save(sender, instance, created, **kwargs):
-#     print('========================= Post post_save: Sync Post =========================')
-#     if created and not instance.is_default and not instance.is_temporary and not instance.is_reserved and \
-#         instance.public_type != 'ONLY_ME':
-#         sync_post_task.apply_async((instance.id,), countdown=2)
+
+@receiver(post_save, sender=Post)
+def post_post_save(sender, instance, created, **kwargs):
+    print('========================= Post post_save: Sync Post =========================')
+    if created and not instance.is_default and not instance.is_temporary and not instance.is_reserved and \
+        instance.public_type != 'ONLY_ME':
+        sync_post_task.apply_async((instance.id,), countdown=2)

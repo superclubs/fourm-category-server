@@ -22,6 +22,9 @@ class PostSyncSerializer(ModelSerializer):
     service_type = serializers.SerializerMethodField()
     post_id = serializers.IntegerField(source='id')
     community_id = serializers.IntegerField(source='community.id')
+    depth1_category_id = serializers.IntegerField(source='depth1_community_id')
+    depth2_category_id = serializers.IntegerField(source='depth2_community_id')
+    depth3_category_id = serializers.IntegerField(source='depth3_community_id')
     badges_data = serializers.SerializerMethodField()
     tags_data = serializers.SerializerMethodField()
     liked_users_data = serializers.SerializerMethodField()
@@ -36,8 +39,8 @@ class PostSyncSerializer(ModelSerializer):
             # Post
             'post_id',
 
-            # 'Club'
-            'community_id', 'community_title',
+            # 'Community'
+            'community_id', 'depth1_category_id', 'depth2_category_id', 'depth3_category_id',
 
             # Board Group
             'board_group_id', 'board_group_title',
@@ -88,7 +91,7 @@ class PostSyncSerializer(ModelSerializer):
         )
 
     def get_service_type(self, obj):
-        return settings.SERVICE_TITLE
+        return 'CLUB_CATEGORY'
 
     def get_badges_data(self, obj):
         instance = obj.badges.order_by('id')
