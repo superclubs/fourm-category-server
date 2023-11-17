@@ -8,7 +8,7 @@ from rest_framework.exceptions import ParseError
 from django_filters.rest_framework import DjangoFilterBackend
 
 # Third Party
-from drf_yasg.utils import swagger_auto_schema, no_body
+from drf_yasg.utils import swagger_auto_schema
 
 # Bases
 from community.bases.api import mixins
