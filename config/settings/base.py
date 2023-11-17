@@ -31,8 +31,6 @@ env = environ.Env()
 
 # ENVIRONMENT
 # ---------------------------------------------------------------------------------
-SERVICE_TITLE = env('SERVICE_TITLE', default='')
-
 DJANGO_SETTINGS_MODULE = env("DJANGO_SETTINGS_MODULE")
 print('DJANGO_SETTINGS_MODULE : ', DJANGO_SETTINGS_MODULE)
 
@@ -70,6 +68,8 @@ if files_not_exist:
     print("{} file(s) does not exists: {}".format(len(files_not_exist), ", ".join(map(str, files_not_exist))))
 
 print("")
+
+SERVICE_TITLE = env('SERVICE_TITLE', default='COMMUNITY')
 
 # GENERAL
 # ------------------------------------------------------------------------------
