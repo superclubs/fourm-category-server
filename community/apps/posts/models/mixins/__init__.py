@@ -1,5 +1,6 @@
 from community.apps.posts.models.mixins.badge import PostBadgeModelMixin
 from community.apps.posts.models.mixins.bookmark import PostBookmarkModelMixin
+from community.apps.posts.models.mixins.community import PostCommunityModelMixin
 from community.apps.posts.models.mixins.comment import PostCommentModelMixin
 from community.apps.posts.models.mixins.image import PostMediaModelMixin
 from community.apps.posts.models.mixins.like import PostLikeModelMixin

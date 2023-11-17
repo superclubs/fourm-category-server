@@ -19,7 +19,7 @@ from community.bases.models import Model
 # Mixins
 from community.apps.posts.models.mixins import PostCommentModelMixin, PostLikeModelMixin, PostShareModelMixin, \
     PostVisitModelMixin, PostTagModelMixin, PostReportModelMixin, PostRankModelMixin, PostBadgeModelMixin, \
-    PostMediaModelMixin, PostBookmarkModelMixin, PostPointModelMixin
+    PostMediaModelMixin, PostBookmarkModelMixin, PostPointModelMixin, PostCommunityModelMixin
 
 # Bases
 from community.bases.models import Manager
@@ -29,7 +29,6 @@ from community.modules.choices import PUBLIC_TYPE_CHOICES, BOOM_PERIOD_CHOICES
 
 # Utils
 from community.utils.fields import extract_content_summary
-
 
 
 # Manager Section
@@ -110,8 +109,10 @@ class Post(PostCommentModelMixin,
            PostBadgeModelMixin,
            PostMediaModelMixin,
            PostPointModelMixin,
+           PostCommunityModelMixin,
            Model):
-    # Club
+
+    # Community
     community = models.ForeignKey('communities.Community', verbose_name=_('Community'), on_delete=models.CASCADE,
                                   related_name='posts')
     community_title = models.CharField(_('Community Title'), max_length=60, null=True, blank=True)
