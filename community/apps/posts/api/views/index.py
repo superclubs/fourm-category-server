@@ -31,7 +31,8 @@ from community.utils.searches import AdvancedSearchFilter
 from community.apps.posts.models import Post
 
 # Serializers
-from community.apps.posts.api.serializers import PostRetrieveSerializer, PostUpdateSerializer, PostListSerializer
+from community.apps.posts.api.serializers import PostRetrieveSerializer, PostUpdateSerializer, PostListSerializer, \
+    PostCreateSerializer
 
 
 # Main Section
@@ -91,7 +92,8 @@ class PostsViewSet(mixins.ListModelMixin,
         )
 
 
-class PostViewSet(mixins.RetrieveModelMixin,
+class PostViewSet(mixins.CreateModelMixin,
+                  mixins.RetrieveModelMixin,
                   mixins.UpdateModelMixin,
                   mixins.DestroyModelMixin,
                   PostCommentViewMixin,
@@ -103,11 +105,30 @@ class PostViewSet(mixins.RetrieveModelMixin,
                   GenericViewSet):
     serializers = {
         'default': PostRetrieveSerializer,
+        'create': PostCreateSerializer,
         'partial_update': PostUpdateSerializer,
     }
     filter_backends = (DjangoFilterBackend,)
 
     queryset = Post.objects.all()
+
+    @swagger_auto_schema(**swagger_decorator(tag='03. 포스트',
+                                             id='포스트 생성',
+                                             description='## < 포스트 생성 API 입니다. >',
+                                             request=PostCreateSerializer,
+                                             response={201: PostRetrieveSerializer}
+                                             ))
+    def create(self, request, *args, **kwargs):
+        user = request.user
+        serializer = PostCreateSerializer(data=request.data, context={'user': user})
+        if serializer.is_valid(raise_exception=True):
+            instance = serializer.save()
+            return Response(
+                status=status.HTTP_201_CREATED,
+                code=201,
+                message=_('ok'),
+                data=PostRetrieveSerializer(instance=instance).data
+            )
 
     @swagger_auto_schema(**swagger_decorator(tag='03. 포스트',
                                              id='포스트 조회',

@@ -13,50 +13,58 @@ from community.bases.api.serializers import ModelSerializer
 
 # Models
 from community.apps.posts.models import Post
+from community.apps.communities.models import Community
 
 
 # Main Section
 class PostCreateSerializer(ModelSerializer):
     tags = serializers.ListField(child=serializers.CharField(allow_blank=True), required=False)
+    communities = serializers.ListField(child=serializers.PrimaryKeyRelatedField(queryset=Community.objects.all()),
+                                        required=True)
 
     class Meta:
         model = Post
-        fields = ('board', 'title', 'content', 'tags', 'public_type', 'is_secret', 'password', 'reserved_at',
-                  'boomed_period', 'is_temporary', 'is_notice', 'is_event', 'is_search', 'is_share', 'is_comment')
+        fields = ('board', 'title', 'content', 'public_type', 'is_secret', 'password', 'reserved_at',
+                  'boomed_period', 'is_temporary', 'is_notice', 'is_event', 'is_search', 'is_share', 'is_comment',
+                  'tags', 'communities')
 
     def create(self, validated_data):
         additional_data = dict()
 
+        # Community Ids
+        main_community = None
+        communities = validated_data.pop('communities', None)
+
+        if communities:
+            depth_community_ids = [f'depth{i + 1}_community_id' for i, _ in enumerate(communities)]
+
+            for i, community in enumerate(communities):
+                depth_community_id = depth_community_ids[i]
+                additional_data[depth_community_id] = community.id
+
+                if i == len(communities) - 1:
+                    main_community = community
+
         # FK
         user = self.context['user']
-        community = self.context['community']
-        profile = user.profiles.filter(community=community).first()
         board = validated_data.get('board', None)
 
-        tags = validated_data.pop('tags', None)
-
-        reserved_at = validated_data.get('reserved_at', None)
-        boomed_period = validated_data.get('boomed_period', None)
-
-        if not profile:
-            raise ValidationError('프로필을 찾을수 없습니다.')
-
-        additional_data['profile'] = profile
-        additional_data['user'] = user
-        additional_data['community'] = community
-
-        # Board
         if not board:
             raise ValidationError('보드를 찾을 수 없습니다.')
 
-        # Reserve Fields
+        additional_data['community'] = main_community
+        additional_data['user'] = user
+
+        # Main Fields
+        reserved_at = validated_data.get('reserved_at', None)
+        boomed_period = validated_data.get('boomed_period', None)
+
         if reserved_at:
             if now() > reserved_at:
                 raise ValidationError('과거로 예약할 수 없습니다.')
 
             additional_data['is_reserved'] = True
 
-        # Boom Fields
         if boomed_period:
             if reserved_at:
                 boomed_at = datetime.fromisoformat(reserved_at) + timedelta(minutes=int(boomed_period))
@@ -65,6 +73,9 @@ class PostCreateSerializer(ModelSerializer):
 
             additional_data['boomed_at'] = boomed_at
             additional_data['is_boomed'] = True
+
+        # Many to Many
+        tags = validated_data.pop('tags', None)
 
         # Create Post
         data = dict(validated_data, **additional_data)
@@ -80,5 +91,3 @@ class PostCreateSerializer(ModelSerializer):
                     instance.create_post_tag(index=index, tag=tag)
 
         return instance
-
-

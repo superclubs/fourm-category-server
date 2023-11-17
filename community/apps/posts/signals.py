@@ -12,6 +12,7 @@ from community.apps.profiles.api.serializers import ProfileSerializer
 # Models
 from community.apps.posts.models import Post
 from community.apps.badges.models import Badge
+from community.apps.profiles.models import Profile
 
 
 # Main Section
@@ -21,8 +22,10 @@ def post_pre_save_sync_post(sender, instance, *args, **kwargs):
     if instance.id is None:
         if instance.user:
             instance.user_data = UserProfileSerializer(instance=instance.user).data
+
         if instance.profile:
-            instance.profile_data = ProfileSerializer(instance=instance.profile).data
+            instance.profile_data = ProfileSerializer(instance.profile).data
+
     # else:
     #     _instance = Post.objects.filter(id=instance.id).first()
     #     if _instance:
@@ -36,7 +39,7 @@ def post_pre_save_sync_post(sender, instance, *args, **kwargs):
     #             # Boolean
     #             'password',
     #             'is_active', 'is_notice', 'is_event', 'is_temporary', 'is_secret',
-    #             'is_search', 'is_share', 'is_comment', 'is_reserved', 'is_boomed', 'is_vote',
+    #             'is_search', 'is_share', 'is_comment', 'is_reserved', 'is_boomed',
     #
     #             # Date
     #             'achieved_20_points_at',
@@ -63,12 +66,21 @@ def post_post_save_create_new_post_badge(sender, instance, created, **kwargs):
 
 @receiver(post_save, sender=Post)
 def post_post_save_set_web_url(sender, instance, created, **kwargs):
-    print('========== Post post_save: Set Field ==========')
-
+    print('========== Post post_save: Set Web Url Field ==========')
     if created:
         if not instance.is_temporary:
             instance.web_url = SUPERCLUB_WEB_HOST + f'/community/{instance.community.id}/post/{instance.id}'
 
+
+@receiver(post_save, sender=Post)
+def post_post_save_set_web_url(sender, instance, created, **kwargs):
+    print('========== Post post_save: Create Profile ==========')
+    if created:
+        if instance.profile is None:
+            profile = Profile.objects.create(user=instance.user, community=instance.community)
+            instance.profile_data = ProfileSerializer(instance=profile).data
+
+#
 # @receiver(post_save, sender=Post)
 # def post_post_save(sender, instance, created, **kwargs):
 #     print('========================= Post post_save: Sync Post =========================')
