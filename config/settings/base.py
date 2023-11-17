@@ -31,7 +31,7 @@ env = environ.Env()
 
 # ENVIRONMENT
 # ---------------------------------------------------------------------------------
-SERVICE_TITLE = 'COMMUNITY'
+SERVICE_TITLE = env('SERVICE_TITLE', default='')
 
 DJANGO_SETTINGS_MODULE = env("DJANGO_SETTINGS_MODULE")
 print('DJANGO_SETTINGS_MODULE : ', DJANGO_SETTINGS_MODULE)
