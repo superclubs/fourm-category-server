@@ -92,4 +92,4 @@ INSTALLED_APPS = ["collectfast"] + INSTALLED_APPS  # noqa F405
 
 # Celery
 # ------------------------------------------------------------------------------
-CELERY_BROKER_TRANSPORT_OPTIONS['queue_name_prefix'] = 'clubcategory-staging-'
+CELERY_BROKER_TRANSPORT_OPTIONS['queue_name_prefix'] = 'community-staging-'

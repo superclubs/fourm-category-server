@@ -2,7 +2,7 @@
 
 # Create the celery systemd service file
 echo "[Unit]
-Description=Celery Service for SUPERCLUB's CLUBCATEGORY
+Description=Celery Service for SUPERCLUB's COMMUNITY
 After=network.target
 
 [Service]
@@ -12,8 +12,8 @@ RestartSec=1
 User=root
 WorkingDirectory=/var/app/current
 EnvironmentFile=/opt/elasticbeanstalk/deployment/env
-ExecStart=/var/app/venv/staging-LQM1lest/bin/celery -A clubcategory worker --logfile=/var/log/celery/worker.log --pidfile=/var/run/celery/%n.pid --loglevel=INFO -n worker.%%h
-ExecReload=/var/app/venv/staging-LQM1lest/bin/celery -A clubcategory worker --logfile=/var/log/celery/worker.log --pidfile=/var/run/celery/%n.pid --loglevel=INFO -n worker.%%h
+ExecStart=/var/app/venv/staging-LQM1lest/bin/celery -A community worker --logfile=/var/log/celery/worker.log --pidfile=/var/run/celery/%n.pid --loglevel=INFO -n worker.%%h
+ExecReload=/var/app/venv/staging-LQM1lest/bin/celery -A community worker --logfile=/var/log/celery/worker.log --pidfile=/var/run/celery/%n.pid --loglevel=INFO -n worker.%%h
 
 [Install]
 WantedBy=multi-user.target
