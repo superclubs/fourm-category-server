@@ -16,7 +16,7 @@ def community_post_save_create_board_group(sender, instance, created, **kwargs):
         # Create Board
         Board.objects.create(
             community=instance,
-            title='All',
+            title='Free',
             view_mode='CARD_TYPE',
             type='All'
         )

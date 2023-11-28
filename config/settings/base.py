@@ -371,7 +371,7 @@ MANAGERS = ADMINS
 
 ADMIN_REORDER = (
     'users', 'communities', 'reports', 'profiles', 'posts', 'comments', 'likes', 'rankings', 'badges', 'categories',
-    'boards', 'tags', 'visits', 'bookmarks', 'shares', 'community_medias'
+    'boards', 'tags', 'visits', 'bookmarks', 'shares', 'community_medias', 'rankings',
 )
 
 # LOGGING
@@ -545,7 +545,7 @@ CRONJOBS = [
     ('30 * * * *', 'config.crons.cron_ranking_group_post_hourly', '>> cron.log'),
 
     # 매일 오전 6시 실행
-    ('0 6 * * *', 'config.crons.cron_ranking_group_post_daily', '>> cron.log'),
+    ('30 * * * *', 'config.crons.cron_ranking_group_post_daily', '>> cron.log'),
 ]
 
 # Celery
