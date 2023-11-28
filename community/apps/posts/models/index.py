@@ -262,6 +262,7 @@ class Post(PostCommentModelMixin,
                 post_tag.tag.decrease_tag_post_count()
                 post_tag.tag.save()
 
+    # TODO: is_delete 로직 개선
     def delete(self, *args, request=None, **kwargs):
         from community.apps.posts.api.serializers import PostDeleteSerializer
         from community.modules.gateways.post import gateway as gateway_post
