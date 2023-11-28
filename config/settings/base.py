@@ -545,7 +545,7 @@ CRONJOBS = [
     ('30 * * * *', 'config.crons.cron_ranking_group_post_hourly', '>> cron.log'),
 
     # 매일 오전 6시 실행
-    ('30 * * * *', 'config.crons.cron_ranking_group_post_daily', '>> cron.log'),
+    ('* 6 * * *', 'config.crons.cron_ranking_group_post_daily', '>> cron.log'),
 ]
 
 # Celery
