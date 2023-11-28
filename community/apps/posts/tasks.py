@@ -28,7 +28,9 @@ def delete_post_task(self, post_id):
     from community.apps.posts.models import Post
     from community.apps.posts.api.serializers import PostDeleteSerializer
 
-    post = Post.objects.get(id=post_id)
+    post = Post.objects.filter(id=post_id).first()
+    if post is None:
+        return
     data = PostDeleteSerializer(instance=post).data
 
     # API Gateway
