@@ -75,7 +75,5 @@ class CommunityDashboardSerializer(ModelSerializer):
 
     def get_comment_count(self, obj):
         posts = self.get_posts(obj)
-        for post in posts:
-            print(post.id)
         comments = Comment.objects.filter(is_active=True, is_deleted=False, post__in=posts)
         return len(comments)
