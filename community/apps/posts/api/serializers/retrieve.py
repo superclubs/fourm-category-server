@@ -8,9 +8,11 @@ from rest_framework import serializers
 # Serializers
 from community.apps.post_tags.api.serializers import PostTagListSerializer
 from community.apps.posts.api.serializers import PostContentSummarySerializer
+from community.apps.communities.api.serializers import CommunityListSerializer
 
 # Models
 from community.apps.posts.models import Post
+from community.apps.communities.models import Community
 
 # API
 from community.bases.api.serializers import ModelSerializer
@@ -20,6 +22,7 @@ from community.bases.api.serializers import ModelSerializer
 class PostRetrieveSerializer(ModelSerializer):
     user = serializers.JSONField(source='user_data')
     medias = serializers.JSONField(source='medias_data')
+    communities = serializers.SerializerMethodField()
     tags = serializers.SerializerMethodField()
     is_bookmarked = serializers.SerializerMethodField()
     is_liked = serializers.SerializerMethodField()
@@ -36,8 +39,8 @@ class PostRetrieveSerializer(ModelSerializer):
             # Main
             'id', 'prev_post', 'next_post', 'community', 'community_title', 'board_group', 'board_group_title',
             'board', 'board_title', 'read_permission', 'thumbnail_media_url', 'medias', 'user', 'content', 'title',
-            'tags', 'password', 'point', 'public_type', 'reserved_at', 'boomed_at', 'boomed_period', 'created',
-            'modified',
+            'tags', 'password', 'point', 'public_type', 'reserved_at', 'boomed_at', 'boomed_period', 'communities',
+            'created', 'modified',
 
             # Count
             'total_like_count', 'dislike_count',
@@ -80,6 +83,22 @@ class PostRetrieveSerializer(ModelSerializer):
     def get_tags(self, obj):
         instance = obj.post_tags.order_by('order')
         return PostTagListSerializer(instance=instance, many=True).data
+
+    def get_communities(self, obj):
+        community_ids = []
+
+        if obj.depth1_community_id is not None:
+            community_ids.append(obj.depth1_community_id)
+
+        if obj.depth2_community_id is not None:
+            community_ids.append(obj.depth2_community_id)
+
+        if obj.depth3_community_id is not None:
+            community_ids.append(obj.depth3_community_id)
+
+        instance = Community.objects.filter(id__in=community_ids)
+
+        return CommunityListSerializer(instance=instance, many=True).data
 
     def get_is_bookmarked(self, obj):
         request = self.context.get('request', None)
