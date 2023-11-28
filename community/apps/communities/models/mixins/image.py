@@ -17,7 +17,7 @@ def image_path(instance, filename):
 
 
 def default_banner_image_path():
-    path = f'{settings.MEDIA_URL}community/community/default/banner.png'
+    path = f'{settings.MEDIA_URL}{settings.SERVICE_PATH}/community/default/banner.png'
     return path
 
 
