@@ -65,13 +65,6 @@ class ReportGroup(ReportGroupReportModelMixin,
             # Set ReportGroup Field
             self.username = self.user.username
             self.profile_image_url = self.user.profile_image_url
-            self.profile_is_banned = self.profile.is_banned
-            self.is_staff = self.profile.is_staff
-
-            if self.profile.is_active:
-                self.profile_is_deactivated = False
-            elif not self.profile.is_active:
-                self.profile_is_deactivated = True
 
             if self.post:
                 self.contents = self.post.title

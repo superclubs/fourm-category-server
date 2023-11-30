@@ -101,7 +101,7 @@ class PostViewSet(mixins.CreateModelMixin,
                   PostShareViewMixin,
                   PostBookmarkViewMixin,
                   PostLikeViewMixin,
-                  # PostReportViewMixin,
+                  PostReportViewMixin,
                   GenericViewSet):
     serializers = {
         'default': PostRetrieveSerializer,
