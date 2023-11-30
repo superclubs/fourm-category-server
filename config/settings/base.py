@@ -70,6 +70,7 @@ if files_not_exist:
 print("")
 
 SERVICE_TITLE = env('SERVICE_TITLE', default='COMMUNITY')
+SERVICE_PATH = ''.join(SERVICE_TITLE.lower().split('_'))
 
 # GENERAL
 # ------------------------------------------------------------------------------

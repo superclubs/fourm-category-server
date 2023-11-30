@@ -5,6 +5,9 @@ from django.utils.translation import gettext_lazy as _
 # Models
 from community.bases.models import Model
 
+# Modules
+from community.modules.gateways.post import gateway as gateway_post
+
 
 # Main Section
 class PostBookmark(Model):
@@ -32,8 +35,21 @@ class PostBookmark(Model):
             self.post.increase_post_bookmark_count()
             self.post.save()
 
+            # API Gateway
+            data = {
+                "user": self.user.id,
+                "username": self.user.username,
+                "image_url": self.post.thumbnail_media_url,
+                "content": self.post.title,
+                "community_id": self.post.community.id,
+                "post_id": self.post.id,
+                "club_id": None,
+                "forum_id": None,
+                "profile_id": None,
+            }
+
             # gateway_superclub.create_bookmark(**data)
-            # gateway_post.create_bookmark(**data)
+            gateway_post.create_bookmark(**data)
 
         else:
             if self.__is_active != self.is_active:
@@ -42,15 +58,38 @@ class PostBookmark(Model):
                     self.user.increase_user_post_bookmark_count()
                     self.post.increase_post_bookmark_count()
 
+                    # API Gateway
+                    data = {
+                        "user": self.user.id,
+                        "username": self.user.username,
+                        "image_url": self.post.thumbnail_media_url,
+                        "content": self.post.title,
+                        "community_id": self.post.community.id,
+                        "post_id": self.post.id,
+                        "club_id": None,
+                        "forum_id": None,
+                        "profile_id": None,
+                    }
+
                     # gateway_superclub.create_bookmark(**data)
-                    # gateway_post.create_bookmark(**data)
+                    gateway_post.create_bookmark(**data)
 
                 else:
                     self.user.decrease_user_post_bookmark_count()
                     self.post.decrease_post_bookmark_count()
 
+                    # API Gateway
+                    data = {
+                        "user": self.user.id,
+                        "community_id": self.post.community.id,
+                        "post_id": self.post.id,
+                        "club_id": None,
+                        "forum_id": None,
+                        "profile_id": None,
+                    }
+
                     # gateway_superclub.delete_bookmark(**data)
-                    # gateway_post.delete_bookmark(**data)
+                    gateway_post.delete_bookmark(**data)
 
                 self.user.save()
                 self.post.save()
