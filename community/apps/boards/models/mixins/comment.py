@@ -1,5 +1,6 @@
 # Django
 from django.db import models
+from django.db.models import Sum
 from django.utils.translation import gettext_lazy as _
 
 
@@ -17,4 +18,11 @@ class BoardCommentModelMixin(models.Model):
         self.comment_count = self.comment_count - 1
 
     def update_board_comment_count(self):
-        self.comment_count = self.comments.filter(is_active=True, is_deleted=False).count()
+        # Get Active Posts
+        posts = self.posts.filter(is_active=True, is_temporary=False)
+
+        total_comment_count = posts.aggregate(total=Sum('comment_count'))['total']
+        if total_comment_count is None:
+            total_comment_count = 0
+
+        self.comment_count = total_comment_count

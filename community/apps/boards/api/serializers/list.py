@@ -10,7 +10,6 @@ from community.bases.api.serializers import ModelSerializer
 # Models
 from community.apps.boards.models import Board
 from community.apps.boards.models import BoardGroup
-from community.apps.profiles.models import Profile
 
 # Utils
 from community.utils.time import get_start_today, get_end_today
@@ -22,7 +21,7 @@ class BoardListSerializer(ModelSerializer):
 
     class Meta:
         model = Board
-        fields = ('id', 'title', 'type', 'order', 'is_active', 'is_new_posted')
+        fields = ('id', 'title', 'type', 'order', 'post_count', 'comment_count', 'is_active', 'is_new_posted')
 
     def get_is_new_posted(self, obj):
         q1 = Q(created__range=[get_start_today(), get_end_today()])
