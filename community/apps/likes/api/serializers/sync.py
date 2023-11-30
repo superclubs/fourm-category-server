@@ -14,18 +14,16 @@ from community.bases.api.serializers import ModelSerializer
 # Main Section
 class PostLikeSyncCommonSerializer(ModelSerializer):
     service_type = serializers.SerializerMethodField()
-    community_id = serializers.IntegerField(source='post.community.id')
+    club_id = serializers.IntegerField(default=None)
     forum_id = serializers.ReadOnlyField(default=None)
     profile_id = serializers.ReadOnlyField(default=None)
+    community_id = serializers.IntegerField(source='post.community.id')
     post_id = serializers.IntegerField(source='post.id')
 
     class Meta:
         model = PostLike
-        fields = (
-            'user', 'service_type',
-            'community_id', 'forum_id', 'profile_id', 'post_id',
-            'is_active', 'created', 'modified',
-        )
+        fields = ('user', 'service_type', 'club_id', 'forum_id', 'profile_id', 'community_id', 'post_id', 'is_active',
+                  'created', 'modified')
 
     def get_service_type(self, obj):
         return settings.SERVICE_TITLE
