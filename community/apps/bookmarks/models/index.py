@@ -7,6 +7,7 @@ from community.bases.models import Model
 
 # Modules
 from community.modules.gateways.post import gateway as gateway_post
+from community.modules.gateways.common import gateway as gateway_superclub
 
 
 # Main Section
@@ -48,7 +49,7 @@ class PostBookmark(Model):
                 "profile_id": None,
             }
 
-            # gateway_superclub.create_bookmark(**data)
+            gateway_superclub.create_bookmark(**data)
             gateway_post.create_bookmark(**data)
 
         else:
@@ -71,7 +72,7 @@ class PostBookmark(Model):
                         "profile_id": None,
                     }
 
-                    # gateway_superclub.create_bookmark(**data)
+                    gateway_superclub.create_bookmark(**data)
                     gateway_post.create_bookmark(**data)
 
                 else:
@@ -88,7 +89,7 @@ class PostBookmark(Model):
                         "profile_id": None,
                     }
 
-                    # gateway_superclub.delete_bookmark(**data)
+                    gateway_superclub.delete_bookmark(**data)
                     gateway_post.delete_bookmark(**data)
 
                 self.user.save()
