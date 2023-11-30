@@ -21,6 +21,9 @@ from community.apps.posts.api.views.mixins import PostBookmarkViewMixin, PostCom
 # Filters
 from community.apps.posts.api.views.filters import PostFilter
 
+# Permissions
+from community.apps.posts.api.views.permissions import PostPermission
+
 # Utils
 from community.utils.api.response import Response
 from community.utils.decorators import swagger_decorator
@@ -109,6 +112,7 @@ class PostViewSet(mixins.CreateModelMixin,
         'partial_update': PostUpdateSerializer,
     }
     filter_backends = (DjangoFilterBackend,)
+    permission_classes = (PostPermission,)
 
     queryset = Post.objects.all()
 

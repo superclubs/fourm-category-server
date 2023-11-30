@@ -17,6 +17,9 @@ from community.bases.api.viewsets import GenericViewSet
 # Mixins
 from community.apps.comments.api.views.mixins import CommentLikeViewMixin, CommentReportViewMixin
 
+# Permissions
+from community.apps.comments.api.views.permissions import CommentPermission
+
 # Utils
 from community.utils.decorators import swagger_decorator
 from community.utils.api.response import Response
@@ -42,7 +45,7 @@ class CommentViewSet(CommentLikeViewMixin,
     }
     queryset = Comment.objects.all()
     filter_backends = (DjangoFilterBackend,)
-    permission_classes = (IsAuthenticated,)
+    permission_classes = (CommentPermission, )
 
     @swagger_auto_schema(**swagger_decorator(tag='04. 댓글',
                                              id='댓글 수정',
