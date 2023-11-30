@@ -230,6 +230,10 @@ class Post(PostCommentModelMixin,
         self.community.increase_community_post_count()
         self.community.save()
 
+        # Board Post Count
+        self.board.increase_board_post_count()
+        self.board.save()
+
         # Profile Post Count
         if self.profile:
             self.profile.increase_profile_post_count()
@@ -250,6 +254,10 @@ class Post(PostCommentModelMixin,
         # Club Post Count
         self.community.decrease_community_post_count()
         self.community.save()
+
+        # Board Post Count
+        self.board.decrease_board_post_count()
+        self.board.save()
 
         # Profile Post Count
         self.profile.decrease_profile_post_count()

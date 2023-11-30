@@ -82,6 +82,10 @@ class Comment(CommentLikeModelMixin,
             self.post.increase_post_comment_count()
             self.post.save()
 
+            # Board Comment Count
+            self.post.board.increase_board_comment_count()
+            self.post.board.save()
+
             # Profile Comment Count
             self.profile.increase_profile_comment_count()
             self.profile.save()
