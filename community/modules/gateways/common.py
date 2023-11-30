@@ -11,41 +11,13 @@ from community.bases.modules.gateways import Gateway as BaseGateway
 from community.utils.bookmark_type import COMMUNITY_POST_BOOKMARK
 
 
-# Main Section
 class Gateway(BaseGateway):
     def __init__(self):
-        super().__init__(base_url=urljoin(settings.POST_SERVER_HOST, f'/api/{settings.POST_API_VERSION}/'))
-
-    def sync_post(self, data):
-        print('Sync Post')
-        path = 'post/sync'
-        response = self.request(method="POST", path=path, json=data)
-        print('response : ', response)
-        return response
-
-    def sync_like(self, data):
-        print('Sync Like')
-        path = 'like/sync'
-        response = self.request(method="POST", path=path, json=data)
-        print('response : ', response)
-        return response
-
-    def sync_dislike(self, data):
-        print('Sync Dislike')
-        path = 'dislike/sync'
-        response = self.request(method="POST", path=path, json=data)
-        print('response : ', response)
-        return response
-
-    def delete_post(self, data):
-        print('Delete Post')
-        path = f'post'
-        response = self.request(method="DELETE", path=path, json=data)
-        print('response : ', response)
-        return response
+        super().__init__(base_url=urljoin(settings.SUPERCLUB_SERVER_HOST, f'/api/{settings.SUPERCLUB_API_VERSION}/'))
 
     def create_bookmark(self, user: int, username: str, content: str, community_id: int, post_id: int,
                         club_id: int, forum_id: int, profile_id: int, image_url: str):
+        print(self.base_url)
         path = 'bookmark'
 
         body = {
