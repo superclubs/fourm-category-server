@@ -5,7 +5,7 @@ from django.utils.translation import gettext_lazy as _
 from django.db.models import Max
 
 # Mixins
-from community.apps.boards.models.mixins.permission import BoardPermissionMixin
+from community.apps.boards.models.mixins import BoardPostModelMixin, BoardCommentModelMixin, BoardPermissionMixin
 
 # Local
 from community.bases.models import Model
@@ -65,7 +65,9 @@ class BoardGroup(Model):
         return super(BoardGroup, self).save(*args, **kwargs)
 
 
-class Board(BoardPermissionMixin,
+class Board(BoardPostModelMixin,
+            BoardCommentModelMixin,
+            BoardPermissionMixin,
             Model):
     community = models.ForeignKey('communities.Community', verbose_name=_('Community'), on_delete=models.CASCADE,
                                   related_name='boards', null=True)
@@ -96,7 +98,6 @@ class Board(BoardPermissionMixin,
 
     def save(self, *args, **kwargs):
         if self.id is None:
-
             # 보드 그룹에 엮인 보드의 order 최대 값 + 1
             # max_board = self.board_group.boards.aggregate(order=Max('order'))
             # if not max_board['order']:
