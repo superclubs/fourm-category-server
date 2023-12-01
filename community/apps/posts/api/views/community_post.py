@@ -48,7 +48,7 @@ class CommunityPostsViewSet(mixins.ListModelMixin,
     @swagger_auto_schema(**swagger_decorator(tag='01. 커뮤니티',
                                              id='포스트 리스트 조회',
                                              description='## < 포스트 리스트 조회 API 입니다. >\n'
-                                                         '### `ordering` : created, live_rank, week_rank, month_rank, rising_rank',
+                                                         '### `ordering` : created, live_rank, weekly_rank, monthly_rank, rising_rank',
                                              response={200: PostListSerializer}
                                              ))
     def list(self, request, *args, **kwargs):
@@ -95,7 +95,7 @@ class CommunityPostsAdminViewSet(mixins.ListModelMixin,
                                                          '### `is_temporary` : true 입력 시, 임시글 필터링 \n'
                                                          '### `is_notice` : true 입력 시, 공지글 필터링 \n'
                                                          '### `is_event` : true 입력 시, 이벤트글 필터링 \n'
-                                                         '### `ordering` : created, live_rank, week_rank, month_rank, rising_rank',
+                                                         '### `ordering` : created, live_rank, weekly_rank, monthly_rank, rising_rank',
                                              response={200: PostListSerializer}
                                              ))
     def list(self, request, *args, **kwargs):
