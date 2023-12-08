@@ -1,4 +1,4 @@
-# Community
+# Forumcategory
 
 [![Built with Cookiecutter Django](https://img.shields.io/badge/built%20with-Cookiecutter%20Django-ff69b4.svg?logo=cookiecutter)](https://github.com/cookiecutter/cookiecutter-django/)
 [![Black code style](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/ambv/black)
@@ -101,7 +101,7 @@ https://cscheng.info/2018/01/26/installing-pycurl-on-macos-high-sierra.html
 Install openssl and pycurl, and Run Celery worker for this `Project-Name`
 
 ### Celery Setting
-
+    # in python 3.8 
     $ brew install openssl
 
     $ pip uninstall pycurl
