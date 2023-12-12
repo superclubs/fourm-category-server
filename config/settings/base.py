@@ -14,7 +14,7 @@ from django.utils.translation import ugettext_lazy as _
 # Third Party
 from pathlib import Path
 from typing import List
-from corsheaders.defaults import default_methods
+from corsheaders.defaults import default_methods, default_headers
 
 # Sentry
 import sentry_sdk
@@ -455,6 +455,7 @@ REST_FRAMEWORK = {
 # django-cors-headers - https://github.com/adamchainz/django-cors-headers#setup
 CORS_ALLOW_ALL_ORIGINS = True
 CORS_ALLOW_METHODS = default_methods
+CORS_ALLOW_HEADERS = default_headers + ('Language-Code', )
 
 # Your stuff...
 # ------------------------------------------------------------------------------
