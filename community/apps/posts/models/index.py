@@ -268,6 +268,16 @@ class Post(PostCommentModelMixin,
                 post_tag.tag.save()
 
     def delete(self, *args, request=None, **kwargs):
-        self.is_deleted = True
-        self.save()
-        return
+        from community.apps.posts.api.serializers import PostDeleteSerializer
+        from community.modules.gateways.post import gateway as gateway_post
+
+        # Delete Post Task
+        # post_id = self.id
+        # delete_post_task.delay(post_id=post_id)
+
+        data = PostDeleteSerializer(instance=self).data
+
+        # API Gateway
+        gateway_post.delete_post(data)
+
+        return super(Post, self).delete(*args, **kwargs)
