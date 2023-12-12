@@ -20,7 +20,7 @@ class PostFilter(django_filters.FilterSet):
     public_type = CharFilter(field_name='public_type')
     public_type__not = CharFilter(field_name='public_type', exclude=True)
 
-    is_temporary = BooleanFilter(field_name='is_temporary')
+    is_temporary = BooleanFilter(method='is_temporary_filter')
     is_notice = BooleanFilter(field_name='is_notice')
 
     is_subscribed = BooleanFilter(method='is_subscribed_filter')
@@ -58,6 +58,15 @@ class PostFilter(django_filters.FilterSet):
         if profile:
             post_ids = Comment.objects.filter(profile=profile, is_active=True).values_list('post_id', flat=True)
         return queryset.filter(id__in=post_ids)
+
+    def is_temporary_filter(self, queryset, title, value):
+        if value:
+            user = self.request.user
+            if user.id is None:
+                queryset = queryset.none()
+            else:
+                queryset = queryset.filter(is_temporary=True, user=user)
+        return queryset
 
 
 class CommunityPostFilter(django_filters.FilterSet):
