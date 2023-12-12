@@ -16,6 +16,7 @@ from community.utils.decorators import swagger_decorator
 from community.apps.communities.models import Community
 
 
+# Not use
 # Main Section
 class CommunityPostViewMixin:
     @swagger_auto_schema(**swagger_decorator(tag='01. 커뮤니티',
