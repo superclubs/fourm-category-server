@@ -18,12 +18,12 @@ from config.settings.base import AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY, AWS_S
 # Function Section
 def default_thumbnail_image_path():
     number = randint(1, 7)
-    path = f'{settings.MEDIA_URL}community/post/default/{number}.png'
+    path = f'{settings.MEDIA_URL}{settings.SERVICE_PATH}/post/default/{number}.png'
     return path
 
 
 def default_vote_post_image_path():
-    path = f'{settings.MEDIA_URL}community/post/default/vote_post.jpg'
+    path = f'{settings.MEDIA_URL}{settings.SERVICE_PATH}/post/default/vote_post.jpg'
     return path
 
 

@@ -113,3 +113,9 @@ class CommunityPostsAdminViewSet(mixins.ListModelMixin,
             message=_('ok'),
             data=serializer.data
         )
+
+# bang
+# 임시글 전체 삭제
+# 임시글 삭제 안되는 이슈 /post/id/temporary
+# 임시글 필터링 (token) /posts?is_temporary=true
+# 포스트 조회 시 communities
