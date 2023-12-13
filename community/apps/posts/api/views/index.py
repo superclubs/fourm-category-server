@@ -94,6 +94,24 @@ class PostsViewSet(mixins.ListModelMixin,
             data=serializer.data
         )
 
+    @swagger_auto_schema(**swagger_decorator(tag='03. 포스트',
+                                             id='임시글 일괄 삭제',
+                                             description='## < 임시글 일괄 삭제 API 입니다. >',
+                                             response={204: 'no content'}
+                                             ))
+    @action(methods=['delete'], detail=False, url_path='temporary', url_name='posts_temporary')
+    def posts_temporary(self, request, pk):
+        user = request.user
+        posts = Post.objects.filter(user=user, is_temporary=True)
+        if posts:
+            posts.delete()
+
+        return Response(
+            status=status.HTTP_204_NO_CONTENT,
+            code=204,
+            message=_('no content'),
+        )
+
 
 class PostViewSet(mixins.CreateModelMixin,
                   mixins.RetrieveModelMixin,

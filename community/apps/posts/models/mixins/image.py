@@ -72,7 +72,7 @@ def extract_image_from_video(video_url, uuid):
 def get_thumbnail_media_url_and_medias_data(content, uuid):
     soup = BeautifulSoup(content, features='html.parser')
 
-    media_tags = soup.find_all(['img', 'video'])
+    media_tags = soup.find_all(['img', 'video', 'jodit-collage-item'])
 
     url_list = []
     thumbnail_media_url = None

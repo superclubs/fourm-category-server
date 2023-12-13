@@ -31,6 +31,7 @@ class PostRetrieveSerializer(ModelSerializer):
     is_friend = serializers.SerializerMethodField()
     prev_post = serializers.SerializerMethodField()
     next_post = serializers.SerializerMethodField()
+    communities = serializers.SerializerMethodField()
 
     class Meta:
         model = Post
