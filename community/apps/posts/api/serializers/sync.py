@@ -91,7 +91,7 @@ class PostSyncSerializer(ModelSerializer):
         )
 
     def get_service_type(self, obj):
-        return 'CLUB_CATEGORY'
+        return settings.SERVICE_TITLE
 
     def get_badges_data(self, obj):
         instance = obj.badges.order_by('id')
