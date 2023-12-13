@@ -100,7 +100,7 @@ class PostsViewSet(mixins.ListModelMixin,
                                              response={204: 'no content'}
                                              ))
     @action(methods=['delete'], detail=False, url_path='temporary', url_name='posts_temporary')
-    def posts_temporary(self, request, pk):
+    def posts_temporary(self, request):
         user = request.user
         posts = Post.objects.filter(user=user, is_temporary=True)
         if posts:
