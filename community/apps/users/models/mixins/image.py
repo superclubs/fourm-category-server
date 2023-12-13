@@ -9,7 +9,7 @@ from django.utils.translation import gettext_lazy as _
 
 def default_profile_image_path():
     number = randint(1, 40)
-    path = f'{settings.MEDIA_URL}community/user/default/{number}.png'
+    path = f'{settings.MEDIA_URL}{settings.SERVICE_PATH}/user/default/{number}.png'
     return path
 
 
