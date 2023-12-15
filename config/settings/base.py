@@ -193,7 +193,6 @@ LOCAL_APPS = [
     "community.apps.boards.apps.BoardsConfig",
     "community.apps.bookmarks.apps.BookmarksConfig",
     "community.apps.communities.apps.CommunitiesConfig",
-    "community.apps.community_medias.apps.CommunityMediasConfig",
     "community.apps.comments.apps.CommentsConfig",
     "community.apps.friends.apps.FriendsConfig",
     "community.apps.likes.apps.LikesConfig",
@@ -542,7 +541,13 @@ SIMPLE_JWT = {
 
 # Crontab
 # ------------------------------------------------------------------------------------
-CRONJOBS = []
+CRONJOBS = [
+    # 매 시 30분 실행
+    ('30 * * * *', 'config.crons.cron_ranking_group_post_hourly', '>> cron.log'),
+
+    # 매일 오전 6시 실행
+    ('* 6 * * *', 'config.crons.cron_ranking_group_post_daily', '>> cron.log'),
+]
 
 # Celery
 CELERY_DEFAULT_QUEUE = "sqs"
