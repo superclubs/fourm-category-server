@@ -66,6 +66,10 @@ class PostFilter(django_filters.FilterSet):
                 queryset = queryset.none()
             else:
                 queryset = queryset.filter(is_temporary=True, user=user)
+
+        else:
+            queryset = queryset.filter(is_temporary=value)
+
         return queryset
 
 
