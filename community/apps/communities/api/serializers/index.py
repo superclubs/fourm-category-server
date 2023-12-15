@@ -1,6 +1,3 @@
-# Django
-from django.utils.functional import cached_property
-
 # Django Rest Framework
 from rest_framework import serializers
 
@@ -51,7 +48,7 @@ class CommunityDashboardSerializer(ModelSerializer):
 
     class Meta:
         model = Community
-        fields = ('post_count', 'comment_count')
+        fields = ('title', 'post_count', 'comment_count')
 
     def get_posts(self, obj):
         posts = Post.objects.filter(is_active=True, is_temporary=False)

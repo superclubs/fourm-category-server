@@ -15,7 +15,7 @@ from community.bases.api.viewsets import GenericViewSet
 
 # Mixins
 from community.apps.communities.api.views.mixins import CommunityImageViewMixin, CommunityBoardGroupViewMixin, \
-    CommunityPostViewMixin, CommunityDashboardViewMixin
+    CommunityDashboardViewMixin
 
 # Filters
 from community.apps.communities.api.views.filters import CommunitiesFilter, CommunityFilter
@@ -36,7 +36,6 @@ from community.apps.communities.api.serializers import CommunityListSerializer, 
 
 # Main Section
 class CommunityViewSet(mixins.RetrieveModelMixin,
-                       CommunityPostViewMixin,
                        CommunityDashboardViewMixin,
                        GenericViewSet):
     serializers = {
