@@ -193,7 +193,6 @@ LOCAL_APPS = [
     "community.apps.boards.apps.BoardsConfig",
     "community.apps.bookmarks.apps.BookmarksConfig",
     "community.apps.communities.apps.CommunitiesConfig",
-    "community.apps.community_medias.apps.CommunityMediasConfig",
     "community.apps.comments.apps.CommentsConfig",
     "community.apps.friends.apps.FriendsConfig",
     "community.apps.likes.apps.LikesConfig",
