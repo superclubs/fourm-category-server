@@ -6,5 +6,5 @@ class CommunityMediasConfig(AppConfig):
     name = "community.apps.community_medias"
     verbose_name = _('Community Media')
 
-    # def ready(self):
-    #     import community.apps.community_medias.signals
+    def ready(self):
+        import community.apps.community_medias.signals
