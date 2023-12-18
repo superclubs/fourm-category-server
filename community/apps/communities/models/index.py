@@ -32,7 +32,7 @@ class Community(CommunityPostModelMixin,
     title = models.CharField(_('Title'), max_length=30)
     description = models.CharField(_('Description'), max_length=200, null=True, blank=True)
     address = models.CharField(_('Address'), max_length=20)
-    level = models.IntegerField(_('Level'), default=1)
+    is_manager = models.BooleanField(_('Is Manager'), default=False)
 
     # Data
     board_data = models.JSONField(_('Board Data'), null=True, blank=True)
@@ -42,6 +42,7 @@ class Community(CommunityPostModelMixin,
     user = models.ForeignKey('users.User', verbose_name=_('Master'), on_delete=models.SET_NULL, null=True,
                              related_name='communities')
     profile_data = models.JSONField(_('Master Profile Data'), null=True, blank=True)
+    level = models.IntegerField(_('Level'), default=1)
 
     class Meta:
         verbose_name = verbose_name_plural = _('Community')
