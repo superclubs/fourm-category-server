@@ -373,7 +373,8 @@ ADMINS = [("""Leo Yunhyung Lee""", "leoyunhyung@gmail.com")]
 MANAGERS = ADMINS
 
 ADMIN_REORDER = (
-    'users', 'communities', 'reports', 'profiles', 'posts', 'comments', 'likes', 'rankings', 'badges', 'categories',
+    'users', 'communities', 'community_medias', 'community_posts', 'community_users',
+    'reports', 'profiles', 'posts', 'comments', 'likes', 'rankings', 'badges', 'categories',
     'boards', 'tags', 'visits', 'bookmarks', 'shares', 'community_medias'
 )
 
