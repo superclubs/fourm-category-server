@@ -31,17 +31,15 @@ from community.apps.profiles.models import Profile
 
 # Serializers
 from community.apps.communities.api.serializers import CommunityListSerializer, CommunityRetrieveSerializer, \
-    CommunityUpdateAdminSerializer, CommunityUpdateSerializer
+    CommunityUpdateAdminSerializer
 
 
 # Main Section
 class CommunityViewSet(mixins.RetrieveModelMixin,
-                       mixins.UpdateModelMixin,
                        CommunityDashboardViewMixin,
                        GenericViewSet):
     serializers = {
         'default': CommunityRetrieveSerializer,
-        'partial_update': CommunityUpdateSerializer,
     }
     queryset = Community.available.all()
     filter_backends = (DjangoFilterBackend,)
@@ -72,14 +70,6 @@ class CommunityViewSet(mixins.RetrieveModelMixin,
             message=_('ok'),
             data=serializer.data
         )
-
-    @swagger_auto_schema(**swagger_decorator(tag='001. 커뮤니티',
-                                             id='수정',
-                                             description='## < 커뮤니티 수정 API 입니다. >',
-                                             request=CommunityUpdateSerializer,
-                                             response={200: CommunityRetrieveSerializer}))
-    def partial_update(self, request, *args, **kwargs):
-        return super().partial_update(request, *args, **kwargs)
 
 
 class CommunitiesViewSet(mixins.ListModelMixin,
@@ -117,11 +107,11 @@ class CommunityAdminViewSet(mixins.UpdateModelMixin,
     filter_backends = (DjangoFilterBackend,)
     permission_classes = (IsAuthenticated,)
 
-    @swagger_auto_schema(**swagger_decorator(tag='01. 커뮤니티 - 어드민',
+    @swagger_auto_schema(**swagger_decorator(tag='001. 커뮤니티 - 어드민',
                                              id='커뮤니티 수정',
                                              description='## < 커뮤니티 수정 API 입니다. >',
                                              request=CommunityUpdateAdminSerializer,
-                                             response={200: CommunityUpdateAdminSerializer}
+                                             response={200: CommunityRetrieveSerializer}
                                              ))
     def partial_update(self, request, *args, **kwargs):
         return super().partial_update(request, *args, **kwargs)

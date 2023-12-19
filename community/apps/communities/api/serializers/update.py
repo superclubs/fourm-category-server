@@ -6,29 +6,12 @@ from community.utils.api.fields import HybridImageField
 
 # Serializers
 from community.apps.communities.api.serializers import CommunityPostSerializer
-from community.apps.community_medias.api.serializers import CommunityMediaSerializer
 
 # Models
-from community.apps.community_medias.models import CommunityMedia
 from community.apps.communities.models import Community
 
 
 # Main Section
-class CommunityUpdateAdminSerializer(ModelSerializer):
-    banner_image = HybridImageField(use_url=False, required=False)
-
-    class Meta:
-        model = Community
-        fields = ('banner_image',)
-
-    def update(self, instance, validated_data):
-        user = self.context['request'].user
-        validated_data['user'] = user
-
-        instance.update(**validated_data)
-        return instance
-
-
 class ProfileImageUpdateSerializer(ModelSerializer):
     profile_image = HybridImageField(use_url=False, required=True)
 
@@ -46,7 +29,7 @@ class CommunityBannerImageUpdateSerializer(ModelSerializer):
 
 
 # TODO: Add Community Medias
-class CommunityUpdateSerializer(ModelSerializer):
+class CommunityUpdateAdminSerializer(ModelSerializer):
     # community_medias = CommunityMediaSerializer(many=True, read_only=False)
     posts = CommunityPostSerializer(many=True, read_only=False)
 
