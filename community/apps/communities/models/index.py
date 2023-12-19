@@ -5,7 +5,7 @@ from django.utils.translation import gettext_lazy as _
 # Mixins
 from community.apps.communities.models.mixins import CommunityBoardGroupModelMixin, CommunityCommentModelMixin, \
     CommunityImageModelMixin, CommunityPointModelMixin, CommunityPostModelMixin, CommunityRankModelMixin, \
-    CommunityVisitModelMixin, CommunityPostVisitModelMixin, CommunityLikeModelMixin
+    CommunityVisitModelMixin, CommunityPostVisitModelMixin, CommunityLikeModelMixin, CommunityBoardModelMixin
 
 # Bases
 from community.bases.models import Model
@@ -21,6 +21,7 @@ class Community(CommunityPostModelMixin,
                 CommunityPostVisitModelMixin,
                 CommunityLikeModelMixin,
                 CommunityPointModelMixin,
+                CommunityBoardModelMixin,
                 Model):
     # Fk
     parent_community = models.ForeignKey('self', verbose_name=_('Parent Community'), on_delete=models.SET_NULL,
