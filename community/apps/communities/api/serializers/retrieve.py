@@ -11,7 +11,8 @@ from community.apps.communities.models import Community
 # Main Section
 class CommunityRetrieveSerializer(ModelSerializer):
     boards = serializers.JSONField(source='board_data')
+    posts = serializers.JSONField(source='posts_data')
 
     class Meta:
         model = Community
-        fields = ('id', 'title', 'boards')
+        fields = ('id', 'title', 'posts', 'boards')
