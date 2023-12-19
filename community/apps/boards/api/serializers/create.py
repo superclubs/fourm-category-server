@@ -12,7 +12,7 @@ class BoardGroupCreateSerializer(ModelSerializer):
         fields = ('title', 'is_active')
 
 
-class BoardCreateSerializer(ModelSerializer):
+class BoardCreateAdminSerializer(ModelSerializer):
     class Meta:
         model = Board
-        fields = ('title', 'description', 'view_mode', 'read_permission', 'write_permission', 'is_active')
+        fields = ('title', 'is_active')

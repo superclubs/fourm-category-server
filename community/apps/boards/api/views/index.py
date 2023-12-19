@@ -31,7 +31,7 @@ from community.utils.searches import AdvancedSearchFilter
 from community.apps.boards.models import Board, BoardGroup
 
 # Serializers
-from community.apps.boards.api.serializers import BoardGroupCreateSerializer, BoardCreateSerializer, \
+from community.apps.boards.api.serializers import BoardGroupCreateSerializer, BoardCreateAdminSerializer, \
     BoardRetrieveSerializer, BoardGroupRetrieveSerializer, BoardListSerializer
 
 
@@ -135,7 +135,7 @@ class BoardAdminViewSet(mixins.UpdateModelMixin,
                         BoardOrderViewMixin,
                         GenericViewSet):
     serializers = {
-        'default': BoardCreateSerializer,
+        'default': BoardCreateAdminSerializer,
     }
     queryset = Board.objects.all()
     filter_backends = (DjangoFilterBackend,)
@@ -143,7 +143,7 @@ class BoardAdminViewSet(mixins.UpdateModelMixin,
     @swagger_auto_schema(**swagger_decorator(tag='02. 보드 - 어드민',
                                              id='보드 수정',
                                              description='## < 보드 수정 API 입니다. >',
-                                             request=BoardCreateSerializer,
+                                             request=BoardCreateAdminSerializer,
                                              response={200: BoardRetrieveSerializer}))
     def partial_update(self, request, *args, **kwargs):
         return super().partial_update(request, *args, **kwargs)

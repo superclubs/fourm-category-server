@@ -1,4 +1,4 @@
-from community.apps.boards.api.serializers.create import BoardGroupCreateSerializer, BoardCreateSerializer
+from community.apps.boards.api.serializers.create import BoardGroupCreateSerializer, BoardCreateAdminSerializer
 from community.apps.boards.api.serializers.index import BoardSerializer
 from community.apps.boards.api.serializers.list import BoardGroupListSerializer, BoardListSerializer, \
     BoardGroupWriteListSerializer

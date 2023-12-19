@@ -16,7 +16,7 @@ from community.utils.decorators import swagger_decorator
 from community.apps.boards.models import Board
 
 # Serializers
-from community.apps.boards.api.serializers import BoardCreateSerializer, BoardRetrieveSerializer
+from community.apps.boards.api.serializers import BoardCreateAdminSerializer, BoardRetrieveSerializer
 
 
 # Main Section
@@ -24,7 +24,7 @@ class BoardGroupBoardViewMixin:
     @swagger_auto_schema(**swagger_decorator(tag='02. 보드 그룹 - 어드민',
                                              id='보드 생성',
                                              description='## < 보드 생성 API 입니다. >',
-                                             request=BoardCreateSerializer,
+                                             request=BoardCreateAdminSerializer,
                                              response={201: BoardRetrieveSerializer}))
     @action(detail=True, methods=['post'], url_path='board', url_name='board_group_board')
     def board_group_board(self, request, pk=None):
