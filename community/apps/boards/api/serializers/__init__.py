@@ -4,4 +4,4 @@ from community.apps.boards.api.serializers.list import BoardGroupListSerializer,
     BoardGroupWriteListSerializer
 from community.apps.boards.api.serializers.retreive import BoardGroupRetrieveSerializer, BoardRetrieveSerializer
 from community.apps.boards.api.serializers.update import BoardGroupOrderUpdateSerializer, BoardMergeUpdateSerializer, \
-    BoardGroupMergeUpdateSerializer, BoardOrderUpdateSerializer
+    BoardGroupMergeUpdateSerializer, BoardOrderUpdateSerializer, BoardUpdateAdminSerializer

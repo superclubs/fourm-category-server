@@ -35,3 +35,9 @@ class BoardMergeUpdateSerializer(ModelSerializer):
     class Meta:
         model = Board
         fields = ('id',)
+
+
+class BoardUpdateAdminSerializer(ModelSerializer):
+    class Meta:
+        model = Board
+        fields = ('title', 'is_active')

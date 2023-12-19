@@ -17,7 +17,7 @@ from community.apps.friends.api.views import FriendViewSet, FriendRequestViewSet
 from community.apps.likes.api.views import CommentLikesViewSet, PostLikesViewSet
 
 # Board
-from community.apps.boards.api.views import CommunityBoardsViewSet, BoardViewSet
+from community.apps.boards.api.views import CommunityBoardsViewSet, BoardViewSet, BoardAdminViewSet
 
 # Post
 from community.apps.posts.api.views import PostViewSet, PostsViewSet, BoardPostsViewSet, CommunityPostsViewSet
@@ -47,6 +47,9 @@ router.register("friend", FriendViewSet)
 
 # Community Admin Section
 router.register('admin/community', CommunityAdminViewSet)
+
+# Board Admin Section
+router.register('admin/board', BoardAdminViewSet)
 
 # Nested Router Section
 # User Nested Router
