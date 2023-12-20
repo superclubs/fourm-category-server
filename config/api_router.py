@@ -9,6 +9,7 @@ from community.apps.communities.api.views import CommunityViewSet, CommunitiesVi
 
 # Comment
 from community.apps.comments.api.views import CommentsViewSet, CommentViewSet
+from community.apps.community_medias.api.views import CommunityMediasAdminViewSet
 
 # Friend
 from community.apps.friends.api.views import FriendViewSet, FriendRequestViewSet
@@ -45,9 +46,6 @@ router.register("comment", CommentViewSet)
 router.register("friend-request", FriendRequestViewSet)
 router.register("friend", FriendViewSet)
 
-# Community Admin Section
-router.register('admin/community', CommunityAdminViewSet)
-
 # Board Admin Section
 router.register('admin/board', BoardAdminViewSet)
 
@@ -61,6 +59,11 @@ community_boards_router = routers.NestedSimpleRouter(router, r'community', looku
 community_boards_router.register(r'boards', CommunityBoardsViewSet, basename='community-boards')
 community_posts_router = routers.NestedSimpleRouter(router, r"community", lookup="community")
 community_posts_router.register(r'posts', CommunityPostsViewSet, basename='community-posts')
+
+# Community Admin Nested Router
+router.register(r"admin/community", CommunityAdminViewSet, basename='admin/community')
+community_medias_admin_router = routers.NestedSimpleRouter(router, r"admin/community", lookup="community")
+community_medias_admin_router.register(r'medias', CommunityMediasAdminViewSet, basename='community-medias')
 
 # Board Nested Router
 router.register(r"board", BoardViewSet, basename='board')
@@ -88,4 +91,5 @@ urlpatterns = [
                   path("", include(post_comments_router.urls)),
                   path("", include(post_likes_router.urls)),
                   path("", include(comment_likes_router.urls)),
+                  path("", include(community_medias_admin_router.urls)),
               ] + router.urls
