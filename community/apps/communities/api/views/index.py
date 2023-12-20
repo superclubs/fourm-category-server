@@ -15,7 +15,7 @@ from community.bases.api.viewsets import GenericViewSet
 
 # Mixins
 from community.apps.communities.api.views.mixins import CommunityImageViewMixin, CommunityBoardGroupViewMixin, \
-    CommunityDashboardViewMixin, CommunityBoardViewMixin
+    CommunityDashboardViewMixin, CommunityBoardViewMixin, CommunityMediaViewMixin
 
 # Filters
 from community.apps.communities.api.views.filters import CommunitiesFilter, CommunityFilter
@@ -25,13 +25,13 @@ from community.utils.decorators import swagger_decorator
 from community.utils.api.response import Response
 from community.utils.searches import AdvancedSearchFilter
 
-# Models
-from community.apps.communities.models import Community
-from community.apps.profiles.models import Profile
-
 # Serializers
 from community.apps.communities.api.serializers import CommunityListSerializer, CommunityRetrieveSerializer, \
     CommunityUpdateAdminSerializer
+
+# Models
+from community.apps.communities.models import Community
+from community.apps.profiles.models import Profile
 
 
 # Main Section
@@ -99,6 +99,7 @@ class CommunityAdminViewSet(mixins.UpdateModelMixin,
                             CommunityImageViewMixin,
                             CommunityBoardGroupViewMixin,
                             CommunityBoardViewMixin,
+                            CommunityMediaViewMixin,
                             GenericViewSet):
     serializers = {
         'partial_update': CommunityUpdateAdminSerializer,
