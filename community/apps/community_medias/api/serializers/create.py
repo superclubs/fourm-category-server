@@ -14,4 +14,4 @@ class CommunityMediaCreateAdminSerializer(ModelSerializer):
 
     class Meta:
         model = CommunityMedia
-        fields = ('file', 'media_type', 'file_type', 'order')
+        fields = ('file', 'media_type', 'file_type', 'web_url')

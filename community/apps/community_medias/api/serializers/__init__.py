@@ -1,3 +1,4 @@
 from community.apps.community_medias.api.serializers.create import CommunityMediaCreateAdminSerializer
+from community.apps.community_medias.api.serializers.index import CommunityMediaAdminSerializer
 from community.apps.community_medias.api.serializers.list import CommunityMediaListAdminSerializer
 from community.apps.community_medias.api.serializers.retrieve import CommunityMediaRetrieveSerializer

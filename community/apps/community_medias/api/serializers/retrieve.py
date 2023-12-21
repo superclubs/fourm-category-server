@@ -9,4 +9,4 @@ from community.apps.community_medias.models import CommunityMedia
 class CommunityMediaRetrieveSerializer(ModelSerializer):
     class Meta:
         model = CommunityMedia
-        fields = ('id', 'url', 'media_type', 'file_type', 'order')
+        fields = ('id', 'url', 'media_type', 'file_type', 'web_url')
