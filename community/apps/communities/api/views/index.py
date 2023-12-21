@@ -102,7 +102,7 @@ class CommunityAdminViewSet(mixins.UpdateModelMixin,
                             CommunityMediaViewMixin,
                             GenericViewSet):
     serializers = {
-        'partial_update': CommunityUpdateAdminSerializer,
+        'default': CommunityUpdateAdminSerializer,
     }
     queryset = Community.available.all()
     filter_backends = (DjangoFilterBackend,)
