@@ -23,6 +23,7 @@ def default_banner_image_path():
 
 # Main Section
 class CommunityImageModelMixin(models.Model):
+    # not use
     banner_image = models.ImageField(_('Banner Image'), upload_to=image_path, blank=True, null=True)
     banner_image_url = models.URLField(_('Banner Image URL'), default=default_banner_image_path)
 
