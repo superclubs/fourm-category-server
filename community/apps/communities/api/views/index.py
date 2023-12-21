@@ -112,7 +112,19 @@ class CommunityAdminViewSet(mixins.UpdateModelMixin,
                                              id='커뮤니티 수정',
                                              description='## < 커뮤니티 수정 API 입니다. >',
                                              request=CommunityUpdateAdminSerializer,
-                                             response={200: CommunityRetrieveSerializer}
+                                             response={200: 'ok'}
                                              ))
     def partial_update(self, request, *args, **kwargs):
-        return super().partial_update(request, *args, **kwargs)
+        partial = True
+        instance = self.get_object()
+        serializer = self.get_serializer(instance, data=request.data, partial=partial)
+        serializer.is_valid(raise_exception=True)
+        self.perform_update(serializer)
+        if getattr(instance, '_prefetched_objects_cache', None):
+            instance._prefetched_objects_cache = {}
+        return Response(
+            status=status.HTTP_200_OK,
+            code=200,
+            message=_('ok'),
+            data=CommunityRetrieveSerializer(instance=instance, context={'request': request}).data
+        )
