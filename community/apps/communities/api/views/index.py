@@ -15,7 +15,7 @@ from community.bases.api.viewsets import GenericViewSet
 
 # Mixins
 from community.apps.communities.api.views.mixins import CommunityImageViewMixin, CommunityBoardGroupViewMixin, \
-    CommunityDashboardViewMixin, CommunityBoardViewMixin
+    CommunityDashboardViewMixin, CommunityBoardViewMixin, CommunityMediaViewMixin
 
 # Filters
 from community.apps.communities.api.views.filters import CommunitiesFilter, CommunityFilter
@@ -25,13 +25,13 @@ from community.utils.decorators import swagger_decorator
 from community.utils.api.response import Response
 from community.utils.searches import AdvancedSearchFilter
 
-# Models
-from community.apps.communities.models import Community
-from community.apps.profiles.models import Profile
-
 # Serializers
 from community.apps.communities.api.serializers import CommunityListSerializer, CommunityRetrieveSerializer, \
     CommunityUpdateAdminSerializer
+
+# Models
+from community.apps.communities.models import Community
+from community.apps.profiles.models import Profile
 
 
 # Main Section
@@ -46,7 +46,7 @@ class CommunityViewSet(mixins.RetrieveModelMixin,
     filterset_class = CommunityFilter
     pagination_class = None
 
-    @swagger_auto_schema(**swagger_decorator(tag='01. 커뮤니티',
+    @swagger_auto_schema(**swagger_decorator(tag='001. 커뮤니티',
                                              id='커뮤니티 객체 조회',
                                              description='## < 커뮤니티 객체 조회 API 입니다. >',
                                              response={200: CommunityRetrieveSerializer}
@@ -99,9 +99,10 @@ class CommunityAdminViewSet(mixins.UpdateModelMixin,
                             CommunityImageViewMixin,
                             CommunityBoardGroupViewMixin,
                             CommunityBoardViewMixin,
+                            CommunityMediaViewMixin,
                             GenericViewSet):
     serializers = {
-        'partial_update': CommunityUpdateAdminSerializer,
+        'default': CommunityUpdateAdminSerializer,
     }
     queryset = Community.available.all()
     filter_backends = (DjangoFilterBackend,)
@@ -111,7 +112,19 @@ class CommunityAdminViewSet(mixins.UpdateModelMixin,
                                              id='커뮤니티 수정',
                                              description='## < 커뮤니티 수정 API 입니다. >',
                                              request=CommunityUpdateAdminSerializer,
-                                             response={200: CommunityRetrieveSerializer}
+                                             response={200: 'ok'}
                                              ))
     def partial_update(self, request, *args, **kwargs):
-        return super().partial_update(request, *args, **kwargs)
+        partial = True
+        instance = self.get_object()
+        serializer = self.get_serializer(instance, data=request.data, partial=partial)
+        serializer.is_valid(raise_exception=True)
+        self.perform_update(serializer)
+        if getattr(instance, '_prefetched_objects_cache', None):
+            instance._prefetched_objects_cache = {}
+        return Response(
+            status=status.HTTP_200_OK,
+            code=200,
+            message=_('ok'),
+            data=CommunityRetrieveSerializer(instance=instance, context={'request': request}).data
+        )

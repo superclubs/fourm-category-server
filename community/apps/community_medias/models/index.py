@@ -29,6 +29,7 @@ class CommunityMedia(Model):
     # Main
     file = models.FileField(_('File'), upload_to=file_path)
     url = models.URLField(_('URL'), null=True, blank=True)
+    web_url = models.URLField(_('WEB URL'), null=True, blank=True)
     media_type = models.CharField(_('Media Type'), choices=COMMUNITY_MEDIA_TYPE_CHOICES, max_length=100, null=True,
                                   blank=True)
     file_type = models.CharField(_('File Type'), choices=FILE_TYPE_CHOICES, max_length=100, null=True, blank=True)

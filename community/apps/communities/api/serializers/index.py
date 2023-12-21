@@ -42,8 +42,8 @@ class CommunityBannerImageSerializer(ModelSerializer):
 
 
 class CommunityPostSerializer(ModelSerializer):
-    post_id = serializers.IntegerField()
-    order = serializers.IntegerField()
+    post_id = serializers.IntegerField(required=False)
+    order = serializers.IntegerField(required=False)
 
     class Meta:
         model = Community

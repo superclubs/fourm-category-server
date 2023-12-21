@@ -6,7 +6,7 @@ from community.apps.community_medias.models import CommunityMedia
 
 
 # Main Section
-class CommunityMediaAdminSerializer(ModelSerializer):
+class CommunityMediaListAdminSerializer(ModelSerializer):
     class Meta:
         model = CommunityMedia
-        fields = ('url', 'web_url')
+        fields = ('id', 'url', 'media_type', 'file_type', 'web_url')

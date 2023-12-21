@@ -1,11 +1,14 @@
 # Bases
+from rest_framework import serializers
+
+# Bases
 from community.bases.api.serializers import ModelSerializer
 
 # Utils
 from community.utils.api.fields import HybridImageField
 
 # Serializers
-from community.apps.communities.api.serializers import CommunityPostSerializer
+from community.apps.community_medias.api.serializers import CommunityMediaAdminSerializer
 
 # Models
 from community.apps.communities.models import Community
@@ -28,63 +31,30 @@ class CommunityBannerImageUpdateSerializer(ModelSerializer):
         fields = ('banner_image',)
 
 
-# TODO: Add Community Medias
 class CommunityUpdateAdminSerializer(ModelSerializer):
-    # community_medias = CommunityMediaSerializer(many=True, read_only=False)
-    posts = CommunityPostSerializer(many=True, read_only=False)
+    posts = serializers.ListField(child=serializers.IntegerField(), required=False)
+    banner_medias = CommunityMediaAdminSerializer(many=True, read_only=False)
 
     class Meta:
         model = Community
-        fields = ('posts',)
+        fields = ('banner_medias', 'posts')
 
     def update(self, instance, validated_data):
-        # request = self.context.get('request', None)
-        # additional_data = dict()
-        #
-        # # BannerMedia Section
-        # media_ids = []
-        # i = 0
-        # while True:
-        #     media = request.data.getlist(f'media[{i}]')
-        #     i += 1
-        #
-        #     if not len(media):
-        #         break
-        #     else:
-        #         media = media[0]
-        #
-        #         # 속성 확인
-        #         if hasattr(media, 'isnumeric'):
-        #             banner_media = CommunityMedia.objects.get(id=media)
-        #             banner_media.order = i
-        #             banner_media.save(update_fields=['order'])
-        #         else:
-        #             banner_media = CommunityMedia.objects.create(community=instance, file=media, order=i)
-        #         media_ids.append(banner_media.id)
-        #
-        # community_medias = CommunityMedia.objects.filter(id__in=media_ids)
-        # if community_medias:
-        #     banner_medias_data = CommunityMediaSerializer(community_medias, many=True).data
-        #     additional_data['banner_medias_data'] = banner_medias_data
-        #
-        # # Update Instance
-        # data = dict(validated_data, **additional_data)
-
-        # Update Editor Pick Posts
         posts = validated_data.get('posts', [])
+        banner_medias = validated_data.get('banner_medias', [])
 
-        if posts:
-            posts_list = []
-            for post in posts:
+        if banner_medias:
+            banner_medias_list = []
+            for banner_media in banner_medias:
                 data = {
-                    'post_id': post.get('post_id', None),
-                    'order': post.get('order', None)
+                    'url': banner_media.get('url', None),
+                    'web_url': banner_media.get('web_url', None)
                 }
 
-                posts_list.append(data)
+                banner_medias_list.append(data)
 
-            instance.update(posts_data=posts_list)
+            instance.update(posts_data=posts, banner_medias_data=banner_medias_list)
         else:
-            instance.update(posts_data=posts)
+            instance.update(posts_data=posts, banner_medias_data=banner_medias)
 
         return instance
