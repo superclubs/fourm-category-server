@@ -38,6 +38,7 @@ class Community(CommunityPostModelMixin,
     # Data
     board_data = models.JSONField(_('Board Data'), null=True, blank=True)
     posts_data = models.JSONField(_('Editor Pick Posts Data'), default=list)
+    banner_medias_data = models.JSONField(_('Banner Medias Data'), default=list)
 
     # not use
     user_data = models.JSONField(_('Master Data'), null=True, blank=True)

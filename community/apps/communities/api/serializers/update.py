@@ -33,15 +33,15 @@ class CommunityBannerImageUpdateSerializer(ModelSerializer):
 
 class CommunityUpdateAdminSerializer(ModelSerializer):
     posts = CommunityPostSerializer(many=True, read_only=False)
-    # medias = serializers.JSONField(source='medias_data', required=False)
-    # medias = serializers.ListField(child=serializers.CharField(allow_blank=True), required=False)
+    banner_medias = serializers.ListField(child=serializers.CharField(allow_blank=True), required=False)
 
     class Meta:
         model = Community
-        fields = ('posts',)
+        fields = ('banner_medias', 'posts')
 
     def update(self, instance, validated_data):
         posts = validated_data.get('posts', [])
+        banner_medias = validated_data.get('banner_medias', [])
 
         if posts:
             posts_list = []
@@ -53,8 +53,8 @@ class CommunityUpdateAdminSerializer(ModelSerializer):
 
                 posts_list.append(data)
 
-            instance.update(posts_data=posts_list)
+            instance.update(posts_data=posts_list, banner_medias_data=banner_medias)
         else:
-            instance.update(posts_data=posts)
+            instance.update(posts_data=posts, banner_medias_data=banner_medias)
 
         return instance
