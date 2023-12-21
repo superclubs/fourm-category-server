@@ -41,6 +41,15 @@ class CommunityBannerImageSerializer(ModelSerializer):
         fields = ('id', 'banner_image_url')
 
 
+class CommunityPostSerializer(ModelSerializer):
+    post_id = serializers.IntegerField()
+    order = serializers.IntegerField()
+
+    class Meta:
+        model = Community
+        fields = ('post_id', 'order')
+
+
 # TODO: 집계 로직 개선 후 변경
 class CommunityDashboardSerializer(ModelSerializer):
     post_count = serializers.SerializerMethodField()

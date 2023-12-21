@@ -4,7 +4,6 @@ from django.utils.translation import gettext_lazy as _
 # Third Party
 from model_utils import Choices
 
-
 USER_TYPE_CHOICES = Choices(
     (0, _('GUEST')),
     (1, _('FARMER')),
@@ -94,7 +93,11 @@ BOOM_PERIOD_CHOICES = Choices(
     ('10080', '7d'),
 )
 
-MEDIA_TYPE_CHOICES = Choices(
+COMMUNITY_MEDIA_TYPE_CHOICES = Choices(
+    ('BANNER', _('BANNER')),
+)
+
+FILE_TYPE_CHOICES = Choices(
     ('IMAGE', _('IMAGE')),
     ('VIDEO', _('VIDEO')),
 )

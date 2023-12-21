@@ -15,7 +15,7 @@ from community.bases.api.viewsets import GenericViewSet
 
 # Mixins
 from community.apps.communities.api.views.mixins import CommunityImageViewMixin, CommunityBoardGroupViewMixin, \
-    CommunityDashboardViewMixin
+    CommunityDashboardViewMixin, CommunityBoardViewMixin
 
 # Filters
 from community.apps.communities.api.views.filters import CommunitiesFilter, CommunityFilter
@@ -98,6 +98,7 @@ class CommunitiesViewSet(mixins.ListModelMixin,
 class CommunityAdminViewSet(mixins.UpdateModelMixin,
                             CommunityImageViewMixin,
                             CommunityBoardGroupViewMixin,
+                            CommunityBoardViewMixin,
                             GenericViewSet):
     serializers = {
         'partial_update': CommunityUpdateAdminSerializer,
@@ -106,11 +107,11 @@ class CommunityAdminViewSet(mixins.UpdateModelMixin,
     filter_backends = (DjangoFilterBackend,)
     permission_classes = (IsAuthenticated,)
 
-    @swagger_auto_schema(**swagger_decorator(tag='01. 커뮤니티 - 어드민',
+    @swagger_auto_schema(**swagger_decorator(tag='001. 커뮤니티 - 어드민',
                                              id='커뮤니티 수정',
                                              description='## < 커뮤니티 수정 API 입니다. >',
                                              request=CommunityUpdateAdminSerializer,
-                                             response={200: CommunityUpdateAdminSerializer}
+                                             response={200: CommunityRetrieveSerializer}
                                              ))
     def partial_update(self, request, *args, **kwargs):
         return super().partial_update(request, *args, **kwargs)
