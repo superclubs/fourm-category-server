@@ -46,7 +46,7 @@ class CommunityViewSet(mixins.RetrieveModelMixin,
     filterset_class = CommunityFilter
     pagination_class = None
 
-    @swagger_auto_schema(**swagger_decorator(tag='01. 커뮤니티',
+    @swagger_auto_schema(**swagger_decorator(tag='001. 커뮤니티',
                                              id='커뮤니티 객체 조회',
                                              description='## < 커뮤니티 객체 조회 API 입니다. >',
                                              response={200: CommunityRetrieveSerializer}
