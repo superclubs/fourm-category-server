@@ -1,13 +1,12 @@
 # Bases
-from rest_framework import serializers
-
-# Bases
 from community.bases.api.serializers import ModelSerializer
 
 # Utils
 from community.utils.api.fields import HybridImageField
+from community.utils.dict import extract_keys_from_dict_list
 
 # Serializers
+from community.apps.communities.api.serializers import CommunityPostAdminSerializer
 from community.apps.community_medias.api.serializers import CommunityMediaAdminSerializer
 
 # Models
@@ -32,7 +31,7 @@ class CommunityBannerImageUpdateSerializer(ModelSerializer):
 
 
 class CommunityUpdateAdminSerializer(ModelSerializer):
-    posts = serializers.ListField(child=serializers.IntegerField(), required=False)
+    posts = CommunityPostAdminSerializer(many=True, read_only=False)
     banner_medias = CommunityMediaAdminSerializer(many=True, read_only=False)
 
     class Meta:
@@ -40,21 +39,20 @@ class CommunityUpdateAdminSerializer(ModelSerializer):
         fields = ('banner_medias', 'posts')
 
     def update(self, instance, validated_data):
-        posts = validated_data.get('posts', [])
-        banner_medias = validated_data.get('banner_medias', [])
+        banner_medias = extract_keys_from_dict_list(
+            validated_data.get('banner_medias', []),
+            keys=['url', 'web_url']
+        )
 
-        if banner_medias:
-            banner_medias_list = []
-            for banner_media in banner_medias:
-                data = {
-                    'url': banner_media.get('url', None),
-                    'web_url': banner_media.get('web_url', None)
-                }
+        posts = extract_keys_from_dict_list(
+            validated_data.get('posts', []),
+            keys=['service_type', 'club_id', 'forum_id', 'club_community_id', 'forum_community_id', 'post_id']
+        )
 
-                banner_medias_list.append(data)
+        instance.banner_medias_data = banner_medias
+        instance.posts_data = posts
 
-            instance.update(posts_data=posts, banner_medias_data=banner_medias_list)
-        else:
-            instance.update(posts_data=posts, banner_medias_data=banner_medias)
+        # Update Instance
+        instance.save(update_fields=['banner_medias_data', 'posts_data'])
 
         return instance
