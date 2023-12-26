@@ -23,7 +23,7 @@ from community.utils.decorators import swagger_decorator
 class PostReportViewMixin:
     @swagger_auto_schema(**swagger_decorator(tag='03. 포스트',
                                              id='포스트 신고',
-                                             description='## < 포스트 신고 API 입니다. >\n',
+                                             description='',
                                              request=ReportCreateSerializer,
                                              response={201: PostRetrieveSerializer}
                                              ))
@@ -36,6 +36,6 @@ class PostReportViewMixin:
         return Response(
             status=status.HTTP_201_CREATED,
             code=201,
-            message=_('ok'),
+            message='ok',
             data=PostRetrieveSerializer(instance=post, context={'request': request}).data
         )

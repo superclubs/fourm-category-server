@@ -21,7 +21,7 @@ from community.apps.communities.models import Community
 class CommunityPostViewMixin:
     @swagger_auto_schema(**swagger_decorator(tag='01. 커뮤니티',
                                              id='임시글 일괄 삭제',
-                                             description='## < 임시글 일괄 삭제 API 입니다. >',
+                                             description='',
                                              response={204: 'no content'}
                                              ))
     @action(methods=['delete'], detail=True, url_path='posts/temporary', url_name='community_post_temporary')
@@ -31,5 +31,5 @@ class CommunityPostViewMixin:
         return Response(
             status=status.HTTP_204_NO_CONTENT,
             code=204,
-            message=_('no content'),
+            message='no content',
         )

@@ -25,7 +25,7 @@ from community.apps.boards.api.serializers import BoardGroupListSerializer, Boar
 class BoardOrderViewMixin:
     @swagger_auto_schema(**swagger_decorator(tag='03. 보드 - 어드민',
                                              id='보드 순서 변경',
-                                             description='## < 보드 순서 변경 API 입니다. >',
+                                             description='',
                                              request=BoardOrderUpdateSerializer,
                                              response={200: BoardGroupListSerializer}))
     @action(detail=True, methods=['patch'], url_path='order', url_name='board_order')
@@ -62,7 +62,7 @@ class BoardOrderViewMixin:
             return Response(
                 status=status.HTTP_200_OK,
                 code=200,
-                message=_('ok'),
+                message='ok',
                 data=BoardGroupListSerializer(instance=board.board_group, context={'request': request}).data
             )
         raise CustomForbiddenException('보드 수정 권한이 없습니다.')

@@ -23,7 +23,7 @@ from community.apps.posts.api.serializers import PostListSerializer, PostLikeRes
 class PostLikeViewMixin:
     @swagger_auto_schema(**swagger_decorator(tag='03. 포스트',
                                              id='포스트 좋아요',
-                                             description='## < 포스트 좋아요 API 입니다. >\n',
+                                             description='',
                                              request=PostLikeCreateSerializer,
                                              response={201: PostListSerializer}
                                              ))
@@ -36,13 +36,13 @@ class PostLikeViewMixin:
         return Response(
             status=status.HTTP_201_CREATED,
             code=201,
-            message=_('ok'),
+            message='ok',
             data=PostLikeResponseSerializer(instance=post, context={'request': request}).data
         )
 
     @swagger_auto_schema(**swagger_decorator(tag='03. 포스트',
                                              id='포스트 좋아요 취소',
-                                             description='## < 포스트 좋아요 취소 API 입니다. >\n',
+                                             description='',
                                              request=no_body,
                                              response={200: PostListSerializer}
                                              ))
@@ -54,13 +54,13 @@ class PostLikeViewMixin:
         return Response(
             status=status.HTTP_200_OK,
             code=200,
-            message=_('ok'),
+            message='ok',
             data=PostLikeResponseSerializer(instance=post, context={'request': request}).data
         )
 
     @swagger_auto_schema(**swagger_decorator(tag='03. 포스트',
                                              id='포스트 싫어요',
-                                             description='## < 포스트 싫어요 API 입니다. >\n',
+                                             description='',
                                              request=no_body,
                                              response={201: PostListSerializer}
                                              ))
@@ -72,13 +72,13 @@ class PostLikeViewMixin:
         return Response(
             status=status.HTTP_201_CREATED,
             code=201,
-            message=_('ok'),
+            message='ok',
             data=PostLikeResponseSerializer(instance=post, context={'request': request}).data
         )
 
     @swagger_auto_schema(**swagger_decorator(tag='03. 포스트',
                                              id='포스트 싫어요 취소',
-                                             description='## < 포스트 싫어요 취소 API 입니다. >\n',
+                                             description='',
                                              request=no_body,
                                              response={200: PostListSerializer}
                                              ))
@@ -90,6 +90,6 @@ class PostLikeViewMixin:
         return Response(
             status=status.HTTP_200_OK,
             code=200,
-            message=_('ok'),
+            message='ok',
             data=PostLikeResponseSerializer(instance=post, context={'request': request}).data
         )

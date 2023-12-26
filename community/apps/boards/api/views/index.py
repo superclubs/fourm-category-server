@@ -46,7 +46,7 @@ class BoardGroupViewSet(mixins.RetrieveModelMixin,
 
     @swagger_auto_schema(**swagger_decorator(tag='02. 보드 그룹',
                                              id='보드 그룹 객체 조회',
-                                             description='## < 보드 그룹 객체 조회 API 입니다. >',
+                                             description='',
                                              response={200: BoardGroupRetrieveSerializer}))
     def retrieve(self, request, *args, **kwargs):
         return super().retrieve(self, request, *args, **kwargs)
@@ -67,7 +67,7 @@ class BoardGroupAdminViewSet(mixins.UpdateModelMixin,
 
     @swagger_auto_schema(**swagger_decorator(tag='02. 보드 그룹 - 어드민',
                                              id='보드 그룹 수정',
-                                             description='## < 보드 그룹 수정 API 입니다. >',
+                                             description='',
                                              request=BoardGroupCreateSerializer,
                                              response={200: BoardGroupRetrieveSerializer}))
     def partial_update(self, request, *args, **kwargs):
@@ -75,7 +75,7 @@ class BoardGroupAdminViewSet(mixins.UpdateModelMixin,
 
     @swagger_auto_schema(**swagger_decorator(tag='02. 보드 그룹 - 어드민',
                                              id='보드 그룹 객체 삭제',
-                                             description='## < 보드 그룹 삭제 API 입니다. >',
+                                             description='',
                                              response={200: BoardGroupRetrieveSerializer}))
     def destroy(self, request, *args, **kwargs):
         instance = self.get_object()
@@ -85,7 +85,7 @@ class BoardGroupAdminViewSet(mixins.UpdateModelMixin,
         return Response(
             status=status.HTTP_204_NO_CONTENT,
             code=204,
-            message=_('no content'),
+            message='no content',
         )
 
 
@@ -123,7 +123,7 @@ class BoardViewSet(mixins.RetrieveModelMixin,
 
     @swagger_auto_schema(**swagger_decorator(tag='02. 보드',
                                              id='보드 객체 조회',
-                                             description='## < 보드 객체 조회 API 입니다. >',
+                                             description='',
                                              response={200: BoardRetrieveSerializer}))
     def retrieve(self, request, *args, **kwargs):
         return super().retrieve(self, request, *args, **kwargs)
@@ -142,7 +142,7 @@ class BoardAdminViewSet(mixins.UpdateModelMixin,
 
     @swagger_auto_schema(**swagger_decorator(tag='002. 보드 - 어드민',
                                              id='보드 수정',
-                                             description='## < 보드 수정 API 입니다. >',
+                                             description='',
                                              request=BoardUpdateAdminSerializer,
                                              response={200: BoardRetrieveSerializer}))
     def partial_update(self, request, *args, **kwargs):
@@ -150,7 +150,7 @@ class BoardAdminViewSet(mixins.UpdateModelMixin,
 
     @swagger_auto_schema(**swagger_decorator(tag='02. 보드 - 어드민',
                                              id='보드 삭제',
-                                             description='## < 보드 삭제 API 입니다. >',
+                                             description='',
                                              response={200: BoardRetrieveSerializer}))
     def destroy(self, request, *args, **kwargs):
         instance = self.get_object()
@@ -160,5 +160,5 @@ class BoardAdminViewSet(mixins.UpdateModelMixin,
         return Response(
             status=status.HTTP_204_NO_CONTENT,
             code=204,
-            message=_('no content'),
+            message='no content',
         )

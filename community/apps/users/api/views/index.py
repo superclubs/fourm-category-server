@@ -40,7 +40,7 @@ class UsersViewSet(mixins.ListModelMixin,
 
     @swagger_auto_schema(**swagger_decorator(tag='01. 유저',
                                              id='유저 리스트 조회',
-                                             description='## < 유저 리스트 조회 API 입니다. >',
+                                             description='',
                                              response={200: UserSerializer}
                                              ))
     def list(self, request, *args, **kwargs):
@@ -57,7 +57,7 @@ class UserViewSet(GenericViewSet):
 
     @swagger_auto_schema(**swagger_decorator(tag='01. 유저',
                                              id='내 정보',
-                                             description='## < 내 정보 조회 API 입니다. >',
+                                             description='',
                                              response={200: UserMeSerializer}
                                              ))
     @action(detail=False, methods=['get'])
@@ -65,13 +65,13 @@ class UserViewSet(GenericViewSet):
         return Response(
             status=status.HTTP_200_OK,
             code=200,
-            message=_('ok'),
+            message='ok',
             data=UserMeSerializer(instance=request.user, context={'request': request}).data
         )
 
     @swagger_auto_schema(**swagger_decorator(tag='01. 유저',
                                              id='유저 싱크',
-                                             description='## < 유저 싱크 API 입니다. >',
+                                             description='',
                                              request=UserSyncSerializer,
                                              response={200: UserSyncSerializer}
                                              ))
@@ -89,7 +89,7 @@ class UserViewSet(GenericViewSet):
             return Response(
                 status=status.HTTP_200_OK,
                 code=200,
-                message=_('ok'),
+                message='ok',
                 data=UserSyncSerializer(instance=request.user, context={'request': request}).data
             )
 
@@ -123,12 +123,12 @@ class UserAdminViewSet(GenericViewSet):
         return Response(
             status=status.HTTP_200_OK,
             code=200,
-            message=_('ok'),
+            message='ok',
         )
 
     @swagger_auto_schema(**swagger_decorator(tag='01. 유저 - 어드민',
                                              id='어드민 비밀번호 변경',
-                                             description='## < 어드민 비밀번호 변경 API 입니다. >',
+                                             description='',
                                              request=UserPasswordSerializer,
                                              response={200: 'ok'}
                                              ))
@@ -142,5 +142,5 @@ class UserAdminViewSet(GenericViewSet):
         return Response(
             status=status.HTTP_200_OK,
             code=200,
-            message=_('ok')
+            message='ok'
         )

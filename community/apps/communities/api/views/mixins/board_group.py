@@ -20,7 +20,7 @@ from community.apps.boards.api.serializers import BoardGroupCreateSerializer, Bo
 class CommunityBoardGroupViewMixin:
     @swagger_auto_schema(**swagger_decorator(tag='01. 커뮤니티 - 어드민',
                                              id='보드 그룹 생성',
-                                             description='## < 보드 그룹 생성 API 입니다. >',
+                                             description='',
                                              request=BoardGroupCreateSerializer,
                                              response={201: BoardGroupListSerializer}
                                              ))
@@ -33,6 +33,6 @@ class CommunityBoardGroupViewMixin:
         return Response(
             status=status.HTTP_201_CREATED,
             code=201,
-            message=_('ok'),
+            message='ok',
             data=BoardGroupListSerializer(instance=instance, context={'request': request}).data
         )

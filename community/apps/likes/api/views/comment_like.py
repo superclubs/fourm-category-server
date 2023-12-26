@@ -34,7 +34,7 @@ class CommentLikesViewSet(mixins.ListModelMixin,
 
     @swagger_auto_schema(**swagger_decorator(tag='04. 댓글',
                                              id='댓글 좋아요 리스트 조회',
-                                             description='## < 댓글 좋아요 리스트 조회 API 입니다. >',
+                                             description='',
                                              response={200: CommentLikeListSerializer}
                                              ))
     def list(self, request, *args, **kwargs):

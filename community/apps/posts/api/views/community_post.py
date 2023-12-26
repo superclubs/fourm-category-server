@@ -63,7 +63,7 @@ class CommunityPostsViewSet(mixins.ListModelMixin,
         return Response(
             status=status.HTTP_200_OK,
             code=200,
-            message=_('ok'),
+            message='ok',
             data=serializer.data
         )
 
@@ -110,6 +110,6 @@ class CommunityPostsAdminViewSet(mixins.ListModelMixin,
         return Response(
             status=status.HTTP_200_OK,
             code=200,
-            message=_('ok'),
+            message='ok',
             data=serializer.data
         )

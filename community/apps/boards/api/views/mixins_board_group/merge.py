@@ -26,7 +26,7 @@ from community.apps.boards.api.serializers import BoardGroupListSerializer, Boar
 class BoardGroupMergeViewMixin:
     @swagger_auto_schema(**swagger_decorator(tag='02. 보드 그룹 - 어드민',
                                              id='보드 그룹 병합',
-                                             description='## < 보드 생성 API 입니다. >',
+                                             description='',
                                              request=BoardGroupMergeUpdateSerializer,
                                              response={200: BoardGroupListSerializer}))
     @action(detail=True, methods=['patch'], url_path='merge', url_name='board_group_merge')
@@ -45,6 +45,6 @@ class BoardGroupMergeViewMixin:
         return Response(
             status=status.HTTP_200_OK,
             code=200,
-            message=_('ok'),
+            message='ok',
             data=BoardGroupListSerializer(instance=request_board_group, context={'request': request}).data
         )

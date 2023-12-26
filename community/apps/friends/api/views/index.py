@@ -38,7 +38,7 @@ class FriendRequestViewSet(mixins.CreateModelMixin,
 
     @swagger_auto_schema(**swagger_decorator(tag='05. 친구 요청',
                                              id='친구 요청 생성',
-                                             description='## < 친구 요청 생성 API 입니다. >',
+                                             description='',
                                              request=FriendRequestCreateSerializer,
                                              response={201: FriendRequestCreateSerializer}))
     def create(self, request, *args, **kwargs):
@@ -46,14 +46,14 @@ class FriendRequestViewSet(mixins.CreateModelMixin,
 
     @swagger_auto_schema(**swagger_decorator(tag='05. 친구 요청',
                                              id='친구 요청 삭제',
-                                             description='## < 친구 요청 삭제 API 입니다. >',
+                                             description='',
                                              response={204: 'no content'}))
     def destroy(self, request, *args, **kwargs):
         return super().destroy(self, request, *args, **kwargs)
 
     @swagger_auto_schema(**swagger_decorator(tag='05. 친구 요청',
                                              id='친구 요청 싱크',
-                                             description='## < 친구 요청 싱크 API 입니다. >',
+                                             description='',
                                              request=FriendRequestSyncSerializer,
                                              response={200: FriendRequestSyncSerializer}))
     @action(detail=False, methods=['post'])
@@ -70,7 +70,7 @@ class FriendRequestViewSet(mixins.CreateModelMixin,
             return Response(
                 status=status.HTTP_200_OK,
                 code=200,
-                message=_('ok'),
+                message='ok',
                 data=FriendRequestSyncSerializer(instance=friend_request, context={'request': request}).data
             )
 
@@ -86,7 +86,7 @@ class FriendViewSet(mixins.CreateModelMixin,
 
     @swagger_auto_schema(**swagger_decorator(tag='05. 친구',
                                              id='친구 생성',
-                                             description='## < 친구 생성 API 입니다. >',
+                                             description='',
                                              request=FriendCreateSerializer,
                                              response={201: FriendCreateSerializer}))
     def create(self, request, *args, **kwargs):
@@ -94,14 +94,14 @@ class FriendViewSet(mixins.CreateModelMixin,
 
     @swagger_auto_schema(**swagger_decorator(tag='05. 친구',
                                              id='친구 삭제',
-                                             description='## < 친구 삭제 API 입니다. >',
+                                             description='',
                                              response={204: 'no content'}))
     def destroy(self, request, *args, **kwargs):
         return super().destroy(self, request, *args, **kwargs)
 
     @swagger_auto_schema(**swagger_decorator(tag='05. 친구',
                                              id='친구 생성',
-                                             description='## < 친구 생성 API 입니다. >',
+                                             description='',
                                              request=FriendSyncSerializer,
                                              response={200: FriendSyncSerializer}))
     @action(detail=False, methods=['post'])
@@ -118,6 +118,6 @@ class FriendViewSet(mixins.CreateModelMixin,
             return Response(
                 status=status.HTTP_200_OK,
                 code=200,
-                message=_('ok'),
+                message='ok',
                 data=FriendSyncSerializer(instance=friend, context={'request': request}).data
             )

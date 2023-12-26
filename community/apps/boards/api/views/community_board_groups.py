@@ -34,7 +34,7 @@ class CommunityBoardGroupsViewSet(mixins.ListModelMixin,
 
     @swagger_auto_schema(**swagger_decorator(tag='01. 커뮤니티',
                                              id='보드 그룹 리스트 조회',
-                                             description='## < 보드 그룹 리스트 조회 API 입니다. >',
+                                             description='',
                                              response={200: BoardGroupListSerializer}))
     def list(self, request, *args, **kwargs):
         return super().list(self, request, *args, **kwargs)
@@ -55,7 +55,7 @@ class CommunityBoardGroupsWriteViewSet(mixins.ListModelMixin,
 
     @swagger_auto_schema(**swagger_decorator(tag='01. 커뮤니티',
                                              id='보드 그룹 리스트 조회(쓰기 권한)',
-                                             description='## < 보드 그룹 리스트 조회(쓰기 권한) API 입니다. >',
+                                             description='',
                                              response={200: BoardGroupWriteListSerializer}))
     def list(self, request, *args, **kwargs):
         return super().list(self, request, *args, **kwargs)

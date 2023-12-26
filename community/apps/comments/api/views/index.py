@@ -49,7 +49,7 @@ class CommentViewSet(CommentLikeViewMixin,
 
     @swagger_auto_schema(**swagger_decorator(tag='04. 댓글',
                                              id='댓글 수정',
-                                             description='## < 댓글 수정 API 입니다. >',
+                                             description='',
                                              request=CommentUpdateSerializer,
                                              response={200: ParentCommentListSerializer}
                                              ))
@@ -65,13 +65,13 @@ class CommentViewSet(CommentLikeViewMixin,
             return Response(
                 status=status.HTTP_200_OK,
                 code=200,
-                message=_('ok'),
+                message='ok',
                 data=ParentCommentListSerializer(instance=instance, context={'request': request}).data
             )
 
     @swagger_auto_schema(**swagger_decorator(tag='04. 댓글',
                                              id='댓글 삭제',
-                                             description='## < 댓글 삭제 API 입니다. >',
+                                             description='',
                                              response={204: 'no content'}
                                              ))
     def destroy(self, request, *args, **kwargs):
@@ -103,7 +103,7 @@ class CommentViewSet(CommentLikeViewMixin,
         return Response(
             status=status.HTTP_204_NO_CONTENT,
             code=204,
-            message=_('no content'),
+            message='no content',
         )
 
     @swagger_auto_schema(**swagger_decorator(tag='04. 댓글',
@@ -132,6 +132,6 @@ class CommentViewSet(CommentLikeViewMixin,
             return Response(
                 status=status.HTTP_201_CREATED,
                 code=201,
-                message=_('ok'),
+                message='ok',
                 data=ParentCommentListSerializer(instance=instance.parent_comment, context={'request': request}).data
             )

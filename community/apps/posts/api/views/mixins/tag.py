@@ -23,7 +23,7 @@ from community.utils.api.response import Response
 class PostTagViewMixin:
     @swagger_auto_schema(**swagger_decorator(tag='03. 포스트',
                                              id='포스트 태그 수정',
-                                             description='## < 포스트 태그 수정 API 입니다. >\n',
+                                             description='',
                                              request=PostTagUpdateSerializer,
                                              response={200: PostRetrieveSerializer}
                                              ))
@@ -35,6 +35,6 @@ class PostTagViewMixin:
         return Response(
             status=status.HTTP_200_OK,
             code=200,
-            message=_('ok'),
+            message='ok',
             data=PostRetrieveSerializer(instance=post, context={'request': request}).data
         )

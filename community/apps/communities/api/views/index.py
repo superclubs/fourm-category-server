@@ -48,7 +48,7 @@ class CommunityViewSet(mixins.RetrieveModelMixin,
 
     @swagger_auto_schema(**swagger_decorator(tag='001. 커뮤니티',
                                              id='커뮤니티 객체 조회',
-                                             description='## < 커뮤니티 객체 조회 API 입니다. >',
+                                             description='',
                                              response={200: CommunityRetrieveSerializer}
                                              ))
     def retrieve(self, request, *args, **kwargs):
@@ -67,7 +67,7 @@ class CommunityViewSet(mixins.RetrieveModelMixin,
         return Response(
             status=status.HTTP_200_OK,
             code=200,
-            message=_('ok'),
+            message='ok',
             data=serializer.data
         )
 
@@ -109,7 +109,7 @@ class CommunityAdminViewSet(mixins.UpdateModelMixin,
 
     @swagger_auto_schema(**swagger_decorator(tag='001. 커뮤니티 - 어드민',
                                              id='커뮤니티 수정',
-                                             description='## < 커뮤니티 수정 API 입니다. >',
+                                             description='',
                                              request=CommunityUpdateAdminSerializer,
                                              response={200: 'ok'}
                                              ))
@@ -124,6 +124,6 @@ class CommunityAdminViewSet(mixins.UpdateModelMixin,
         return Response(
             status=status.HTTP_200_OK,
             code=200,
-            message=_('ok'),
+            message='ok',
             data=CommunityRetrieveSerializer(instance=instance, context={'request': request}).data
         )

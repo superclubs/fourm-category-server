@@ -23,7 +23,7 @@ from community.apps.boards.api.serializers import BoardCreateAdminSerializer, Bo
 class BoardGroupBoardViewMixin:
     @swagger_auto_schema(**swagger_decorator(tag='02. 보드 그룹 - 어드민',
                                              id='보드 생성',
-                                             description='## < 보드 생성 API 입니다. >',
+                                             description='',
                                              request=BoardCreateAdminSerializer,
                                              response={201: BoardRetrieveSerializer}))
     @action(detail=True, methods=['post'], url_path='board', url_name='board_group_board')
@@ -40,6 +40,6 @@ class BoardGroupBoardViewMixin:
         return Response(
             status=status.HTTP_201_CREATED,
             code=201,
-            message=_('ok'),
+            message='ok',
             data=BoardRetrieveSerializer(instance=instance, context={'request': request}).data
         )

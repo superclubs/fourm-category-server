@@ -21,7 +21,7 @@ from community.apps.comments.api.serializers import CommentListSerializer
 class CommentReportViewMixin:
     @swagger_auto_schema(**swagger_decorator(tag='04. 댓글',
                                              id='댓글 신고',
-                                             description='## < 댓글 신고 API 입니다. >',
+                                             description='',
                                              request=ReportCreateSerializer,
                                              response={201: CommentListSerializer}
                                              ))
@@ -34,6 +34,6 @@ class CommentReportViewMixin:
         return Response(
             status=status.HTTP_201_CREATED,
             code=201,
-            message=_('ok'),
+            message='ok',
             data=CommentListSerializer(instance=comment, context={'request': request}).data
         )

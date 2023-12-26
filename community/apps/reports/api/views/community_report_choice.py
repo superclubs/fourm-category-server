@@ -39,7 +39,7 @@ class CommunityReportChoiceAdminViewSet(mixins.UpdateModelMixin,
 
     @swagger_auto_schema(**swagger_decorator(tag='13. 신고 - 어드민',
                                              id='신고 사유 수정',
-                                             description='## < 신고 사유 수정 API 입니다. >\n',
+                                             description='',
                                              request=ReportChoiceUpdateSerializer,
                                              response={200: ReportChoiceListSerializer}
                                              ))
@@ -48,7 +48,7 @@ class CommunityReportChoiceAdminViewSet(mixins.UpdateModelMixin,
 
     @swagger_auto_schema(**swagger_decorator(tag='13. 신고 - 어드민',
                                              id='신고 사유 삭제',
-                                             description='## < 신고 사유 삭제 API 입니다. >\n',
+                                             description='',
                                              response={204: 'no content'}
                                              ))
     def destroy(self, request, *args, **kwargs):
@@ -59,7 +59,7 @@ class CommunityReportChoiceAdminViewSet(mixins.UpdateModelMixin,
         return Response(
             status=status.HTTP_204_NO_CONTENT,
             code=204,
-            message=_('no content'),
+            message='no content',
         )
 
 
@@ -78,7 +78,7 @@ class CommunityReportChoicesViewSet(mixins.ListModelMixin,
 
     @swagger_auto_schema(**swagger_decorator(tag='01. 커뮤니티',
                                              id='신고 사유 리스트 조회',
-                                             description='## < 신고 사유 리스트 조회 API 입니다. >\n',
+                                             description='',
                                              response={200: ReportChoiceListSerializer}
                                              ))
     def list(self, request, *args, **kwargs):
