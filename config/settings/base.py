@@ -193,6 +193,9 @@ LOCAL_APPS = [
     "community.apps.boards.apps.BoardsConfig",
     "community.apps.bookmarks.apps.BookmarksConfig",
     "community.apps.communities.apps.CommunitiesConfig",
+    "community.apps.community_medias.apps.CommunityMediasConfig",
+    "community.apps.community_posts.apps.CommunityPostsConfig",
+    "community.apps.community_users.apps.CommunityUsersConfig",
     "community.apps.comments.apps.CommentsConfig",
     "community.apps.friends.apps.FriendsConfig",
     "community.apps.likes.apps.LikesConfig",
@@ -370,8 +373,9 @@ ADMINS = [("""Leo Yunhyung Lee""", "leoyunhyung@gmail.com")]
 MANAGERS = ADMINS
 
 ADMIN_REORDER = (
-    'users', 'communities', 'reports', 'profiles', 'posts', 'comments', 'likes', 'rankings', 'badges', 'categories',
-    'boards', 'tags', 'visits', 'bookmarks', 'shares', 'community_medias'
+    'users', 'communities', 'community_users',
+    'reports', 'profiles', 'posts', 'comments', 'likes', 'rankings', 'badges', 'categories',
+    'boards', 'tags', 'visits', 'bookmarks', 'shares'
 )
 
 # LOGGING
@@ -454,7 +458,7 @@ REST_FRAMEWORK = {
 # django-cors-headers - https://github.com/adamchainz/django-cors-headers#setup
 CORS_ALLOW_ALL_ORIGINS = True
 CORS_ALLOW_METHODS = default_methods
-CORS_ALLOW_HEADERS = default_headers + ('Language-Code', )
+CORS_ALLOW_HEADERS = default_headers + ('Language-Code',)
 
 # Your stuff...
 # ------------------------------------------------------------------------------

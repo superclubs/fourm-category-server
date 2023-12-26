@@ -1,7 +1,4 @@
-# Django
-from django.utils.translation import gettext_lazy as _
-
-# Django Rest Framework
+# DRF
 from rest_framework import status
 from rest_framework.decorators import action
 
@@ -16,15 +13,15 @@ from community.utils.decorators import swagger_decorator
 from community.apps.boards.models import Board
 
 # Serializers
-from community.apps.boards.api.serializers import BoardCreateSerializer, BoardRetrieveSerializer
+from community.apps.boards.api.serializers import BoardCreateAdminSerializer, BoardRetrieveSerializer
 
 
 # Main Section
 class BoardGroupBoardViewMixin:
     @swagger_auto_schema(**swagger_decorator(tag='02. 보드 그룹 - 어드민',
                                              id='보드 생성',
-                                             description='## < 보드 생성 API 입니다. >',
-                                             request=BoardCreateSerializer,
+                                             description='',
+                                             request=BoardCreateAdminSerializer,
                                              response={201: BoardRetrieveSerializer}))
     @action(detail=True, methods=['post'], url_path='board', url_name='board_group_board')
     def board_group_board(self, request, pk=None):
@@ -40,6 +37,6 @@ class BoardGroupBoardViewMixin:
         return Response(
             status=status.HTTP_201_CREATED,
             code=201,
-            message=_('ok'),
+            message='ok',
             data=BoardRetrieveSerializer(instance=instance, context={'request': request}).data
         )

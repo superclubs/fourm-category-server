@@ -1,4 +1,4 @@
-# Django Rest Framework
+# DRF
 from rest_framework import serializers
 
 # Serializers
@@ -35,3 +35,9 @@ class BoardMergeUpdateSerializer(ModelSerializer):
     class Meta:
         model = Board
         fields = ('id',)
+
+
+class BoardUpdateAdminSerializer(ModelSerializer):
+    class Meta:
+        model = Board
+        fields = ('title', 'is_active')

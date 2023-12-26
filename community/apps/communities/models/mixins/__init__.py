@@ -1,3 +1,4 @@
+from community.apps.communities.models.mixins.board import CommunityBoardModelMixin
 from community.apps.communities.models.mixins.board_group import CommunityBoardGroupModelMixin
 from community.apps.communities.models.mixins.comment import CommunityCommentModelMixin
 from community.apps.communities.models.mixins.image import CommunityImageModelMixin

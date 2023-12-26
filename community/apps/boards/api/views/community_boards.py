@@ -29,12 +29,34 @@ class CommunityBoardsViewSet(mixins.ListModelMixin,
     def get_queryset(self):
         if getattr(self, 'swagger_fake_view', False):
             return None
-        queryset = Board.objects.filter(community=self.kwargs["community_pk"])
+        queryset = Board.available.filter(community=self.kwargs["community_pk"])
         return queryset
 
     @swagger_auto_schema(**swagger_decorator(tag='01. 커뮤니티',
                                              id='보드 리스트 조회',
-                                             description='## < 보드 리스트 조회 API 입니다. >',
+                                             description='',
+                                             response={200: BoardListSerializer}))
+    def list(self, request, *args, **kwargs):
+        return super().list(self, request, *args, **kwargs)
+
+
+class CommunityBoardsAdminViewSet(mixins.ListModelMixin,
+                                  GenericViewSet):
+    serializers = {
+        'default': BoardListSerializer,
+    }
+    filter_backends = (DjangoFilterBackend,)
+
+    def get_queryset(self):
+        if getattr(self, 'swagger_fake_view', False):
+            return None
+        # 비활성화된 객체는 보여야하기 때문에 objects
+        queryset = Board.objects.filter(community=self.kwargs["community_pk"], is_deleted=False)
+        return queryset
+
+    @swagger_auto_schema(**swagger_decorator(tag='01. 커뮤니티 - 어드민',
+                                             id='보드 리스트 조회',
+                                             description='',
                                              response={200: BoardListSerializer}))
     def list(self, request, *args, **kwargs):
         return super().list(self, request, *args, **kwargs)

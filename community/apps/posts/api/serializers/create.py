@@ -5,7 +5,7 @@ from datetime import timedelta, datetime
 from django.core.exceptions import ValidationError
 from django.utils.timezone import now
 
-# Django Rest Framework
+# DRF
 from rest_framework import serializers
 
 # Bases

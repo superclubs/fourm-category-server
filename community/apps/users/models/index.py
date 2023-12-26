@@ -54,4 +54,4 @@ class User(UserAuthModelMixin,
         ordering = ['-created']
 
     def __str__(self):
-        return f'{self.username}'
+        return f"{self.id} | {self.username} | {self.hash}"

@@ -1,7 +1,4 @@
-# Django
-from django.utils.translation import gettext_lazy as _
-
-# Django Rest Framework
+# DRF
 from rest_framework import status
 from django_filters.rest_framework import DjangoFilterBackend
 
@@ -63,7 +60,7 @@ class CommunityPostsViewSet(mixins.ListModelMixin,
         return Response(
             status=status.HTTP_200_OK,
             code=200,
-            message=_('ok'),
+            message='ok',
             data=serializer.data
         )
 
@@ -110,12 +107,6 @@ class CommunityPostsAdminViewSet(mixins.ListModelMixin,
         return Response(
             status=status.HTTP_200_OK,
             code=200,
-            message=_('ok'),
+            message='ok',
             data=serializer.data
         )
-
-# bang
-# 임시글 전체 삭제
-# 임시글 삭제 안되는 이슈 /post/id/temporary
-# 임시글 필터링 (token) /posts?is_temporary=true
-# 포스트 조회 시 communities

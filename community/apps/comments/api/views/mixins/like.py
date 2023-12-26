@@ -1,7 +1,4 @@
-# Django
-from django.utils.translation import gettext_lazy as _
-
-# Django Rest Framework
+# DRF
 from rest_framework import status
 from rest_framework.decorators import action
 
@@ -23,7 +20,7 @@ from community.apps.comments.api.serializers import ParentCommentListSerializer
 class CommentLikeViewMixin:
     @swagger_auto_schema(**swagger_decorator(tag='04. 댓글',
                                              id='댓글 좋아요',
-                                             description='## < 댓글 좋아요 API 입니다. >',
+                                             description='',
                                              request=CommentLikeCreateSerializer,
                                              response={201: ParentCommentListSerializer}
                                              ))
@@ -36,13 +33,13 @@ class CommentLikeViewMixin:
         return Response(
             status=status.HTTP_201_CREATED,
             code=201,
-            message=_('ok'),
+            message='ok',
             data=ParentCommentListSerializer(instance=comment, context={'request': request}).data
         )
 
     @swagger_auto_schema(**swagger_decorator(tag='04. 댓글',
                                              id='댓글 좋아요 취소',
-                                             description='## < 댓글 좋아요 취소 API 입니다. >',
+                                             description='',
                                              request=no_body,
                                              response={200: ParentCommentListSerializer}
                                              ))
@@ -54,13 +51,13 @@ class CommentLikeViewMixin:
         return Response(
             status=status.HTTP_200_OK,
             code=200,
-            message=_('ok'),
+            message='ok',
             data=ParentCommentListSerializer(instance=comment, context={'request': request}).data
         )
 
     @swagger_auto_schema(**swagger_decorator(tag='04. 댓글',
                                              id='댓글 싫어요',
-                                             description='## < 댓글 싫어요 API 입니다. >',
+                                             description='',
                                              request=no_body,
                                              response={201: ParentCommentListSerializer}
                                              ))
@@ -72,13 +69,13 @@ class CommentLikeViewMixin:
         return Response(
             status=status.HTTP_201_CREATED,
             code=201,
-            message=_('ok'),
+            message='ok',
             data=ParentCommentListSerializer(instance=comment, context={'request': request}).data
         )
 
     @swagger_auto_schema(**swagger_decorator(tag='04. 댓글',
                                              id='댓글 싫어요 취소',
-                                             description='## < 댓글 싫어요 취소 API 입니다. >',
+                                             description='',
                                              request=no_body,
                                              response={200: ParentCommentListSerializer}
                                              ))
@@ -90,6 +87,6 @@ class CommentLikeViewMixin:
         return Response(
             status=status.HTTP_200_OK,
             code=200,
-            message=_('ok'),
+            message='ok',
             data=ParentCommentListSerializer(instance=comment, context={'request': request}).data
         )

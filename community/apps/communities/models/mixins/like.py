@@ -1,10 +1,12 @@
-# Django
+# Python
 import math
 
+# Django
 from django.db import models
 from django.db.models import Sum
 from django.utils.translation import gettext_lazy as _
 
+# Utils
 from community.utils.point import POINT_PER_COMMUNITY_LEVEL, POINT_PER_POST_LIKE, POINT_PER_POST_DISLIKE, \
     POINT_PER_COMMENT_DISLIKE, POINT_PER_COMMENT_LIKE
 

@@ -1,7 +1,7 @@
 # Django
 from django.db.models import Prefetch
 
-# Django Rest Framework
+# DRF
 from rest_framework import serializers
 
 # Serializers

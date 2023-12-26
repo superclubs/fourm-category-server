@@ -1,7 +1,4 @@
-# Django
-from django.utils.translation import gettext_lazy as _
-
-# Django Rest Framework
+# DRF
 from rest_framework import status
 from rest_framework.decorators import action
 
@@ -22,7 +19,7 @@ from community.apps.shares.api.serializers import PostShareCreateSerializer
 class PostShareViewMixin:
     @swagger_auto_schema(**swagger_decorator(tag='03. 포스트',
                                              id='포스트 공유',
-                                             description='## < 포스트 공유 API 입니다. >\n',
+                                             description='',
                                              request=PostShareCreateSerializer,
                                              response={201: 'ok'}
                                              ))
@@ -35,5 +32,5 @@ class PostShareViewMixin:
         return Response(
             status=status.HTTP_201_CREATED,
             code=201,
-            message=_('ok'),
+            message='ok',
         )

@@ -7,7 +7,7 @@ from django.db import models
 from django.utils.encoding import force_str
 from django.utils.translation import gettext_lazy as _
 
-# Django Rest Framework
+# DRF
 from rest_framework.filters import SearchFilter
 from rest_framework.compat import coreapi, coreschema, distinct
 

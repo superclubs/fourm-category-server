@@ -1,4 +1,4 @@
-# Django Rest Framework
+# DRF
 from rest_framework import serializers
 
 # Bases
@@ -39,6 +39,28 @@ class CommunityBannerImageSerializer(ModelSerializer):
     class Meta:
         model = Community
         fields = ('id', 'banner_image_url')
+
+
+class CommunityPostAdminSerializer(ModelSerializer):
+    service_type = serializers.CharField(required=False)
+    club_id = serializers.IntegerField(required=False)
+    forum_id = serializers.IntegerField(required=False)
+    club_community_id = serializers.IntegerField(required=False)
+    forum_community_id = serializers.IntegerField(required=False)
+    post_id = serializers.IntegerField(required=False)
+
+    class Meta:
+        model = Community
+        fields = ('service_type', 'club_id', 'forum_id', 'club_community_id', 'forum_community_id', 'post_id')
+
+
+class CommunityMediaAdminSerializer(ModelSerializer):
+    url = serializers.CharField(required=False)
+    web_url = serializers.CharField(required=False)
+
+    class Meta:
+        model = Community
+        fields = ('url', 'web_url')
 
 
 # TODO: 집계 로직 개선 후 변경

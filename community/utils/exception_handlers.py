@@ -5,7 +5,7 @@ import traceback
 # Django
 from django.utils.translation import ugettext_lazy as _
 
-# Django Rest Framework
+# DRF
 from rest_framework.settings import api_settings
 from rest_framework import status, exceptions
 from rest_framework.exceptions import APIException, _get_error_details
