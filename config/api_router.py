@@ -17,7 +17,8 @@ from community.apps.friends.api.views import FriendViewSet, FriendRequestViewSet
 from community.apps.likes.api.views import CommentLikesViewSet, PostLikesViewSet
 
 # Board
-from community.apps.boards.api.views import CommunityBoardsViewSet, BoardViewSet, BoardAdminViewSet
+from community.apps.boards.api.views import CommunityBoardsViewSet, BoardViewSet, BoardAdminViewSet, \
+    CommunityBoardsAdminViewSet
 
 # Post
 from community.apps.posts.api.views import PostViewSet, PostsViewSet, BoardPostsViewSet, CommunityPostsViewSet
@@ -61,6 +62,11 @@ community_boards_router = routers.NestedSimpleRouter(router, r'community', looku
 community_boards_router.register(r'boards', CommunityBoardsViewSet, basename='community-boards')
 community_posts_router = routers.NestedSimpleRouter(router, r'community', lookup='community')
 community_posts_router.register(r'posts', CommunityPostsViewSet, basename='community-posts')
+
+# Community Admin Nested Router
+router.register(r'admin/community', CommunityViewSet, basename='community')
+community_boards_router = routers.NestedSimpleRouter(router, r'admin/community', lookup='community')
+community_boards_router.register(r'boards', CommunityBoardsAdminViewSet, basename='community-boards')
 
 # Board Nested Router
 router.register(r'board', BoardViewSet, basename='board')
