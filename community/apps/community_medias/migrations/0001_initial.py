@@ -28,7 +28,7 @@ class Migration(migrations.Migration):
                 ('is_deleted', models.BooleanField(blank=True, default=False, null=True, verbose_name='Is Deleted')),
                 ('deleted', models.DateTimeField(blank=True, null=True, verbose_name='Deleted')),
                 ('uuid', models.UUIDField(default=uuid.uuid4, editable=False, unique=True)),
-                ('file', models.FileField(upload_to=community.apps.community_medias.models.index.file_path, verbose_name='File')),
+                ('file', models.FileField(upload_to=community.apps.community_medias.models.index, verbose_name='File')),
                 ('url', models.URLField(blank=True, null=True, verbose_name='URL')),
                 ('media_type', models.CharField(blank=True, choices=[('BANNER', 'BANNER')], max_length=100, null=True, verbose_name='Media Type')),
                 ('file_type', models.CharField(blank=True, choices=[('IMAGE', 'IMAGE'), ('VIDEO', 'VIDEO')], max_length=100, null=True, verbose_name='File Type')),

@@ -6,8 +6,7 @@ from community.utils.api.fields import HybridImageField
 from community.utils.dict import extract_keys_from_dict_list
 
 # Serializers
-from community.apps.communities.api.serializers import CommunityPostAdminSerializer
-from community.apps.community_medias.api.serializers import CommunityMediaAdminSerializer
+from community.apps.communities.api.serializers import CommunityPostAdminSerializer, CommunityMediaAdminSerializer
 
 # Models
 from community.apps.communities.models import Community

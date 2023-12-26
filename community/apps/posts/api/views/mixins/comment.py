@@ -1,7 +1,4 @@
-# Django
-from django.utils.translation import gettext_lazy as _
-
-# Django Rest Framework
+# DRF
 from rest_framework import status
 from rest_framework.decorators import action
 
@@ -23,7 +20,7 @@ class PostCommentViewMixin:
 
     @swagger_auto_schema(**swagger_decorator(tag='03. 포스트',
                                              id='댓글 생성',
-                                             description='## < 댓글 생성 API 입니다. >\n',
+                                             description='',
                                              request=CommentCreateSerializer,
                                              response={201: ParentCommentListSerializer}
                                              ))
@@ -45,6 +42,6 @@ class PostCommentViewMixin:
             return Response(
                 status=status.HTTP_201_CREATED,
                 code=201,
-                message=_('ok'),
+                message='ok',
                 data=ParentCommentListSerializer(instance=instance, context={'request': request}).data
             )

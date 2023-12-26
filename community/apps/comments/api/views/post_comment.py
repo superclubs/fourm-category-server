@@ -1,7 +1,7 @@
 # Django
 from django_filters.rest_framework import DjangoFilterBackend
 
-# Django Rest Framework
+# DRF
 from rest_framework.filters import OrderingFilter
 
 # Third Party

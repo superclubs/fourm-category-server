@@ -1,7 +1,7 @@
 # Django
 from django.conf import settings
 
-# Django Rest Framework
+# DRF
 from rest_framework import serializers
 
 # Serializers

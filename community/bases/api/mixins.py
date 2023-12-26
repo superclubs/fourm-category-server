@@ -2,7 +2,7 @@
 from django.utils.translation import gettext_lazy as _
 from django.utils.decorators import method_decorator
 
-# Django Rest Framework
+# DRF
 from rest_framework import status
 
 # Third Party
@@ -21,7 +21,7 @@ class CreateModelMixin:
             return Response(
                 status=status.HTTP_201_CREATED,
                 code=201,
-                message=_('ok'),
+                message='ok',
                 data=serializer.data
             )
 
@@ -41,7 +41,7 @@ class ListModelMixin:
         return Response(
             status=status.HTTP_200_OK,
             code=200,
-            message=_('ok'),
+            message='ok',
             data=serializer.data
         )
 
@@ -54,7 +54,7 @@ class RetrieveModelMixin:
         return Response(
             status=status.HTTP_200_OK,
             code=200,
-            message=_('ok'),
+            message='ok',
             data=serializer.data
         )
 
@@ -72,7 +72,7 @@ class UpdateModelMixin(object):
         return Response(
             status=status.HTTP_200_OK,
             code=200,
-            message=_('ok'),
+            message='ok',
             data=serializer.data
         )
 
@@ -88,7 +88,7 @@ class DestroyModelMixin:
         return Response(
             status=status.HTTP_204_NO_CONTENT,
             code=204,
-            message=_('ok'),
+            message='ok',
         )
 
     def perform_destroy(self, instance):

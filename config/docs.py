@@ -3,7 +3,7 @@ from django.conf import settings
 from django.urls import include, path
 from django.utils.translation import ugettext_lazy as _
 
-# Django Rest Framework
+# DRF
 from rest_framework import permissions
 
 # Third party

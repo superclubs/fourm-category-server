@@ -8,11 +8,12 @@ keys (list of str): 추출할 키들의 리스트.
 Returns:
 list of dict: 각 딕셔너리에서 주어진 키에 해당하는 값들만을 포함하는 새로운 딕셔너리 리스트.
 
-예시:
->>> data = [{'a': 1, 'b': 2}, {'a': 3, 'b': 4}]
->>> keys = ['a']
->>> extract_keys_from_dict_list(data, keys)
+< 예시 >
+data = [{'a': 1, 'b': 2}, {'a': 3, 'b': 4}]
+keys = ['a']
+extract_keys_from_dict_list(data, keys)
 [{'a': 1}, {'a': 3}]
+
 """
 
 

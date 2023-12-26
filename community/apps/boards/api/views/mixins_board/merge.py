@@ -1,7 +1,4 @@
-# Django
-from django.utils.translation import gettext_lazy as _
-
-# Django Rest Framework
+# DRF
 from rest_framework.exceptions import ParseError
 from rest_framework.decorators import action
 from rest_framework import status
@@ -24,7 +21,7 @@ from community.apps.boards.api.serializers import BoardGroupListSerializer, Boar
 class BoardMergeViewMixin:
     @swagger_auto_schema(**swagger_decorator(tag='03. 보드 - 어드민',
                                              id='보드 병합',
-                                             description='## < 보드 병합 API 입니다. >',
+                                             description='',
                                              request=BoardMergeUpdateSerializer,
                                              response={200: BoardGroupListSerializer}))
     @action(detail=True, methods=['patch'], url_path='merge', url_name='board_merge')
@@ -46,6 +43,6 @@ class BoardMergeViewMixin:
         return Response(
             status=status.HTTP_200_OK,
             code=200,
-            message=_('ok'),
+            message='ok',
             data=BoardGroupListSerializer(instance=request_board.board_group, context={'request': request}).data
         )

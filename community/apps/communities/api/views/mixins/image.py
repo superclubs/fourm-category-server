@@ -1,7 +1,4 @@
-# Django
-from django.utils.translation import gettext_lazy as _
-
-# Django Rest Framework
+# DRF
 from rest_framework import status
 from rest_framework.decorators import action
 from rest_framework.generics import GenericAPIView
@@ -25,7 +22,7 @@ from community.apps.communities.models.mixins.image import default_banner_image_
 class CommunityImageViewMixin(GenericAPIView):
     @swagger_auto_schema(**swagger_decorator(tag='01. 커뮤니티 - 어드민',
                                              id='프로필 이미지 수정',
-                                             description='## < 프로필 이미지 수정 API 입니다 >',
+                                             description='',
                                              request=ProfileImageUpdateSerializer,
                                              response={200: ProfileImageUpdateSerializer}
                                              ))
@@ -41,14 +38,14 @@ class CommunityImageViewMixin(GenericAPIView):
                 return Response(
                     status=status.HTTP_200_OK,
                     code=200,
-                    message=_('ok'),
+                    message='ok',
                     data=serializer.data
                 )
         raise CustomForbiddenException('community 관리자가 아닙니다.')
 
     @swagger_auto_schema(**swagger_decorator(tag='01. 커뮤니티 - 어드민',
                                              id='배너 이미지 수정',
-                                             description='## < 배너 이미지 수정 API 입니다 >',
+                                             description='',
                                              request=CommunityBannerImageUpdateSerializer,
                                              response={200: CommunityBannerImageUpdateSerializer}
                                              ))
@@ -64,14 +61,14 @@ class CommunityImageViewMixin(GenericAPIView):
                 return Response(
                     status=status.HTTP_200_OK,
                     code=200,
-                    message=_('ok'),
+                    message='ok',
                     data=serializer.data
                 )
         raise CustomForbiddenException('community 관리자가 아닙니다.')
 
     @swagger_auto_schema(**swagger_decorator(tag='01. 커뮤니티 - 어드민',
                                              id='배너 이미지 초기화',
-                                             description='## < 배너 이미지 초기화 API 입니다 >',
+                                             description='',
                                              request=no_body,
                                              response={200: CommunityBannerImageSerializer}
                                              ))
@@ -85,6 +82,6 @@ class CommunityImageViewMixin(GenericAPIView):
         return Response(
             status=status.HTTP_200_OK,
             code=200,
-            message=_('ok'),
+            message='ok',
             data=CommunityBannerImageSerializer(instance=community, context={'request': request}).data
         )

@@ -2,7 +2,7 @@
 from django.db.models import Q
 from django.utils.timezone import now
 
-# Django Rest Framework
+# DRF
 from rest_framework import serializers
 
 # Serializers

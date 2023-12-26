@@ -34,7 +34,7 @@ class PostLikesViewSet(mixins.ListModelMixin,
 
     @swagger_auto_schema(**swagger_decorator(tag='03. 포스트',
                                              id='포스트 좋아요 리스트 조회',
-                                             description='## < 포스트 좋아요 리스트 조회 API 입니다. >',
+                                             description='',
                                              response={200: PostLikeListSerializer}
                                              ))
     def list(self, request, *args, **kwargs):

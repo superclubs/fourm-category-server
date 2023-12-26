@@ -5,7 +5,7 @@ from django.utils.timezone import now
 from django.utils.functional import cached_property
 from django.db.models import Q
 
-# Django Rest Framework
+# DRF
 from rest_framework.exceptions import ParseError
 
 # Models

@@ -1,4 +1,4 @@
-# Django Rest Framework
+# DRF
 from rest_framework import serializers
 
 # Bases
@@ -52,6 +52,15 @@ class CommunityPostAdminSerializer(ModelSerializer):
     class Meta:
         model = Community
         fields = ('service_type', 'club_id', 'forum_id', 'club_community_id', 'forum_community_id', 'post_id')
+
+
+class CommunityMediaAdminSerializer(ModelSerializer):
+    url = serializers.CharField(required=False)
+    web_url = serializers.CharField(required=False)
+
+    class Meta:
+        model = Community
+        fields = ('url', 'web_url')
 
 
 # TODO: 집계 로직 개선 후 변경

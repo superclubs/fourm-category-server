@@ -1,7 +1,4 @@
-# Django
-from django.utils.translation import gettext_lazy as _
-
-# Django Rest Framework
+# DRF
 from rest_framework import status
 from rest_framework.decorators import action
 
@@ -20,7 +17,7 @@ from community.apps.communities.api.serializers import CommunityDashboardSeriali
 class CommunityDashboardViewMixin:
     @swagger_auto_schema(**swagger_decorator(tag='01. 커뮤니티',
                                              id='대시보드 조회',
-                                             description='## < 대시보드 조회 API 입니다. >',
+                                             description='',
                                              response={200: CommunityDashboardSerializer}
                                              ))
     @action(detail=True, methods=['get'], url_path='dashboard', url_name='community_dashboard')
@@ -29,6 +26,6 @@ class CommunityDashboardViewMixin:
         return Response(
             status=status.HTTP_200_OK,
             code=200,
-            message=_('ok'),
+            message='ok',
             data=CommunityDashboardSerializer(instance=community).data
         )

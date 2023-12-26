@@ -1,7 +1,4 @@
-# Django
-from django.utils.translation import gettext_lazy as _
-
-# Django Rest Framework
+# DRF
 from rest_framework import status
 from django_filters.rest_framework import DjangoFilterBackend
 
@@ -84,6 +81,6 @@ class BoardPostsViewSet(mixins.ListModelMixin,
         return Response(
             status=status.HTTP_200_OK,
             code=200,
-            message=_('ok'),
+            message='ok',
             data=serializer.data
         )

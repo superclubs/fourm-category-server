@@ -1,4 +1,4 @@
-# Django Rest Framework
+# DRF
 from rest_framework.permissions import BasePermission
 
 
