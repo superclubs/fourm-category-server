@@ -91,7 +91,7 @@ class BoardsViewSet(mixins.ListModelMixin,
     serializers = {
         'default': BoardListSerializer,
     }
-    queryset = Board.objects.all()
+    queryset = Board.available.all()
     filter_backends = (DjangoFilterBackend, AdvancedSearchFilter)
     filterset_class = BoardFilter
     search_fields = ('title',)
@@ -115,7 +115,7 @@ class BoardViewSet(mixins.RetrieveModelMixin,
     serializers = {
         'default': BoardRetrieveSerializer,
     }
-    queryset = Board.objects.all()
+    queryset = Board.available.all()
     filter_backends = (DjangoFilterBackend,)
 
     @swagger_auto_schema(**swagger_decorator(tag='02. 보드',
