@@ -9,7 +9,6 @@ from community.apps.communities.models import Community
 
 # Inline
 from community.apps.community_users.inline import CommunityUserInline
-from community.apps.community_medias.inline import CommunityMediaInline
 
 
 # Main Section
@@ -29,4 +28,4 @@ class CommunityAdmin(Admin):
     )
 
     readonly_fields = ('id', 'created', 'modified')
-    inlines = (CommunityUserInline, CommunityMediaInline,)
+    inlines = (CommunityUserInline,)

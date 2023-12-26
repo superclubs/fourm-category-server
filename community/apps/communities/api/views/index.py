@@ -15,7 +15,7 @@ from community.bases.api.viewsets import GenericViewSet
 
 # Mixins
 from community.apps.communities.api.views.mixins import CommunityImageViewMixin, CommunityBoardGroupViewMixin, \
-    CommunityDashboardViewMixin, CommunityBoardViewMixin, CommunityMediaViewMixin
+    CommunityDashboardViewMixin, CommunityBoardViewMixin
 
 # Filters
 from community.apps.communities.api.views.filters import CommunitiesFilter, CommunityFilter
@@ -99,7 +99,6 @@ class CommunityAdminViewSet(mixins.UpdateModelMixin,
                             CommunityImageViewMixin,
                             CommunityBoardGroupViewMixin,
                             CommunityBoardViewMixin,
-                            CommunityMediaViewMixin,
                             GenericViewSet):
     serializers = {
         'default': CommunityUpdateAdminSerializer,
