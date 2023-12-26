@@ -1,7 +1,7 @@
 # Django
 from django.urls import include, path
 
-# Django Rest Framework
+# DRF
 from rest_framework_nested import routers
 
 # Community

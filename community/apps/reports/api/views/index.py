@@ -1,4 +1,4 @@
-# Django Rest Framework
+# DRF
 from django_filters.rest_framework import DjangoFilterBackend
 
 # Bases

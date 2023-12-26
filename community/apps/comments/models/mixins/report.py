@@ -2,7 +2,7 @@
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 
-# Django Rest Framework
+# DRF
 from rest_framework.exceptions import ParseError
 
 # Models

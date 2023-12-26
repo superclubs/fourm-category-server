@@ -1,7 +1,4 @@
-# Django
-from django.utils.translation import gettext_lazy as _
-
-# Django Rest Framework
+# DRF
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import status
 from rest_framework.decorators import action

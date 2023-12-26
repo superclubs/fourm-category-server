@@ -1,8 +1,7 @@
 # Django
 from django.db.models import Q
-from django.utils.translation import gettext_lazy as _
 
-# Django Rest Framework
+# DRF
 from rest_framework import status
 from rest_framework.decorators import action
 from rest_framework.exceptions import ParseError

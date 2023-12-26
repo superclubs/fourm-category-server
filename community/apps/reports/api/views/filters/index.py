@@ -2,7 +2,7 @@
 import django_filters
 from django_filters import CharFilter, NumberFilter, BooleanFilter
 
-# Django Rest Framework
+# DRF
 from rest_framework.exceptions import ParseError
 
 # Models
