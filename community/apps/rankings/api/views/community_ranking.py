@@ -40,7 +40,7 @@ class CommunityRankingsViewSet(mixins.ListModelMixin,
         queryset = CommunityRanking.objects.filter(community=self.kwargs["community_pk"])
         return queryset
 
-    @swagger_auto_schema(**swagger_decorator(tag='01. 커뮤니티',
+    @swagger_auto_schema(**swagger_decorator(tag='02. 커뮤니티',
                                              id='커뮤니티 랭킹 리스트 조회',
                                              description='## < 커뮤니티 랭킹 리스트 조회 API 입니다. >\n'
                                                          '### `ranking_type`: live, weekly, monthly',

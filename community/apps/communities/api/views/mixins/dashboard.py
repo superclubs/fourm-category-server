@@ -15,7 +15,7 @@ from community.apps.communities.api.serializers import CommunityDashboardSeriali
 
 # Main Section
 class CommunityDashboardViewMixin:
-    @swagger_auto_schema(**swagger_decorator(tag='01. 커뮤니티',
+    @swagger_auto_schema(**swagger_decorator(tag='02. 커뮤니티',
                                              id='대시보드 조회',
                                              description='',
                                              response={200: CommunityDashboardSerializer}

@@ -42,7 +42,7 @@ class CommunityPostsViewSet(mixins.ListModelMixin,
         queryset = PostListSerializer().prefetch_related(queryset, user=self.request.user)
         return queryset
 
-    @swagger_auto_schema(**swagger_decorator(tag='01. 커뮤니티',
+    @swagger_auto_schema(**swagger_decorator(tag='02. 커뮤니티',
                                              id='포스트 리스트 조회',
                                              description='## < 포스트 리스트 조회 API 입니다. >\n'
                                                          '### `ordering` : created, live_rank, weekly_rank, monthly_rank, rising_rank',
@@ -82,7 +82,7 @@ class CommunityPostsAdminViewSet(mixins.ListModelMixin,
         queryset = PostListSerializer.prefetch_related(queryset)
         return queryset
 
-    @swagger_auto_schema(**swagger_decorator(tag='01. 커뮤니티 - 어드민',
+    @swagger_auto_schema(**swagger_decorator(tag='02. 커뮤니티 - 어드민',
                                              id='포스트 리스트 조회',
                                              description='## < 포스트 리스트 조회 API 입니다. >\n'
                                                          '### `profile` : 프로필 id 입력 시, 해당 프로필이 업로드한 포스트 필터링 \n'

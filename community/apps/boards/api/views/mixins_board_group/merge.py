@@ -23,7 +23,7 @@ from community.apps.boards.api.serializers import BoardGroupListSerializer, Boar
 # TODO Protect 이슈 해결하기
 # Main Section
 class BoardGroupMergeViewMixin:
-    @swagger_auto_schema(**swagger_decorator(tag='02. 보드 그룹 - 어드민',
+    @swagger_auto_schema(**swagger_decorator(tag='03. 보드 그룹 - 어드민',
                                              id='보드 그룹 병합',
                                              description='',
                                              request=BoardGroupMergeUpdateSerializer,
