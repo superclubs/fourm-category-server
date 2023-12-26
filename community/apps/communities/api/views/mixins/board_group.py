@@ -15,7 +15,7 @@ from community.apps.boards.api.serializers import BoardGroupCreateSerializer, Bo
 
 # Main Section
 class CommunityBoardGroupViewMixin:
-    @swagger_auto_schema(**swagger_decorator(tag='01. 커뮤니티 - 어드민',
+    @swagger_auto_schema(**swagger_decorator(tag='02. 커뮤니티 - 어드민',
                                              id='보드 그룹 생성',
                                              description='',
                                              request=BoardGroupCreateSerializer,

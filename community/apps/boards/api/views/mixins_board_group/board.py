@@ -18,7 +18,7 @@ from community.apps.boards.api.serializers import BoardCreateAdminSerializer, Bo
 
 # Main Section
 class BoardGroupBoardViewMixin:
-    @swagger_auto_schema(**swagger_decorator(tag='02. 보드 그룹 - 어드민',
+    @swagger_auto_schema(**swagger_decorator(tag='03. 보드 그룹 - 어드민',
                                              id='보드 생성',
                                              description='',
                                              request=BoardCreateAdminSerializer,

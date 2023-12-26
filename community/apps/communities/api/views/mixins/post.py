@@ -16,7 +16,7 @@ from community.apps.communities.models import Community
 # Not use
 # Main Section
 class CommunityPostViewMixin:
-    @swagger_auto_schema(**swagger_decorator(tag='01. 커뮤니티',
+    @swagger_auto_schema(**swagger_decorator(tag='02. 커뮤니티',
                                              id='임시글 일괄 삭제',
                                              description='',
                                              response={204: 'no content'}

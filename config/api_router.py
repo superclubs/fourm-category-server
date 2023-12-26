@@ -58,15 +58,12 @@ router.register(r'user', UserViewSet, basename='user')
 
 # Community Nested Router
 router.register(r'community', CommunityViewSet, basename='community')
-community_boards_router = routers.NestedSimpleRouter(router, r'community', lookup='community')
-community_boards_router.register(r'boards', CommunityBoardsViewSet, basename='community-boards')
 community_posts_router = routers.NestedSimpleRouter(router, r'community', lookup='community')
 community_posts_router.register(r'posts', CommunityPostsViewSet, basename='community-posts')
-
-# Community Admin Nested Router
-router.register(r'admin/community', CommunityViewSet, basename='community')
-community_boards_router = routers.NestedSimpleRouter(router, r'admin/community', lookup='community')
-community_boards_router.register(r'boards', CommunityBoardsAdminViewSet, basename='community-boards')
+community_boards_router = routers.NestedSimpleRouter(router, r'community', lookup='community')
+community_boards_router.register(r'boards', CommunityBoardsViewSet, basename='community-boards')
+community_boards_admin_router = routers.NestedSimpleRouter(router, r'admin/community', lookup='community')
+community_boards_admin_router.register(r'boards', CommunityBoardsAdminViewSet, basename='community-boards')
 
 # Board Nested Router
 router.register(r'board', BoardViewSet, basename='board')
@@ -89,6 +86,7 @@ app_name = 'api'
 urlpatterns = [
                   path('', include('community.apps.users.urls')),
                   path('', include(community_boards_router.urls)),
+                  path('', include(community_boards_admin_router.urls)),
                   path('', include(community_posts_router.urls)),
                   path('', include(board_posts_router.urls)),
                   path('', include(post_comments_router.urls)),

@@ -20,7 +20,7 @@ from community.apps.communities.models.mixins.image import default_banner_image_
 
 
 class CommunityImageViewMixin(GenericAPIView):
-    @swagger_auto_schema(**swagger_decorator(tag='01. 커뮤니티 - 어드민',
+    @swagger_auto_schema(**swagger_decorator(tag='02. 커뮤니티 - 어드민',
                                              id='프로필 이미지 수정',
                                              description='',
                                              request=ProfileImageUpdateSerializer,
@@ -43,7 +43,7 @@ class CommunityImageViewMixin(GenericAPIView):
                 )
         raise CustomForbiddenException('community 관리자가 아닙니다.')
 
-    @swagger_auto_schema(**swagger_decorator(tag='01. 커뮤니티 - 어드민',
+    @swagger_auto_schema(**swagger_decorator(tag='02. 커뮤니티 - 어드민',
                                              id='배너 이미지 수정',
                                              description='',
                                              request=CommunityBannerImageUpdateSerializer,
@@ -66,7 +66,7 @@ class CommunityImageViewMixin(GenericAPIView):
                 )
         raise CustomForbiddenException('community 관리자가 아닙니다.')
 
-    @swagger_auto_schema(**swagger_decorator(tag='01. 커뮤니티 - 어드민',
+    @swagger_auto_schema(**swagger_decorator(tag='02. 커뮤니티 - 어드민',
                                              id='배너 이미지 초기화',
                                              description='',
                                              request=no_body,

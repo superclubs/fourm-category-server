@@ -73,7 +73,7 @@ class CommunityReportChoicesViewSet(mixins.ListModelMixin,
         queryset = ReportChoice.objects.filter(community=self.kwargs["community_pk"])
         return queryset
 
-    @swagger_auto_schema(**swagger_decorator(tag='01. 커뮤니티',
+    @swagger_auto_schema(**swagger_decorator(tag='02. 커뮤니티',
                                              id='신고 사유 리스트 조회',
                                              description='',
                                              response={200: ReportChoiceListSerializer}
