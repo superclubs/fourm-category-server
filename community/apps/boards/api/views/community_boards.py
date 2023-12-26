@@ -32,7 +32,7 @@ class CommunityBoardsViewSet(mixins.ListModelMixin,
         queryset = Board.available.filter(community=self.kwargs["community_pk"])
         return queryset
 
-    @swagger_auto_schema(**swagger_decorator(tag='01. 커뮤니티',
+    @swagger_auto_schema(**swagger_decorator(tag='02. 커뮤니티',
                                              id='보드 리스트 조회',
                                              description='',
                                              response={200: BoardListSerializer}))
@@ -54,7 +54,7 @@ class CommunityBoardsAdminViewSet(mixins.ListModelMixin,
         queryset = Board.objects.filter(community=self.kwargs["community_pk"], is_deleted=False)
         return queryset
 
-    @swagger_auto_schema(**swagger_decorator(tag='01. 커뮤니티 - 어드민',
+    @swagger_auto_schema(**swagger_decorator(tag='02. 커뮤니티 - 어드민',
                                              id='보드 리스트 조회',
                                              description='',
                                              response={200: BoardListSerializer}))

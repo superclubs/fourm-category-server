@@ -39,7 +39,7 @@ class CommunityReportGroupsAdminViewSet(mixins.ListModelMixin,
         queryset = ReportGroup.objects.filter(community=self.kwargs["community_pk"])
         return queryset
 
-    @swagger_auto_schema(**swagger_decorator(tag='01. 커뮤니티 - 어드민',
+    @swagger_auto_schema(**swagger_decorator(tag='02. 커뮤니티 - 어드민',
                                              id='신고 리스트 조회',
                                              description='## < 신고 리스트 조회 API 입니다. > \n'
                                                          '### `search`: username, contents, post_content 검색 \n'

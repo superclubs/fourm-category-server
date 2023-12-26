@@ -43,7 +43,7 @@ class CommunityViewSet(mixins.RetrieveModelMixin,
     filterset_class = CommunityFilter
     pagination_class = None
 
-    @swagger_auto_schema(**swagger_decorator(tag='001. 커뮤니티',
+    @swagger_auto_schema(**swagger_decorator(tag='02. 커뮤니티',
                                              id='커뮤니티 객체 조회',
                                              description='',
                                              response={200: CommunityRetrieveSerializer}
@@ -80,7 +80,7 @@ class CommunitiesViewSet(mixins.ListModelMixin,
     filterset_class = CommunitiesFilter
     pagination_class = None
 
-    @swagger_auto_schema(**swagger_decorator(tag='01. 커뮤니티',
+    @swagger_auto_schema(**swagger_decorator(tag='02. 커뮤니티',
                                              id='커뮤니티 리스트 조회',
                                              description='## < 커뮤니티 리스트 조회 API 입니다. > \n'
                                                          '### ordering : `created (생성순)` \n'
@@ -104,7 +104,7 @@ class CommunityAdminViewSet(mixins.UpdateModelMixin,
     filter_backends = (DjangoFilterBackend,)
     permission_classes = (IsAuthenticated,)
 
-    @swagger_auto_schema(**swagger_decorator(tag='001. 커뮤니티 - 어드민',
+    @swagger_auto_schema(**swagger_decorator(tag='02. 커뮤니티 - 어드민',
                                              id='커뮤니티 수정',
                                              description='',
                                              request=CommunityUpdateAdminSerializer,

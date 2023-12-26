@@ -22,7 +22,7 @@ from community.apps.boards.api.serializers import BoardGroupOrderUpdateSerialize
 
 # Main Section
 class BoardGroupOrderViewMixin:
-    @swagger_auto_schema(**swagger_decorator(tag='02. 보드 그룹 - 어드민',
+    @swagger_auto_schema(**swagger_decorator(tag='03. 보드 그룹 - 어드민',
                                              id='보드 그룹 순서 변경',
                                              description='',
                                              request=BoardGroupOrderUpdateSerializer,
