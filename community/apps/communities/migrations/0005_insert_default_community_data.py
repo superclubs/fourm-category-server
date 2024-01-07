@@ -1,12 +1,11 @@
 # Django
 from django.db import migrations
 
-# Models
-from community.apps.communities.models import Community
-
 
 # Main Section
 def forwards_insert_default_community_data(apps, schema_editor):
+    Community = apps.get_model('communities', 'Community')
+
     # Depth1
     depth1_community_list = [
         '게임', '만화/애니', '방송', '문화/예술', '영화', '음악', '팬클럽', '스포츠', '동물', '취미', '패션/미용', '건강', '가족/육아',
