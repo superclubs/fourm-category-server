@@ -88,7 +88,7 @@ class CommunityPostViewMixin:
     @action(methods=['delete'], detail=True, url_path='posts/temporary', url_name='community_post_temporary')
     def community_post_temporary(self, request, pk):
         community = Community.objects.filter(id=pk).first()
-        community.posts.filter(is_temporary=True, user=request.user).delete()
+        community.posts.filter(is_temporary=True, user=request.user).soft_delete()
         return Response(
             status=status.HTTP_204_NO_CONTENT,
             code=204,
