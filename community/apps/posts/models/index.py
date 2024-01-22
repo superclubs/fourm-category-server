@@ -271,7 +271,7 @@ class Post(PostCommentModelMixin,
                 post_tag.tag.save()
 
     # TODO: is_delete 로직 개선
-    def delete(self, *args, request=None, **kwargs):
+    def soft_delete(self, *args, request=None, **kwargs):
         from community.apps.posts.api.serializers import PostDeleteSerializer
         from community.modules.gateways.post import gateway as gateway_post
 
@@ -284,4 +284,4 @@ class Post(PostCommentModelMixin,
         # API Gateway
         gateway_post.delete_post(data)
 
-        return super(Post, self).delete(*args, **kwargs)
+        return super(Post, self).soft_delete(*args, **kwargs)

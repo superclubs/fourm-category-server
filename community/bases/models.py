@@ -67,16 +67,11 @@ class Model(UpdateMixin, TimeStampedModel, models.Model):
         self.__is_deleted = self.is_deleted
 
     def save(self, *args, **kwargs):
-        # 삭제 취소
-        if self.__is_deleted != self.is_deleted and not self.is_deleted:
-            self.is_deleted = False
-            self.deleted = None
+        if self.__is_deleted != self.is_deleted:
+            self.deleted = None if not self.is_deleted else now()
+        super(Model, self).save(*args, **kwargs)
 
-        return super(Model, self).save(*args, **kwargs)
-
-    # 삭제
-    def delete(self, *args, **kwargs):
+    def soft_delete(self, *args, **kwargs):
         self.is_active = False
         self.is_deleted = True
-        self.deleted = now()
         self.save()
