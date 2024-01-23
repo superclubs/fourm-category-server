@@ -41,7 +41,7 @@ def post_pre_save_sync_post(sender, instance, *args, **kwargs):
 
                 # Boolean
                 'password',
-                'is_active', 'is_notice', 'is_event', 'is_temporary', 'is_secret',
+                'is_notice', 'is_event', 'is_temporary', 'is_secret',
                 'is_search', 'is_share', 'is_comment', 'is_reserved', 'is_boomed',
 
                 # Date
