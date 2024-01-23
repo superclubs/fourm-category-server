@@ -96,7 +96,7 @@ class PostRetrieveSerializer(ModelSerializer):
         if obj.depth3_community_id is not None:
             community_ids.append(obj.depth3_community_id)
 
-        instance = Community.objects.filter(id__in=community_ids)
+        instance = Community.available.filter(id__in=community_ids)
 
         return CommunityListSerializer(instance=instance, many=True).data
 
@@ -107,7 +107,7 @@ class PostRetrieveSerializer(ModelSerializer):
         user = request.user
         if not user.id:
             return None
-        post_bookmark = obj.post_bookmarks.filter(user=user, is_active=True).first()
+        post_bookmark = obj.post_bookmarks.filter(user=user, is_active=True, is_deleted=False).first()
         if not post_bookmark:
             return False
         return True
@@ -119,7 +119,7 @@ class PostRetrieveSerializer(ModelSerializer):
         user = request.user
         if not user.id:
             return None
-        post_like = obj.post_likes.filter(user=user, is_active=True).first()
+        post_like = obj.post_likes.filter(user=user, is_active=True, is_deleted=False).first()
         if not post_like:
             return False
         return True
@@ -131,7 +131,7 @@ class PostRetrieveSerializer(ModelSerializer):
         user = request.user
         if not user.id:
             return None
-        post_dislike = obj.post_dislikes.filter(user=user, is_active=True).first()
+        post_dislike = obj.post_dislikes.filter(user=user, is_active=True, is_deleted=False).first()
         if not post_dislike:
             return False
         return True
@@ -143,7 +143,7 @@ class PostRetrieveSerializer(ModelSerializer):
         user = request.user
         if not user.id:
             return None
-        post_report = obj.reports.filter(user=user, is_active=True).first()
+        post_report = obj.reports.filter(user=user, is_active=True, is_deleted=False).first()
         if not post_report:
             return False
         return True
@@ -158,7 +158,7 @@ class PostRetrieveSerializer(ModelSerializer):
         if user == obj.user:
             return True
 
-        other = user.my_friends.filter(user=obj.user, is_active=True).first()
+        other = user.my_friends.filter(user=obj.user, is_active=True, is_deleted=False).first()
 
         if not other:
             return False

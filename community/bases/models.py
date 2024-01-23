@@ -75,7 +75,7 @@ class Model(UpdateMixin, TimeStampedModel, models.Model):
         return super(Model, self).save(*args, **kwargs)
 
     # 삭제
-    def delete(self, *args, **kwargs):
+    def soft_delete(self, *args, **kwargs):
         self.is_active = False
         self.is_deleted = True
         self.deleted = now()

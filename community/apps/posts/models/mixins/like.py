@@ -103,31 +103,31 @@ class PostLikeModelMixin(models.Model):
         self.devil_count = self.devil_count - 1
 
     def update_post_total_like_count(self):
-        self.total_like_count = self.post_likes.filter(is_active=True).count()
+        self.total_like_count = self.post_likes.filter(is_active=True, is_deleted=False).count()
 
     def update_post_like_count(self):
-        self.like_count = self.post_likes.filter(is_active=True, type='LIKE').count()
+        self.like_count = self.post_likes.filter(is_active=True, is_deleted=False, type='LIKE').count()
 
     def update_post_fun_count(self):
-        self.fun_count = self.post_likes.filter(is_active=True, type='FUN').count()
+        self.fun_count = self.post_likes.filter(is_active=True, is_deleted=False, type='FUN').count()
 
     def update_post_healing_count(self):
-        self.healing_count = self.post_likes.filter(is_active=True, type='HEALING').count()
+        self.healing_count = self.post_likes.filter(is_active=True, is_deleted=False, type='HEALING').count()
 
     def update_post_legend_count(self):
-        self.legend_count = self.post_likes.filter(is_active=True, type='LEGEND').count()
+        self.legend_count = self.post_likes.filter(is_active=True, is_deleted=False, type='LEGEND').count()
 
     def update_post_useful_count(self):
-        self.useful_count = self.post_likes.filter(is_active=True, type='USEFUL').count()
+        self.useful_count = self.post_likes.filter(is_active=True, is_deleted=False, type='USEFUL').count()
 
     def update_post_empathy_count(self):
-        self.empathy_count = self.post_likes.filter(is_active=True, type='EMPATHY').count()
+        self.empathy_count = self.post_likes.filter(is_active=True, is_deleted=False, type='EMPATHY').count()
 
     def update_post_devil_count(self):
-        self.devil_count = self.post_likes.filter(is_active=True, type='DEVIL').count()
+        self.devil_count = self.post_likes.filter(is_active=True, is_deleted=False, type='DEVIL').count()
 
     def update_post_dislike_count(self):
-        self.dislike_count = self.post_dislikes.filter(is_active=True).count()
+        self.dislike_count = self.post_dislikes.filter(is_active=True, is_deleted=False).count()
 
     def like_post(self, user, like_type):
         profile = self.community.profiles.filter(user=user).first()
@@ -150,7 +150,7 @@ class PostLikeModelMixin(models.Model):
         return post_like.post
 
     def unlike_post(self, user):
-        instance = self.post_likes.filter(user=user, is_active=True).first()
+        instance = self.post_likes.filter(user=user, is_active=True, is_deleted=False).first()
         if not instance:
             raise ParseError('좋아요 객체가 없습니다.')
         instance.is_active = False
@@ -177,7 +177,7 @@ class PostLikeModelMixin(models.Model):
         return post_dislike.post
 
     def undislike_post(self, user):
-        instance = self.post_dislikes.filter(user=user, is_active=True).first()
+        instance = self.post_dislikes.filter(user=user, is_active=True, is_deleted=False).first()
         if not instance:
             raise ParseError('싫어요 객체가 없습니다.')
         instance.is_active = False
@@ -187,11 +187,11 @@ class PostLikeModelMixin(models.Model):
 
     # Admin Site Inline Action
     def create_post_like(self):
-        self.post_likes.all().delete()
+        self.post_likes.all().soft_delete()
 
-        max_num = User.objects.all().count()
+        max_num = User.available.all().count()
         random_num = random.randint(1, max_num)
-        users = User.objects.filter(id__gte=random_num)
+        users = User.available.filter(id__gte=random_num)
 
         type_list = ['LIKE', 'FUN', 'HEALING', 'LEGEND', 'USEFUL', 'EMPATHY', 'DEVIL']
 
@@ -207,10 +207,10 @@ class PostLikeModelMixin(models.Model):
             PostLike.objects.create(user=user, post=self, profile=profile, type=random_type)
 
     def create_post_dislike(self):
-        self.post_dislikes.all().delete()
-        max_num = User.objects.all().count()
+        self.post_dislikes.all().soft_delete()
+        max_num = User.available.all().count()
         random_num = random.randint(1, max_num)
-        users = User.objects.filter(id__gte=random_num)
+        users = User.available.filter(id__gte=random_num)
         for user in users:
 
             post_like = self.post_likes.filter(user=user).first()

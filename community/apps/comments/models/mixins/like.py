@@ -80,31 +80,31 @@ class CommentLikeModelMixin(models.Model):
         self.dislike_count = self.dislike_count - 1
 
     def update_comment_total_like_count(self):
-        self.total_like_count = self.comment_likes.filter(is_active=True).count()
+        self.total_like_count = self.comment_likes.filter(is_active=True, is_deleted=False).count()
 
     def update_comment_like_count(self):
-        self.like_count = self.comment_likes.filter(is_active=True, type='LIKE').count()
+        self.like_count = self.comment_likes.filter(is_active=True, is_deleted=False, type='LIKE').count()
 
     def update_comment_fun_count(self):
-        self.fun_count = self.comment_likes.filter(is_active=True, type='FUN').count()
+        self.fun_count = self.comment_likes.filter(is_active=True, is_deleted=False, type='FUN').count()
 
     def update_comment_healing_count(self):
-        self.healing_count = self.comment_likes.filter(is_active=True, type='HEALING').count()
+        self.healing_count = self.comment_likes.filter(is_active=True, is_deleted=False, type='HEALING').count()
 
     def update_comment_legend_count(self):
-        self.legend_count = self.comment_likes.filter(is_active=True, type='LEGEND').count()
+        self.legend_count = self.comment_likes.filter(is_active=True, is_deleted=False, type='LEGEND').count()
 
     def update_comment_useful_count(self):
-        self.useful_count = self.comment_likes.filter(is_active=True, type='USEFUL').count()
+        self.useful_count = self.comment_likes.filter(is_active=True, is_deleted=False, type='USEFUL').count()
 
     def update_comment_empathy_count(self):
-        self.empathy_count = self.comment_likes.filter(is_active=True, type='EMPATHY').count()
+        self.empathy_count = self.comment_likes.filter(is_active=True, is_deleted=False, type='EMPATHY').count()
 
     def update_comment_devil_count(self):
-        self.devil_count = self.comment_likes.filter(is_active=True, type='DEVIL').count()
+        self.devil_count = self.comment_likes.filter(is_active=True, is_deleted=False, type='DEVIL').count()
 
     def update_comment_dislike_count(self):
-        self.dislike_count = self.comment_dislikes.filter(is_active=True).count()
+        self.dislike_count = self.comment_dislikes.filter(is_active=True, is_deleted=False).count()
 
     def like_comment(self, user, like_type):
         profile = self.community.profiles.filter(user=user).first()
@@ -129,7 +129,7 @@ class CommentLikeModelMixin(models.Model):
         return comment_like.comment
 
     def unlike_comment(self, user):
-        comment_like = self.comment_likes.filter(user=user, is_active=True).first()
+        comment_like = self.comment_likes.filter(user=user, is_active=True, is_deleted=False).first()
         if not comment_like:
             raise ParseError('활성화된 좋아요 객체가 없습니다.')
         comment_like.is_active = False

@@ -19,7 +19,7 @@ from community.apps.communities.models import Community
 # Main Section
 class PostCreateSerializer(ModelSerializer):
     tags = serializers.ListField(child=serializers.CharField(allow_blank=True), required=False)
-    communities = serializers.ListField(child=serializers.PrimaryKeyRelatedField(queryset=Community.objects.all()),
+    communities = serializers.ListField(child=serializers.PrimaryKeyRelatedField(queryset=Community.available.all()),
                                         required=True)
 
     class Meta:

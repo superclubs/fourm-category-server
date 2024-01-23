@@ -13,7 +13,7 @@ def sync_post_task(self, post_id):
     from community.apps.posts.api.serializers import PostSyncSerializer
     from community.apps.posts.models import Post
 
-    post = Post.objects.filter(id=post_id).first()
+    post = Post.available.filter(id=post_id).first()
     if not post:
         return
 
@@ -33,7 +33,7 @@ def delete_post_task(self, post_id):
     # Serializers
     from community.apps.posts.api.serializers import PostDeleteSerializer
 
-    post = Post.objects.get(id=post_id)
+    post = Post.available.get(id=post_id)
     data = PostDeleteSerializer(instance=post).data
 
     # API Gateway
