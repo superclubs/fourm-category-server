@@ -80,7 +80,7 @@ class PostSyncSerializer(ModelSerializer):
             'fun_count', 'healing_count', 'legend_count', 'useful_count', 'empathy_count', 'devil_count',
 
             # Boolean
-            'is_active', 'is_notice', 'is_event', 'is_temporary', 'is_secret',
+            'is_notice', 'is_event', 'is_temporary', 'is_secret',
             'is_search', 'is_share', 'is_comment', 'is_reserved', 'is_boomed',
 
             # Serializer
