@@ -23,7 +23,7 @@ class FriendRequest(Model):
         ordering = ['-created']
 
     def save(self, *args, **kwargs):
-        if FriendRequest.available.filter(sender=self.sender, receiver=self.receiver).exists():
+        if self.is_deleted is False and FriendRequest.available.filter(sender=self.sender, receiver=self.receiver).exists():
             raise ValidationError('필드 sender, receiver는 반드시 고유(unique) 해야합니다.')
         return super(FriendRequest, self).save(*args, **kwargs)
 
@@ -45,6 +45,6 @@ class Friend(Model):
         ordering = ['-created']
 
     def save(self, *args, **kwargs):
-        if Friend.available.filter(me=self.me, user=self.user).exists():
+        if self.is_deleted is False and Friend.available.filter(me=self.me, user=self.user).exists():
             raise ValidationError('필드 me, user 반드시 고유(unique) 해야합니다.')
         return super(Friend, self).save(*args, **kwargs)
