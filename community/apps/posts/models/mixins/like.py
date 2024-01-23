@@ -169,7 +169,7 @@ class PostLikeModelMixin(models.Model):
             post_like.is_active = False
             post_like.save()
 
-        post_dislike, created = PostDislike.objects.get_or_create(user=user, post=self, profile=profile, community=self.community)
+        post_dislike, created = PostDislike.available.get_or_create(user=user, post=self, profile=profile, community=self.community)
         if not created:
             post_dislike.is_active = True
             post_dislike.save()

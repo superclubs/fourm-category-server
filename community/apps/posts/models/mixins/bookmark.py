@@ -37,7 +37,7 @@ class PostBookmarkModelMixin(models.Model):
         self.bookmark_count = self.post_bookmarks.filter(is_active=True, is_deleted=False).count()
 
     def bookmark_post(self, user):
-        post_bookmark, created = PostBookmark.objects.get_or_create(user=user, post=self)
+        post_bookmark, created = PostBookmark.available.get_or_create(user=user, post=self)
         if not created:
             post_bookmark.is_active = True
             post_bookmark.save()

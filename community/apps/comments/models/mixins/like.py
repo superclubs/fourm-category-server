@@ -151,7 +151,7 @@ class CommentLikeModelMixin(models.Model):
             comment_like.save()
 
         # 싫어요 객체 생성
-        comment_dislike, created = CommentDislike.objects.get_or_create(user=user, comment=self, profile=profile)
+        comment_dislike, created = CommentDislike.available.get_or_create(user=user, comment=self, profile=profile)
         if not created:
             comment_dislike.is_active = True
             comment_dislike.save()
