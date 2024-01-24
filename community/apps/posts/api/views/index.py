@@ -109,7 +109,7 @@ class PostViewSet(mixins.RetrieveModelMixin,
     }
     filter_backends = (DjangoFilterBackend,)
 
-    queryset = Post.objects.all()
+    queryset = Post.available.all()
 
     @swagger_auto_schema(**swagger_decorator(tag='04. 포스트',
                                              id='포스트 조회',
