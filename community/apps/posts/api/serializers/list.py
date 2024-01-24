@@ -77,10 +77,10 @@ class PostListSerializer(ModelSerializer):
         )
         if user and user.id:
             queryset = queryset.prefetch_related(
-                Prefetch('post_bookmarks', queryset=PostBookmark.available.filter(user=user, is_active=True)),
-                Prefetch('post_likes', queryset=PostLike.available.filter(user=user, is_active=True),
+                Prefetch('post_bookmarks', queryset=PostBookmark.available.filter(user=user)),
+                Prefetch('post_likes', queryset=PostLike.available.filter(user=user),
                          to_attr='user_active_likes'),
-                Prefetch('post_dislikes', queryset=PostDislike.available.filter(user=user, is_active=True))
+                Prefetch('post_dislikes', queryset=PostDislike.available.filter(user=user))
             )
         return queryset
 
