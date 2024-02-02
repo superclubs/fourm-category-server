@@ -44,6 +44,10 @@ class User(UserAuthModelMixin,
     hash = models.CharField(_('Hash'), max_length=10, null=True, blank=True)
     wallet_address = models.CharField(_('Wallet Address'), max_length=255, null=True, blank=True)
 
+    # sdk
+    sdk_id = models.IntegerField(_('Sdk Id'), null=True)
+    sdk_uuid = models.UUIDField(_('Sdk UUID'), null=True, blank=True)
+
     USERNAME_FIELD = 'id'
     REQUIRED_FIELDS = []
 

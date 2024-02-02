@@ -11,7 +11,7 @@ from community.apps.users.models import User
 # Main Section
 @shared_task(name='user_task', bind=True)
 def user_task(self, user_id, username, email, phone, level, grade_title, ring_color, badge_image_url,
-              profile_image_url, banner_image_url, friend_count, status, wallet_address):
+              profile_image_url, banner_image_url, friend_count, status, wallet_address, sdk_id, sdk_uuid):
     print('========== User: user_task ==========')
 
     user = User.objects.filter(id=user_id).first()
@@ -30,6 +30,8 @@ def user_task(self, user_id, username, email, phone, level, grade_title, ring_co
     user.friend_count = friend_count
     user.status = status
     user.wallet_address = wallet_address
+    user.sdk_id = sdk_id
+    user.sdk_uuid = sdk_uuid
 
     user.save()
 

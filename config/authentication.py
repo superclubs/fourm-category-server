@@ -49,6 +49,8 @@ class Authentication(JWTAuthentication):
                 friend_count = user_info.get('friend_count', None)
                 status = user_info.get('status', None)
                 wallet_address = user_info.get('wallet_address', None)
+                sdk_id = user_info.get('sdk_id', None)
+                sdk_uuid = user_info.get('sdk_uuid', None)
 
                 if user:
                     if user.username != username \
@@ -62,10 +64,12 @@ class Authentication(JWTAuthentication):
                         or user.banner_image_url != banner_image_url \
                         or user.friend_count != friend_count \
                         or user.status != status\
-                        or user.wallet_address != wallet_address:
+                        or user.wallet_address != wallet_address \
+                        or user.sdk_id != sdk_id \
+                        or user.sdk_uuid != sdk_uuid:
                         user_task.delay(user.id, username, email, phone, level, grade_title, ring_color,
                                         badge_image_url, profile_image_url, banner_image_url, friend_count, status,
-                                        wallet_address)
+                                        wallet_address, sdk_id, sdk_uuid)
 
                 if not user:
                     user_data = {
@@ -81,7 +85,9 @@ class Authentication(JWTAuthentication):
                         'banner_image_url': banner_image_url,
                         'friend_count': friend_count,
                         'status': status,
-                        'wallet_address': wallet_address
+                        'wallet_address': wallet_address,
+                        'sdk_id' : sdk_id,
+                        'sdk_uuid' : sdk_uuid
                     }
 
                     user = self.user_model.objects.create(**user_data)
