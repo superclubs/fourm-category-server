@@ -28,5 +28,20 @@ class Migration(migrations.Migration):
             name='sdk_uuid',
             field=models.UUIDField(blank=True, null=True, verbose_name='Sdk UUID'),
         ),
+        migrations.AddField(
+            model_name='user',
+            name='birth',
+            field=models.DateField(blank=True, null=True, verbose_name='Birth'),
+        ),
+        migrations.AddField(
+            model_name='user',
+            name='gender',
+            field=models.CharField(blank=True, max_length=20, null=True, verbose_name='Gender'),
+        ),
+        migrations.AddField(
+            model_name='user',
+            name='nation',
+            field=models.CharField(blank=True, max_length=20, null=True, verbose_name='Nation'),
+        ),
         migrations.RunPython(set_sdk_id_from_id),
     ]
