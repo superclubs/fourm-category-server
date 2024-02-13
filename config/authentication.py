@@ -49,6 +49,11 @@ class Authentication(JWTAuthentication):
                 friend_count = user_info.get('friend_count', None)
                 status = user_info.get('status', None)
                 wallet_address = user_info.get('wallet_address', None)
+                gender = user_info.get('gender', None)
+                birth = user_info.get('birth', None)
+                nation = user_info.get('nation', None)
+                sdk_id = user_info.get('sdk_id', None)
+                sdk_uuid = user_info.get('sdk_uuid', None)
 
                 if user:
                     if user.username != username \
@@ -61,11 +66,16 @@ class Authentication(JWTAuthentication):
                         or user.profile_image_url != profile_image_url \
                         or user.banner_image_url != banner_image_url \
                         or user.friend_count != friend_count \
-                        or user.status != status\
-                        or user.wallet_address != wallet_address:
+                        or user.status != status \
+                        or user.wallet_address != wallet_address \
+                        or user.gender != gender \
+                        or user.birth != birth \
+                        or user.nation != nation \
+                        or user.sdk_id != sdk_id \
+                        or user.sdk_uuid != sdk_uuid:
                         user_task.delay(user.id, username, email, phone, level, grade_title, ring_color,
                                         badge_image_url, profile_image_url, banner_image_url, friend_count, status,
-                                        wallet_address)
+                                        wallet_address, gender, birth, nation, sdk_id, sdk_uuid)
 
                 if not user:
                     user_data = {
@@ -81,7 +91,12 @@ class Authentication(JWTAuthentication):
                         'banner_image_url': banner_image_url,
                         'friend_count': friend_count,
                         'status': status,
-                        'wallet_address': wallet_address
+                        'wallet_address': wallet_address,
+                        'gender': gender,
+                        'birth': birth,
+                        'nation': nation1,
+                        'sdk_id': sdk_id,
+                        'sdk_uuid': sdk_uuid
                     }
 
                     user = self.user_model.objects.create(**user_data)
