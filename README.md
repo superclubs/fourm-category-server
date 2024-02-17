@@ -116,4 +116,8 @@ Install openssl and pycurl, and Run Celery worker for this `Project-Name`
     $ celery beat -A community worker --loglevel=INFO
 
 
-
+## Dump and load data 
+'''
+python manage.py dumpdata --output fixtures/fixture.json --indent 2 --exclude auth.permission --exclude authtoken --exclude contenttypes
+python manage.py loaddata fixtures/fixture.json
+'''
