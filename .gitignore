@@ -341,3 +341,6 @@ community/media/
 
 # Celery
 celerybeat-schedule.db
+
+#fixtures
+fixtures
