@@ -94,6 +94,17 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/dev/ref/settings/#locale-paths
 LOCALE_PATHS = [str(ROOT_DIR / "locale")]
 
+LANGUAGES = [
+    ("en", "English"),
+    ("ko", "Korean"),
+    ("ja", "Japanese"),
+    ("zh-hans", 'Simplified Chinese'),  # 간체 중국어
+    ("zh-hant", 'Traditional Chinese'),  # 번체 중국어
+    ("es", "Spanish"),
+    ("ru", "Russian"),
+    ("ar", "Arabic"),
+]
+
 # DATABASES
 # ------------------------------------------------------------------------------
 # https://docs.djangoproject.com/en/dev/ref/settings/#databases
@@ -134,6 +145,7 @@ DJANGO_APPS = [
     "django.contrib.sites",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "modeltranslation",
     "django.contrib.admin",
     "django.forms",
 ]
@@ -619,3 +631,4 @@ if SENTRY_DSN := env("SENTRY_DSN", default=None):
         # environment=env("SENTRY_ENVIRONMENT", default="develop"),
         traces_sample_rate=env.float("SENTRY_TRACES_SAMPLE_RATE", default=1.0),
     )
+
