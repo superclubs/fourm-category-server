@@ -23,7 +23,7 @@ def delete_community_no_titles(apps, schema_editor):
             elif community.id == 169 or community.id == 170:
                 category_data = categories.get('NFT')
             else:
-                community.delete()
+                # community.delete()
                 continue
 
         if category_data:
