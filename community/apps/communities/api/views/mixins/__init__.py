@@ -3,3 +3,4 @@ from community.apps.communities.api.views.mixins.image import CommunityImageView
 from community.apps.communities.api.views.mixins.board_group import CommunityBoardGroupViewMixin
 from community.apps.communities.api.views.mixins.dashboard import CommunityDashboardViewMixin
 from community.apps.communities.api.views.mixins.post import CommunityPostViewMixin
+from community.apps.communities.api.views.mixins.sync import CommunitySyncViewMixin
