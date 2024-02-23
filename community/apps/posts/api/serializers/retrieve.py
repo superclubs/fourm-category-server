@@ -31,6 +31,7 @@ class PostRetrieveSerializer(ModelSerializer):
     prev_post = serializers.SerializerMethodField()
     next_post = serializers.SerializerMethodField()
     communities = serializers.SerializerMethodField()
+    user_like_type = serializers.SerializerMethodField()
 
     class Meta:
         model = Post
@@ -53,7 +54,7 @@ class PostRetrieveSerializer(ModelSerializer):
             'is_reserved', 'is_boomed',
 
             # Serializer
-            'is_liked', 'is_disliked', 'is_friend', 'is_bookmarked', 'is_reported'
+            'is_liked', 'is_disliked', 'is_friend', 'is_bookmarked', 'is_reported', 'user_like_type'
         )
 
     def get_prev_post(self, obj):
@@ -163,3 +164,15 @@ class PostRetrieveSerializer(ModelSerializer):
         if not other:
             return False
         return True
+
+    def get_user_like_type(self, obj):
+        request = self.context.get('request', None)
+        if not request:
+            return None
+        user = request.user
+        if not user.id:
+            return None
+        post_like = obj.post_likes.filter(user=user, is_active=True).first()
+        if not post_like:
+            return None
+        return post_like.type
