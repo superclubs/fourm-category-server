@@ -52,6 +52,7 @@ class PostLikeResponseSerializer(ModelSerializer):
     is_liked = serializers.SerializerMethodField()
     is_disliked = serializers.SerializerMethodField()
     liked_users = serializers.SerializerMethodField()
+    user_like_type = serializers.SerializerMethodField()
 
     class Meta:
         model = Post
@@ -85,3 +86,15 @@ class PostLikeResponseSerializer(ModelSerializer):
     def get_liked_users(self, obj):
         post_likes = obj.post_likes.filter(is_active=True)[:3]
         return PostLikeSerializer(instance=post_likes, many=True, context={'request': self.context['request']}).data
+
+    def get_user_like_type(self, obj):
+        request = self.context.get('request', None)
+        if not request:
+            return None
+        user = request.user
+        if not user.id:
+            return None
+        post_like = obj.post_likes.filter(user=user, is_active=True).first()
+        if not post_like:
+            return None
+        return post_like.type
