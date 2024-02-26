@@ -12,7 +12,7 @@ from community.bases.api.viewsets import GenericViewSet
 
 # Mixins
 from community.apps.communities.api.views.mixins import CommunityImageViewMixin, CommunityBoardGroupViewMixin, \
-    CommunityDashboardViewMixin, CommunityBoardViewMixin
+    CommunityDashboardViewMixin, CommunityBoardViewMixin, CommunitySyncViewMixin
 
 # Filters
 from community.apps.communities.api.views.filters import CommunitiesFilter, CommunityFilter
@@ -70,6 +70,7 @@ class CommunityViewSet(mixins.RetrieveModelMixin,
 
 
 class CommunitiesViewSet(mixins.ListModelMixin,
+                         CommunitySyncViewMixin,
                          GenericViewSet):
     serializers = {
         'default': CommunityListSerializer,

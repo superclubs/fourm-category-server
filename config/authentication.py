@@ -94,7 +94,7 @@ class Authentication(JWTAuthentication):
                         'wallet_address': wallet_address,
                         'gender': gender,
                         'birth': birth,
-                        'nation': nation1,
+                        'nation': nation,
                         'sdk_id': sdk_id,
                         'sdk_uuid': sdk_uuid
                     }
