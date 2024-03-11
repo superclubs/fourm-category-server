@@ -12,20 +12,24 @@ from community.apps.users.models import User
 class UserSerializer(ModelSerializer):
     class Meta:
         model = User
-        fields = ('id', 'profile_image_url', 'banner_image_url', 'badge_image_url', 'username', 'status')
+        fields = (
+            'id', 'profile_image_url', 'card_profile_image_url', 'banner_image_url', 'badge_image_url', 'username',
+            'status')
 
 
 class UserMeSerializer(ModelSerializer):
     class Meta:
         model = User
-        fields = ('id', 'profile_image_url', 'badge_image_url', 'username', 'post_count', 'comment_count',
+        fields = ('id', 'profile_image_url', 'card_profile_image_url', 'badge_image_url', 'username', 'post_count',
+                  'comment_count',
                   'status')
 
 
 class UserProfileSerializer(ModelSerializer):
     class Meta:
         model = User
-        fields = ('id', 'profile_image_url', 'badge_image_url', 'username', 'ring_color', 'hash')
+        fields = (
+            'id', 'profile_image_url', 'card_profile_image_url', 'badge_image_url', 'username', 'ring_color', 'hash')
 
 
 class UserPasswordSerializer(ModelSerializer):
@@ -44,7 +48,7 @@ class UserSyncSerializer(ModelSerializer):
             'id', 'username', 'email', 'level', 'ring_color', 'status', 'wallet_address', 'grade_title',
 
             # Image
-            'badge_image_url', 'profile_image_url', 'banner_image_url',
+            'badge_image_url', 'profile_image_url', 'card_profile_image_url', 'banner_image_url',
 
             # Count
             'friend_count')

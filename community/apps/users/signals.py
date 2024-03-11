@@ -31,8 +31,8 @@ def sync_user(sender, instance, **kwargs):
     else:
         _instance = User.objects.filter(id=instance.id).first()
         if _instance:
-            for field in ['username', 'badge_image_url', 'banner_image_url', 'profile_image_url', 'status',
-                          'ring_color']:
+            for field in ('username', 'badge_image_url', 'banner_image_url', 'profile_image_url',
+                          'card_profile_image_url', 'status', 'ring_color'):
                 _value = getattr(_instance, field)
                 value = getattr(instance, field)
 
