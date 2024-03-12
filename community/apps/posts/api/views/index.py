@@ -192,7 +192,7 @@ class PostViewSet(mixins.CreateModelMixin,
                                              ))
     def destroy(self, request, *args, **kwargs):
         instance = self.get_object()
-        instance.delete(request=self.request)
+        instance.soft_delete(request=self.request)
         return Response(
             status=status.HTTP_204_NO_CONTENT,
             code=204,
@@ -209,7 +209,7 @@ class PostViewSet(mixins.CreateModelMixin,
         post = self.get_object()
         if not post.is_temporary:
             raise ParseError('임시글이 아닙니다.')
-        post.delete()
+        post.soft_delete()
         return Response(
             status=status.HTTP_204_NO_CONTENT,
             code=204,

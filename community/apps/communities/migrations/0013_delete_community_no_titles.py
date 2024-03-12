@@ -7,8 +7,9 @@ from community.apps.communities.constants.categories import categories
 
 
 # Main Section
-def update_community_titles(apps, schema_editor):
+def delete_community_no_titles(apps, schema_editor):
     Community = apps.get_model('communities', 'Community')
+
     total_communities = Community.objects.count()  # 전체 커뮤니티 수
     updated_communities = 0  # 업데이트된 커뮤니티 수
 
@@ -39,17 +40,17 @@ def update_community_titles(apps, schema_editor):
         print(f'Updated {updated_communities}/{total_communities} communities ({progress_percentage:.2f}%)')
 
 
-def reverse_update_community_titles(apps, schema_editor):
+def reverse_delete_community_no_titles(apps, schema_editor):
     pass
 
 class Migration(migrations.Migration):
     dependencies = [
-        ('communities', '0011_auto_20240218_0501'),
+        ('communities', '0012_update_community_titles'),
     ]
 
     operations = [
         migrations.RunPython(
-            code=update_community_titles,
-            reverse_code=reverse_update_community_titles,
+            code=delete_community_no_titles,
+            reverse_code=reverse_delete_community_no_titles,
         ),
     ]

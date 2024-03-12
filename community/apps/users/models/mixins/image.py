@@ -16,6 +16,7 @@ def default_profile_image_path():
 # Main Section
 class UserImageModelMixin(models.Model):
     profile_image_url = models.URLField(_('Profile Image URL'), default=default_profile_image_path)
+    card_profile_image_url = models.URLField(_('Card Profile Image URL'), null=True, blank=True)
     banner_image_url = models.URLField(_('Banner Image URL'), null=True, blank=True)
 
     class Meta:

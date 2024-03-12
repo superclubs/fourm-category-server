@@ -21,7 +21,7 @@ class Authentication(JWTAuthentication):
         try:
             user_id = validated_token[api_settings.USER_ID_CLAIM]
         except KeyError:
-            raise InvalidToken(_("Token contained no recognizable user identification"))
+            raise InvalidToken(_('Token contained no recognizable user identification'))
         try:
 
             user = self.user_model.objects.filter(**{api_settings.USER_ID_FIELD: user_id}).first()
@@ -31,7 +31,7 @@ class Authentication(JWTAuthentication):
                 'Content-Type': 'application/json',
                 'Authorization': 'Bearer ' + str(validated_token)
             }
-            response = requests.request("GET", url, headers=headers)
+            response = requests.request('GET', url, headers=headers)
             data = response.json()
             print('data : ', data)
 
@@ -54,6 +54,7 @@ class Authentication(JWTAuthentication):
                 nation = user_info.get('nation', None)
                 sdk_id = user_info.get('sdk_id', None)
                 sdk_uuid = user_info.get('sdk_uuid', None)
+                card_profile_image_url = user_info.get('card_profile_image_url', None)
 
                 if user:
                     if user.username != username \
@@ -72,10 +73,11 @@ class Authentication(JWTAuthentication):
                         or user.birth != birth \
                         or user.nation != nation \
                         or user.sdk_id != sdk_id \
-                        or user.sdk_uuid != sdk_uuid:
+                        or user.sdk_uuid != sdk_uuid \
+                        or user.card_profile_image_url != card_profile_image_url:
                         user_task.delay(user.id, username, email, phone, level, grade_title, ring_color,
                                         badge_image_url, profile_image_url, banner_image_url, friend_count, status,
-                                        wallet_address, gender, birth, nation, sdk_id, sdk_uuid)
+                                        wallet_address, gender, birth, nation, sdk_id, sdk_uuid, card_profile_image_url)
 
                 if not user:
                     user_data = {
@@ -96,14 +98,15 @@ class Authentication(JWTAuthentication):
                         'birth': birth,
                         'nation': nation,
                         'sdk_id': sdk_id,
-                        'sdk_uuid': sdk_uuid
+                        'sdk_uuid': sdk_uuid,
+                        'card_profile_image_url': card_profile_image_url
                     }
 
                     user = self.user_model.objects.create(**user_data)
 
         except self.user_model.DoesNotExist:
-            raise AuthenticationFailed(_("User not found"), code="user_not_found")
+            raise AuthenticationFailed(_('User not found'), code='user_not_found')
 
         if user and not user.is_active:
-            raise AuthenticationFailed(_("User is inactive"), code="user_inactive")
+            raise AuthenticationFailed(_('User is inactive'), code='user_inactive')
         return user
