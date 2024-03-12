@@ -15,16 +15,6 @@ def update_community_titles(apps, schema_editor):
     for community in Community.objects.all():
         updated_communities += 1
         category_data = categories.get(community.title)
-
-        if not category_data:
-            if community.id == 6:
-                category_data = categories.get('음악')
-            elif community.id == 169 or community.id == 170:
-                category_data = categories.get('NFT')
-            else:
-                # community.delete()
-                continue
-
         if category_data:
             for lang_code, lang_name in settings.LANGUAGES:
                 lang_code_with_underscore = lang_code.replace('-', '_')
@@ -42,9 +32,10 @@ def update_community_titles(apps, schema_editor):
 def reverse_update_community_titles(apps, schema_editor):
     pass
 
+
 class Migration(migrations.Migration):
     dependencies = [
-        ('communities', '0011_auto_20240218_0501'),
+        ('communities', '0010_auto_20240218_0515'),
     ]
 
     operations = [
