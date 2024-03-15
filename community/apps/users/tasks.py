@@ -12,7 +12,7 @@ from community.apps.users.models import User
 @shared_task(name='user_task', bind=True)
 def user_task(self, user_id, username, email, phone, level, grade_title, ring_color, badge_image_url,
               profile_image_url, banner_image_url, friend_count, status, wallet_address, gender, birth, nation, sdk_id,
-              sdk_uuid):
+              sdk_uuid, card_profile_image_url):
     print('========== User: user_task ==========')
 
     user = User.objects.filter(id=user_id).first()
@@ -36,6 +36,7 @@ def user_task(self, user_id, username, email, phone, level, grade_title, ring_co
     user.nation = nation
     user.sdk_id = sdk_id
     user.sdk_uuid = sdk_uuid
+    user.card_profile_image_url = card_profile_image_url
 
     user.save()
 
