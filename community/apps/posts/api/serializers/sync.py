@@ -81,7 +81,7 @@ class PostSyncSerializer(ModelSerializer):
 
             # Boolean
             'is_notice', 'is_event', 'is_temporary', 'is_secret',
-            'is_search', 'is_share', 'is_comment', 'is_reserved', 'is_boomed',
+            'is_search', 'is_share', 'is_comment', 'is_reserved', 'is_boomed', 'is_active', 'is_deleted',
 
             # Serializer
             'liked_users_data', 'commented_users_data',
