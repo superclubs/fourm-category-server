@@ -10,6 +10,13 @@ from community.bases.admin import Admin
 from django.contrib import admin
 
 
+# Function Section
+def delete_selected_softly(modeladmin, request, queryset):
+    posts = queryset.all()
+    for post in posts:
+        post.soft_delete()
+
+
 @admin.register(Post)
 class PostAdmin(Admin):
     list_display = ('thumbnail_media_tag', 'user', 'title', 'community',
@@ -29,10 +36,10 @@ class PostAdmin(Admin):
     )
 
     readonly_fields = ('achieved_20_points_at', 'thumbnail_media_tag', 'thumbnail_media_url',
-                       'like_count', 'dislike_count', 'comment_count', 'bookmark_count', 'visit_count', 'reported_count',
+                       'like_count', 'dislike_count', 'comment_count', 'bookmark_count', 'visit_count',
+                       'reported_count',
                        'share_count', 'web_url')
     summernote_fields = ('content',)
-    # inline_actions = ['create_post_like', 'create_post_dislike']
 
     def get_readonly_fields(self, request, obj=None):
         return self.readonly_fields
@@ -43,16 +50,13 @@ class PostAdmin(Admin):
 
     thumbnail_media_tag.short_description = '썸네일'
 
-    # 어드민 사이트에서 유저 필드 넣는 함수
     def save_model(self, request, obj, form, change):
         if not obj.user:
             obj.user = request.user
         super(PostAdmin, self).save_model(request, obj, form, change)
 
-    # def create_post_like(self, request, obj, parent_obj=None):
-    #     obj.create_post_like()
-    #     messages.success(request, '포스트 좋아요가 생성됐습니다.')
-    #
-    # def create_post_dislike(self, request, obj, parent_obj=None):
-    #     obj.create_post_dislike()
-    #     messages.success(request, '포스트 싫어요가 생성됐습니다.')
+    def get_actions(self, request):
+        actions = super().get_actions(request)
+        if 'delete_selected' in actions:
+            actions['delete_selected'] = (delete_selected_softly, 'delete_selected', '소프트 삭제')
+        return actions

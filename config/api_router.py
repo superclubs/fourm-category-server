@@ -20,6 +20,9 @@ from community.apps.likes.api.views import CommentLikesViewSet, PostLikesViewSet
 from community.apps.boards.api.views import CommunityBoardsViewSet, BoardViewSet, BoardAdminViewSet, \
     CommunityBoardsAdminViewSet
 
+# Ban
+from community.apps.bans.api.views import BanViewSet
+
 # Post
 from community.apps.posts.api.views import PostViewSet, PostsViewSet, BoardPostsViewSet, CommunityPostsViewSet
 
@@ -48,6 +51,9 @@ router.register('comment', CommentViewSet)
 # Friend Section
 router.register('friend-request', FriendRequestViewSet)
 router.register('friend', FriendViewSet)
+
+# Ban Section
+router.register('ban', BanViewSet)
 
 # Board Admin Section
 router.register('admin/board', BoardAdminViewSet)

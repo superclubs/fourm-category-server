@@ -202,6 +202,7 @@ THIRD_PARTY_APPS = [
 
 LOCAL_APPS = [
     "community.apps.badges.apps.BadgesConfig",
+    "community.apps.bans.apps.BansConfig",
     "community.apps.boards.apps.BoardsConfig",
     "community.apps.bookmarks.apps.BookmarksConfig",
     "community.apps.communities.apps.CommunitiesConfig",

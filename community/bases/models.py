@@ -60,6 +60,9 @@ class Model(UpdateMixin, TimeStampedModel, models.Model):
     def time(self):
         return timeago.format(self.created, timezone.now(), "ko")
 
+    def __str__(self):
+        return f'{self.__class__.__name__}({self.id})'
+
     def __init__(self, *args, **kwargs):
         super(Model, self).__init__(*args, **kwargs)
         self._meta.get_field("created").verbose_name = _("Created")
