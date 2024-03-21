@@ -13,7 +13,7 @@ from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 
 description = _(
     """
-커뮤니티 백엔드 서버 API 문서입니다.
+클럽 카테고리 백엔드 서버 API 문서입니다.
 
 # Response Data
 <br/>

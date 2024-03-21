@@ -22,6 +22,7 @@ from community.bases.api.serializers import ModelSerializer
 class PostRetrieveSerializer(ModelSerializer):
     user = serializers.JSONField(source='user_data')
     medias = serializers.JSONField(source='medias_data')
+    communities = serializers.SerializerMethodField()
     tags = serializers.SerializerMethodField()
     is_bookmarked = serializers.SerializerMethodField()
     is_liked = serializers.SerializerMethodField()
