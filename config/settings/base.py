@@ -202,6 +202,7 @@ THIRD_PARTY_APPS = [
 
 LOCAL_APPS = [
     "community.apps.badges.apps.BadgesConfig",
+    "community.apps.bans.apps.BansConfig",
     "community.apps.boards.apps.BoardsConfig",
     "community.apps.bookmarks.apps.BookmarksConfig",
     "community.apps.communities.apps.CommunitiesConfig",
@@ -631,4 +632,3 @@ if SENTRY_DSN := env("SENTRY_DSN", default=None):
         # environment=env("SENTRY_ENVIRONMENT", default="develop"),
         traces_sample_rate=env.float("SENTRY_TRACES_SAMPLE_RATE", default=1.0),
     )
-
