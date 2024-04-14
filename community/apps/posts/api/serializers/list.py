@@ -179,5 +179,5 @@ class PostListSerializer(ModelSerializer):
             post_like = obj.user_active_likes[:1]
             if not post_like:
                 return None
-            return post_like.type
+            return post_like[0].type
         return None
