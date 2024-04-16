@@ -36,8 +36,8 @@ class PostActiveManager(PostMainManager):
             )
 
             # 차단되거나 차단한 유저의 글 제외
-            user_bans = UserBan.objects.filter(Q(sender_id=user.id) | Q(receiver_id=user.id)).values_list('sender_id',
-                                                                                                          'receiver_id')
+            user_bans = UserBan.available.filter(Q(sender_id=user.id) | Q(receiver_id=user.id)).values_list('sender_id',
+                                                                                                            'receiver_id')
             conditions_ban = ~Q(user_id__in=[x for x in set(chain.from_iterable(user_bans)) if x != user.id])
 
             return super().get_queryset().filter(
