@@ -9,11 +9,30 @@ from community.apps.users.models import User
 
 
 # Main Section
-@shared_task(name='user_task', bind=True)
-def user_task(self, user_id, username, email, phone, level, grade_title, ring_color, badge_image_url,
-              profile_image_url, banner_image_url, friend_count, status, wallet_address, gender, birth, nation, sdk_id,
-              sdk_uuid, card_profile_image_url):
-    print('========== User: user_task ==========')
+@shared_task(name="user_task", bind=True)
+def user_task(
+    self,
+    user_id,
+    username,
+    email,
+    phone,
+    level,
+    grade_title,
+    ring_color,
+    badge_image_url,
+    profile_image_url,
+    banner_image_url,
+    friend_count,
+    status,
+    wallet_address,
+    gender,
+    birth,
+    nation,
+    sdk_id,
+    sdk_uuid,
+    card_profile_image_url,
+):
+    print("========== User: user_task ==========")
 
     user = User.objects.filter(id=user_id).first()
     if not user:
@@ -41,9 +60,9 @@ def user_task(self, user_id, username, email, phone, level, grade_title, ring_co
     user.save()
 
 
-@shared_task(name='sync_user_task', bind=True)
+@shared_task(name="sync_user_task", bind=True)
 def sync_user_task(self, user_id):
-    print('========== User: sync_user_task ==========')
+    print("========== User: sync_user_task ==========")
 
     user = User.objects.filter(id=user_id).first()
     if not user:

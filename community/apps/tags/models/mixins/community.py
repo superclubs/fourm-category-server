@@ -5,7 +5,7 @@ from django.utils.translation import gettext_lazy as _
 
 # Main Section
 class TagCommunityModelMixin(models.Model):
-    community_count = models.IntegerField(_('Community Count'), default=0)
+    community_count = models.IntegerField(_("Community Count"), default=0)
 
     class Meta:
         abstract = True
