@@ -1,11 +1,10 @@
+from django.apps import apps
+from django.contrib import admin
 from django.core.exceptions import FieldDoesNotExist
 from django.db import models
 from django.forms import Textarea
 from django.http import HttpRequest
 from django.utils.translation import ugettext_lazy as _
-from django.apps import apps
-from django.contrib import admin
-
 from django_admin_relation_links import AdminChangeLinksMixin
 from django_reverse_admin import ReverseModelAdmin
 from django_summernote.admin import SummernoteModelAdmin
@@ -75,7 +74,7 @@ class Admin(
     AdminChangeLinksMixin,
     RelatedFieldAdminMixin,
     ReverseModelAdmin,
-    SummernoteModelAdmin
+    SummernoteModelAdmin,
 ):
     list_filter = (("created", DateRangeFilter),)
     list_per_page = 10

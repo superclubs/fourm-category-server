@@ -5,7 +5,7 @@ from django.utils.translation import gettext_lazy as _
 
 # Main Section
 class CommentPointModelMixin(models.Model):
-    point = models.IntegerField(_('Point'), default=0)
+    point = models.IntegerField(_("Point"), default=0)
 
     class Meta:
         abstract = True

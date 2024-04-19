@@ -5,7 +5,7 @@ from django.utils.translation import gettext_lazy as _
 
 # Main Section
 class UserCommentModelMixin(models.Model):
-    comment_count = models.IntegerField(_('Comment Count'), default=0)
+    comment_count = models.IntegerField(_("Comment Count"), default=0)
 
     class Meta:
         abstract = True

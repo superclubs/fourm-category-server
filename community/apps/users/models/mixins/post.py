@@ -5,7 +5,7 @@ from django.utils.translation import gettext_lazy as _
 
 # Main Section
 class UserPostModelMixin(models.Model):
-    post_count = models.IntegerField(_('Post Count'), default=0)
+    post_count = models.IntegerField(_("Post Count"), default=0)
 
     class Meta:
         abstract = True

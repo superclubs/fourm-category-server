@@ -1,1 +1,5 @@
-from community.apps.users.api.views.index import UserViewSet, UsersViewSet, UserAdminViewSet
+from community.apps.users.api.views.index import (
+    UserAdminViewSet,
+    UsersViewSet,
+    UserViewSet,
+)

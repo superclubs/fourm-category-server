@@ -1,44 +1,57 @@
 # DRF
 from rest_framework import serializers
 
-# Bases
-from community.bases.api.serializers import ModelSerializer
+# Serializers
+from community.apps.badges.api.serializers import BadgeListSerializer
+from community.apps.comments.models import Comment
 
 # Models
 from community.apps.communities.models import Community
 from community.apps.posts.models import Post
-from community.apps.comments.models import Comment
 
-# Serializers
-from community.apps.badges.api.serializers import BadgeListSerializer
+# Bases
+from community.bases.api.serializers import ModelSerializer
 
 
 # Main Section
 class CommunitySerializer(ModelSerializer):
-    master = serializers.JSONField(source='user_data')
+    master = serializers.JSONField(source="user_data")
     badges = serializers.SerializerMethodField()
 
     class Meta:
         model = Community
-        fields = ('id', 'banner_image_url', 'badges', 'master', 'title', 'description', 'level',
-                  'rising_rank', 'rank', 'live_rank', 'live_rank_change', 'rising_rank', 'rising_rank_change',
-                  'post_count')
+        fields = (
+            "id",
+            "banner_image_url",
+            "badges",
+            "master",
+            "title",
+            "description",
+            "level",
+            "rising_rank",
+            "rank",
+            "live_rank",
+            "live_rank_change",
+            "rising_rank",
+            "rising_rank_change",
+            "post_count",
+        )
 
     def get_badges(self, obj):
-        instance = obj.badges.filter(is_active=True).order_by('id')
+        instance = obj.badges.filter(is_active=True).order_by("id")
         return BadgeListSerializer(instance=instance, many=True).data
 
 
 class CommunityProfileImageSerializer(ModelSerializer):
     class Meta:
         model = Community
-        fields = ('id',)
+        fields = ("id",)
 
 
 class CommunityBannerImageSerializer(ModelSerializer):
     class Meta:
         model = Community
-        fields = ('id', 'banner_image_url')
+        fields = ("id", "banner_image_url")
 
 
 class CommunityPostAdminSerializer(ModelSerializer):
@@ -51,7 +64,7 @@ class CommunityPostAdminSerializer(ModelSerializer):
 
     class Meta:
         model = Community
-        fields = ('service_type', 'club_id', 'forum_id', 'club_community_id', 'forum_community_id', 'post_id')
+        fields = ("service_type", "club_id", "forum_id", "club_community_id", "forum_community_id", "post_id")
 
 
 class CommunityMediaAdminSerializer(ModelSerializer):
@@ -60,7 +73,7 @@ class CommunityMediaAdminSerializer(ModelSerializer):
 
     class Meta:
         model = Community
-        fields = ('url', 'web_url')
+        fields = ("url", "web_url")
 
 
 # TODO: 집계 로직 개선 후 변경
@@ -70,7 +83,7 @@ class CommunityDashboardSerializer(ModelSerializer):
 
     class Meta:
         model = Community
-        fields = ('title', 'post_count', 'comment_count')
+        fields = ("title", "post_count", "comment_count")
 
     def get_posts(self, obj):
         posts = Post.objects.filter(is_active=True, is_temporary=False)
