@@ -8,7 +8,7 @@ from community.apps.reports.models import Report
 
 # Main Section
 class ProfileReportModelMixin(models.Model):
-    reported_count = models.IntegerField(_('Reported Count'), default=0)
+    reported_count = models.IntegerField(_("Reported Count"), default=0)
 
     class Meta:
         abstract = True

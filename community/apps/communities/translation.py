@@ -1,12 +1,12 @@
 # Third Party
-from modeltranslation.translator import translator, TranslationOptions
+from modeltranslation.translator import TranslationOptions, translator
 
 # App
 from community.apps.communities.models import Community
 
 
 class CommunityTranslationOptions(TranslationOptions):
-    fields = ('title',)
+    fields = ("title",)
 
 
 translator.register(Community, CommunityTranslationOptions)

@@ -1,7 +1,7 @@
+from django.core.paginator import InvalidPage
 from django.http import JsonResponse
 from rest_framework import status
 from rest_framework.pagination import PageNumberPagination
-from django.core.paginator import InvalidPage
 
 
 class SmallResultsSetPagination(PageNumberPagination):
@@ -23,7 +23,7 @@ class StandardResultsSetPagination(PageNumberPagination):
         page_number = self.get_page_number(request, paginator)
         try:
             self.page = paginator.page(page_number)
-        except InvalidPage as exc:
+        except InvalidPage:
             return []
         if paginator.num_pages > 1 and self.template is not None:
             self.display_page_controls = True
@@ -40,13 +40,10 @@ class StandardResultsSetPagination(PageNumberPagination):
             next = self.get_next_link()
             previous = self.get_previous_link()
 
-        return JsonResponse({'code': 200,
-                             'message': 'ok',
-                             'count': count,
-                             'next': next,
-                             'previous': previous,
-                             'data': data},
-                            status=status.HTTP_200_OK)
+        return JsonResponse(
+            {"code": 200, "message": "ok", "count": count, "next": next, "previous": previous, "data": data},
+            status=status.HTTP_200_OK,
+        )
 
 
 class LargeResultsSetPagination(PageNumberPagination):

@@ -7,7 +7,7 @@ from community.apps.rankings.models import RankingGroup
 
 # Main Section
 class Command(BaseCommand):
-    help = 'Create Ranking Group Community Hourly'
+    help = "Create Ranking Group Community Hourly"
 
     def handle(self, *args, **kwargs):
-        RankingGroup.objects.create(model_type='COMMUNITY', ranking_type='LIVE')
+        RankingGroup.objects.create(model_type="COMMUNITY", ranking_type="LIVE")
