@@ -1,12 +1,13 @@
 # Django
 from celery import shared_task
 
+from community.apps.badges.models import Badge
+
 # Serializer
 from community.apps.users.api.serializers import UserProfileSerializer
 
 # Model
 from community.apps.users.models import User
-from community.apps.badges.models import Badge
 
 
 # Main Section

@@ -3,10 +3,10 @@ from rest_framework import serializers
 
 # Models
 from community.apps.comments.models import Comment
+from community.apps.users.api.serializers import UserSerializer
 
 # Serializers
 from community.bases.api.serializers import ModelSerializer
-from community.apps.users.api.serializers import UserSerializer
 
 
 # Main Section

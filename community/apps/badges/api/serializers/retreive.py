@@ -1,8 +1,7 @@
 # Serializers
-from community.bases.api.serializers import ModelSerializer
-
 # Models
 from community.apps.badges.models import Badge
+from community.bases.api.serializers import ModelSerializer
 
 
 # Main Section

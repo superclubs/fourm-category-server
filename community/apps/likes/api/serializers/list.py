@@ -1,9 +1,6 @@
 # DRF
 from rest_framework import serializers
 
-# Serializers
-from community.apps.users.api.serializers import UserSerializer
-
 # Models
 from community.apps.likes.models import (
     CommentDislike,
@@ -11,6 +8,9 @@ from community.apps.likes.models import (
     PostDislike,
     PostLike,
 )
+
+# Serializers
+from community.apps.users.api.serializers import UserSerializer
 
 # Bases
 from community.bases.api.serializers import ModelSerializer

@@ -11,15 +11,15 @@ from rest_framework.decorators import action
 from rest_framework.exceptions import ParseError
 from rest_framework.filters import SearchFilter
 
-# Mixins
-from community.apps.users.api.views.mixins import UserSyncViewMixin
-
 # Serializers
 from community.apps.users.api.serializers import (
     UserMeSerializer,
     UserPasswordSerializer,
     UserSerializer,
 )
+
+# Mixins
+from community.apps.users.api.views.mixins import UserSyncViewMixin
 
 # Models
 from community.apps.users.models import User
@@ -49,8 +49,7 @@ class UsersViewSet(mixins.ListModelMixin, GenericViewSet):
         return super().list(self, request, *args, **kwargs)
 
 
-class UserViewSet(UserSyncViewMixin,
-                  GenericViewSet):
+class UserViewSet(UserSyncViewMixin, GenericViewSet):
     serializers = {
         "default": UserSerializer,
     }

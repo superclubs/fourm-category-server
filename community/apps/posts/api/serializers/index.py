@@ -3,10 +3,10 @@ from rest_framework import serializers
 
 # Serializers
 from community.apps.likes.api.serializers import PostLikeSerializer
-from community.apps.users.api.serializers import UserSerializer
 
 # Models
 from community.apps.posts.models import Post
+from community.apps.users.api.serializers import UserSerializer
 
 # Bases
 from community.bases.api.serializers import ModelSerializer

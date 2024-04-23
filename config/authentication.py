@@ -12,11 +12,11 @@ from rest_framework_simplejwt.authentication import JWTAuthentication
 from rest_framework_simplejwt.exceptions import AuthenticationFailed, InvalidToken
 from rest_framework_simplejwt.settings import api_settings
 
-# Tasks
-from community.apps.users.tasks import user_task
-
 # Models
 from community.apps.badges.models import Badge
+
+# Tasks
+from community.apps.users.tasks import user_task
 
 
 # Main section

@@ -1,20 +1,19 @@
 # DRF
+# Third Party
+from drf_yasg.utils import swagger_auto_schema
 from rest_framework import status
 from rest_framework.decorators import action
 from rest_framework.exceptions import ParseError
-
-# Third Party
-from drf_yasg.utils import swagger_auto_schema
-
-# Utils
-from community.utils.decorators import swagger_decorator
-from community.utils.api.response import Response
 
 # Serializers
 from community.apps.users.api.serializers import UserSyncSerializer
 
 # Models
 from community.apps.users.models import User
+from community.utils.api.response import Response
+
+# Utils
+from community.utils.decorators import swagger_decorator
 
 
 # Main Section

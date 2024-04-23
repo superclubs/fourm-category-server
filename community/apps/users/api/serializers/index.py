@@ -3,10 +3,10 @@ from rest_framework import serializers
 
 # Serializers
 from community.apps.badges.api.serializers import BadgeRetrieveSerializer
+from community.apps.badges.models import Badge
 
 # Models
 from community.apps.users.models import User
-from community.apps.badges.models import Badge
 
 # Bases
 from community.bases.api.serializers import ModelSerializer
@@ -26,7 +26,7 @@ class UserSerializer(ModelSerializer):
             "badge_image_url",
             "username",
             "status",
-            "badge"
+            "badge",
         )
 
 
@@ -92,7 +92,7 @@ class UserSyncSerializer(ModelSerializer):
         )
 
     def update(self, instance, validated_data):
-        if badge_title_en := validated_data.pop('badge_title_en', None):
-            validated_data['badge'] = Badge.available.filter(title_en=badge_title_en, model_type="COMMON").first()
+        if badge_title_en := validated_data.pop("badge_title_en", None):
+            validated_data["badge"] = Badge.available.filter(title_en=badge_title_en, model_type="COMMON").first()
         instance.update(**validated_data)
         return instance

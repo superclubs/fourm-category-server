@@ -11,10 +11,10 @@ from community.apps.communities.models import Community
 # Serializers
 from community.apps.post_tags.api.serializers import PostTagListSerializer
 from community.apps.posts.api.serializers import PostContentSummarySerializer
-from community.apps.users.api.serializers import UserSerializer
 
 # Models
 from community.apps.posts.models import Post
+from community.apps.users.api.serializers import UserSerializer
 
 # API
 from community.bases.api.serializers import ModelSerializer

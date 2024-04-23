@@ -4,11 +4,11 @@ from rest_framework import serializers
 # Serializers
 from community.apps.badges.api.serializers import BadgeListSerializer
 from community.apps.comments.models import Comment
-from community.apps.users.api.serializers import UserSerializer
 
 # Models
 from community.apps.communities.models import Community
 from community.apps.posts.models import Post
+from community.apps.users.api.serializers import UserSerializer
 
 # Bases
 from community.bases.api.serializers import ModelSerializer
