@@ -63,5 +63,9 @@ class Gateway(BaseGateway):
 
         return self.request(method="DELETE", path=path, json=body)
 
+    def get_all_users(self):
+        path = f"users/sync"
+        return self.request(method="GET", path=path)
+
 
 gateway = Gateway()

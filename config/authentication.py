@@ -12,6 +12,9 @@ from rest_framework_simplejwt.authentication import JWTAuthentication
 from rest_framework_simplejwt.exceptions import AuthenticationFailed, InvalidToken
 from rest_framework_simplejwt.settings import api_settings
 
+# Models
+from community.apps.badges.models import Badge
+
 # Tasks
 from community.apps.users.tasks import user_task
 
@@ -53,8 +56,10 @@ class Authentication(JWTAuthentication):
                 sdk_id = user_info.get("sdk_id", None)
                 sdk_uuid = user_info.get("sdk_uuid", None)
                 card_profile_image_url = user_info.get("card_profile_image_url", None)
+                badge_title_en = user_info.get("badge_title_en", None)
 
                 if user:
+                    user_badge_title_en = user.badge.title_en if user.badge else None
                     if (
                         user.username != username
                         or user.phone != phone
@@ -74,6 +79,7 @@ class Authentication(JWTAuthentication):
                         or user.sdk_id != sdk_id
                         or user.sdk_uuid != sdk_uuid
                         or user.card_profile_image_url != card_profile_image_url
+                        or badge_title_en != user_badge_title_en
                     ):
                         user_task.delay(
                             user.id,
@@ -95,6 +101,7 @@ class Authentication(JWTAuthentication):
                             sdk_id,
                             sdk_uuid,
                             card_profile_image_url,
+                            badge_title_en,
                         )
 
                 if not user:
@@ -118,6 +125,7 @@ class Authentication(JWTAuthentication):
                         "sdk_id": sdk_id,
                         "sdk_uuid": sdk_uuid,
                         "card_profile_image_url": card_profile_image_url,
+                        "badge": Badge.objects.filter(title_en=badge_title_en, model_type="COMMON").first(),
                     }
 
                     user = self.user_model.objects.create(**user_data)

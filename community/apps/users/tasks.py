@@ -1,6 +1,8 @@
 # Django
 from celery import shared_task
 
+from community.apps.badges.models import Badge
+
 # Serializer
 from community.apps.users.api.serializers import UserProfileSerializer
 
@@ -31,6 +33,7 @@ def user_task(
     sdk_id,
     sdk_uuid,
     card_profile_image_url,
+    badge_title_en,
 ):
     print("========== User: user_task ==========")
 
@@ -56,6 +59,7 @@ def user_task(
     user.sdk_id = sdk_id
     user.sdk_uuid = sdk_uuid
     user.card_profile_image_url = card_profile_image_url
+    user.badge = Badge.available.filter(title_en=badge_title_en, model_type="COMMON").first()
 
     user.save()
 
