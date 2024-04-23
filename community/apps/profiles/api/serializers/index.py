@@ -1,16 +1,14 @@
-# DRF
-from rest_framework import serializers
-
 # Models
 from community.apps.profiles.models import Profile
 
 # Serializers
 from community.bases.api.serializers import ModelSerializer
+from community.apps.users.api.serializers import UserSerializer
 
 
 # Main Section
 class ProfileSerializer(ModelSerializer):
-    user = serializers.JSONField(source="user_data")
+    user = UserSerializer()
 
     class Meta:
         model = Profile

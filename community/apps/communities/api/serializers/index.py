@@ -4,6 +4,7 @@ from rest_framework import serializers
 # Serializers
 from community.apps.badges.api.serializers import BadgeListSerializer
 from community.apps.comments.models import Comment
+from community.apps.users.api.serializers import UserSerializer
 
 # Models
 from community.apps.communities.models import Community
@@ -15,7 +16,7 @@ from community.bases.api.serializers import ModelSerializer
 
 # Main Section
 class CommunitySerializer(ModelSerializer):
-    master = serializers.JSONField(source="user_data")
+    master = serializers.SerializerMethodField()
     badges = serializers.SerializerMethodField()
 
     class Meta:
@@ -36,6 +37,9 @@ class CommunitySerializer(ModelSerializer):
             "rising_rank_change",
             "post_count",
         )
+
+    def get_master(self, obj):
+        return UserSerializer(instance=obj.user).data
 
     def get_badges(self, obj):
         instance = obj.badges.filter(is_active=True).order_by("id")

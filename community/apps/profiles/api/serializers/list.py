@@ -6,11 +6,12 @@ from community.apps.profiles.models.index import Profile
 
 # Serializers
 from community.bases.api.serializers import ModelSerializer
+from community.apps.users.api.serializers import UserSerializer
 
 
 # Main Section
 class ProfileListSerializer(ModelSerializer):
-    user = serializers.JSONField(source="user_data")
+    user = UserSerializer()
 
     class Meta:
         model = Profile

@@ -6,11 +6,12 @@ from community.apps.comments.models import Comment
 
 # Serializers
 from community.bases.api.serializers import ModelSerializer
+from community.apps.users.api.serializers import UserSerializer
 
 
 # Main Section
 class CommentListSerializer(ModelSerializer):
-    user = serializers.JSONField(source="user_data")
+    user = UserSerializer()
     is_liked = serializers.SerializerMethodField()
     is_disliked = serializers.SerializerMethodField()
     is_reported = serializers.SerializerMethodField()

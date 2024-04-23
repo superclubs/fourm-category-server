@@ -1,6 +1,9 @@
 # DRF
 from rest_framework import serializers
 
+# Serializers
+from community.apps.users.api.serializers import UserSerializer
+
 # Models
 from community.apps.likes.models import (
     CommentDislike,
@@ -15,7 +18,7 @@ from community.bases.api.serializers import ModelSerializer
 
 # Main Section
 class PostLikeListSerializer(ModelSerializer):
-    user = serializers.JSONField(source="user_data")
+    user = UserSerializer()
     friend_status = serializers.SerializerMethodField()
 
     class Meta:

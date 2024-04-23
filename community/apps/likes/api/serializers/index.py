@@ -1,5 +1,5 @@
-# DRF
-from rest_framework import serializers
+# Serializers
+from community.apps.users.api.serializers import UserSerializer
 
 # Models
 from community.apps.likes.models import PostLike
@@ -10,7 +10,7 @@ from community.bases.api.serializers import ModelSerializer
 
 # Main Section
 class PostLikeSerializer(ModelSerializer):
-    user = serializers.JSONField(source="user_data")
+    user = UserSerializer()
 
     class Meta:
         model = PostLike

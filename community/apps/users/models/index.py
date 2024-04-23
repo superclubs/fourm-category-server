@@ -58,6 +58,11 @@ class User(
     sdk_id = models.IntegerField(_("Sdk Id"), null=True)
     sdk_uuid = models.UUIDField(_("Sdk UUID"), null=True, blank=True)
 
+    # FK
+    badge = models.ForeignKey(
+        "badges.Badge", verbose_name=_("Badge"), on_delete=models.SET_NULL, null=True, related_name="users"
+    )
+
     USERNAME_FIELD = "id"
     REQUIRED_FIELDS = []
 

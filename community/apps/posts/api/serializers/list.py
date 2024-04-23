@@ -15,6 +15,7 @@ from community.apps.likes.models import PostDislike, PostLike
 # Serializers
 from community.apps.post_tags.api.serializers import PostTagListSerializer
 from community.apps.post_tags.models import PostTag
+from community.apps.users.api.serializers import UserSerializer
 
 # Models
 from community.apps.posts.models import Post
@@ -25,7 +26,7 @@ from community.bases.api.serializers import ModelSerializer
 
 # Main Section
 class PostListSerializer(ModelSerializer):
-    user = serializers.JSONField(source="user_data")
+    user = UserSerializer()
     profile = serializers.JSONField(source="profile_data")
     medias = serializers.JSONField(source="medias_data")
     tags = serializers.SerializerMethodField()
