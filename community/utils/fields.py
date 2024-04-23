@@ -1,5 +1,4 @@
-# Third Party
-from bs4 import BeautifulSoup
+from bs4 import BeautifulSoup, Tag
 
 
 # Main Section
@@ -33,25 +32,26 @@ def extract_content_summary(content):
         "hr",
     ]
 
+    extract_tag_list = ["style", "script", "jodit-file", "jodit-link-preview"]
+
     # Extract style, script Tags
-    for extract_tag in soup.find_all(["style", "script"]):
+    for extract_tag in soup.find_all(extract_tag_list):
         extract_tag.extract()
 
-    # Find all block tags
+    # Add br Tag after block tag
     block_tag_elements = soup.find_all(block_tag_list)
-    for element in block_tag_elements:
-        element = element.find(text=True, recursive=False)
+    for block_tag in block_tag_elements:
+        br_tag = soup.new_tag("br")
+        block_tag.insert_after(br_tag)
 
-        # Check if the block tag has text and not empty
-        if element and not element.isspace():
-            text = element.get_text()
-            element.replace_with(text + "<br>")
+    # Unwrap all tags except br
+    for element in soup.find_all():
+        if element.name != "br":
+            element.unwrap()
 
-    # Combine the text
-    text_parts = soup.find_all(text=True)
-    text_parts_filtered = filter(lambda text_part: len(text_part.strip()) >= 1, text_parts)
-    content_summary = " ".join(text_parts_filtered)
+    # Remove br Tag at the end of the content
+    while soup.contents and isinstance(soup.contents[-1], Tag) and soup.contents[-1].name == "br":
+        soup.contents[-1].extract()
 
-    # Strip last <br> tag
-    content_summary = content_summary.rstrip("<br>")
+    content_summary = str(soup)
     return content_summary
