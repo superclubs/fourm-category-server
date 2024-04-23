@@ -107,6 +107,10 @@ LANGUAGES = [
     ("ar", "Arabic"),
 ]
 
+# Model Translation
+MODELTRANSLATION_DEFAULT_LANGUAGE = "en"
+MODELTRANSLATION_LANGUAGES = (lang_code for lang_code, lang_name in LANGUAGES)
+
 # DATABASES
 # ------------------------------------------------------------------------------
 # https://docs.djangoproject.com/en/dev/ref/settings/#databases

@@ -9,13 +9,16 @@ from community.apps.likes.models import (
     PostLike,
 )
 
+# Serializers
+from community.apps.users.api.serializers import UserSerializer
+
 # Bases
 from community.bases.api.serializers import ModelSerializer
 
 
 # Main Section
 class PostLikeListSerializer(ModelSerializer):
-    user = serializers.JSONField(source="user_data")
+    user = UserSerializer()
     friend_status = serializers.SerializerMethodField()
 
     class Meta:
