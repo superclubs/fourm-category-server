@@ -6,6 +6,7 @@ from community.apps.reports.api.serializers.index import ReportSerializer
 
 # Models
 from community.apps.reports.models import ReportChoice, ReportGroup
+from community.apps.users.api.serializers import UserSerializer
 
 # Bases
 from community.bases.api.serializers import ModelSerializer
@@ -13,7 +14,7 @@ from community.bases.api.serializers import ModelSerializer
 
 # Main Section
 class ReportChoiceListSerializer(ModelSerializer):
-    user = serializers.JSONField(source="user_data")
+    user = UserSerializer()
 
     class Meta:
         model = ReportChoice

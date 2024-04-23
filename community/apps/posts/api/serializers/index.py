@@ -6,6 +6,7 @@ from community.apps.likes.api.serializers import PostLikeSerializer
 
 # Models
 from community.apps.posts.models import Post
+from community.apps.users.api.serializers import UserSerializer
 
 # Bases
 from community.bases.api.serializers import ModelSerializer
@@ -13,7 +14,7 @@ from community.bases.api.serializers import ModelSerializer
 
 # Main Section
 class PostContentSummarySerializer(ModelSerializer):
-    user = serializers.JSONField(source="user_data")
+    user = UserSerializer()
     friend_status = serializers.SerializerMethodField()
 
     class Meta:
@@ -47,7 +48,7 @@ class PostContentSummarySerializer(ModelSerializer):
 
 
 class PostSerializer(ModelSerializer):
-    user = serializers.JSONField(source="user_data")
+    user = UserSerializer()
     medias = serializers.JSONField(source="medias_data")
 
     class Meta:

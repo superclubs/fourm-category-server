@@ -3,6 +3,7 @@ from rest_framework import serializers
 
 # Models
 from community.apps.comments.models import Comment
+from community.apps.users.api.serializers import UserSerializer
 
 # Serializers
 from community.bases.api.serializers import ModelSerializer
@@ -10,7 +11,7 @@ from community.bases.api.serializers import ModelSerializer
 
 # Main Section
 class CommentListSerializer(ModelSerializer):
-    user = serializers.JSONField(source="user_data")
+    user = UserSerializer()
     is_liked = serializers.SerializerMethodField()
     is_disliked = serializers.SerializerMethodField()
     is_reported = serializers.SerializerMethodField()
