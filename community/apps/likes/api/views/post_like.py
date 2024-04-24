@@ -28,7 +28,7 @@ class PostLikesViewSet(mixins.ListModelMixin, GenericViewSet):
     def get_queryset(self):
         if getattr(self, "swagger_fake_view", False):
             return None
-        queryset = PostLike.objects.filter(post=self.kwargs["post_pk"], is_active=True)
+        queryset = PostLike.objects.filter(post=self.kwargs["post_pk"], is_active=True).select_related("user")
         return queryset
 
     @swagger_auto_schema(
