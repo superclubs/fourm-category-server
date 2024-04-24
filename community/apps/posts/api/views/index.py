@@ -60,7 +60,7 @@ class PostsViewSet(mixins.ListModelMixin, GenericViewSet):
             return None
 
         user = self.request.user
-        queryset = Post.active.filter_readonly(user=user).filter(is_default=False)
+        queryset = Post.active.filter_readonly(user=user).filter(is_default=False).select_related("user")
         queryset = PostListSerializer().prefetch_related(queryset, user=self.request.user)
         return queryset
 

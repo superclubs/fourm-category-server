@@ -28,7 +28,7 @@ class CommentLikesViewSet(mixins.ListModelMixin, GenericViewSet):
     def get_queryset(self):
         if getattr(self, "swagger_fake_view", False):
             return None
-        queryset = CommentLike.objects.filter(comment=self.kwargs["comment_pk"], is_active=True)
+        queryset = CommentLike.objects.filter(comment=self.kwargs["comment_pk"], is_active=True).select_related("user")
         return queryset
 
     @swagger_auto_schema(
