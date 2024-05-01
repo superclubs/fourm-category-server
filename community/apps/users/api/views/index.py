@@ -8,13 +8,11 @@ from drf_yasg.utils import swagger_auto_schema
 # DRF
 from rest_framework import status
 from rest_framework.decorators import action
-from rest_framework.exceptions import ParseError
 from rest_framework.filters import SearchFilter
 
 # Serializers
 from community.apps.users.api.serializers import (
     UserMeSerializer,
-    UserPasswordSerializer,
     UserSerializer,
 )
 
@@ -66,52 +64,3 @@ class UserViewSet(UserSyncViewMixin, GenericViewSet):
             message="ok",
             data=UserMeSerializer(instance=request.user, context={"request": request}).data,
         )
-
-
-class UserAdminViewSet(GenericViewSet):
-    serializers = {
-        "default": UserSerializer,
-        "set_admin": UserPasswordSerializer,
-        "change_password": UserPasswordSerializer,
-    }
-    queryset = User.available.all()
-    filter_backends = (DjangoFilterBackend,)
-
-    @swagger_auto_schema(
-        **swagger_decorator(
-            tag="01. 유저 - 어드민",
-            id="어드민 권한 부여",
-            description="## < 어드민 권한 부여 API 입니다. >\n" "### `Common server 어드민 사이트에서 비밀번호 변경 시 호출됩니다.`",
-            request=UserPasswordSerializer,
-            response={200: UserSerializer},
-        )
-    )
-    def set_admin(self, request):
-        user_id = request.data.get("id", None)
-        password = request.data.get("password", None)
-
-        user = User.objects.filter(id=user_id).first()
-        if not user:
-            raise ParseError("존재하지 않는 유저입니다.")
-
-        user.admin_set(password)
-
-        return Response(
-            status=status.HTTP_200_OK,
-            code=200,
-            message="ok",
-        )
-
-    @swagger_auto_schema(
-        **swagger_decorator(
-            tag="01. 유저 - 어드민", id="어드민 비밀번호 변경", description="", request=UserPasswordSerializer, response={200: "ok"}
-        )
-    )
-    @action(detail=True, methods=["patch"], url_path="password", url_name="password_change")
-    def password_change(self, request, pk=None):
-        user = self.get_object()
-        password = request.data.get("password", None)
-
-        user.change_password(password)
-
-        return Response(status=status.HTTP_200_OK, code=200, message="ok")

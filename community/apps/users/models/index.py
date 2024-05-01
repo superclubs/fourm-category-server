@@ -63,7 +63,7 @@ class User(
         "badges.Badge", verbose_name=_("Badge"), on_delete=models.SET_NULL, null=True, related_name="users"
     )
 
-    USERNAME_FIELD = "id"
+    USERNAME_FIELD = "admin_email"
     REQUIRED_FIELDS = []
 
     objects = UserMainManager()
