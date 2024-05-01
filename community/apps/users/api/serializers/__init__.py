@@ -1,7 +1,6 @@
 from community.apps.users.api.serializers.index import (
     UserMeSerializer,
-    UserPasswordSerializer,
     UserProfileSerializer,
     UserSerializer,
-    UserSyncSerializer,
 )
+from community.apps.users.api.serializers.sync import AdminUserSyncSerializer, UserSyncSerializer
