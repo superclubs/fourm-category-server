@@ -7,7 +7,6 @@ from drf_yasg.utils import swagger_auto_schema
 
 # DRF
 from rest_framework import status
-from rest_framework.exceptions import ParseError
 
 # Serializers
 from community.apps.users.api.serializers import AdminUserSyncSerializer
@@ -32,13 +31,14 @@ class UserAdminViewMixin:
         )
     )
     def admin_sync(self, request):
-        user_id = request.data.pop("id", None)
+        user_id = request.data.get("id", None)
         user = User.available.filter(id=user_id).first()
 
         if not user:
-            raise ParseError("존재하지 않는 유저입니다.")
+            serializer = AdminUserSyncSerializer(data=request.data)
+        else:
+            serializer = AdminUserSyncSerializer(instance=user, data=request.data, partial=True)
 
-        serializer = AdminUserSyncSerializer(instance=user, data=request.data, partial=True)
         if serializer.is_valid(raise_exception=True):
             serializer.save()
 
