@@ -17,18 +17,25 @@ class AdminUserSyncSerializer(ModelSerializer):
 
     class Meta:
         model = User
-        fields = ("id", "password", "admin_email")
+        fields = ("id", "password", "admin_email", "username")
 
     def create(self, validated_data):
-        pass
+        validated_data.setdefault("is_staff", True)
+        validated_data.setdefault("is_superuser", True)
+        instance = User.objects.create(**validated_data)
+
+        return instance
 
     def update(self, instance, validated_data):
+        del validated_data["id"]
+
         if not instance.is_staff or not instance.is_superuser:
             validated_data.setdefault("is_staff", True)
             validated_data.setdefault("is_superuser", True)
 
         instance.update(**validated_data)
         return instance
+
 
 
 class UserSyncSerializer(ModelSerializer):
