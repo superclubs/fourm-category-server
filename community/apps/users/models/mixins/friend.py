@@ -5,7 +5,7 @@ from django.utils.translation import gettext_lazy as _
 
 # Main Section
 class UserFriendModelMixin(models.Model):
-    friend_count = models.IntegerField(_('Friend Count'), default=0)
+    friend_count = models.IntegerField(_("Friend Count"), default=0)
 
     class Meta:
         abstract = True

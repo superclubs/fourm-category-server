@@ -9,9 +9,9 @@ from community.utils.point import POINT_PER_COMMENT
 
 # Main Section
 class PostCommentModelMixin(models.Model):
-    comment_count = models.IntegerField(_('Comment Count'), default=0)
-    comments_like_count = models.IntegerField(_('Comments Like Count'), default=0)
-    comments_dislike_count = models.IntegerField(_('Comments Dislike Count'), default=0)
+    comment_count = models.IntegerField(_("Comment Count"), default=0)
+    comments_like_count = models.IntegerField(_("Comments Like Count"), default=0)
+    comments_dislike_count = models.IntegerField(_("Comments Dislike Count"), default=0)
 
     class Meta:
         abstract = True
@@ -46,9 +46,9 @@ class PostCommentModelMixin(models.Model):
         self.comment_count = self.comments.filter(is_active=True, is_deleted=False).count()
 
     def update_post_comments_like_count(self):
-        self.comments_like_count = \
-            self.comments.filter(is_active=True).aggregate(Sum('like_count'))['like_count__sum']
+        self.comments_like_count = self.comments.filter(is_active=True).aggregate(Sum("like_count"))["like_count__sum"]
 
     def update_post_comments_dislike_count(self):
-        self.comments_dislike_count = \
-            self.comments.filter(is_active=True).aggregate(Sum('dislike_count'))['dislike_count__sum']
+        self.comments_dislike_count = self.comments.filter(is_active=True).aggregate(Sum("dislike_count"))[
+            "dislike_count__sum"
+        ]

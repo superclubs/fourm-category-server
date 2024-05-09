@@ -1,14 +1,18 @@
 # Python
 import uuid as uuid
+
 import timeago
+from annoying.fields import AutoOneToOneField as _AutoOneToOneField
 
 # Django
 from django.db import models
-from django.db.models import F, Value, CharField, Manager as _Manager, QuerySet as _QuerySet
+from django.db.models import CharField, F
+from django.db.models import Manager as _Manager
+from django.db.models import QuerySet as _QuerySet
+from django.db.models import Value
 from django.utils import timezone
-from django.utils.translation import ugettext_lazy as _
 from django.utils.timezone import now
-from annoying.fields import AutoOneToOneField as _AutoOneToOneField
+from django.utils.translation import ugettext_lazy as _
 from model_utils.models import TimeStampedModel
 
 
@@ -19,8 +23,9 @@ class AutoOneToOneField(_AutoOneToOneField):
 
 class QuerySet(_QuerySet):
     def reverse_case_insensitive_contains(self, search_field_name: str, search_field_value: str):
-        return self.annotate(search_field=Value(search_field_value, output_field=CharField())) \
-            .filter(search_field__icontains=F(search_field_name))
+        return self.annotate(search_field=Value(search_field_value, output_field=CharField())).filter(
+            search_field__icontains=F(search_field_name)
+        )
 
 
 class Manager(_Manager.from_queryset(QuerySet)):
@@ -59,6 +64,9 @@ class Model(UpdateMixin, TimeStampedModel, models.Model):
     @property
     def time(self):
         return timeago.format(self.created, timezone.now(), "ko")
+
+    def __str__(self):
+        return f"{self.__class__.__name__}({self.id})"
 
     def __init__(self, *args, **kwargs):
         super(Model, self).__init__(*args, **kwargs)

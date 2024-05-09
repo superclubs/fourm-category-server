@@ -9,7 +9,7 @@ from community.apps.post_tags.models import PostTag
 # Main Section
 @receiver(post_delete, sender=PostTag)
 def post_tag_post_delete(sender, instance, *args, **kwargs):
-    print('========== PostTag post_delete ==========')
+    print("========== PostTag post_delete ==========")
 
     instance.tag.decrease_tag_post_count()
     instance.tag.save()

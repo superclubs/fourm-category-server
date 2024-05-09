@@ -15,7 +15,7 @@ from community.utils.point import POINT_PER_POST_VISIT
 
 # Main Section
 class PostVisitModelMixin(models.Model):
-    visit_count = models.IntegerField(_('Visit Count'), default=0)
+    visit_count = models.IntegerField(_("Visit Count"), default=0)
 
     class Meta:
         abstract = True

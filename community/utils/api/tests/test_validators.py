@@ -1,6 +1,5 @@
-from rest_framework import serializers
-
 import pytest
+from rest_framework import serializers
 
 from community.utils.api import validators
 from community.utils.api.fields import HybridImageField

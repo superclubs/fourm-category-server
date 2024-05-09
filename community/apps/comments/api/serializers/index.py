@@ -1,17 +1,16 @@
-# DRF
-from rest_framework import serializers
+# Serializers
+# Models
+from community.apps.comments.models import Comment
+from community.apps.users.api.serializers import UserSerializer
 
 # Serializers
 from community.bases.api.serializers import ModelSerializer
 
-# Models
-from community.apps.comments.models import Comment
-
 
 # Main Section
 class CommentSerializer(ModelSerializer):
-    user = serializers.JSONField(source='user_data')
+    user = UserSerializer
 
     class Meta:
         model = Comment
-        fields = ('id', 'user', 'content', 'image_url')
+        fields = ("id", "user", "content", "image_url")

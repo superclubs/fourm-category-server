@@ -6,9 +6,9 @@ from community.modules.gateways.post import gateway as gateway_post
 
 
 # Main Section
-@shared_task(name='sync_post_task', bind=True)
+@shared_task(name="sync_post_task", bind=True)
 def sync_post_task(self, post_id):
-    print('========================= Post: sync_post_task =========================')
+    print("========================= Post: sync_post_task =========================")
     from community.apps.posts.api.serializers import PostSyncSerializer
     from community.apps.posts.models import Post
 
@@ -22,11 +22,11 @@ def sync_post_task(self, post_id):
     gateway_post.sync_post(data)
 
 
-@shared_task(name='delete_post_task', bind=True)
+@shared_task(name="delete_post_task", bind=True)
 def delete_post_task(self, post_id):
-    print('======================= Post Celery: delete_post_task =======================')
-    from community.apps.posts.models import Post
+    print("======================= Post Celery: delete_post_task =======================")
     from community.apps.posts.api.serializers import PostDeleteSerializer
+    from community.apps.posts.models import Post
 
     post = Post.objects.filter(id=post_id).first()
     if post is None:

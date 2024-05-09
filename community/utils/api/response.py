@@ -64,11 +64,7 @@ class Response(BaseResponse):
             raise ValueError("message must not be empty")
 
         if 100 <= code < 400:
-            data = {
-                "code": code,
-                "message": message,
-                "data": data or []
-            }
+            data = {"code": code, "message": message, "data": data or []}
 
         elif 400 <= code < 600:
             data = {

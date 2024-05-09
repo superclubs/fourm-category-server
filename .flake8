@@ -1,0 +1,30 @@
+[flake8]
+exclude =
+    .git,
+    .gitignore,
+    *.pot,
+    *.py[co],
+    __pycache__,
+    venv,
+    .env,
+    migrations,
+    .scripts,
+
+ignore =
+    E121,
+    E123,
+    E126,
+    E226,
+    E402,
+    E704,
+    E731,
+    F405,
+    F601,
+    W503,
+    W504,
+
+per-file-ignores =
+    __init__.py: F401
+    apps.py: F401
+
+max-line-length = 120

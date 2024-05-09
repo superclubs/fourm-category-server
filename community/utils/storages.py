@@ -1,21 +1,16 @@
-# Python
 import os
 from tempfile import SpooledTemporaryFile
 
-# Django
-from django.conf import settings
-
-# storages
 from storages.backends.s3boto3 import S3Boto3Storage
 
 
+# Main Section
 class StaticRootS3Boto3Storage(S3Boto3Storage):
     location = "static"
     default_acl = "public-read"
 
 
 class MediaRootS3Boto3Storage(S3Boto3Storage):
-
     location = "media"
     file_overwrite = False
 
@@ -24,4 +19,3 @@ class MediaRootS3Boto3Storage(S3Boto3Storage):
         with SpooledTemporaryFile() as content_autoclose:
             content_autoclose.write(content.read())
             return super(MediaRootS3Boto3Storage, self)._save(name, content_autoclose)
-

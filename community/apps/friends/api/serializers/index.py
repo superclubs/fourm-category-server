@@ -1,11 +1,11 @@
 # DRF
 from rest_framework import serializers
 
+# Model
+from community.apps.friends.models import Friend, FriendRequest
+
 # Serializer
 from community.bases.api.serializers import ModelSerializer
-
-# Model
-from community.apps.friends.models import FriendRequest, Friend
 
 
 # Main Section
@@ -14,7 +14,7 @@ class FriendRequestSyncSerializer(ModelSerializer):
 
     class Meta:
         model = FriendRequest
-        fields = ('id', 'status')
+        fields = ("id", "status")
 
 
 class FriendSyncSerializer(ModelSerializer):
@@ -22,4 +22,4 @@ class FriendSyncSerializer(ModelSerializer):
 
     class Meta:
         model = Friend
-        fields = ('id', 'friend_request', 'me', 'user', 'friend_point')
+        fields = ("id", "friend_request", "me", "user", "friend_point")

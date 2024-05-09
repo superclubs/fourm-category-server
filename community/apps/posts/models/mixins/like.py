@@ -9,25 +9,25 @@ from django.utils.translation import gettext_lazy as _
 from rest_framework.exceptions import ParseError
 
 # Models
-from community.apps.likes.models import PostLike, PostDislike
-from community.apps.users.models import User
+from community.apps.likes.models import PostDislike, PostLike
 from community.apps.profiles.models import Profile
+from community.apps.users.models import User
 
 # Utils
-from community.utils.point import POINT_PER_POST_LIKE, POINT_PER_POST_DISLIKE
+from community.utils.point import POINT_PER_POST_DISLIKE, POINT_PER_POST_LIKE
 
 
 # Main Section
 class PostLikeModelMixin(models.Model):
-    total_like_count = models.IntegerField(_('Total Like Count'), default=0)
-    like_count = models.IntegerField(_('Like Count'), default=0)
-    fun_count = models.IntegerField(_('Fun Count'), default=0)
-    healing_count = models.IntegerField(_('Healing Count'), default=0)
-    legend_count = models.IntegerField(_('Legend Count'), default=0)
-    useful_count = models.IntegerField(_('Useful Count'), default=0)
-    empathy_count = models.IntegerField(_('Empathy Count'), default=0)
-    devil_count = models.IntegerField(_('Devil Count'), default=0)
-    dislike_count = models.IntegerField(_('Dislike Count'), default=0)
+    total_like_count = models.IntegerField(_("Total Like Count"), default=0)
+    like_count = models.IntegerField(_("Like Count"), default=0)
+    fun_count = models.IntegerField(_("Fun Count"), default=0)
+    healing_count = models.IntegerField(_("Healing Count"), default=0)
+    legend_count = models.IntegerField(_("Legend Count"), default=0)
+    useful_count = models.IntegerField(_("Useful Count"), default=0)
+    empathy_count = models.IntegerField(_("Empathy Count"), default=0)
+    devil_count = models.IntegerField(_("Devil Count"), default=0)
+    dislike_count = models.IntegerField(_("Dislike Count"), default=0)
 
     class Meta:
         abstract = True
@@ -106,25 +106,25 @@ class PostLikeModelMixin(models.Model):
         self.total_like_count = self.post_likes.filter(is_active=True).count()
 
     def update_post_like_count(self):
-        self.like_count = self.post_likes.filter(is_active=True, type='LIKE').count()
+        self.like_count = self.post_likes.filter(is_active=True, type="LIKE").count()
 
     def update_post_fun_count(self):
-        self.fun_count = self.post_likes.filter(is_active=True, type='FUN').count()
+        self.fun_count = self.post_likes.filter(is_active=True, type="FUN").count()
 
     def update_post_healing_count(self):
-        self.healing_count = self.post_likes.filter(is_active=True, type='HEALING').count()
+        self.healing_count = self.post_likes.filter(is_active=True, type="HEALING").count()
 
     def update_post_legend_count(self):
-        self.legend_count = self.post_likes.filter(is_active=True, type='LEGEND').count()
+        self.legend_count = self.post_likes.filter(is_active=True, type="LEGEND").count()
 
     def update_post_useful_count(self):
-        self.useful_count = self.post_likes.filter(is_active=True, type='USEFUL').count()
+        self.useful_count = self.post_likes.filter(is_active=True, type="USEFUL").count()
 
     def update_post_empathy_count(self):
-        self.empathy_count = self.post_likes.filter(is_active=True, type='EMPATHY').count()
+        self.empathy_count = self.post_likes.filter(is_active=True, type="EMPATHY").count()
 
     def update_post_devil_count(self):
-        self.devil_count = self.post_likes.filter(is_active=True, type='DEVIL').count()
+        self.devil_count = self.post_likes.filter(is_active=True, type="DEVIL").count()
 
     def update_post_dislike_count(self):
         self.dislike_count = self.post_dislikes.filter(is_active=True).count()
@@ -143,16 +143,18 @@ class PostLikeModelMixin(models.Model):
         if post_like := self.post_likes.filter(user=user).first():
             post_like.is_active = True
             post_like.type = like_type
-            post_like.save(update_fields=['is_active', 'type'])
+            post_like.save(update_fields=["is_active", "type"])
         else:
-            post_like = PostLike.objects.create(user=user, post=self, profile=profile, community=self.community, type=like_type)
+            post_like = PostLike.objects.create(
+                user=user, post=self, profile=profile, community=self.community, type=like_type
+            )
 
         return post_like.post
 
     def unlike_post(self, user):
         instance = self.post_likes.filter(user=user, is_active=True).first()
         if not instance:
-            raise ParseError('좋아요 객체가 없습니다.')
+            raise ParseError("좋아요 객체가 없습니다.")
         instance.is_active = False
         instance.save()
 
@@ -169,7 +171,9 @@ class PostLikeModelMixin(models.Model):
             post_like.is_active = False
             post_like.save()
 
-        post_dislike, created = PostDislike.objects.get_or_create(user=user, post=self, profile=profile, community=self.community)
+        post_dislike, created = PostDislike.objects.get_or_create(
+            user=user, post=self, profile=profile, community=self.community
+        )
         if not created:
             post_dislike.is_active = True
             post_dislike.save()
@@ -179,7 +183,7 @@ class PostLikeModelMixin(models.Model):
     def undislike_post(self, user):
         instance = self.post_dislikes.filter(user=user, is_active=True).first()
         if not instance:
-            raise ParseError('싫어요 객체가 없습니다.')
+            raise ParseError("싫어요 객체가 없습니다.")
         instance.is_active = False
         instance.save()
 
@@ -193,7 +197,7 @@ class PostLikeModelMixin(models.Model):
         random_num = random.randint(1, max_num)
         users = User.objects.filter(id__gte=random_num)
 
-        type_list = ['LIKE', 'FUN', 'HEALING', 'LEGEND', 'USEFUL', 'EMPATHY', 'DEVIL']
+        type_list = ["LIKE", "FUN", "HEALING", "LEGEND", "USEFUL", "EMPATHY", "DEVIL"]
 
         for user in users:
 

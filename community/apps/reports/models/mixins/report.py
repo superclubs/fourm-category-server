@@ -5,7 +5,7 @@ from django.utils.translation import gettext_lazy as _
 
 # Main Section
 class ReportGroupReportModelMixin(models.Model):
-    reported_count = models.IntegerField(_('Reported Count'), default=0)
+    reported_count = models.IntegerField(_("Reported Count"), default=0)
 
     class Meta:
         abstract = True
