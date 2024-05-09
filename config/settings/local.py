@@ -53,4 +53,4 @@ INSTALLED_APPS += ["django_extensions"]  # noqa F405
 
 # Celery
 # ------------------------------------------------------------------------------
-CELERY_BROKER_TRANSPORT_OPTIONS["queue_name_prefix"] = "community-local-"
+CELERY_BROKER_TRANSPORT_OPTIONS['queue_name_prefix'] = 'forumcategory-local-'
