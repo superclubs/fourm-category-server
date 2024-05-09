@@ -26,6 +26,8 @@ def forwards_sync_bans(apps, schema_editor):
 
         for ban_data in bans_list:
             if not UserBan.objects.filter(id=ban_data.get('id', None)).exists():
+                ban_data['sender_id'] = ban_data.pop('sender', None)
+                ban_data['receiver_id'] = ban_data.pop('receiver', None).get('id') if ban_data.get('receiver', None) else None
                 UserBan.objects.create(**ban_data)
 
     else:

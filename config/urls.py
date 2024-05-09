@@ -13,9 +13,9 @@ from rest_framework_simplejwt.views import (
 from config.docs import schema_view
 from config.redirects import redirect_swagger_view
 
-admin.site.site_header = "COMMUNITY"
-admin.site.site_title = "COMMUNITY"
-admin.site.index_title = "커뮤니티 관리자 페이지"
+admin.site.site_header = "FORUM CATEGORY"
+admin.site.site_title = "FORUM CATEGORY"
+admin.site.index_title = "포럼 카테고리 관리자 페이지"
 
 urlpatterns = (
     [
