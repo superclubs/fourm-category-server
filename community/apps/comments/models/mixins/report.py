@@ -11,7 +11,7 @@ from community.apps.reports.models import Report, ReportGroup
 
 # Main Section
 class CommentReportModelMixin(models.Model):
-    reported_count = models.IntegerField(_('Reported Count'), default=0)
+    reported_count = models.IntegerField(_("Reported Count"), default=0)
 
     class Meta:
         abstract = True
@@ -27,20 +27,23 @@ class CommentReportModelMixin(models.Model):
 
     def report_comment(self, user, data):
         # Create Report Group
-        report_group = ReportGroup.objects.filter(community=self.community, comment=self, post=self.post, user=self.user,
-                                                  profile=self.profile).first()
+        report_group = ReportGroup.objects.filter(
+            community=self.community, comment=self, post=self.post, user=self.user, profile=self.profile
+        ).first()
         if not report_group:
-            report_group = ReportGroup.objects.create(community=self.community, comment=self, post=self.post, user=self.user,
-                                                      profile=self.profile)
+            report_group = ReportGroup.objects.create(
+                community=self.community, comment=self, post=self.post, user=self.user, profile=self.profile
+            )
 
         # Create Report
         report = Report.objects.filter(report_group=report_group, comment=self, user=user).first()
 
         if report:
-            raise ParseError('이미 신고한 댓글입니다.')
+            raise ParseError("이미 신고한 댓글입니다.")
         else:
             user_profile = self.community.profiles.filter(user=user).first()
-            report = Report.objects.create(**data, post=self.post, profile=user_profile, report_group=report_group,
-                                           comment=self, user=user)
+            report = Report.objects.create(
+                **data, post=self.post, profile=user_profile, report_group=report_group, comment=self, user=user
+            )
 
         return report.comment

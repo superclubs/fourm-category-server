@@ -1,5 +1,4 @@
 from django.utils.translation import ugettext_lazy as _
-
 from drf_extra_fields.fields import HybridImageField as BaseHybridImageField
 
 

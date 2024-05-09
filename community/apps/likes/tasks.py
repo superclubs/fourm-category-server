@@ -5,12 +5,12 @@ from celery import shared_task
 from community.modules.gateways.post import gateway as gateway_post
 
 
-@shared_task(name='sync_like_task', bind=True)
+@shared_task(name="sync_like_task", bind=True)
 def sync_like_task(self, instance_id):
-    print('========================= Like: sync_like_task =========================')
+    print("========================= Like: sync_like_task =========================")
 
-    from community.apps.likes.models import PostLike
     from community.apps.likes.api.serializers import PostLikeSyncSerializer
+    from community.apps.likes.models import PostLike
 
     instance = PostLike.objects.filter(id=instance_id).first()
     if not instance:
@@ -20,15 +20,15 @@ def sync_like_task(self, instance_id):
 
     # API Gateway
     response = gateway_post.sync_like(data)
-    print('response : ', response)
+    print("response : ", response)
 
 
-@shared_task(name='sync_dislike_task', bind=True)
+@shared_task(name="sync_dislike_task", bind=True)
 def sync_dislike_task(self, instance_id):
-    print('========================= Dislike: sync_dislike_task =========================')
+    print("========================= Dislike: sync_dislike_task =========================")
 
-    from community.apps.likes.models import PostDislike
     from community.apps.likes.api.serializers import PostDislikeSyncSerializer
+    from community.apps.likes.models import PostDislike
 
     instance = PostDislike.objects.filter(id=instance_id).first()
     if not instance:
@@ -38,4 +38,4 @@ def sync_dislike_task(self, instance_id):
 
     # API Gateway
     response = gateway_post.sync_dislike(data)
-    print('response : ', response)
+    print("response : ", response)

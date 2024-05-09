@@ -1,1 +1,5 @@
-from community.apps.communities.api.views.index import CommunityViewSet, CommunitiesViewSet, CommunityAdminViewSet
+from community.apps.communities.api.views.index import (
+    CommunitiesViewSet,
+    CommunityAdminViewSet,
+    CommunityViewSet,
+)

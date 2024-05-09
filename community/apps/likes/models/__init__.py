@@ -1,1 +1,6 @@
-from community.apps.likes.models.index import PostDislike, PostLike, CommentLike, CommentDislike
+from community.apps.likes.models.index import (
+    CommentDislike,
+    CommentLike,
+    PostDislike,
+    PostLike,
+)

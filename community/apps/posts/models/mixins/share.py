@@ -8,7 +8,7 @@ from community.apps.shares.models import PostShare
 
 # Main Section
 class PostShareModelMixin(models.Model):
-    share_count = models.IntegerField(_('Share Count'), default=0)
+    share_count = models.IntegerField(_("Share Count"), default=0)
 
     class Meta:
         abstract = True

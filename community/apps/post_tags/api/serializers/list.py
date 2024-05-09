@@ -1,17 +1,17 @@
 # DRF
 from rest_framework import serializers
 
-# Serializers
-from community.bases.api.serializers import ModelSerializer
-
 # Models
 from community.apps.post_tags.models.index import PostTag
+
+# Serializers
+from community.bases.api.serializers import ModelSerializer
 
 
 # Main Section
 class PostTagListSerializer(ModelSerializer):
-    id = serializers.PrimaryKeyRelatedField(source='tag', queryset=PostTag.objects.all())
+    id = serializers.PrimaryKeyRelatedField(source="tag", queryset=PostTag.objects.all())
 
     class Meta:
         model = PostTag
-        fields = ('id', 'title')
+        fields = ("id", "title")
