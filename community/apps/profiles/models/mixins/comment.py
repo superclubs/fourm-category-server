@@ -11,7 +11,7 @@ from community.utils.point import POINT_PER_COMMENT, POINT_PER_PROFILE_LEVEL
 
 # Main Section
 class ProfileCommentModelMixin(models.Model):
-    comment_count = models.IntegerField(_('Comment Count'), default=0)
+    comment_count = models.IntegerField(_("Comment Count"), default=0)
 
     class Meta:
         abstract = True
@@ -23,7 +23,7 @@ class ProfileCommentModelMixin(models.Model):
         self.comment_point = self.comment_point + POINT_PER_COMMENT
         self.point = self.point + POINT_PER_COMMENT
 
-        self.level = math.floor(self.point ** POINT_PER_PROFILE_LEVEL) + 1
+        self.level = math.floor(self.point**POINT_PER_PROFILE_LEVEL) + 1
 
     def decrease_profile_comment_count(self):
         self.comment_count = self.comment_count - 1
@@ -32,7 +32,7 @@ class ProfileCommentModelMixin(models.Model):
         self.comment_point = self.comment_point - POINT_PER_COMMENT
         self.point = self.point - POINT_PER_COMMENT
 
-        self.level = math.floor(self.point ** POINT_PER_PROFILE_LEVEL) + 1
+        self.level = math.floor(self.point**POINT_PER_PROFILE_LEVEL) + 1
 
     def update_profile_comment_count(self):
         self.comment_count = self.comments.filter(is_active=True).count()

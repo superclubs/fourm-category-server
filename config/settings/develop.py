@@ -1,15 +1,6 @@
 from .base import *  # noqa
 from .base import env
 
-import logging
-
-import sentry_sdk
-from sentry_sdk.integrations.django import DjangoIntegration
-from sentry_sdk.integrations.logging import LoggingIntegration
-from sentry_sdk.integrations.celery import CeleryIntegration
-
-from sentry_sdk.integrations.redis import RedisIntegration
-
 # GENERAL
 # ------------------------------------------------------------------------------
 # https://docs.djangoproject.com/en/dev/ref/settings/#secret-key
@@ -45,15 +36,11 @@ CSRF_COOKIE_SECURE = False
 # TODO: set this to 60 seconds first and then to 518400 once you prove the former works
 SECURE_HSTS_SECONDS = 60
 # https://docs.djangoproject.com/en/dev/ref/settings/#secure-hsts-include-subdomains
-SECURE_HSTS_INCLUDE_SUBDOMAINS = env.bool(
-    "DJANGO_SECURE_HSTS_INCLUDE_SUBDOMAINS", default=True
-)
+SECURE_HSTS_INCLUDE_SUBDOMAINS = env.bool("DJANGO_SECURE_HSTS_INCLUDE_SUBDOMAINS", default=True)
 # https://docs.djangoproject.com/en/dev/ref/settings/#secure-hsts-preload
 SECURE_HSTS_PRELOAD = env.bool("DJANGO_SECURE_HSTS_PRELOAD", default=True)
 # https://docs.djangoproject.com/en/dev/ref/middleware/#x-content-type-options-nosniff
-SECURE_CONTENT_TYPE_NOSNIFF = env.bool(
-    "DJANGO_SECURE_CONTENT_TYPE_NOSNIFF", default=True
-)
+SECURE_CONTENT_TYPE_NOSNIFF = env.bool("DJANGO_SECURE_CONTENT_TYPE_NOSNIFF", default=True)
 
 # EMAIL
 # ------------------------------------------------------------------------------
@@ -73,7 +60,7 @@ EMAIL_SUBJECT_PREFIX = env(
 # ADMIN
 # ------------------------------------------------------------------------------
 # Django Admin URL regex.
-ADMIN_URL = env("DJANGO_ADMIN_URL", default='')
+ADMIN_URL = env("DJANGO_ADMIN_URL", default="")
 
 # Anymail
 # ------------------------------------------------------------------------------
@@ -92,4 +79,4 @@ INSTALLED_APPS = ["collectfast"] + INSTALLED_APPS  # noqa F405
 
 # Celery
 # ------------------------------------------------------------------------------
-CELERY_BROKER_TRANSPORT_OPTIONS['queue_name_prefix'] = 'community-develop-'
+CELERY_BROKER_TRANSPORT_OPTIONS["queue_name_prefix"] = "community-develop-"

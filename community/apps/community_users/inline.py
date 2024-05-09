@@ -1,18 +1,17 @@
 # Bases
-from community.bases.inlines import TabularInline
-
 # Models
 from community.apps.community_users.models import CommunityUser
+from community.bases.inlines import TabularInline
 
 
 # Main Section
 class CommunityUserInline(TabularInline):
     model = CommunityUser
-    fk_name = 'community'
-    fields = ('user', 'order')
+    fk_name = "community"
+    fields = ("user", "order")
     readonly_fields = ()
     extra = 0
-    ordering = ('-order',)
+    ordering = ("-order",)
 
     def has_delete_permission(self, request, obj=None):
         return True

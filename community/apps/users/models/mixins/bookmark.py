@@ -5,7 +5,7 @@ from django.utils.translation import gettext_lazy as _
 
 # Main Section
 class UserPostBookmarkModelMixin(models.Model):
-    post_bookmark_count = models.IntegerField(_('Post Bookmark Count'), default=0)
+    post_bookmark_count = models.IntegerField(_("Post Bookmark Count"), default=0)
 
     class Meta:
         abstract = True

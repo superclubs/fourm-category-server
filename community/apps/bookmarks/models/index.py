@@ -4,23 +4,25 @@ from django.utils.translation import gettext_lazy as _
 
 # Models
 from community.bases.models import Model
+from community.modules.gateways.common import gateway as gateway_superclub
 
 # Modules
 from community.modules.gateways.post import gateway as gateway_post
-from community.modules.gateways.common import gateway as gateway_superclub
 
 
 # Main Section
 class PostBookmark(Model):
-    post = models.ForeignKey('posts.Post', verbose_name=_('Post'), on_delete=models.CASCADE,
-                             related_name='post_bookmarks')
-    user = models.ForeignKey('users.User', verbose_name=_('User'), on_delete=models.SET_NULL, null=True,
-                             related_name='post_bookmarks')
+    post = models.ForeignKey(
+        "posts.Post", verbose_name=_("Post"), on_delete=models.CASCADE, related_name="post_bookmarks"
+    )
+    user = models.ForeignKey(
+        "users.User", verbose_name=_("User"), on_delete=models.SET_NULL, null=True, related_name="post_bookmarks"
+    )
     __is_active = None
 
     class Meta:
-        verbose_name = verbose_name_plural = _('Post Bookmark')
-        ordering = ['-created']
+        verbose_name = verbose_name_plural = _("Post Bookmark")
+        ordering = ["-created"]
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)

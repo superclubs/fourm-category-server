@@ -1,5 +1,5 @@
 # Django
-from django.db.models.signals import pre_save, post_save
+from django.db.models.signals import post_save, pre_save
 from django.dispatch import receiver
 
 # Models
@@ -9,7 +9,7 @@ from community.apps.badges.models import Badge
 # Main Section
 @receiver(pre_save, sender=Badge)
 def cache_image(sender, instance, *args, **kwargs):
-    print('========== Badge pre_save: Image ==========')
+    print("========== Badge pre_save: Image ==========")
 
     image = None
 
@@ -22,11 +22,11 @@ def cache_image(sender, instance, *args, **kwargs):
 
 @receiver(post_save, sender=Badge)
 def image_update(sender, instance, created, **kwargs):
-    print('========== Badge post_save: Image ==========')
+    print("========== Badge post_save: Image ==========")
 
     if instance.__image != instance.image:
 
         # Update Image
         if instance.image:
             instance.image_url = instance.image.url
-            instance.save(update_fields=['image_url'])
+            instance.save(update_fields=["image_url"])
