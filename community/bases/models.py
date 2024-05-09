@@ -1,14 +1,18 @@
 # Python
 import uuid as uuid
+
 import timeago
+from annoying.fields import AutoOneToOneField as _AutoOneToOneField
 
 # Django
 from django.db import models
-from django.db.models import F, Value, CharField, Manager as _Manager, QuerySet as _QuerySet
+from django.db.models import CharField, F
+from django.db.models import Manager as _Manager
+from django.db.models import QuerySet as _QuerySet
+from django.db.models import Value
 from django.utils import timezone
-from django.utils.translation import ugettext_lazy as _
 from django.utils.timezone import now
-from annoying.fields import AutoOneToOneField as _AutoOneToOneField
+from django.utils.translation import ugettext_lazy as _
 from model_utils.models import TimeStampedModel
 
 
@@ -19,8 +23,9 @@ class AutoOneToOneField(_AutoOneToOneField):
 
 class QuerySet(_QuerySet):
     def reverse_case_insensitive_contains(self, search_field_name: str, search_field_value: str):
-        return self.annotate(search_field=Value(search_field_value, output_field=CharField())) \
-            .filter(search_field__icontains=F(search_field_name))
+        return self.annotate(search_field=Value(search_field_value, output_field=CharField())).filter(
+            search_field__icontains=F(search_field_name)
+        )
 
 
 class Manager(_Manager.from_queryset(QuerySet)):
@@ -60,6 +65,9 @@ class Model(UpdateMixin, TimeStampedModel, models.Model):
     def time(self):
         return timeago.format(self.created, timezone.now(), "ko")
 
+    def __str__(self):
+        return f"{self.__class__.__name__}({self.id})"
+
     def __init__(self, *args, **kwargs):
         super(Model, self).__init__(*args, **kwargs)
         self._meta.get_field("created").verbose_name = _("Created")
@@ -67,16 +75,11 @@ class Model(UpdateMixin, TimeStampedModel, models.Model):
         self.__is_deleted = self.is_deleted
 
     def save(self, *args, **kwargs):
-        # 삭제 취소
-        if self.__is_deleted != self.is_deleted and not self.is_deleted:
-            self.is_deleted = False
-            self.deleted = None
+        if self.__is_deleted != self.is_deleted:
+            self.deleted = None if not self.is_deleted else now()
+        super(Model, self).save(*args, **kwargs)
 
-        return super(Model, self).save(*args, **kwargs)
-
-    # 삭제
-    def delete(self, *args, **kwargs):
+    def soft_delete(self, *args, **kwargs):
         self.is_active = False
         self.is_deleted = True
-        self.deleted = now()
         self.save()

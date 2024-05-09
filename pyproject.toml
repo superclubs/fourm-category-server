@@ -1,0 +1,14 @@
+[tool.isort]
+profile = "black"
+skip_glob = ["*/migrations/*", "*/venv/*", ".scripts/*"]
+
+
+[tool.black]
+line-length = 120
+exclude = '''
+/(
+    | migrations
+    | venv
+    | .scripts
+)/
+'''

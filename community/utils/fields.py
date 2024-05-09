@@ -1,30 +1,57 @@
-# Third Party
-from bs4 import BeautifulSoup
+from bs4 import BeautifulSoup, Tag
 
 
 # Main Section
 def extract_content_summary(content):
-    soup = BeautifulSoup(content, features='html.parser')
+    soup = BeautifulSoup(content, features="html.parser")
 
-    # Extract <style> Tags
-    for style_tag in soup.find_all('style'):
-        style_tag.extract()
+    block_tag_list = [
+        "div",
+        "p",
+        "h1",
+        "h2",
+        "h3",
+        "h4",
+        "h5",
+        "h6",
+        "ul",
+        "ol",
+        "li",
+        "blockquote",
+        "pre",
+        "table",
+        "header",
+        "footer",
+        "section",
+        "article",
+        "nav",
+        "aside",
+        "address",
+        "form",
+        "fieldset",
+        "hr",
+    ]
 
-    # Find all <p> tags
-    p_tags = soup.find_all('p')
-    for p_tag in p_tags:
-        p_tag = p_tag.find(text=True, recursive=False)
+    extract_tag_list = ["style", "script", "jodit-file", "jodit-link-preview"]
 
-        # Check if the <p> tag has text and not empty
-        if p_tag and not p_tag.isspace():
-            p_content = p_tag.get_text()
-            p_tag.replace_with(p_content + '<br>')
+    # Extract style, script Tags
+    for extract_tag in soup.find_all(extract_tag_list):
+        extract_tag.extract()
 
-    # Combine the text
-    text_parts = soup.find_all(text=True)
-    text_parts_filtered = filter(lambda text_part: len(text_part.strip()) >= 1, text_parts)
-    content_summary = ' '.join(text_parts_filtered)
+    # Add br Tag after block tag
+    block_tag_elements = soup.find_all(block_tag_list)
+    for block_tag in block_tag_elements:
+        br_tag = soup.new_tag("br")
+        block_tag.insert_after(br_tag)
 
-    # Strip last <br> tag
-    content_summary = content_summary.rstrip('<br>')
+    # Unwrap all tags except br
+    for element in soup.find_all():
+        if element.name != "br":
+            element.unwrap()
+
+    # Remove br Tag at the end of the content
+    while soup.contents and isinstance(soup.contents[-1], Tag) and soup.contents[-1].name == "br":
+        soup.contents[-1].extract()
+
+    content_summary = str(soup)
     return content_summary

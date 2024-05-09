@@ -10,56 +10,66 @@ from community.apps.comments.models.managers.active import CommentActiveManager
 from community.apps.comments.models.managers.objects import CommentMainManager
 
 # Mixins
-from community.apps.comments.models.mixins import CommentLikeModelMixin, CommentImageModelMixin, CommentPointModelMixin, \
-    CommentReportModelMixin
+from community.apps.comments.models.mixins import (
+    CommentImageModelMixin,
+    CommentLikeModelMixin,
+    CommentPointModelMixin,
+    CommentReportModelMixin,
+)
 
 # Models
-from community.apps.likes.models import CommentLike, CommentDislike
-from community.apps.users.models import User
+from community.apps.likes.models import CommentDislike, CommentLike
 
 # Serializer
 from community.apps.profiles.api.serializers import ProfileSerializer
 from community.apps.users.api.serializers import UserSerializer
+from community.apps.users.models import User
 
 # Bases
 from community.bases.models import Model
-
-# Utils
-from community.utils.time import get_start_today, get_end_today
-from community.utils.point import POINT_PER_PARENT_COMMENT
-from community.utils.point_history_type import HISTORY_CREATE_CHILD_COMMENT, HISTORY_CREATE_COMMENT
-from community.utils.point import FRIEND_POINT_PER_CREATE_CHILD_COMMENT, FRIEND_POINT_PER_CREATE_COMMENT
 from community.utils.fields import extract_content_summary
+from community.utils.point import POINT_PER_PARENT_COMMENT
 
 
 # Main Section
-class Comment(CommentLikeModelMixin,
-              CommentImageModelMixin,
-              CommentReportModelMixin,
-              CommentPointModelMixin,
-              Model):
-    parent_comment = models.ForeignKey('self', verbose_name=_('Parent Comment'), on_delete=models.SET_NULL,
-                                       null=True, blank=True, related_name='comments')
-    community = models.ForeignKey('communities.Community', verbose_name=_('Community'), on_delete=models.CASCADE,
-                                  related_name='comments')
-    post = models.ForeignKey('posts.Post', verbose_name=_('Post'), on_delete=models.SET_NULL, null=True,
-                             related_name='comments')
-    user = models.ForeignKey('users.User', verbose_name=_('User'), on_delete=models.SET_NULL, null=True,
-                             related_name='comments')
-    profile = models.ForeignKey('profiles.Profile', verbose_name=_('Profile'), on_delete=models.SET_NULL,
-                                null=True, blank=True, related_name='comments')
-    user_data = models.JSONField(_('User Data'), null=True, blank=True)
-    profile_data = models.JSONField(_('Profile Data'), null=True, blank=True)
-    content = models.TextField(_('Content'), null=True, blank=True)
-    content_summary = models.TextField(_('Content Summary'), null=True, blank=True)
-    is_secret = models.BooleanField(_('Is Secret'), default=False)
+class Comment(CommentLikeModelMixin, CommentImageModelMixin, CommentReportModelMixin, CommentPointModelMixin, Model):
+    parent_comment = models.ForeignKey(
+        "self",
+        verbose_name=_("Parent Comment"),
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        related_name="comments",
+    )
+    community = models.ForeignKey(
+        "communities.Community", verbose_name=_("Community"), on_delete=models.CASCADE, related_name="comments"
+    )
+    post = models.ForeignKey(
+        "posts.Post", verbose_name=_("Post"), on_delete=models.SET_NULL, null=True, related_name="comments"
+    )
+    user = models.ForeignKey(
+        "users.User", verbose_name=_("User"), on_delete=models.SET_NULL, null=True, related_name="comments"
+    )
+    profile = models.ForeignKey(
+        "profiles.Profile",
+        verbose_name=_("Profile"),
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        related_name="comments",
+    )
+    user_data = models.JSONField(_("User Data"), null=True, blank=True)
+    profile_data = models.JSONField(_("Profile Data"), null=True, blank=True)
+    content = models.TextField(_("Content"), null=True, blank=True)
+    content_summary = models.TextField(_("Content Summary"), null=True, blank=True)
+    is_secret = models.BooleanField(_("Is Secret"), default=False)
 
     objects = CommentMainManager()
     active = CommentActiveManager()
 
     class Meta:
-        verbose_name = verbose_name_plural = _('Comment')
-        ordering = ['created']
+        verbose_name = verbose_name_plural = _("Comment")
+        ordering = ["created"]
 
     def __str__(self):
         return self.content if len(self.content) < 20 else self.content[:20]
@@ -109,7 +119,7 @@ class Comment(CommentLikeModelMixin,
         random_num = random.randint(1, max_num)
         users = User.objects.filter(id__gte=random_num)
 
-        type_list = ['LIKE', 'FUN', 'HEALING', 'LEGEND', 'USEFUL', 'EMPATHY', 'DEVIL']
+        type_list = ["LIKE", "FUN", "HEALING", "LEGEND", "USEFUL", "EMPATHY", "DEVIL"]
 
         for user in users:
 

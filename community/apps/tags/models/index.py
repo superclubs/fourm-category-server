@@ -10,11 +10,9 @@ from community.bases.models import Model
 
 
 # Main Section
-class Tag(TagPostModelMixin,
-          TagCommunityModelMixin,
-          Model):
-    title = models.CharField(_('Title'), max_length=20)
+class Tag(TagPostModelMixin, TagCommunityModelMixin, Model):
+    title = models.CharField(_("Title"), max_length=20)
 
     class Meta:
-        verbose_name = verbose_name_plural = _('Tag')
-        ordering = ['-post_count']
+        verbose_name = verbose_name_plural = _("Tag")
+        ordering = ["-post_count"]

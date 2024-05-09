@@ -9,4 +9,4 @@ from community.bases.api.serializers import ModelSerializer
 class BadgeListSerializer(ModelSerializer):
     class Meta:
         model = Badge
-        fields = ('id', 'image_url', 'model_type')
+        fields = ("id", "image_url", "model_type")

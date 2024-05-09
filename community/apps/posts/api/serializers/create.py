@@ -1,5 +1,5 @@
 # Python
-from datetime import timedelta, datetime
+from datetime import datetime, timedelta
 
 # Django
 from django.core.exceptions import ValidationError
@@ -8,35 +8,52 @@ from django.utils.timezone import now
 # DRF
 from rest_framework import serializers
 
-# Bases
-from community.bases.api.serializers import ModelSerializer
+from community.apps.communities.models import Community
 
 # Models
 from community.apps.posts.models import Post
-from community.apps.communities.models import Community
+
+# Bases
+from community.bases.api.serializers import ModelSerializer
 
 
 # Main Section
 class PostCreateSerializer(ModelSerializer):
     tags = serializers.ListField(child=serializers.CharField(allow_blank=True), required=False)
-    communities = serializers.ListField(child=serializers.PrimaryKeyRelatedField(queryset=Community.objects.all()),
-                                        required=True)
+    communities = serializers.ListField(
+        child=serializers.PrimaryKeyRelatedField(queryset=Community.objects.all()), required=True
+    )
 
     class Meta:
         model = Post
-        fields = ('board', 'title', 'content', 'public_type', 'is_secret', 'password', 'reserved_at',
-                  'boomed_period', 'is_temporary', 'is_notice', 'is_event', 'is_search', 'is_share', 'is_comment',
-                  'tags', 'communities')
+        fields = (
+            "board",
+            "title",
+            "content",
+            "public_type",
+            "is_secret",
+            "password",
+            "reserved_at",
+            "boomed_period",
+            "is_temporary",
+            "is_notice",
+            "is_event",
+            "is_search",
+            "is_share",
+            "is_comment",
+            "tags",
+            "communities",
+        )
 
     def create(self, validated_data):
         additional_data = dict()
 
         # Community Ids
         main_community = None
-        communities = validated_data.pop('communities', None)
+        communities = validated_data.pop("communities", None)
 
         if communities:
-            depth_community_ids = [f'depth{i + 1}_community_id' for i, _ in enumerate(communities)]
+            depth_community_ids = [f"depth{i + 1}_community_id" for i, _ in enumerate(communities)]
 
             for i, community in enumerate(communities):
                 depth_community_id = depth_community_ids[i]
@@ -46,24 +63,24 @@ class PostCreateSerializer(ModelSerializer):
                     main_community = community
 
         # FK
-        user = self.context['user']
-        board = validated_data.get('board', None)
+        user = self.context["user"]
+        board = validated_data.get("board", None)
 
         if not board:
-            raise ValidationError('보드를 찾을 수 없습니다.')
+            raise ValidationError("보드를 찾을 수 없습니다.")
 
-        additional_data['community'] = main_community
-        additional_data['user'] = user
+        additional_data["community"] = main_community
+        additional_data["user"] = user
 
         # Main Fields
-        reserved_at = validated_data.get('reserved_at', None)
-        boomed_period = validated_data.get('boomed_period', None)
+        reserved_at = validated_data.get("reserved_at", None)
+        boomed_period = validated_data.get("boomed_period", None)
 
         if reserved_at:
             if now() > reserved_at:
-                raise ValidationError('과거로 예약할 수 없습니다.')
+                raise ValidationError("과거로 예약할 수 없습니다.")
 
-            additional_data['is_reserved'] = True
+            additional_data["is_reserved"] = True
 
         if boomed_period:
             if reserved_at:
@@ -71,11 +88,11 @@ class PostCreateSerializer(ModelSerializer):
             else:
                 boomed_at = now() + timedelta(minutes=int(boomed_period))
 
-            additional_data['boomed_at'] = boomed_at
-            additional_data['is_boomed'] = True
+            additional_data["boomed_at"] = boomed_at
+            additional_data["is_boomed"] = True
 
         # Many to Many
-        tags = validated_data.pop('tags', None)
+        tags = validated_data.pop("tags", None)
 
         # Create Post
         data = dict(validated_data, **additional_data)

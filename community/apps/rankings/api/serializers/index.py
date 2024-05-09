@@ -8,4 +8,4 @@ from community.bases.api.serializers import ModelSerializer
 class CommunityRankingListSerializer(ModelSerializer):
     class Meta:
         model = CommunityRanking
-        fields = ('id', 'rank', 'level', 'created')
+        fields = ("id", "rank", "level", "created")

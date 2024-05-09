@@ -1,8 +1,7 @@
-from rest_framework.response import Response as DrfResponse
-
 import pytest
 from dacite import MissingValueError, WrongTypeError
 from faker import Faker
+from rest_framework.response import Response as DrfResponse
 
 from community.utils.api.response import Response
 
