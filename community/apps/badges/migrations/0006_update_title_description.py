@@ -37,6 +37,7 @@ def forwards_update_title_description(apps, schema_editor):
             )
         for k, v in badge_titles_and_descriptions.items():
             setattr(badge_model, k, v)
+        badge_model.badge_type = badge.get("badge_type")
         badge_model.save()
 
     return True
