@@ -77,7 +77,7 @@ def post_post_save_create_new_post_badge(sender, instance, created, **kwargs):
     print("========== Post post_save : Create New Post Badge ==========")
     if created:
         if not instance.is_temporary and not instance.is_agenda:
-            new_post_badge = Badge.objects.get(title="New", model_type="POST")
+            new_post_badge = Badge.objects.get(title_en="New Post", model_type="POST")
             instance.badges.add(new_post_badge.id)
 
 
