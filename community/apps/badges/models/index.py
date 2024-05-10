@@ -9,7 +9,7 @@ from django.utils.translation import gettext_lazy as _
 from community.bases.models import Model
 
 # Modules
-from community.modules.choices import MODEL_TYPE_CHOICES
+from community.modules.choices import MODEL_TYPE_CHOICES, BADGE_TYPE_CHOICES
 
 # Utils
 from community.utils.medias import upload_path
@@ -28,6 +28,13 @@ class Badge(Model):
     description = models.TextField(_("Description"), null=True, blank=True)
     image_url = models.URLField(_("Image URL"), null=True, blank=True)
     model_type = models.CharField(_("Model Type"), choices=MODEL_TYPE_CHOICES, max_length=100, null=True, blank=True)
+    badge_type = models.CharField(
+        _("Badge Type"),
+        choices=BADGE_TYPE_CHOICES,
+        max_length=100,
+        null=True,
+        blank=True,
+    )
     order = models.IntegerField(_("Order"), null=True, blank=True)
 
     class Meta:
