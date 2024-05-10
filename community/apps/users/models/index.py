@@ -54,7 +54,7 @@ class User(
     wallet_address = models.CharField(_("Wallet Address"), max_length=255, null=True, blank=True)
     gender = models.CharField(_("Gender"), max_length=20, null=True, blank=True)
     birth = models.DateField(_("Birth"), null=True, blank=True)
-    nation = models.CharField(_("Nation"), max_length=20, null=True, blank=True)
+    nation = models.CharField(_("Nation"), max_length=255, null=True, blank=True)
     sdk_id = models.IntegerField(_("Sdk Id"), null=True)
     sdk_uuid = models.UUIDField(_("Sdk UUID"), null=True, blank=True)
 
