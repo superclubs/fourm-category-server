@@ -101,3 +101,8 @@ FILE_TYPE_CHOICES = Choices(
     ("IMAGE", _("IMAGE")),
     ("VIDEO", _("VIDEO")),
 )
+
+BADGE_TYPE_CHOICES = Choices(
+    ("POST_ACTIVE", _("포스트 활성화")),
+    ("POST_PERIOD", _("포스트 기간")),
+)
