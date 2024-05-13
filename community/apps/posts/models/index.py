@@ -276,10 +276,6 @@ class Post(
         self.board.decrease_board_post_count()
         self.board.save()
 
-        # Profile Post Count
-        self.profile.decrease_profile_post_count()
-        self.profile.save()
-
         # Post Tag Post Count
         if post_tag:
             post_tags = self.post_tags.filter(is_active=True)
@@ -300,5 +296,9 @@ class Post(
 
         # API Gateway
         gateway_post.delete_post(data)
+
+        # Delete Post
+        if not self.is_temporary and not self.is_agenda and not self.is_reserved and self.public_type != "ONLY_ME":
+            self.decrease_related_model_post_count(post_tag=True)
 
         return super(Post, self).soft_delete(*args, **kwargs)
