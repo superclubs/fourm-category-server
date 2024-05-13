@@ -1,6 +1,3 @@
-# Python
-import math
-
 from dateutil.relativedelta import relativedelta
 
 # Django
@@ -12,7 +9,7 @@ from django.utils.translation import gettext_lazy as _
 from community.apps.visits.models import CommunityVisit
 
 # Utils
-from community.utils.point import POINT_PER_COMMUNITY_LEVEL, POINT_PER_POST_VISIT
+from community.utils.point import POINT_PER_POST_VISIT
 
 
 # Main Section
@@ -60,4 +57,3 @@ class CommunityPostVisitModelMixin(models.Model):
         self.posts_visit_point = self.posts_visit_point + POINT_PER_POST_VISIT
         self.point = self.point + POINT_PER_POST_VISIT
 
-        self.level = math.floor(self.point**POINT_PER_COMMUNITY_LEVEL) + 1
