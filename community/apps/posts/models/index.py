@@ -208,7 +208,9 @@ class Post(
         self.__is_temporary = self.is_temporary
 
     def save(self, *args, **kwargs):
-        if self.id is None:
+        is_created = False
+        if self._state.adding:
+            is_created = True
             self.community_title = self.community.title
 
             if self.content:
@@ -220,6 +222,13 @@ class Post(
                 self.board_group = self.board.board_group
                 # self.board_group_title = self.board.board_group.title
 
+        # Point
+        if self.point >= 20 and not self.achieved_20_points_at:
+            self.achieved_20_points_at = now()
+
+        super(Post, self).save(*args, **kwargs)
+
+        if is_created:
             if not self.is_temporary and not self.is_agenda and not self.is_reserved and self.public_type != "ONLY_ME":
                 self.increase_related_model_post_count()
 
@@ -231,12 +240,6 @@ class Post(
 
             elif self.public_type == "ONLY_ME" and self.__public_type != self.public_type:
                 self.decrease_related_model_post_count(post_tag=True)
-
-        # Point
-        if self.point >= 20 and not self.achieved_20_points_at:
-            self.achieved_20_points_at = now()
-
-        return super(Post, self).save(*args, **kwargs)
 
     def increase_related_model_post_count(self, post_tag=False):
         # User Post Count
@@ -276,10 +279,6 @@ class Post(
         self.board.decrease_board_post_count()
         self.board.save()
 
-        # Profile Post Count
-        self.profile.decrease_profile_post_count()
-        self.profile.save()
-
         # Post Tag Post Count
         if post_tag:
             post_tags = self.post_tags.filter(is_active=True)
@@ -301,4 +300,8 @@ class Post(
         # API Gateway
         gateway_post.delete_post(data)
 
-        return super(Post, self).soft_delete(*args, **kwargs)
+        # Delete Post
+        super(Post, self).soft_delete(*args, **kwargs)
+
+        if not self.is_temporary and not self.is_agenda and not self.is_reserved and self.public_type != "ONLY_ME":
+            self.decrease_related_model_post_count(post_tag=True)
