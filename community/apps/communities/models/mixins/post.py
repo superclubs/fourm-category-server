@@ -23,16 +23,12 @@ class CommunityPostModelMixin(models.Model):
         self.post_point = self.post_point + POINT_PER_POST
         self.point = self.point + POINT_PER_POST
 
-        self.level = math.floor(self.point**POINT_PER_COMMUNITY_LEVEL) + 1
-
     def decrease_community_post_count(self):
         self.post_count = self.post_count - 1
 
         # Point
         self.post_point = self.post_point - POINT_PER_POST
         self.point = self.point - POINT_PER_POST
-
-        self.level = math.floor(self.point**POINT_PER_COMMUNITY_LEVEL) + 1
 
     def update_community_post_count(self):
         self.post_count = self.posts.filter(is_active=True, is_temporary=False).count()
