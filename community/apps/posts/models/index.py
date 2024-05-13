@@ -251,6 +251,11 @@ class Post(
         self.board.increase_board_post_count()
         self.board.save()
 
+        # Profile Post Count
+        if self.profile:
+            self.profile.increase_profile_post_count()
+            self.profile.save()
+
         # Post Tag Post Count
         if post_tag:
             post_tags = self.post_tags.filter(is_active=True)

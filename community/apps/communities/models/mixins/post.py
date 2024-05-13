@@ -6,7 +6,7 @@ from django.db import models
 from django.utils.translation import gettext_lazy as _
 
 # Utils
-from community.utils.point import POINT_PER_COMMUNITY_LEVEL, POINT_PER_POST
+from community.utils.point import POINT_PER_POST
 
 
 # Main Section
