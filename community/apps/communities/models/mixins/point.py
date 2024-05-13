@@ -1,12 +1,6 @@
-# Python
-import math
-
 # Django
 from django.db import models
 from django.utils.translation import gettext_lazy as _
-
-# Utils
-from community.utils.point import POINT_PER_COMMUNITY_LEVEL
 
 
 # Main Section
@@ -35,5 +29,3 @@ class CommunityPointModelMixin(models.Model):
             + self.comments_dislike_point
             + self.posts_visit_point
         )
-
-        self.level = math.floor(self.point**POINT_PER_COMMUNITY_LEVEL) + 1
