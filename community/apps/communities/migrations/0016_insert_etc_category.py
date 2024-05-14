@@ -6,10 +6,10 @@ from community.apps.communities.constants.categories import categories
 def update_category_titles(apps, schema_editor):
     Community = apps.get_model('communities', 'Community')
     for category in categories:
-        if category["depth"] == 2 and category["title"] == "Etc":
-            category_1depth = Community.objects.filter(title=category["1depth"], depth=1).first()
-            category_2depth = Community.objects.filter(title=category["2depth"], depth=2,
-                                                      parent_community=category_1depth).first()
+        if category["depth"] == 2 and category["2depth"] == "기타":
+            category_1depth = Community.objects.filter(title_ko=category["1depth"], depth=1).first()
+            category_2depth = Community.objects.filter(title_ko=category["2depth"], depth=2,
+                                                       parent_community=category_1depth).first()
             if category_1depth and not category_2depth:
                 category_2depth = Community.objects.create(
                     id=Community.objects.order_by("-id").first().id + 1,
