@@ -2,9 +2,8 @@
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 
-from community.apps.boards.models import Board
-
 # Models
+from community.apps.boards.models import Board
 from community.apps.communities.models import Community
 
 
