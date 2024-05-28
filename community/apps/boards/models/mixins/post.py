@@ -26,11 +26,6 @@ class BoardPostModelMixin(models.Model):
         reserve_Q = ~(Q(is_reserved=True) & Q(reserved_at__lte=now()))
         boom_Q = ~(Q(is_boomed=True) & Q(boomed_at__gte=now()))
 
-        self.post_count = self.posts.filter(public_type_Q,
-                                            reserve_Q,
-                                            boom_Q,
-                                            is_active=True,
-                                            is_deleted=False,
-                                            is_temporary=False,
-                                            is_agenda=False
-                                            ).count()
+        self.post_count = self.posts.filter(
+            public_type_Q, reserve_Q, boom_Q, is_active=True, is_deleted=False, is_temporary=False, is_agenda=False
+        ).count()

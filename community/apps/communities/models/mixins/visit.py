@@ -56,4 +56,3 @@ class CommunityPostVisitModelMixin(models.Model):
         # Point
         self.posts_visit_point = self.posts_visit_point + POINT_PER_POST_VISIT
         self.point = self.point + POINT_PER_POST_VISIT
-
