@@ -1,0 +1,308 @@
+title,id,1depth,2depth,3depth,parent_community,depth,title_en,title_ko,title_ja,title_zh_hans,title_zh_hant,title_es,title_ru,title_ar
+Etc,1001,기타,,,,1,Etc,기타,その他,ETC,ETC,etc.,и т. д.,إلخ
+Game,1002,게임,,,,1,Game,게임,ゲーム,游戏,遊戲,juego,игра,لعبة
+Role Playing,1003,게임,롤플레잉,,게임,2,Role Playing,롤플레잉,ロールプレイング,角色扮演,角色扮演,juego de rol,ролевая игра,لعب الأدوار
+Action Rpg,1004,게임,롤플레잉,액션 RPG,게임,3,Action Rpg,액션 RPG,アクションRPG,动作角色扮演游戏,動作角色扮演遊戲,Juego de rol de acción,Экшен-РПГ,أكشن آر بي جي
+Adventure Rpg,1005,게임,롤플레잉,어드벤처 RPG,게임,3,Adventure Rpg,어드벤처 RPG,アドベンチャーRPG,冒险角色扮演游戏,冒險角色扮演遊戲,Juego de rol de aventuras,Приключенческая ролевая игра,مغامرة آر بي جي
+Casual,1006,게임,롤플레잉,캐주얼,게임,3,Casual,캐주얼,カジュアル,随意的,隨意的,casual,повседневный,غير رسمي
+Jrpg,1007,게임,롤플레잉,JRPG,게임,3,Jrpg,JRPG,JRPG,日式角色扮演游戏,日式角色扮演遊戲,JRPG,Японская ролевая игра,JRPG
+Party Rpg,1008,게임,롤플레잉,파티 RPG,게임,3,Party Rpg,파티 RPG,パーティーRPG,派对角色扮演游戏,派對角色扮演遊戲,juego de rol de fiesta,партийная ролевая игра,آر بي جي الحزب
+Strategy Rpg,1009,게임,롤플레잉,전략 RPG,게임,3,Strategy Rpg,전략 RPG,戦略RPG,策略角色扮演游戏,策略角色扮演遊戲,Juego de rol de estrategia,Стратегическая ролевая игра,استراتيجية آر بي جي
+Roguelike,1010,게임,롤플레잉,로그라이크,게임,3,Roguelike,로그라이크,ログライク,Roguelike,Roguelike,pícaro,Рогалик,روجلايك
+Etc,1011,게임,롤플레잉,기타,게임,3,Etc,기타,その他,ETC,ETC,etc.,и т. д.,إلخ
+Simulation,1012,게임,시뮬레이션,,게임,2,Simulation,시뮬레이션,シミュレーション,模拟,模擬,simulación,моделирование,محاكاة
+Fps/Shooting,1013,게임,FPS/슈팅,,게임,2,Fps/Shooting,FPS/슈팅,FPS/シューティング,第一人称射击/射击,第一人稱射擊/射擊,FPS/Disparo,Шутер от первого лица/стрельба,إطارا في الثانية/إطلاق النار
+Fortress,1014,게임,FPS/슈팅,포트리스,게임,3,Fortress,포트리스,フォートレス,堡垒,堡壘,fortaleza,крепость,قلعة
+Arcade,1015,게임,FPS/슈팅,아케이드,게임,3,Arcade,아케이드,アーケード,拱廊,拱廊,arcada,аркада,ممر
+Arena,1016,게임,FPS/슈팅,아레나,게임,3,Arena,아레나,アリーナ,竞技场,競技場,arena,арена,الساحة
+Battle Royale,1017,게임,FPS/슈팅,배틀 로얄,게임,3,Battle Royale,배틀 로얄,バトルロイヤル,大逃杀,大逃殺,batalla real,королевская битва,معركة رويال
+Military,1018,게임,FPS/슈팅,밀리터리,게임,3,Military,밀리터리,ミリタリー,军队,軍隊,militar,военный,جيش
+Hero,1019,게임,FPS/슈팅,영웅,게임,3,Hero,영웅,ヒーロー,英雄,英雄,héroe,герой,بطل
+Platform,1020,게임,FPS/슈팅,플랫폼,게임,3,Platform,플랫폼,プラットフォーム,平台,平台,plataforma,Платформа,منصة
+Roguelike,1021,게임,FPS/슈팅,로그라이크,게임,3,Roguelike,로그라이크,ログライク,Roguelike,Roguelike,pícaro,Рогалик,روجلايك
+Etc,1022,게임,FPS/슈팅,기타,게임,3,Etc,기타,その他,ETC,ETC,etc.,и т. д.,إلخ
+Action/Adventure,1023,게임,액션/어드벤처,,게임,2,Action/Adventure,액션/어드벤처,アクション/アドベンチャー,动作/冒险,動作/冒險,Acción Aventura,Боевик/Приключение,عمل مغامرة
+Racing,1024,게임,레이싱,,게임,2,Racing,레이싱,レーシング,赛车,賽車,carreras,гонки,سباق
+Sports,1025,게임,스포츠,,게임,2,Sports,스포츠,スポーツ,运动的,運動的,Deportes,виды спорта,رياضات
+Mobile,1026,게임,모바일,,게임,2,Mobile,모바일,モバイル,移动的,移動的,móvil,мобильный,متحرك
+Video,1027,게임,비디오,,게임,2,Video,비디오,動画,视频,影片,video,видео,فيديو
+Music/Rhythm,1028,게임,음악/리듬,,게임,2,Music/Rhythm,음악/리듬,音楽/リズム,音乐/节奏,音樂/節奏,música/ritmo,музыка/ритм,الموسيقى / الإيقاع
+Puzzle,1029,게임,퍼즐,,게임,2,Puzzle,퍼즐,パズル,谜,謎,rompecabezas,головоломка,لغز
+Fear,1030,게임,공포,,게임,2,Fear,공포,恐怖,害怕,害怕,miedo,страх,يخاف
+Indie,1031,게임,인디,,게임,2,Indie,인디,インディ,独立,獨立,independiente,инди,إيندي
+Etc,1032,게임,기타,,게임,2,Etc,기타,その他,ETC,ETC,etc.,и т. д.,إلخ
+Cartoon/Animation,1033,만화/애니,,,,1,Cartoon/Animation,만화/애니,漫画/アニメ,卡通/动画,卡通/動畫,Dibujos animados/animación,Мультфильм/Анимация,الرسوم المتحركة
+Comic Book,1034,만화/애니,만화,,만화/애니,2,Comic Book,만화,漫画,漫画书,漫畫書,libro cómico,комикс,كتاب الشخصيات
+Animated Movie,1035,만화/애니,애니메이션,,만화/애니,2,Animated Movie,애니메이션,アニメーション,动画片,卡通,película animada,анимационный фильм,فيلم رسوم متحركة
+Romance/Drama,1036,만화/애니,순정/드라마,,만화/애니,2,Romance/Drama,순정/드라마,純正/ドラマ,爱情/剧情,愛情/劇情,Romance/Drama,Романтика/Драма,رومانسية/دراما
+Comic,1037,만화/애니,코믹,,만화/애니,2,Comic,코믹,コミック,漫画,漫畫,cómic,комикс,رسوم متحركة
+Action/Martial Arts,1038,만화/애니,액션/무협,,만화/애니,2,Action/Martial Arts,액션/무협,アクション/無協,动作/武术,動作/武術,Acción/Artes marciales,Боевые искусства/боевые искусства,أكشن/فنون قتالية
+Horror/Mystery,1039,만화/애니,공포/추리,,만화/애니,2,Horror/Mystery,공포/추리,恐怖/推理,恐怖/悬疑,恐怖/懸疑,Terror/Misterio,Ужасы/Мистика,رعب/غموض
+Fantasy/Science Fiction,1040,만화/애니,판타지/SF,,만화/애니,2,Fantasy/Science Fiction,판타지/SF,ファンタジー/SF,奇幻/科幻小说,奇幻/科幻小說,Fantasía/Ciencia ficción,Фэнтези/Научная фантастика,الخيال / الخيال العلمي
+Sports,1041,만화/애니,스포츠,,만화/애니,2,Sports,스포츠,スポーツ,运动的,運動的,Deportes,виды спорта,رياضات
+Basketball,1042,만화/애니,스포츠,농구,만화/애니,3,Basketball,농구,バスケットボール,篮球,籃球,baloncesto,баскетбол,كرة سلة
+Baseball,1043,만화/애니,스포츠,야구,만화/애니,3,Baseball,야구,野球,棒球,棒球,béisbol,бейсбол,البيسبول
+Soccer,1044,만화/애니,스포츠,축구,만화/애니,3,Soccer,축구,サッカー,足球,足球,fútbol,футбольный,كرة القدم
+Tennis,1045,만화/애니,스포츠,테니스,만화/애니,3,Tennis,테니스,テニス,网球,網球,tenis,большой теннис,تنس
+Badminton,1046,만화/애니,스포츠,배드민턴,만화/애니,3,Badminton,배드민턴,バドミントン,羽毛球,羽毛球,Bádminton,Бадминтон,تنس الريشة
+Ping-Pong,1047,만화/애니,스포츠,탁구,만화/애니,3,Ping-Pong,탁구,卓球,乒乓,乒乓,Ping pong,Настольный теннис,بينج بونج
+Volleyball,1048,만화/애니,스포츠,배구,만화/애니,3,Volleyball,배구,バレーボール,排球,排球,vóleibol,волейбол,الكرة الطائرة
+Swimming,1049,만화/애니,스포츠,수영,만화/애니,3,Swimming,수영,水泳,游泳,游泳,nadar,плавание,سباحة
+Boxing,1050,만화/애니,스포츠,복싱,만화/애니,3,Boxing,복싱,ボクシング,拳击,拳擊,boxeo,заниматься боксом,ملاكمة
+Etc,1051,만화/애니,스포츠,기타,만화/애니,3,Etc,기타,その他,ETC,ETC,etc.,и т. д.,إلخ
+Web Toon,1052,만화/애니,웹툰,,만화/애니,2,Web Toon,웹툰,ウェブトゥーン,网络卡通,網路卡通,caricatura web,Веб-мульт,تون الويب
+Etc,1053,만화/애니,기타,,만화/애니,2,Etc,기타,その他,ETC,ETC,etc.,и т. д.,إلخ
+Broadcast,1054,방송,,,,1,Broadcast,방송,放送,播送,pod送,transmisión,транслировать,إذاعة
+Tv,1055,방송,TV,,방송,2,Tv,TV,テレビ,电视,電視,TELEVISOR,ТВ,تلفزيون
+Radio,1056,방송,라디오,,방송,2,Radio,라디오,ラジオ,收音机,收音機,radio,радио,مذياع
+Internet,1057,방송,인터넷,,방송,2,Internet,인터넷,インターネット,互联网,網際網路,Internet,Интернет,إنترنت
+Newspaper/Magazine,1058,방송,신문/잡지,,방송,2,Newspaper/Magazine,신문/잡지,新聞/雑誌,报纸/杂志,報紙/雜誌,Periódico revista,Газета/Журнал,مجلة صحيفة
+Etc,1059,방송,기타,,방송,2,Etc,기타,その他,ETC,ETC,etc.,и т. д.,إلخ
+Culture/Arts,1060,문화/예술,,,,1,Culture/Arts,문화/예술,文化/芸術,文化/艺术,文化/藝術,Cultura/Artes,Культура/Искусство,الثقافة/الفنون
+Theater,1061,문화/예술,연극,,문화/예술,2,Theater,연극,演劇,剧院,劇院,teatro,театр,مسرح
+Musical/Opera,1062,문화/예술,뮤지컬/오페라,,문화/예술,2,Musical/Opera,뮤지컬/오페라,ミュージカル/オペラ,音乐剧/歌剧,音樂劇/歌劇,Musical/ópera,Мюзикл/Опера,موسيقية/أوبرا
+Dance/Dance,1063,문화/예술,무용/댄스,,문화/예술,2,Dance/Dance,무용/댄스,ダンス/ダンス,舞,舞,baila Baila,танец/танец,ارقص ارقص
+Conversation,1064,문화/예술,회화,,문화/예술,2,Conversation,회화,絵画,对话,對話,conversación,беседа,محادثة
+Crafts/Decorative Arts,1065,문화/예술,공예/장식미술,,문화/예술,2,Crafts/Decorative Arts,공예/장식미술,クラフト/装飾美術,工艺品/装饰艺术,工藝品/裝飾藝術,Manualidades/Artes Decorativas,Ремесла/Декоративное искусство,الحرف / الفنون الزخرفية
+Sculpture/Ceramics,1066,문화/예술,조소/도예,,문화/예술,2,Sculpture/Ceramics,조소/도예,砒素/陶芸,雕塑/陶瓷,雕塑/陶瓷,Escultura/Cerámica,Скульптура/Керамика,النحت / السيراميك
+Calligraphy,1067,문화/예술,서예,,문화/예술,2,Calligraphy,서예,書道,书法,書法,Caligrafía,Каллиграфия,فن الخط
+Design,1068,문화/예술,디자인,,문화/예술,2,Design,디자인,デザイン,设计,設計,diseño,дизайн,تصميم
+Graphic Design,1069,문화/예술,디자인,그래픽 디자인,문화/예술,3,Graphic Design,그래픽 디자인,グラフィックデザイン,平面设计,平面設計,diseño gráfico,графический дизайн,التصميم الجرافيكي
+Web Design,1070,문화/예술,디자인,웹 디자인,문화/예술,3,Web Design,웹 디자인,Webデザイン,网页设计,網頁設計,diseño web,веб-дизайн,تصميم الويب
+Package Design,1071,문화/예술,디자인,패키지 디자인,문화/예술,3,Package Design,패키지 디자인,パッケージデザイン,包装设计,包裝設計,Diseño del paquete,Дизайн упаковки,تصميم الطرد
+Fashion Design,1072,문화/예술,디자인,패션 디자인,문화/예술,3,Fashion Design,패션 디자인,ファッションデザイン,时尚设计,時尚設計,diseño de moda,модный дизайн,تصميم الأزياء
+Interior Design,1073,문화/예술,디자인,인테리어 디자인,문화/예술,3,Interior Design,인테리어 디자인,インテリアデザイン,室内设计,室內設計,diseño de interiores,дизайн интерьера,تصميم داخلي
+Industrial Design,1074,문화/예술,디자인,산업 디자인,문화/예술,3,Industrial Design,산업 디자인,産業デザイン,工业设计,工業設計,diseño industrial,Индустриальный дизайн,التصميم الصناعي
+Illustration,1075,문화/예술,디자인,일러스트레이션,문화/예술,3,Illustration,일러스트레이션,イラスト,插图,插圖,ilustración,иллюстрация,توضيح
+Animation Design,1076,문화/예술,디자인,애니메이션 디자인,문화/예술,3,Animation Design,애니메이션 디자인,アニメデザイン,动画设计,動畫設計,diseño de animación,анимационный дизайн,تصميم الرسوم المتحركة
+Visual Design,1077,문화/예술,디자인,비주얼 디자인,문화/예술,3,Visual Design,비주얼 디자인,ビジュアルデザイン,视觉设计,視覺設計,Diseño visual,визуальный дизайн,التصميم المرئي
+Industrial Production Design,1078,문화/예술,디자인,산업 생산 디자인,문화/예술,3,Industrial Production Design,산업 생산 디자인,産業生産設計,工业生产设计,工業生產設計,diseño de producción industrial,дизайн промышленного производства,تصميم الإنتاج الصناعي
+Environmental Design,1079,문화/예술,디자인,환경 디자인,문화/예술,3,Environmental Design,환경 디자인,環境デザイン,环境设计,環境設計,Diseño ambiental,экологический дизайн,تصميم بيئي
+Design Editor,1080,문화/예술,디자인,편집 디자인,문화/예술,3,Design Editor,편집 디자인,編集デザイン,设计编辑,設計編輯,editor de diseño,Редактор дизайна,محرر التصميم
+Ui/Ux Design,1081,문화/예술,디자인,UI/UX 디자인,문화/예술,3,Ui/Ux Design,UI/UX 디자인,UI/UXデザイン,用户界面/用户体验设计,使用者介面/使用者體驗設計,Diseño UI/UX,UI/UX дизайн,تصميم واجهة المستخدم/UX
+Product Design,1082,문화/예술,디자인,프로덕트 디자인,문화/예술,3,Product Design,프로덕트 디자인,プロダクトデザイン,产品设计,產品設計,diseño de producto,дизайн продукта,تصميم المنتج
+Etc,1083,문화/예술,디자인,기타,문화/예술,3,Etc,기타,その他,ETC,ETC,etc.,и т. д.,إلخ
+Construct,1084,문화/예술,건축,,문화/예술,2,Construct,건축,建築,构造,構造,construir,построить,بناء
+Picture,1085,문화/예술,사진,,문화/예술,2,Picture,사진,写真,图片,圖片,imagen,картина,صورة
+Art Gallery/Museum,1086,문화/예술,미술관/박물관,,문화/예술,2,Art Gallery/Museum,미술관/박물관,美術館/博物館,美术馆/博物馆,美術館/博物館,Galería de arte/museo,Художественная галерея/музей,معرض الفنون / المتحف
+Etc,1087,문화/예술,기타,,문화/예술,2,Etc,기타,その他,ETC,ETC,etc.,и т. д.,إلخ
+Movie,1088,영화,,,,1,Movie,영화,映画,电影,電影,película,фильм,فيلم
+Drama/Romance,1089,영화,드라마/로맨스,,영화,2,Drama/Romance,드라마/로맨스,ドラマ/ロマンス,剧情/爱情,劇情/愛情,Drama/Romance,Драма/Романтика,الدراما / الرومانسية
+Comedy,1090,영화,코미디,,영화,2,Comedy,코미디,コメディ,喜剧,喜劇,comedia,комедия,كوميديا
+Romantic Comedy,1091,영화,코미디,로맨틱 코미디,영화,3,Romantic Comedy,로맨틱 코미디,ロマンチックなコメディ,浪漫喜剧,浪漫喜劇,comedia romántica,романтическая комедия,كوميديا ​​رومانسية
+Comedy,1092,영화,코미디,희극,영화,3,Comedy,희극,喜劇,喜剧,喜劇,comedia,комедия,كوميديا
+Black Comedy,1093,영화,코미디,블랙 코미디,영화,3,Black Comedy,블랙 코미디,ブラックコメディ,黑色喜剧,黑色喜劇,comedia de humor negro,черная комедия,الكوميديا ​​السوداء
+Animated Movie,1094,영화,코미디,애니메이션,영화,3,Animated Movie,애니메이션,アニメーション,动画片,卡通,película animada,анимационный фильм,فيلم رسوم متحركة
+Parody,1095,영화,코미디,패러디,영화,3,Parody,패러디,パロディ,戏仿,戲仿,parodia,пародия,محاكاة ساخرة
+Etc,1096,영화,코미디,기타,영화,3,Etc,기타,その他,ETC,ETC,etc.,и т. д.,إلخ
+Action/Martial Arts,1097,영화,액션/무협,,영화,2,Action/Martial Arts,액션/무협,アクション/無協,动作/武术,動作/武術,Acción/Artes marciales,Боевые искусства/боевые искусства,أكشن/فنون قتالية
+Horror/Thriller,1098,영화,공포/스릴러,,영화,2,Horror/Thriller,공포/스릴러,恐怖/スリラー,恐怖/惊悚片,恐怖/驚悚片,Terror/Suspense,Ужасы/Триллер,رعب/إثارة
+Science Fiction/Fantasy,1099,영화,SF/판타지,,영화,2,Science Fiction/Fantasy,SF/판타지,SF/ファンタジー,科幻/奇幻,科幻/奇幻,Ciencia ficción/fantasía,Научная фантастика/фэнтези,الخيال العلمي/الفانتازيا
+Documentary,1100,영화,다큐멘터리,,영화,2,Documentary,다큐멘터리,ドキュメンタリー,记录,記錄,documental,документальный,وثائقي
+Classics/History,1101,영화,고전/역사,,영화,2,Classics/History,고전/역사,古典/歴史,经典/历史,經典/歷史,Clásicos/Historia,Классика/История,الكلاسيكيات / التاريخ
+Indie/Art,1102,영화,인디/예술,,영화,2,Indie/Art,인디/예술,インディ/アート,独立/艺术,獨立/藝術,Independiente/Arte,Инди/Арт,إيندي / الفن
+Film Production,1103,영화,영화제작,,영화,2,Film Production,영화제작,映画制作,电影制作,電影製作,produccion de pelicula,Производство фильма,إنتاج سينمائي
+Cinema/Theater,1104,영화,영화관/극장,,영화,2,Cinema/Theater,영화관/극장,映画館/劇場,电影院/剧院,電影院/劇院,Cine/Teatro,Кино/Театр,سينما / مسرح
+Film Festival/Criticism,1105,영화,영화제/평론,,영화,2,Film Festival/Criticism,영화제/평론,映画祭/評論,电影节/评论,影展/評論,Festival de Cine/Crítica,Кинофестиваль/Критика,مهرجان السينما / النقد
+Etc,1106,영화,기타,,영화,2,Etc,기타,その他,ETC,ETC,etc.,и т. д.,إلخ
+Music,1107,음악,,,,1,Music,음악,音楽,音乐,音樂,música,музыка,موسيقى
+Ballade,1108,음악,발라드,,음악,2,Ballade,발라드,バラード,叙事曲,敘事曲,Balada,Баллада,باليد
+Hip Hop/Dance,1109,음악,힙합/댄스,,음악,2,Hip Hop/Dance,힙합/댄스,ヒップホップ/ダンス,嘻哈/舞蹈,嘻哈/舞蹈,Danza hip hop,Хип-хоп/танцы,رقصة الهيب هوب
+Pop/R&B,1110,음악,팝/R&B,,음악,2,Pop/R&B,팝/R&B,ポップ/R&B,流行/节奏布鲁斯,流行/節奏藍調,Pop/R&B,Поп/R&B,موسيقى البوب/آر أند بي
+Rock/Metal,1111,음악,록/메탈,,음악,2,Rock/Metal,록/메탈,ロック/メタル,摇滚/金属,搖滾/金屬,Rock metalico,Рок/Металл,روك / ميتال
+Indie,1112,음악,인디,,음악,2,Indie,인디,インディ,独立,獨立,independiente,инди,إيندي
+Jazz/New Age,1113,음악,재즈/뉴에이지,,음악,2,Jazz/New Age,재즈/뉴에이지,ジャズ/ニューエイジ,爵士乐/新纪元,爵士樂/新紀元,Jazz/Nueva Era,Джаз/Нью-Эйдж,موسيقى الجاز / العصر الجديد
+Classic,1114,음악,클래식,,음악,2,Classic,클래식,クラシック,经典的,經典的,clásico,классический,كلاسيكي
+Vocal Music/Opera,1115,음악,성악/오페라,,음악,2,Vocal Music/Opera,성악/오페라,声楽/オペラ,声乐/歌剧,聲樂/歌劇,Música vocal/ópera,Вокальная музыка/опера,الموسيقى الصوتية/الأوبرا
+Korean Traditional Music/Folk,1116,음악,국악/민속,,음악,2,Korean Traditional Music/Folk,국악/민속,国楽/民俗,韩国传统音乐/民谣,韓國傳統音樂/民謠,Música tradicional coreana/folk,Корейская традиционная музыка/фолк,الموسيقى التقليدية الكورية/الشعبية
+Ost,1117,음악,OST,,음악,2,Ost,OST,OST,OST,OST,banda sonora,ОСТ,OST
+Theory/Criticism,1118,음악,이론/평론,,음악,2,Theory/Criticism,이론/평론,理論/評論,理论/批评,理論/批評,Teoría/Crítica,Теория/Критика,النظرية/النقد
+Composition/Lyrics,1119,음악,작곡/작사,,음악,2,Composition/Lyrics,작곡/작사,作曲/作詞,作曲/作词,作曲/作詞,Composición/Letra,Композиция/Текст,تكوين / كلمات
+Sing/Play,1120,음악,노래/연주,,음악,2,Sing/Play,노래/연주,曲/演奏,唱歌/演奏,唱歌/演奏,Cantar/Tocar,Петь/Играть,الغناء / اللعب
+Concert,1121,음악,콘서트,,음악,2,Concert,콘서트,コンサート,音乐会,音樂會,concierto,концерт,حفلة موسيقية
+Instrument/Sheet Music,1122,음악,악기/악보,,음악,2,Instrument/Sheet Music,악기/악보,楽器/楽譜,乐器/乐谱,樂器/樂譜,Instrumento/Partitura,Инструмент/Ноты,أداة / ورقة الموسيقى
+Music Video,1123,음악,뮤직비디오,,음악,2,Music Video,뮤직비디오,ミュージックビデオ,音乐视频,音樂影片,Video musical,Клип,أغنية مصورة
+Etc,1124,음악,기타,,음악,2,Etc,기타,その他,ETC,ETC,etc.,и т. д.,إلخ
+Fan Club,1125,팬클럽,,,,1,Fan Club,팬클럽,ファンクラブ,粉丝俱乐部,粉絲俱樂部,Club de fans,фан-клуб,نادي المعجبين
+Actor,1126,팬클럽,배우,,팬클럽,2,Actor,배우,俳優,演员,演員,actor,актер,الممثل
+Male Actor,1127,팬클럽,배우,남성 배우,팬클럽,3,Male Actor,남성 배우,男性俳優,男演员,男演員,actor masculino,актер-мужчина,ممثل ذكر
+Female Actor,1128,팬클럽,배우,여성 배우,팬클럽,3,Female Actor,여성 배우,女優,女演员,女演員,actriz femenina,женщина-актёр,ممثلة انثى
+Child Actor,1129,팬클럽,배우,아역 배우,팬클럽,3,Child Actor,아역 배우,子役俳優,儿童演员,兒童演員,actor infantil,ребенок-актер,ممثل طفل
+Movie,1130,팬클럽,배우,영화,팬클럽,3,Movie,영화,映画,电影,電影,película,фильм,فيلم
+Drama,1131,팬클럽,배우,드라마,팬클럽,3,Drama,드라마,ドラマ,戏剧,戲劇,drama,драма,دراما
+Documentary,1132,팬클럽,배우,다큐,팬클럽,3,Documentary,다큐,ドキュメンタリー,记录,記錄,documental,документальный,وثائقي
+Theater,1133,팬클럽,배우,연극,팬클럽,3,Theater,연극,演劇,剧院,劇院,teatro,театр,مسرح
+Musical,1134,팬클럽,배우,뮤지컬,팬클럽,3,Musical,뮤지컬,ミュージカル,音乐,音樂,musical,мюзикл,موسيقي
+Opera,1135,팬클럽,배우,오페라,팬클럽,3,Opera,오페라,オペラ,歌剧,歌劇,ópera,опера,أوبرا
+Etc,1136,팬클럽,배우,기타,팬클럽,3,Etc,기타,その他,ETC,ETC,etc.,и т. д.,إلخ
+Musician,1137,팬클럽,뮤지션,,팬클럽,2,Musician,뮤지션,ミュージシャン,音乐家,音樂家,músico,музыкант,موسيقي او عازف
+K-Pop,1138,팬클럽,뮤지션,K-POP,팬클럽,3,K-Pop,K-POP,K-POP,韩国流行音乐,韓國流行音樂,Kpop,К-поп,الكيبوب
+J-Pop,1139,팬클럽,뮤지션,J-POP,팬클럽,3,J-Pop,J-POP,J-POP,日本流行音乐,日本流行音樂,pop japonés,Джей-поп,جي بوب
+Billboard,1140,팬클럽,뮤지션,빌보드,팬클럽,3,Billboard,빌보드,ビルボード,广告牌,廣告看板,cartelera,рекламный щит,لوحة
+Ballade,1141,팬클럽,뮤지션,발라드,팬클럽,3,Ballade,발라드,バラード,叙事曲,敘事曲,Balada,Баллада,باليد
+Pop,1142,팬클럽,뮤지션,팝,팬클럽,3,Pop,팝,ポップ,流行音乐,流行音樂,estallido,поп,البوب
+Rock,1143,팬클럽,뮤지션,락,팬클럽,3,Rock,락,ロック,岩石,岩石,roca,камень,صخر
+Hip Hop,1144,팬클럽,뮤지션,힙합,팬클럽,3,Hip Hop,힙합,ヒップホップ,嘻哈,嘻哈,Hip hop,Хип-хоп,هيب هوب
+Edm,1145,팬클럽,뮤지션,EDM,팬클럽,3,Edm,EDM,EDM,电火花加工,電火花加工,electroerosión,электроэрозионная обработка,موسيقى الرقص الإلكترونية
+Jazz,1146,팬클럽,뮤지션,재즈,팬클럽,3,Jazz,재즈,ジャズ,爵士乐,爵士樂,jazz,джаз,موسيقى الجاز
+Reggae,1147,팬클럽,뮤지션,레게,팬클럽,3,Reggae,레게,レゲエ,雷鬼,雷鬼,reggae,регги,موسيقى الريغي
+Metal,1148,팬클럽,뮤지션,메탈,팬클럽,3,Metal,메탈,メタル,金属,金屬,metal,металл,معدن
+R&B,1149,팬클럽,뮤지션,R&B,팬클럽,3,R&B,R&B,R&B,节奏蓝调,節奏藍調,R&B,Р&Б,آر أند بي
+Etc,1150,팬클럽,뮤지션,기타,팬클럽,3,Etc,기타,その他,ETC,ETC,etc.,и т. д.,إلخ
+Model,1151,팬클럽,모델,,팬클럽,2,Model,모델,モデル,模型,模型,Modelo,Модель,نموذج
+Sports Player,1152,팬클럽,스포츠 선수,,팬클럽,2,Sports Player,스포츠 선수,スポーツ選手,体育运动员,運動運動員,deportista,спортивный игрок,لاعب رياضي
+Musician,1153,팬클럽,음악가,,팬클럽,2,Musician,음악가,ミュージシャン,音乐家,音樂家,Músico,Музыкант,موسيقي او عازف
+Entertainer,1154,팬클럽,예능인,,팬클럽,2,Entertainer,예능인,芸能人,艺人,藝人,artista,артист,فنان
+Announcer,1155,팬클럽,아나운서,,팬클럽,2,Announcer,아나운서,アナウンサー,播音员,pod音員,locutor,диктор,مذيع
+Author,1156,팬클럽,작가,,팬클럽,2,Author,작가,作家,作者,作者,autor,автор,مؤلف
+Etc,1157,팬클럽,기타,,팬클럽,2,Etc,기타,その他,ETC,ETC,etc.,и т. д.,إلخ
+Sports,1158,스포츠,,,,1,Sports,스포츠,スポーツ,运动的,運動的,Deportes,виды спорта,رياضات
+Soccer,1159,스포츠,축구,,스포츠,2,Soccer,축구,サッカー,足球,足球,fútbol,футбольный,كرة القدم
+Elp,1160,스포츠,축구,ELP,스포츠,3,Elp,ELP,ELP,英语语言课程,英語語言課程,PEL,ЭЛП,ايل ع
+La Liga,1161,스포츠,축구,라 리가,스포츠,3,La Liga,라 리가,ラ・リガ,西甲联赛,西甲聯賽,la Liga,Ла Лига,الدوري الاسباني
+Serie A,1162,스포츠,축구,세리에 A,스포츠,3,Serie A,세리에 A,セリエA,意甲联赛,意甲聯賽,serie A,Серия А,الدوري الإيطالي أ
+Bundesliga,1163,스포츠,축구,분데스리가,스포츠,3,Bundesliga,분데스리가,ブンデスリガ,德甲联赛,德甲聯賽,Bundesliga,Бундеслига,الدوري الألماني
+League 1,1164,스포츠,축구,리그 1,스포츠,3,League 1,리그 1,リーグ1,联赛1,聯賽1,liga 1,лига 1,الدوري 1
+Brazilian Serie A,1165,스포츠,축구,브라질 세리에 A,스포츠,3,Brazilian Serie A,브라질 세리에 A,ブラジルセリエA,巴西甲级联赛,巴西甲級聯賽,Serie A brasileña,Бразильская Серия А,الدوري البرازيلي أ
+Argentina Primera Division,1166,스포츠,축구,아르헨티나 프리메라 디비시온,스포츠,3,Argentina Primera Division,아르헨티나 프리메라 디비시온,アルゼンチン・プリメラ・ディビシオン,阿根廷甲级联赛,阿根廷甲級聯賽,Primera División Argentina,Аргентина Примера Дивизион,دوري الدرجة الأولى الأرجنتيني
+Liga Mx,1167,스포츠,축구,Liga MX,스포츠,3,Liga Mx,Liga MX,Liga MX,墨西哥足球甲级联赛,墨西哥足球甲級聯賽,Liga MX,Лига МХ,الدوري المكسيكي
+K League,1168,스포츠,축구,K리그,스포츠,3,K League,K리그,Kリーグ,K联赛,K聯賽,Liga K,К-лига,دوري ك
+J League,1169,스포츠,축구,J리그,스포츠,3,J League,J리그,Jリーグ,J联赛,J聯賽,Liga J,Джей-лига,دوري ي
+Csl,1170,스포츠,축구,CSL,스포츠,3,Csl,CSL,CSL,中超联赛,中超聯賽,CSL,CSL,CSL
+Youth Soccer,1171,스포츠,축구,유소년 축구,스포츠,3,Youth Soccer,유소년 축구,幼少年サッカー,青少年足球,青少年足球,futbol juvenil,молодежный футбол,كرة القدم للشباب
+Soccer For Society,1172,스포츠,축구,사회인 축구,스포츠,3,Soccer For Society,사회인 축구,社会人サッカー,足球造福社会,足球造福社會,futbol para la sociedad,футбол для общества,كرة القدم من أجل المجتمع
+Women Soccer,1173,스포츠,축구,여성 축구,스포츠,3,Women Soccer,여성 축구,女性サッカー,女子足球,女子足球,futbol femenino,женский футбол,كرة القدم النسائية
+Etc,1174,스포츠,축구,기타,스포츠,3,Etc,기타,その他,ETC,ETC,etc.,и т. д.,إلخ
+Baseball,1175,스포츠,야구,,스포츠,2,Baseball,야구,野球,棒球,棒球,béisbol,бейсбол,البيسبول
+Mlb,1176,스포츠,야구,MLB,스포츠,3,Mlb,MLB,MLB,美国职棒大联盟,美國職棒大聯盟,Grandes Ligas,МЛБ,MLB
+Kbo,1177,스포츠,야구,KBO,스포츠,3,Kbo,KBO,KBO,柯伊伯带天体,柯伊伯帶天體,KBO,КБО,KBO
+Npb,1178,스포츠,야구,NPB,스포츠,3,Npb,NPB,NPB,NPB,NPB,NPB,НПБ,نب
+Cpbl,1179,스포츠,야구,CPBL,스포츠,3,Cpbl,CPBL,CPBL,CPBL,CPBL,CPBL,КПБЛ,CPBL
+L.M.B.,1180,스포츠,야구,LMB,스포츠,3,L.M.B.,LMB,LMB,LMB,LMB,LMB,Л.М.Б.,L.M.B.
+Lvbp,1181,스포츠,야구,LVBP,스포츠,3,Lvbp,LVBP,LVBP,左心室血压,左心室血壓,LVBP,ЛЖБП,LVBP
+Youth Baseball,1182,스포츠,야구,유소년 야구,스포츠,3,Youth Baseball,유소년 야구,幼少年野球,青少年棒球,青少年棒球,béisbol juvenil,молодежный бейсбол,البيسبول الشباب
+Member Of Society Baseball,1183,스포츠,야구,사회인 야구,스포츠,3,Member Of Society Baseball,사회인 야구,社会人野球,棒球协会会员,棒球協會會員,miembro de la sociedad de beisbol,член общества бейсбола,عضو في مجتمع البيسبول
+Women Baseball,1184,스포츠,야구,여성 야구,스포츠,3,Women Baseball,여성 야구,女性野球,女子棒球,女子棒球,beisbol femenino,женский бейсбол,لعبة البيسبول النسائية
+Etc,1185,스포츠,야구,기타,스포츠,3,Etc,기타,その他,ETC,ETC,etc.,и т. д.,إلخ
+Basketball,1186,스포츠,농구,,스포츠,2,Basketball,농구,バスケットボール,篮球,籃球,baloncesto,баскетбол,كرة سلة
+Volleyball,1187,스포츠,배구,,스포츠,2,Volleyball,배구,バレーボール,排球,排球,vóleibol,волейбол,الكرة الطائرة
+Tennis/Badminton,1188,스포츠,테니스/배드민턴,,스포츠,2,Tennis/Badminton,테니스/배드민턴,テニス/バドミントン,网球/羽毛球,網球/羽毛球,Tenis/Bádminton,Теннис/Бадминтон,التنس / كرة الريشة
+Golf,1189,스포츠,골프,,스포츠,2,Golf,골프,ゴルフ,高尔夫球,高爾夫球,golf,гольф,جولف
+Table Tennis/Billiards,1190,스포츠,탁구/당구,,스포츠,2,Table Tennis/Billiards,탁구/당구,卓球/ビリヤード,乒乓球/台球,乒乓球/撞球,Tenis de mesa/billar,Настольный теннис/бильярд,تنس الطاولة/البلياردو
+Swimming,1191,스포츠,수영,,스포츠,2,Swimming,수영,水泳,游泳,游泳,nadar,плавание,سباحة
+Health,1192,스포츠,헬스,,스포츠,2,Health,헬스,フィットネス,健康,健康,salud,здоровье,صحة
+Leisure Sports,1193,스포츠,레저 스포츠,,스포츠,2,Leisure Sports,레저 스포츠,レジャースポーツ,休闲运动,休閒運動,Deportes de ocio,Спортивный отдых,الرياضات الترفيهية
+Martial Arts,1194,스포츠,무술,,스포츠,2,Martial Arts,무술,武道,武术,武術,Artes marciales,Боевые искусства,الفنون العسكرية
+Racing,1195,스포츠,레이싱,,스포츠,2,Racing,레이싱,レーシング,赛车,賽車,carreras,гонки,سباق
+Etc,1196,스포츠,기타,,스포츠,2,Etc,기타,その他,ETC,ETC,etc.,и т. д.,إلخ
+Animal,1197,동물,,,,1,Animal,동물,動物,动物,動物,animal,животное,حيوان
+Dog/Puppy,1198,동물,개/강아지,,동물,2,Dog/Puppy,개/강아지,犬/子犬,狗/小狗,狗/小狗,perro/cachorro,собака/щенок,الكلب، الجرو
+Cat,1199,동물,고양이,,동물,2,Cat,고양이,猫,猫,貓,gato,кот,قطة
+Bird/Avian,1200,동물,새/조류,,동물,2,Bird/Avian,새/조류,鳥/鳥,鸟/禽,鳥/禽,pájaro/aviar,птица/птица,الطيور / الطيور
+Fish/Crustaceans,1201,동물,어류/갑각류,,동물,2,Fish/Crustaceans,어류/갑각류,魚/甲殻類,鱼类/甲壳类,魚類/甲殼類,Pescado/crustáceos,Рыба/ракообразные,الأسماك/القشريات
+Reptiles/Amphibians,1202,동물,파충류/양서류,,동물,2,Reptiles/Amphibians,파충류/양서류,爬虫類/両生類,爬行动物/两栖动物,爬蟲類/兩棲類,Reptiles/Anfibios,Рептилии/амфибии,الزواحف / البرمائيات
+Insects,1203,동물,곤충류,,동물,2,Insects,곤충류,昆虫類,昆虫,昆蟲,insectos,насекомые,الحشرات
+Animal Protection,1204,동물,동물보호,,동물,2,Animal Protection,동물보호,動物保護,动物保护,動物保護,protección animal,защита животных,حماية الحيوان
+Etc,1205,동물,기타,,동물,2,Etc,기타,その他,ETC,ETC,etc.,и т. д.,إلخ
+Hobby,1206,취미,,,,1,Hobby,취미,趣味,爱好,嗜好,pasatiempo,хобби,هواية
+Travel,1207,취미,여행,,취미,2,Travel,여행,旅行,旅行,旅行,viajar,путешествовать,يسافر
+Collection,1208,취미,수집,,취미,2,Collection,수집,収集,收藏,收藏,recopilación,коллекция,مجموعة
+Model,1209,취미,모형,,취미,2,Model,모형,モデル,模型,模型,modelo,модель,نموذج
+Handicraft,1210,취미,수공예,,취미,2,Handicraft,수공예,手工芸,手工业,手工業,artesanía,ремесло,حرفي - حرفة يدوية
+Horticulture,1211,취미,원예,,취미,2,Horticulture,원예,園芸,园艺,園藝,horticultura,садоводство,البستنة
+Cosplay,1212,취미,코스프레,,취미,2,Cosplay,코스프레,コスプレ,角色扮演,角色扮演,cosplay,косплей,التنكر
+Magic,1213,취미,마술,,취미,2,Magic,마술,魔法,魔法,魔法,magia,Магия,سحر
+Play,1214,취미,놀이,,취미,2,Play,놀이,遊ぶ,玩,玩,jugar,играть,يلعب
+Etc,1215,취미,기타,,취미,2,Etc,기타,その他,ETC,ETC,etc.,и т. д.,إلخ
+Fashion/Beauty,1216,패션/미용,,,,1,Fashion/Beauty,패션/미용,ファッション/美容,时尚/美容,時尚/美容,Belleza de la moda,Мода/Красота,الجمال الأزياء
+Clothes,1217,패션/미용,의류,,패션/미용,2,Clothes,의류,衣類,衣服,衣服,ropa,одежда,ملابس
+Fashion Miscellaneous Goods,1218,패션/미용,패션잡화,,패션/미용,2,Fashion Miscellaneous Goods,패션잡화,ファッション雑貨,时尚杂货,時尚雜貨,Artículos diversos de moda.,Модные разные товары,أزياء السلع المتنوعة
+Accessory,1219,패션/미용,액세서리,,패션/미용,2,Accessory,액세서리,アクセサリー,配饰,配件,accesorio,аксессуар,ملحق
+Luxury,1220,패션/미용,명품,,패션/미용,2,Luxury,명품,高級,奢华,奢華,Lujo,Роскошь,رفاهية
+Skin Care,1221,패션/미용,피부관리,,패션/미용,2,Skin Care,피부관리,皮膚管理,皮肤护理,皮膚護理,protección de la piel,уход за кожей,العناية بالبشرة
+Hair/Nail,1222,패션/미용,헤어/네일,,패션/미용,2,Hair/Nail,헤어/네일,ヘア/ネイル,头发/指甲,頭髮/指甲,Cabello/Uñas,Волосы/Ногти,الشعر/الأظافر
+Makeup/Perfume,1223,패션/미용,화장/향수,,패션/미용,2,Makeup/Perfume,화장/향수,化粧/香水,彩妆/香水,彩妝/香水,Maquillaje/Perfume,Макияж/Парфюмерия,مكياج/عطور
+Plastic Surgery,1224,패션/미용,성형,,패션/미용,2,Plastic Surgery,성형,成形,整形外科,整形外科,cirugía plástica,пластическая хирургия,جراحة تجميلية
+Etc,1225,패션/미용,기타,,패션/미용,2,Etc,기타,その他,ETC,ETC,etc.,и т. д.,إلخ
+Health,1226,건강,,,,1,Health,건강,健康,健康,健康,salud,здоровье,صحة
+Diet/Diet,1227,건강,식생활/다이어트,,건강,2,Diet/Diet,식생활/다이어트,食生活/ダイエット,饮食/饮食,飲食/飲食,Dieta/Dieta,Диета/Диета,النظام الغذائي / النظام الغذائي
+Diet/Eating Habits,1228,건강,식생활/식습관,,건강,2,Diet/Eating Habits,식생활/식습관,食生活/食習慣,饮食/饮食习惯,飲食/飲食習慣,Dieta/hábitos alimentarios,Диета/привычки в еде,النظام الغذائي / عادات الأكل
+Work Out,1229,건강,운동,,건강,2,Work Out,운동,運動,锻炼,鍛鍊,ejercicio,тренировка,اكتشف - حل
+Healthcare,1230,건강,건강관리,,건강,2,Healthcare,건강관리,健康管理,卫生保健,衛生保健,cuidado de la salud,здравоохранение,الرعاىة الصحية
+Diet,1231,건강,다이어트,,건강,2,Diet,다이어트,ダイエット,饮食,飲食,dieta,диета,نظام عذائي
+Disease/Symptoms,1232,건강,질병/증상,,건강,2,Disease/Symptoms,질병/증상,病気/症状,疾病/症状,疾病/症狀,Enfermedad/Síntomas,Болезнь/Симптомы,المرض/الأعراض
+Medical Institution,1233,건강,의료기관,,건강,2,Medical Institution,의료기관,医療機関,医疗机构,醫療機構,Institución medica,медицинское учреждение,مؤسسة طبية
+Psychological Counseling,1234,건강,심리상담,,건강,2,Psychological Counseling,심리상담,心理相談,心理咨询,心理諮商,Asesoramiento psicológico,Психологическое консультирование,الإرشاد النفسي
+Etc,1235,건강,기타,,건강,2,Etc,기타,その他,ETC,ETC,etc.,и т. д.,إلخ
+Family/Childcare,1236,가족/육아,,,,1,Family/Childcare,가족/육아,家族/子育て,家庭/儿童保育,家庭/兒童保育,Familia/Cuidado de niños,Семья/Уход за детьми,الأسرة/رعاية الأطفال
+Marriage,1237,가족/육아,결혼,,가족/육아,2,Marriage,결혼,結婚,婚姻,婚姻,casamiento,свадьба,زواج
+Child Welfare/Adoption,1238,가족/육아,아동복지/입양,,가족/육아,2,Child Welfare/Adoption,아동복지/입양,児童福祉/養子縁組,儿童福利/收养,兒童福利/收養,Bienestar infantil/adopción,Защита детей/Усыновление,رعاية الطفل/التبني
+Married Couple,1239,가족/육아,부부,,가족/육아,2,Married Couple,부부,カップル,结婚夫妇,結婚夫妻,Pareja casada,женатая пара,زوجين
+Pregnancy/Childbirth,1240,가족/육아,임신/출산,,가족/육아,2,Pregnancy/Childbirth,임신/출산,妊娠/出産,怀孕/分娩,懷孕/分娩,Embarazo/Parto,Беременность/Роды,الحمل/الولادة
+Parenting/Women,1241,가족/육아,육아/여성,,가족/육아,2,Parenting/Women,육아/여성,子育て/女性,育儿/女性,育兒/女性,Crianza/Mujeres,Воспитание/Женщины,الأبوة والأمومة / المرأة
+Family/Family Events,1242,가족/육아,가족/가족행사,,가족/육아,2,Family/Family Events,가족/가족행사,家族/家族イベント,家庭/家庭活动,家庭/家庭活動,Eventos familiares/familiares,Семья/Семейные мероприятия,الأحداث العائلية / العائلية
+Immigrant,1243,가족/육아,이민,,가족/육아,2,Immigrant,이민,移民,移民,移民,inmigrante,иммигрант,مهاجر
+Etc,1244,가족/육아,기타,,가족/육아,2,Etc,기타,その他,ETC,ETC,etc.,и т. д.,إلخ
+Digital/It,1245,디지털/IT,,,,1,Digital/It,디지털/IT,デジタル/IT,数字/IT,數字/IT,Digital/TI,Цифровой/ИТ,الرقمية / تكنولوجيا المعلومات
+Programming,1246,디지털/IT,프로그래밍,,디지털/IT,2,Programming,프로그래밍,プログラミング,编程,程式設計,programación,программирование,برمجة
+Telecommunications/Network,1247,디지털/IT,통신/네트워크,,디지털/IT,2,Telecommunications/Network,통신/네트워크,通信/ネットワーク,电信/网络,電信/網路,Telecomunicaciones/Red,Телекоммуникации/Сеть,الاتصالات/الشبكة
+Web Design/Web Planning,1248,디지털/IT,웹디자인/웹기획,,디지털/IT,2,Web Design/Web Planning,웹디자인/웹기획,ウェブデザイン/ウェブ企画,网页设计/网页策划,網頁設計/網頁策劃,Diseño Web/Planificación Web,Веб-дизайн/Веб-планирование,تصميم الويب/تخطيط الويب
+Operating System,1249,디지털/IT,운영체제,,디지털/IT,2,Operating System,운영체제,オペレーティングシステム,操作系统,作業系統,Sistema operativo,Операционная система,نظام التشغيل
+Software,1250,디지털/IT,소프트웨어,,디지털/IT,2,Software,소프트웨어,ソフトウェア,软件,軟體,software,программное обеспечение,برمجة
+Hardware,1251,디지털/IT,하드웨어,,디지털/IT,2,Hardware,하드웨어,ハードウェア,硬件,硬體,hardware,аппаратное обеспечение,المعدات
+Multimedia,1252,디지털/IT,멀티미디어,,디지털/IT,2,Multimedia,멀티미디어,マルチメディア,多媒体,多媒體,multimedia,мультимедиа,الوسائط المتعددة
+Security,1253,디지털/IT,보안,,디지털/IT,2,Security,보안,セキュリティ,安全,安全,seguridad,безопасность,حماية
+Mobile,1254,디지털/IT,모바일,,디지털/IT,2,Mobile,모바일,モバイル,移动的,移動的,móvil,мобильный,متحرك
+Etc,1255,디지털/IT,기타,,디지털/IT,2,Etc,기타,その他,ETC,ETC,etc.,и т. д.,إلخ
+Finance,1256,금융,,,,1,Finance,금융,金融,金融,金融,finanzas,финансы,تمويل
+Invest,1257,금융,투자,,금융,2,Invest,투자,投資,投资,投資,invertir,вкладывать деньги,يستثمر
+Insurance,1258,금융,보험,,금융,2,Insurance,보험,保険,保险,保險,seguro,страхование,تأمين
+Real Estate,1259,금융,부동산,,금융,2,Real Estate,부동산,不動産,房地产,房地產,bienes raíces,недвижимость,العقارات
+Virtual Currency,1260,금융,가상화폐,,금융,2,Virtual Currency,가상화폐,仮想通貨,虚拟货币,虛擬貨幣,moneda virtual,виртуальная валюта,العملة الافتراضية
+Bitcoin,1261,금융,가상화폐,비트코인,금융,3,Bitcoin,비트코인,ビットコイン,比特币,比特幣,bitcóin,биткойн,بيتكوين
+Ethereum,1262,금융,가상화폐,이더리움,금융,3,Ethereum,이더리움,イーサリアム,以太坊,以太坊,Etereum,Эфириум,ايثريوم
+Ripple,1263,금융,가상화폐,리플,금융,3,Ripple,리플,リップル,波纹,波紋,onda,пульсация,تموج
+Abe,1264,금융,가상화폐,에이브,금융,3,Abe,에이브,エイブ,安倍,安倍,abe,Эйб,آبي
+Multiverse,1265,금융,가상화폐,멀티버스엑스,금융,3,Multiverse,멀티버스엑스,マルチバスX,多元宇宙,多元宇宙,Multiverso,Мультивселенная,الكون المتعدد
+Solana,1266,금융,가상화폐,솔라나,금융,3,Solana,솔라나,ソラナ,索拉纳,索拉納,solana,Солана,سولانا
+Strike,1267,금융,가상화폐,스트라이크,금융,3,Strike,스트라이크,ストライク,罢工,罷工,huelga,ударять,يضرب
+Etc,1268,금융,가상화폐,기타,금융,3,Etc,기타,その他,ETC,ETC,etc.,и т. д.,إلخ
+Nft,1269,금융,NFT,,금융,2,Nft,NFT,NFT,NFT,NFT,NFT,НФТ,نفت
+Asset Management,1270,금융,자산관리,,금융,2,Asset Management,자산관리,資産管理,资产管理,資產管理,gestión de activos,управление активами,إدارة الأصول
+Etc,1271,금융,기타,,금융,2,Etc,기타,その他,ETC,ETC,etc.,и т. д.,إلخ
+Education,1272,교육,,,,1,Education,교육,教育,教育,教育,educación,образование,تعليم
+Infant,1273,교육,영유아,,교육,2,Infant,영유아,幼児,婴儿,嬰兒,niño,младенец,رضيع
+Elementary School,1274,교육,초등학교,,교육,2,Elementary School,초등학교,小学校,小学,小學,escuela primaria,Начальная школа,مدرسة ابتدائية
+Middle School,1275,교육,중학교,,교육,2,Middle School,중학교,中学校,中学,中學,escuela intermedia,Средняя школа,المدرسة المتوسطة
+High School,1276,교육,고등학교,,교육,2,High School,고등학교,高校,中学,中學,escuela secundaria,средняя школа,المدرسة الثانوية
+University,1277,교육,대학교,,교육,2,University,대학교,大学,大学,大學,universidad,Университет,جامعة
+Special Education,1278,교육,특수교육,,교육,2,Special Education,특수교육,特殊教育,特殊教育,特殊教育,educación especial,специальное образование,التعليم الخاص
+Vocational Education,1279,교육,직업교육,,교육,2,Vocational Education,직업교육,職業教育,职业教育,職業教育,Educación vocacional,Профессионально-техническое образование,التعليم المهني
+Lifelong Education,1280,교육,평생교육,,교육,2,Lifelong Education,평생교육,生涯教育,终身教育,終身教育,Educación permanente,Непрерывное образование,التعليم مدى الحياة
+Study Abroad/Language Training,1281,교육,유학/어학연수,,교육,2,Study Abroad/Language Training,유학/어학연수,留学・語学研修,出国留学/语言培训,出國留學/語言培訓,Estudiar en el extranjero/formación de idiomas,Обучение за рубежом/языковая подготовка,الدراسة في الخارج / التدريب على اللغة
+Academy/Tutoring,1282,교육,학원/과외,,교육,2,Academy/Tutoring,학원/과외,学園/課外,学院/辅导,學院/輔導,Academia/tutoría,Академия/репетиторство,الأكاديمية / التدريس
+Exam/Certificate,1283,교육,시험/자격증,,교육,2,Exam/Certificate,시험/자격증,試験/資格,考试/证书,考試/證書,Examen/Certificado,Экзамен/Сертификат,الامتحان/الشهادة
+Education Methods/Policies,1284,교육,교육방법/정책,,교육,2,Education Methods/Policies,교육방법/정책,教育方法/政策,教育方法/政策,教育方法/政策,Métodos/políticas educativas,Методы/политика образования,أساليب/سياسات التعليم
+Etc,1285,교육,기타,,교육,2,Etc,기타,その他,ETC,ETC,etc.,и т. д.,إلخ
+Politics/Society,1286,정치/사회,,,,1,Politics/Society,정치/사회,政治/社会,政治/社会,政治/社會,Política/Sociedad,Политика/Общество,السياسة/المجتمع
+Law,1287,정치/사회,법,,정치/사회,2,Law,법,法,法律,法律,ley,закон,قانون
+Administration/Civil Complaints,1288,정치/사회,행정/민원,,정치/사회,2,Administration/Civil Complaints,행정/민원,行政/苦情,行政/民事投诉,行政/民事申訴,Administración/Quejas civiles,Администрация/Гражданские жалобы,الإدارة / الشكاوى المدنية
+Politics/Elections,1289,정치/사회,정치/선거,,정치/사회,2,Politics/Elections,정치/선거,政治/選挙,政治/选举,政治/選舉,Política/Elecciones,Политика/Выборы,سياسة/انتخابات
+International Relations/Unification,1290,정치/사회,국제관계/통일,,정치/사회,2,International Relations/Unification,국제관계/통일,国際関係/統一,国际关系/统一,國際關係/統一,Relaciones Internacionales/Unificación,Международные отношения/Объединение,العلاقات الدولية/التوحيد
+National Defense/Military Service,1291,정치/사회,국방/병역,,정치/사회,2,National Defense/Military Service,국방/병역,防衛/兵役,国防/军事服务,國防/軍事服務,Defensa Nacional/Servicio Militar,Национальная оборона/Военная служба,الدفاع الوطني/الخدمة العسكرية
+Environment/Disaster,1292,정치/사회,환경/재난재해,,정치/사회,2,Environment/Disaster,환경/재난재해,環境/災害災害,环境/灾难,環境/災難,Medio ambiente/desastre,Окружающая среда/Катастрофа,البيئة/الكوارث
+Welfare/Human Rights,1293,정치/사회,복지/인권,,정치/사회,2,Welfare/Human Rights,복지/인권,福祉/人権,福利/人权,福利/人權,Bienestar/Derechos Humanos,Благосостояние/права человека,الرعاية الاجتماعية/حقوق الإنسان
+Society And Culture,1294,정치/사회,사회문화,,정치/사회,2,Society And Culture,사회문화,社会文化,社会与文化,社會與文化,sociedad y Cultura,общество и культура,المجتمع والثقافة
+Politics/General Society,1295,정치/사회,정치/사회일반,,정치/사회,2,Politics/General Society,정치/사회일반,政治/社会一般,政治/一般社会,政治/一般社會,Política/Sociedad General,Политика/Общество в целом,سياسة/المجتمع العام
+Volunteering/Charity,1296,정치/사회,자원봉사/자선,,정치/사회,2,Volunteering/Charity,자원봉사/자선,ボランティア/チャリティ,志愿服务/慈善,志工服務/慈善,Voluntariado/Caridad,Волонтерство/Благотворительность,العمل التطوعي/الخيرية
+Etc,1297,정치/사회,기타,,정치/사회,2,Etc,기타,その他,ETC,ETC,etc.,и т. д.,إلخ
+Religion,1298,종교,,,,1,Religion,종교,宗教,宗教,宗教,religión,религия,دِين
+Catholic,1299,종교,가톨릭,,종교,2,Catholic,가톨릭,カトリック,天主教,天主教,católico,Католик,كاثوليكي
+Protestant,1300,종교,개신교,,종교,2,Protestant,개신교,プロテスタント,新教,新教,protestante,протестант,البروتستانتية
+Islam,1301,종교,이슬람교,,종교,2,Islam,이슬람교,イスラム教,伊斯兰教,伊斯蘭教,islam,ислам,دين الاسلام
+Judaism,1302,종교,유대교,,종교,2,Judaism,유대교,ユダヤ教,犹太教,猶太教,judaísmo,иудаизм,اليهودية
+Hinduism,1303,종교,힌두교,,종교,2,Hinduism,힌두교,ヒンズー教,印度教,印度教,hinduismo,индуизм,الهندوسية
+Buddhism,1304,종교,불교,,종교,2,Buddhism,불교,仏教,佛教,佛教,budismo,буддизм,البوذية
+Shamanism,1305,종교,샤머니즘,,종교,2,Shamanism,샤머니즘,シャーマニズム,萨满教,薩滿教,chamanismo,шаманизм,الشامانية
+Small Religion,1306,종교,소규모종교,,종교,2,Small Religion,소규모종교,小規模宗教,小宗教,小宗教,pequeña religión,маленькая религия,دين صغير
+Etc,1307,종교,기타,,종교,2,Etc,기타,その他,ETC,ETC,etc.,и т. д.,إلخ
