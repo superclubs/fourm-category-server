@@ -1,10 +1,9 @@
-# Serializers
+from drf_yasg.utils import swagger_serializer_method
+from rest_framework import serializers
+
 from community.apps.badges.api.serializers import BadgeRetrieveSerializer
-
-# Models
+from community.apps.users.api.serializers import IconSwaggerSerializer
 from community.apps.users.models import User
-
-# Bases
 from community.bases.api.serializers import ModelSerializer
 
 
@@ -24,6 +23,19 @@ class UserSerializer(ModelSerializer):
             "status",
             "badge",
         )
+
+
+class UserWithIconsSerializer(UserSerializer):
+    icons = serializers.SerializerMethodField()
+
+    class Meta(UserSerializer.Meta):
+        fields = UserSerializer.Meta.fields + ("icons",)
+
+    @swagger_serializer_method(IconSwaggerSerializer(many=True))
+    def get_icons(self, obj):
+        if not hasattr(obj, "translate_icons_data"):
+            return None
+        return obj.translate_icons_data()
 
 
 class UserMeSerializer(ModelSerializer):
