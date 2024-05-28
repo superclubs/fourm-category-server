@@ -4828,7 +4828,7 @@ communities = [
         "title_ar": "أساليب/سياسات التعليم"
     },
     {
-        "id": 1285,
+        "id": 313,
         "title": "Etc",
         "1depth": "교육",
         "2depth": "기타",
