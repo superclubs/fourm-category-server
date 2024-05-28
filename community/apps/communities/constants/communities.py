@@ -14,7 +14,7 @@ communities = [
         "title_zh_hant": "ETC",
         "title_es": "etc.",
         "title_ru": "и т. д.",
-        "title_ar": "إلخ"
+        "title_ar": "إلخ",
     },
     {
         "id": 1002,
@@ -31,7 +31,7 @@ communities = [
         "title_zh_hant": "遊戲",
         "title_es": "juego",
         "title_ru": "игра",
-        "title_ar": "لعبة"
+        "title_ar": "لعبة",
     },
     {
         "id": 1003,
@@ -48,7 +48,7 @@ communities = [
         "title_zh_hant": "角色扮演",
         "title_es": "juego de rol",
         "title_ru": "ролевая игра",
-        "title_ar": "لعب الأدوار"
+        "title_ar": "لعب الأدوار",
     },
     {
         "id": 1004,
@@ -65,7 +65,7 @@ communities = [
         "title_zh_hant": "動作角色扮演遊戲",
         "title_es": "Juego de rol de acción",
         "title_ru": "Экшен-РПГ",
-        "title_ar": "أكشن آر بي جي"
+        "title_ar": "أكشن آر بي جي",
     },
     {
         "id": 1005,
@@ -82,7 +82,7 @@ communities = [
         "title_zh_hant": "冒險角色扮演遊戲",
         "title_es": "Juego de rol de aventuras",
         "title_ru": "Приключенческая ролевая игра",
-        "title_ar": "مغامرة آر بي جي"
+        "title_ar": "مغامرة آر بي جي",
     },
     {
         "id": 1006,
@@ -99,7 +99,7 @@ communities = [
         "title_zh_hant": "隨意的",
         "title_es": "casual",
         "title_ru": "повседневный",
-        "title_ar": "غير رسمي"
+        "title_ar": "غير رسمي",
     },
     {
         "id": 1007,
@@ -116,7 +116,7 @@ communities = [
         "title_zh_hant": "日式角色扮演遊戲",
         "title_es": "JRPG",
         "title_ru": "Японская ролевая игра",
-        "title_ar": "JRPG"
+        "title_ar": "JRPG",
     },
     {
         "id": 1008,
@@ -133,7 +133,7 @@ communities = [
         "title_zh_hant": "派對角色扮演遊戲",
         "title_es": "juego de rol de fiesta",
         "title_ru": "партийная ролевая игра",
-        "title_ar": "آر بي جي الحزب"
+        "title_ar": "آر بي جي الحزب",
     },
     {
         "id": 1009,
@@ -150,7 +150,7 @@ communities = [
         "title_zh_hant": "策略角色扮演遊戲",
         "title_es": "Juego de rol de estrategia",
         "title_ru": "Стратегическая ролевая игра",
-        "title_ar": "استراتيجية آر بي جي"
+        "title_ar": "استراتيجية آر بي جي",
     },
     {
         "id": 1010,
@@ -167,7 +167,7 @@ communities = [
         "title_zh_hant": "Roguelike",
         "title_es": "pícaro",
         "title_ru": "Рогалик",
-        "title_ar": "روجلايك"
+        "title_ar": "روجلايك",
     },
     {
         "id": 1011,
@@ -184,7 +184,7 @@ communities = [
         "title_zh_hant": "ETC",
         "title_es": "etc.",
         "title_ru": "и т. д.",
-        "title_ar": "إلخ"
+        "title_ar": "إلخ",
     },
     {
         "id": 1012,
@@ -201,7 +201,7 @@ communities = [
         "title_zh_hant": "模擬",
         "title_es": "simulación",
         "title_ru": "моделирование",
-        "title_ar": "محاكاة"
+        "title_ar": "محاكاة",
     },
     {
         "id": 1013,
@@ -218,7 +218,7 @@ communities = [
         "title_zh_hant": "第一人稱射擊/射擊",
         "title_es": "FPS/Disparo",
         "title_ru": "Шутер от первого лица/стрельба",
-        "title_ar": "إطارا في الثانية/إطلاق النار"
+        "title_ar": "إطارا في الثانية/إطلاق النار",
     },
     {
         "id": 1014,
@@ -235,7 +235,7 @@ communities = [
         "title_zh_hant": "堡壘",
         "title_es": "fortaleza",
         "title_ru": "крепость",
-        "title_ar": "قلعة"
+        "title_ar": "قلعة",
     },
     {
         "id": 1015,
@@ -252,7 +252,7 @@ communities = [
         "title_zh_hant": "拱廊",
         "title_es": "arcada",
         "title_ru": "аркада",
-        "title_ar": "ممر"
+        "title_ar": "ممر",
     },
     {
         "id": 1016,
@@ -269,7 +269,7 @@ communities = [
         "title_zh_hant": "競技場",
         "title_es": "arena",
         "title_ru": "арена",
-        "title_ar": "الساحة"
+        "title_ar": "الساحة",
     },
     {
         "id": 1017,
@@ -286,7 +286,7 @@ communities = [
         "title_zh_hant": "大逃殺",
         "title_es": "batalla real",
         "title_ru": "королевская битва",
-        "title_ar": "معركة رويال"
+        "title_ar": "معركة رويال",
     },
     {
         "id": 1018,
@@ -303,7 +303,7 @@ communities = [
         "title_zh_hant": "軍隊",
         "title_es": "militar",
         "title_ru": "военный",
-        "title_ar": "جيش"
+        "title_ar": "جيش",
     },
     {
         "id": 1019,
@@ -320,7 +320,7 @@ communities = [
         "title_zh_hant": "英雄",
         "title_es": "héroe",
         "title_ru": "герой",
-        "title_ar": "بطل"
+        "title_ar": "بطل",
     },
     {
         "id": 1020,
@@ -337,7 +337,7 @@ communities = [
         "title_zh_hant": "平台",
         "title_es": "plataforma",
         "title_ru": "Платформа",
-        "title_ar": "منصة"
+        "title_ar": "منصة",
     },
     {
         "id": 1021,
@@ -354,7 +354,7 @@ communities = [
         "title_zh_hant": "Roguelike",
         "title_es": "pícaro",
         "title_ru": "Рогалик",
-        "title_ar": "روجلايك"
+        "title_ar": "روجلايك",
     },
     {
         "id": 1022,
@@ -371,7 +371,7 @@ communities = [
         "title_zh_hant": "ETC",
         "title_es": "etc.",
         "title_ru": "и т. д.",
-        "title_ar": "إلخ"
+        "title_ar": "إلخ",
     },
     {
         "id": 1023,
@@ -388,7 +388,7 @@ communities = [
         "title_zh_hant": "動作/冒險",
         "title_es": "Acción Aventura",
         "title_ru": "Боевик/Приключение",
-        "title_ar": "عمل مغامرة"
+        "title_ar": "عمل مغامرة",
     },
     {
         "id": 1024,
@@ -405,7 +405,7 @@ communities = [
         "title_zh_hant": "賽車",
         "title_es": "carreras",
         "title_ru": "гонки",
-        "title_ar": "سباق"
+        "title_ar": "سباق",
     },
     {
         "id": 1025,
@@ -422,7 +422,7 @@ communities = [
         "title_zh_hant": "運動的",
         "title_es": "Deportes",
         "title_ru": "виды спорта",
-        "title_ar": "رياضات"
+        "title_ar": "رياضات",
     },
     {
         "id": 1026,
@@ -439,7 +439,7 @@ communities = [
         "title_zh_hant": "移動的",
         "title_es": "móvil",
         "title_ru": "мобильный",
-        "title_ar": "متحرك"
+        "title_ar": "متحرك",
     },
     {
         "id": 1027,
@@ -456,7 +456,7 @@ communities = [
         "title_zh_hant": "影片",
         "title_es": "video",
         "title_ru": "видео",
-        "title_ar": "فيديو"
+        "title_ar": "فيديو",
     },
     {
         "id": 1028,
@@ -473,7 +473,7 @@ communities = [
         "title_zh_hant": "音樂/節奏",
         "title_es": "música/ritmo",
         "title_ru": "музыка/ритм",
-        "title_ar": "الموسيقى / الإيقاع"
+        "title_ar": "الموسيقى / الإيقاع",
     },
     {
         "id": 1029,
@@ -490,7 +490,7 @@ communities = [
         "title_zh_hant": "謎",
         "title_es": "rompecabezas",
         "title_ru": "головоломка",
-        "title_ar": "لغز"
+        "title_ar": "لغز",
     },
     {
         "id": 1030,
@@ -507,7 +507,7 @@ communities = [
         "title_zh_hant": "害怕",
         "title_es": "miedo",
         "title_ru": "страх",
-        "title_ar": "يخاف"
+        "title_ar": "يخاف",
     },
     {
         "id": 1031,
@@ -524,7 +524,7 @@ communities = [
         "title_zh_hant": "獨立",
         "title_es": "independiente",
         "title_ru": "инди",
-        "title_ar": "إيندي"
+        "title_ar": "إيندي",
     },
     {
         "id": 1032,
@@ -541,7 +541,7 @@ communities = [
         "title_zh_hant": "ETC",
         "title_es": "etc.",
         "title_ru": "и т. д.",
-        "title_ar": "إلخ"
+        "title_ar": "إلخ",
     },
     {
         "id": 1033,
@@ -558,7 +558,7 @@ communities = [
         "title_zh_hant": "卡通/動畫",
         "title_es": "Dibujos animados/animación",
         "title_ru": "Мультфильм/Анимация",
-        "title_ar": "الرسوم المتحركة"
+        "title_ar": "الرسوم المتحركة",
     },
     {
         "id": 1034,
@@ -575,7 +575,7 @@ communities = [
         "title_zh_hant": "漫畫書",
         "title_es": "libro cómico",
         "title_ru": "комикс",
-        "title_ar": "كتاب الشخصيات"
+        "title_ar": "كتاب الشخصيات",
     },
     {
         "id": 1035,
@@ -592,7 +592,7 @@ communities = [
         "title_zh_hant": "卡通",
         "title_es": "película animada",
         "title_ru": "анимационный фильм",
-        "title_ar": "فيلم رسوم متحركة"
+        "title_ar": "فيلم رسوم متحركة",
     },
     {
         "id": 1036,
@@ -609,7 +609,7 @@ communities = [
         "title_zh_hant": "愛情/劇情",
         "title_es": "Romance/Drama",
         "title_ru": "Романтика/Драма",
-        "title_ar": "رومانسية/دراما"
+        "title_ar": "رومانسية/دراما",
     },
     {
         "id": 1037,
@@ -626,7 +626,7 @@ communities = [
         "title_zh_hant": "漫畫",
         "title_es": "cómic",
         "title_ru": "комикс",
-        "title_ar": "رسوم متحركة"
+        "title_ar": "رسوم متحركة",
     },
     {
         "id": 1038,
@@ -643,7 +643,7 @@ communities = [
         "title_zh_hant": "動作/武術",
         "title_es": "Acción/Artes marciales",
         "title_ru": "Боевые искусства/боевые искусства",
-        "title_ar": "أكشن/فنون قتالية"
+        "title_ar": "أكشن/فنون قتالية",
     },
     {
         "id": 1039,
@@ -660,7 +660,7 @@ communities = [
         "title_zh_hant": "恐怖/懸疑",
         "title_es": "Terror/Misterio",
         "title_ru": "Ужасы/Мистика",
-        "title_ar": "رعب/غموض"
+        "title_ar": "رعب/غموض",
     },
     {
         "id": 1040,
@@ -677,7 +677,7 @@ communities = [
         "title_zh_hant": "奇幻/科幻小說",
         "title_es": "Fantasía/Ciencia ficción",
         "title_ru": "Фэнтези/Научная фантастика",
-        "title_ar": "الخيال / الخيال العلمي"
+        "title_ar": "الخيال / الخيال العلمي",
     },
     {
         "id": 1041,
@@ -694,7 +694,7 @@ communities = [
         "title_zh_hant": "運動的",
         "title_es": "Deportes",
         "title_ru": "виды спорта",
-        "title_ar": "رياضات"
+        "title_ar": "رياضات",
     },
     {
         "id": 1042,
@@ -711,7 +711,7 @@ communities = [
         "title_zh_hant": "籃球",
         "title_es": "baloncesto",
         "title_ru": "баскетбол",
-        "title_ar": "كرة سلة"
+        "title_ar": "كرة سلة",
     },
     {
         "id": 1043,
@@ -728,7 +728,7 @@ communities = [
         "title_zh_hant": "棒球",
         "title_es": "béisbol",
         "title_ru": "бейсбол",
-        "title_ar": "البيسبول"
+        "title_ar": "البيسبول",
     },
     {
         "id": 1044,
@@ -745,7 +745,7 @@ communities = [
         "title_zh_hant": "足球",
         "title_es": "fútbol",
         "title_ru": "футбольный",
-        "title_ar": "كرة القدم"
+        "title_ar": "كرة القدم",
     },
     {
         "id": 1045,
@@ -762,7 +762,7 @@ communities = [
         "title_zh_hant": "網球",
         "title_es": "tenis",
         "title_ru": "большой теннис",
-        "title_ar": "تنس"
+        "title_ar": "تنس",
     },
     {
         "id": 1046,
@@ -779,7 +779,7 @@ communities = [
         "title_zh_hant": "羽毛球",
         "title_es": "Bádminton",
         "title_ru": "Бадминтон",
-        "title_ar": "تنس الريشة"
+        "title_ar": "تنس الريشة",
     },
     {
         "id": 1047,
@@ -796,7 +796,7 @@ communities = [
         "title_zh_hant": "乒乓",
         "title_es": "Ping pong",
         "title_ru": "Настольный теннис",
-        "title_ar": "بينج بونج"
+        "title_ar": "بينج بونج",
     },
     {
         "id": 1048,
@@ -813,7 +813,7 @@ communities = [
         "title_zh_hant": "排球",
         "title_es": "vóleibol",
         "title_ru": "волейбол",
-        "title_ar": "الكرة الطائرة"
+        "title_ar": "الكرة الطائرة",
     },
     {
         "id": 1049,
@@ -830,7 +830,7 @@ communities = [
         "title_zh_hant": "游泳",
         "title_es": "nadar",
         "title_ru": "плавание",
-        "title_ar": "سباحة"
+        "title_ar": "سباحة",
     },
     {
         "id": 1050,
@@ -847,7 +847,7 @@ communities = [
         "title_zh_hant": "拳擊",
         "title_es": "boxeo",
         "title_ru": "заниматься боксом",
-        "title_ar": "ملاكمة"
+        "title_ar": "ملاكمة",
     },
     {
         "id": 1051,
@@ -864,7 +864,7 @@ communities = [
         "title_zh_hant": "ETC",
         "title_es": "etc.",
         "title_ru": "и т. д.",
-        "title_ar": "إلخ"
+        "title_ar": "إلخ",
     },
     {
         "id": 1052,
@@ -881,7 +881,7 @@ communities = [
         "title_zh_hant": "網路卡通",
         "title_es": "caricatura web",
         "title_ru": "Веб-мульт",
-        "title_ar": "تون الويب"
+        "title_ar": "تون الويب",
     },
     {
         "id": 1053,
@@ -898,7 +898,7 @@ communities = [
         "title_zh_hant": "ETC",
         "title_es": "etc.",
         "title_ru": "и т. д.",
-        "title_ar": "إلخ"
+        "title_ar": "إلخ",
     },
     {
         "id": 1054,
@@ -915,7 +915,7 @@ communities = [
         "title_zh_hant": "pod送",
         "title_es": "transmisión",
         "title_ru": "транслировать",
-        "title_ar": "إذاعة"
+        "title_ar": "إذاعة",
     },
     {
         "id": 1055,
@@ -932,7 +932,7 @@ communities = [
         "title_zh_hant": "電視",
         "title_es": "TELEVISOR",
         "title_ru": "ТВ",
-        "title_ar": "تلفزيون"
+        "title_ar": "تلفزيون",
     },
     {
         "id": 1056,
@@ -949,7 +949,7 @@ communities = [
         "title_zh_hant": "收音機",
         "title_es": "radio",
         "title_ru": "радио",
-        "title_ar": "مذياع"
+        "title_ar": "مذياع",
     },
     {
         "id": 1057,
@@ -966,7 +966,7 @@ communities = [
         "title_zh_hant": "網際網路",
         "title_es": "Internet",
         "title_ru": "Интернет",
-        "title_ar": "إنترنت"
+        "title_ar": "إنترنت",
     },
     {
         "id": 1058,
@@ -983,7 +983,7 @@ communities = [
         "title_zh_hant": "報紙/雜誌",
         "title_es": "Periódico revista",
         "title_ru": "Газета/Журнал",
-        "title_ar": "مجلة صحيفة"
+        "title_ar": "مجلة صحيفة",
     },
     {
         "id": 1059,
@@ -1000,7 +1000,7 @@ communities = [
         "title_zh_hant": "ETC",
         "title_es": "etc.",
         "title_ru": "и т. д.",
-        "title_ar": "إلخ"
+        "title_ar": "إلخ",
     },
     {
         "id": 1060,
@@ -1017,7 +1017,7 @@ communities = [
         "title_zh_hant": "文化/藝術",
         "title_es": "Cultura/Artes",
         "title_ru": "Культура/Искусство",
-        "title_ar": "الثقافة/الفنون"
+        "title_ar": "الثقافة/الفنون",
     },
     {
         "id": 1061,
@@ -1034,7 +1034,7 @@ communities = [
         "title_zh_hant": "劇院",
         "title_es": "teatro",
         "title_ru": "театр",
-        "title_ar": "مسرح"
+        "title_ar": "مسرح",
     },
     {
         "id": 1062,
@@ -1051,7 +1051,7 @@ communities = [
         "title_zh_hant": "音樂劇/歌劇",
         "title_es": "Musical/ópera",
         "title_ru": "Мюзикл/Опера",
-        "title_ar": "موسيقية/أوبرا"
+        "title_ar": "موسيقية/أوبرا",
     },
     {
         "id": 1063,
@@ -1068,7 +1068,7 @@ communities = [
         "title_zh_hant": "舞",
         "title_es": "baila Baila",
         "title_ru": "танец/танец",
-        "title_ar": "ارقص ارقص"
+        "title_ar": "ارقص ارقص",
     },
     {
         "id": 1064,
@@ -1085,7 +1085,7 @@ communities = [
         "title_zh_hant": "對話",
         "title_es": "conversación",
         "title_ru": "беседа",
-        "title_ar": "محادثة"
+        "title_ar": "محادثة",
     },
     {
         "id": 1065,
@@ -1102,7 +1102,7 @@ communities = [
         "title_zh_hant": "工藝品/裝飾藝術",
         "title_es": "Manualidades/Artes Decorativas",
         "title_ru": "Ремесла/Декоративное искусство",
-        "title_ar": "الحرف / الفنون الزخرفية"
+        "title_ar": "الحرف / الفنون الزخرفية",
     },
     {
         "id": 1066,
@@ -1119,7 +1119,7 @@ communities = [
         "title_zh_hant": "雕塑/陶瓷",
         "title_es": "Escultura/Cerámica",
         "title_ru": "Скульптура/Керамика",
-        "title_ar": "النحت / السيراميك"
+        "title_ar": "النحت / السيراميك",
     },
     {
         "id": 1067,
@@ -1136,7 +1136,7 @@ communities = [
         "title_zh_hant": "書法",
         "title_es": "Caligrafía",
         "title_ru": "Каллиграфия",
-        "title_ar": "فن الخط"
+        "title_ar": "فن الخط",
     },
     {
         "id": 1068,
@@ -1153,7 +1153,7 @@ communities = [
         "title_zh_hant": "設計",
         "title_es": "diseño",
         "title_ru": "дизайн",
-        "title_ar": "تصميم"
+        "title_ar": "تصميم",
     },
     {
         "id": 1069,
@@ -1170,7 +1170,7 @@ communities = [
         "title_zh_hant": "平面設計",
         "title_es": "diseño gráfico",
         "title_ru": "графический дизайн",
-        "title_ar": "التصميم الجرافيكي"
+        "title_ar": "التصميم الجرافيكي",
     },
     {
         "id": 1070,
@@ -1187,7 +1187,7 @@ communities = [
         "title_zh_hant": "網頁設計",
         "title_es": "diseño web",
         "title_ru": "веб-дизайн",
-        "title_ar": "تصميم الويب"
+        "title_ar": "تصميم الويب",
     },
     {
         "id": 1071,
@@ -1204,7 +1204,7 @@ communities = [
         "title_zh_hant": "包裝設計",
         "title_es": "Diseño del paquete",
         "title_ru": "Дизайн упаковки",
-        "title_ar": "تصميم الطرد"
+        "title_ar": "تصميم الطرد",
     },
     {
         "id": 1072,
@@ -1221,7 +1221,7 @@ communities = [
         "title_zh_hant": "時尚設計",
         "title_es": "diseño de moda",
         "title_ru": "модный дизайн",
-        "title_ar": "تصميم الأزياء"
+        "title_ar": "تصميم الأزياء",
     },
     {
         "id": 1073,
@@ -1238,7 +1238,7 @@ communities = [
         "title_zh_hant": "室內設計",
         "title_es": "diseño de interiores",
         "title_ru": "дизайн интерьера",
-        "title_ar": "تصميم داخلي"
+        "title_ar": "تصميم داخلي",
     },
     {
         "id": 1074,
@@ -1255,7 +1255,7 @@ communities = [
         "title_zh_hant": "工業設計",
         "title_es": "diseño industrial",
         "title_ru": "Индустриальный дизайн",
-        "title_ar": "التصميم الصناعي"
+        "title_ar": "التصميم الصناعي",
     },
     {
         "id": 1075,
@@ -1272,7 +1272,7 @@ communities = [
         "title_zh_hant": "插圖",
         "title_es": "ilustración",
         "title_ru": "иллюстрация",
-        "title_ar": "توضيح"
+        "title_ar": "توضيح",
     },
     {
         "id": 1076,
@@ -1289,7 +1289,7 @@ communities = [
         "title_zh_hant": "動畫設計",
         "title_es": "diseño de animación",
         "title_ru": "анимационный дизайн",
-        "title_ar": "تصميم الرسوم المتحركة"
+        "title_ar": "تصميم الرسوم المتحركة",
     },
     {
         "id": 1077,
@@ -1306,7 +1306,7 @@ communities = [
         "title_zh_hant": "視覺設計",
         "title_es": "Diseño visual",
         "title_ru": "визуальный дизайн",
-        "title_ar": "التصميم المرئي"
+        "title_ar": "التصميم المرئي",
     },
     {
         "id": 1078,
@@ -1323,7 +1323,7 @@ communities = [
         "title_zh_hant": "工業生產設計",
         "title_es": "diseño de producción industrial",
         "title_ru": "дизайн промышленного производства",
-        "title_ar": "تصميم الإنتاج الصناعي"
+        "title_ar": "تصميم الإنتاج الصناعي",
     },
     {
         "id": 1079,
@@ -1340,7 +1340,7 @@ communities = [
         "title_zh_hant": "環境設計",
         "title_es": "Diseño ambiental",
         "title_ru": "экологический дизайн",
-        "title_ar": "تصميم بيئي"
+        "title_ar": "تصميم بيئي",
     },
     {
         "id": 1080,
@@ -1357,7 +1357,7 @@ communities = [
         "title_zh_hant": "設計編輯",
         "title_es": "editor de diseño",
         "title_ru": "Редактор дизайна",
-        "title_ar": "محرر التصميم"
+        "title_ar": "محرر التصميم",
     },
     {
         "id": 1081,
@@ -1374,7 +1374,7 @@ communities = [
         "title_zh_hant": "使用者介面/使用者體驗設計",
         "title_es": "Diseño UI/UX",
         "title_ru": "UI/UX дизайн",
-        "title_ar": "تصميم واجهة المستخدم/UX"
+        "title_ar": "تصميم واجهة المستخدم/UX",
     },
     {
         "id": 1082,
@@ -1391,7 +1391,7 @@ communities = [
         "title_zh_hant": "產品設計",
         "title_es": "diseño de producto",
         "title_ru": "дизайн продукта",
-        "title_ar": "تصميم المنتج"
+        "title_ar": "تصميم المنتج",
     },
     {
         "id": 1083,
@@ -1408,7 +1408,7 @@ communities = [
         "title_zh_hant": "ETC",
         "title_es": "etc.",
         "title_ru": "и т. д.",
-        "title_ar": "إلخ"
+        "title_ar": "إلخ",
     },
     {
         "id": 1084,
@@ -1425,7 +1425,7 @@ communities = [
         "title_zh_hant": "構造",
         "title_es": "construir",
         "title_ru": "построить",
-        "title_ar": "بناء"
+        "title_ar": "بناء",
     },
     {
         "id": 1085,
@@ -1442,7 +1442,7 @@ communities = [
         "title_zh_hant": "圖片",
         "title_es": "imagen",
         "title_ru": "картина",
-        "title_ar": "صورة"
+        "title_ar": "صورة",
     },
     {
         "id": 1086,
@@ -1459,7 +1459,7 @@ communities = [
         "title_zh_hant": "美術館/博物館",
         "title_es": "Galería de arte/museo",
         "title_ru": "Художественная галерея/музей",
-        "title_ar": "معرض الفنون / المتحف"
+        "title_ar": "معرض الفنون / المتحف",
     },
     {
         "id": 1087,
@@ -1476,7 +1476,7 @@ communities = [
         "title_zh_hant": "ETC",
         "title_es": "etc.",
         "title_ru": "и т. д.",
-        "title_ar": "إلخ"
+        "title_ar": "إلخ",
     },
     {
         "id": 1088,
@@ -1493,7 +1493,7 @@ communities = [
         "title_zh_hant": "電影",
         "title_es": "película",
         "title_ru": "фильм",
-        "title_ar": "فيلم"
+        "title_ar": "فيلم",
     },
     {
         "id": 1089,
@@ -1510,7 +1510,7 @@ communities = [
         "title_zh_hant": "劇情/愛情",
         "title_es": "Drama/Romance",
         "title_ru": "Драма/Романтика",
-        "title_ar": "الدراما / الرومانسية"
+        "title_ar": "الدراما / الرومانسية",
     },
     {
         "id": 1090,
@@ -1527,7 +1527,7 @@ communities = [
         "title_zh_hant": "喜劇",
         "title_es": "comedia",
         "title_ru": "комедия",
-        "title_ar": "كوميديا"
+        "title_ar": "كوميديا",
     },
     {
         "id": 1091,
@@ -1544,7 +1544,7 @@ communities = [
         "title_zh_hant": "浪漫喜劇",
         "title_es": "comedia romántica",
         "title_ru": "романтическая комедия",
-        "title_ar": "كوميديا ​​رومانسية"
+        "title_ar": "كوميديا ​​رومانسية",
     },
     {
         "id": 1092,
@@ -1561,7 +1561,7 @@ communities = [
         "title_zh_hant": "喜劇",
         "title_es": "comedia",
         "title_ru": "комедия",
-        "title_ar": "كوميديا"
+        "title_ar": "كوميديا",
     },
     {
         "id": 1093,
@@ -1578,7 +1578,7 @@ communities = [
         "title_zh_hant": "黑色喜劇",
         "title_es": "comedia de humor negro",
         "title_ru": "черная комедия",
-        "title_ar": "الكوميديا ​​السوداء"
+        "title_ar": "الكوميديا ​​السوداء",
     },
     {
         "id": 1094,
@@ -1595,7 +1595,7 @@ communities = [
         "title_zh_hant": "卡通",
         "title_es": "película animada",
         "title_ru": "анимационный фильм",
-        "title_ar": "فيلم رسوم متحركة"
+        "title_ar": "فيلم رسوم متحركة",
     },
     {
         "id": 1095,
@@ -1612,7 +1612,7 @@ communities = [
         "title_zh_hant": "戲仿",
         "title_es": "parodia",
         "title_ru": "пародия",
-        "title_ar": "محاكاة ساخرة"
+        "title_ar": "محاكاة ساخرة",
     },
     {
         "id": 1096,
@@ -1629,7 +1629,7 @@ communities = [
         "title_zh_hant": "ETC",
         "title_es": "etc.",
         "title_ru": "и т. д.",
-        "title_ar": "إلخ"
+        "title_ar": "إلخ",
     },
     {
         "id": 1097,
@@ -1646,7 +1646,7 @@ communities = [
         "title_zh_hant": "動作/武術",
         "title_es": "Acción/Artes marciales",
         "title_ru": "Боевые искусства/боевые искусства",
-        "title_ar": "أكشن/فنون قتالية"
+        "title_ar": "أكشن/فنون قتالية",
     },
     {
         "id": 1098,
@@ -1663,7 +1663,7 @@ communities = [
         "title_zh_hant": "恐怖/驚悚片",
         "title_es": "Terror/Suspense",
         "title_ru": "Ужасы/Триллер",
-        "title_ar": "رعب/إثارة"
+        "title_ar": "رعب/إثارة",
     },
     {
         "id": 1099,
@@ -1680,7 +1680,7 @@ communities = [
         "title_zh_hant": "科幻/奇幻",
         "title_es": "Ciencia ficción/fantasía",
         "title_ru": "Научная фантастика/фэнтези",
-        "title_ar": "الخيال العلمي/الفانتازيا"
+        "title_ar": "الخيال العلمي/الفانتازيا",
     },
     {
         "id": 1100,
@@ -1697,7 +1697,7 @@ communities = [
         "title_zh_hant": "記錄",
         "title_es": "documental",
         "title_ru": "документальный",
-        "title_ar": "وثائقي"
+        "title_ar": "وثائقي",
     },
     {
         "id": 1101,
@@ -1714,7 +1714,7 @@ communities = [
         "title_zh_hant": "經典/歷史",
         "title_es": "Clásicos/Historia",
         "title_ru": "Классика/История",
-        "title_ar": "الكلاسيكيات / التاريخ"
+        "title_ar": "الكلاسيكيات / التاريخ",
     },
     {
         "id": 1102,
@@ -1731,7 +1731,7 @@ communities = [
         "title_zh_hant": "獨立/藝術",
         "title_es": "Independiente/Arte",
         "title_ru": "Инди/Арт",
-        "title_ar": "إيندي / الفن"
+        "title_ar": "إيندي / الفن",
     },
     {
         "id": 1103,
@@ -1748,7 +1748,7 @@ communities = [
         "title_zh_hant": "電影製作",
         "title_es": "produccion de pelicula",
         "title_ru": "Производство фильма",
-        "title_ar": "إنتاج سينمائي"
+        "title_ar": "إنتاج سينمائي",
     },
     {
         "id": 1104,
@@ -1765,7 +1765,7 @@ communities = [
         "title_zh_hant": "電影院/劇院",
         "title_es": "Cine/Teatro",
         "title_ru": "Кино/Театр",
-        "title_ar": "سينما / مسرح"
+        "title_ar": "سينما / مسرح",
     },
     {
         "id": 1105,
@@ -1782,7 +1782,7 @@ communities = [
         "title_zh_hant": "影展/評論",
         "title_es": "Festival de Cine/Crítica",
         "title_ru": "Кинофестиваль/Критика",
-        "title_ar": "مهرجان السينما / النقد"
+        "title_ar": "مهرجان السينما / النقد",
     },
     {
         "id": 1106,
@@ -1799,7 +1799,7 @@ communities = [
         "title_zh_hant": "ETC",
         "title_es": "etc.",
         "title_ru": "и т. д.",
-        "title_ar": "إلخ"
+        "title_ar": "إلخ",
     },
     {
         "id": 1107,
@@ -1816,7 +1816,7 @@ communities = [
         "title_zh_hant": "音樂",
         "title_es": "música",
         "title_ru": "музыка",
-        "title_ar": "موسيقى"
+        "title_ar": "موسيقى",
     },
     {
         "id": 1108,
@@ -1833,7 +1833,7 @@ communities = [
         "title_zh_hant": "敘事曲",
         "title_es": "Balada",
         "title_ru": "Баллада",
-        "title_ar": "باليد"
+        "title_ar": "باليد",
     },
     {
         "id": 1109,
@@ -1850,7 +1850,7 @@ communities = [
         "title_zh_hant": "嘻哈/舞蹈",
         "title_es": "Danza hip hop",
         "title_ru": "Хип-хоп/танцы",
-        "title_ar": "رقصة الهيب هوب"
+        "title_ar": "رقصة الهيب هوب",
     },
     {
         "id": 1110,
@@ -1867,7 +1867,7 @@ communities = [
         "title_zh_hant": "流行/節奏藍調",
         "title_es": "Pop/R&B",
         "title_ru": "Поп/R&B",
-        "title_ar": "موسيقى البوب/آر أند بي"
+        "title_ar": "موسيقى البوب/آر أند بي",
     },
     {
         "id": 1111,
@@ -1884,7 +1884,7 @@ communities = [
         "title_zh_hant": "搖滾/金屬",
         "title_es": "Rock metalico",
         "title_ru": "Рок/Металл",
-        "title_ar": "روك / ميتال"
+        "title_ar": "روك / ميتال",
     },
     {
         "id": 1112,
@@ -1901,7 +1901,7 @@ communities = [
         "title_zh_hant": "獨立",
         "title_es": "independiente",
         "title_ru": "инди",
-        "title_ar": "إيندي"
+        "title_ar": "إيندي",
     },
     {
         "id": 1113,
@@ -1918,7 +1918,7 @@ communities = [
         "title_zh_hant": "爵士樂/新紀元",
         "title_es": "Jazz/Nueva Era",
         "title_ru": "Джаз/Нью-Эйдж",
-        "title_ar": "موسيقى الجاز / العصر الجديد"
+        "title_ar": "موسيقى الجاز / العصر الجديد",
     },
     {
         "id": 1114,
@@ -1935,7 +1935,7 @@ communities = [
         "title_zh_hant": "經典的",
         "title_es": "clásico",
         "title_ru": "классический",
-        "title_ar": "كلاسيكي"
+        "title_ar": "كلاسيكي",
     },
     {
         "id": 1115,
@@ -1952,7 +1952,7 @@ communities = [
         "title_zh_hant": "聲樂/歌劇",
         "title_es": "Música vocal/ópera",
         "title_ru": "Вокальная музыка/опера",
-        "title_ar": "الموسيقى الصوتية/الأوبرا"
+        "title_ar": "الموسيقى الصوتية/الأوبرا",
     },
     {
         "id": 1116,
@@ -1969,7 +1969,7 @@ communities = [
         "title_zh_hant": "韓國傳統音樂/民謠",
         "title_es": "Música tradicional coreana/folk",
         "title_ru": "Корейская традиционная музыка/фолк",
-        "title_ar": "الموسيقى التقليدية الكورية/الشعبية"
+        "title_ar": "الموسيقى التقليدية الكورية/الشعبية",
     },
     {
         "id": 1117,
@@ -1986,7 +1986,7 @@ communities = [
         "title_zh_hant": "OST",
         "title_es": "banda sonora",
         "title_ru": "ОСТ",
-        "title_ar": "OST"
+        "title_ar": "OST",
     },
     {
         "id": 1118,
@@ -2003,7 +2003,7 @@ communities = [
         "title_zh_hant": "理論/批評",
         "title_es": "Teoría/Crítica",
         "title_ru": "Теория/Критика",
-        "title_ar": "النظرية/النقد"
+        "title_ar": "النظرية/النقد",
     },
     {
         "id": 1119,
@@ -2020,7 +2020,7 @@ communities = [
         "title_zh_hant": "作曲/作詞",
         "title_es": "Composición/Letra",
         "title_ru": "Композиция/Текст",
-        "title_ar": "تكوين / كلمات"
+        "title_ar": "تكوين / كلمات",
     },
     {
         "id": 1120,
@@ -2037,7 +2037,7 @@ communities = [
         "title_zh_hant": "唱歌/演奏",
         "title_es": "Cantar/Tocar",
         "title_ru": "Петь/Играть",
-        "title_ar": "الغناء / اللعب"
+        "title_ar": "الغناء / اللعب",
     },
     {
         "id": 1121,
@@ -2054,7 +2054,7 @@ communities = [
         "title_zh_hant": "音樂會",
         "title_es": "concierto",
         "title_ru": "концерт",
-        "title_ar": "حفلة موسيقية"
+        "title_ar": "حفلة موسيقية",
     },
     {
         "id": 1122,
@@ -2071,7 +2071,7 @@ communities = [
         "title_zh_hant": "樂器/樂譜",
         "title_es": "Instrumento/Partitura",
         "title_ru": "Инструмент/Ноты",
-        "title_ar": "أداة / ورقة الموسيقى"
+        "title_ar": "أداة / ورقة الموسيقى",
     },
     {
         "id": 1123,
@@ -2088,7 +2088,7 @@ communities = [
         "title_zh_hant": "音樂影片",
         "title_es": "Video musical",
         "title_ru": "Клип",
-        "title_ar": "أغنية مصورة"
+        "title_ar": "أغنية مصورة",
     },
     {
         "id": 1124,
@@ -2105,7 +2105,7 @@ communities = [
         "title_zh_hant": "ETC",
         "title_es": "etc.",
         "title_ru": "и т. д.",
-        "title_ar": "إلخ"
+        "title_ar": "إلخ",
     },
     {
         "id": 1125,
@@ -2122,7 +2122,7 @@ communities = [
         "title_zh_hant": "粉絲俱樂部",
         "title_es": "Club de fans",
         "title_ru": "фан-клуб",
-        "title_ar": "نادي المعجبين"
+        "title_ar": "نادي المعجبين",
     },
     {
         "id": 1126,
@@ -2139,7 +2139,7 @@ communities = [
         "title_zh_hant": "演員",
         "title_es": "actor",
         "title_ru": "актер",
-        "title_ar": "الممثل"
+        "title_ar": "الممثل",
     },
     {
         "id": 1127,
@@ -2156,7 +2156,7 @@ communities = [
         "title_zh_hant": "男演員",
         "title_es": "actor masculino",
         "title_ru": "актер-мужчина",
-        "title_ar": "ممثل ذكر"
+        "title_ar": "ممثل ذكر",
     },
     {
         "id": 1128,
@@ -2173,7 +2173,7 @@ communities = [
         "title_zh_hant": "女演員",
         "title_es": "actriz femenina",
         "title_ru": "женщина-актёр",
-        "title_ar": "ممثلة انثى"
+        "title_ar": "ممثلة انثى",
     },
     {
         "id": 1129,
@@ -2190,7 +2190,7 @@ communities = [
         "title_zh_hant": "兒童演員",
         "title_es": "actor infantil",
         "title_ru": "ребенок-актер",
-        "title_ar": "ممثل طفل"
+        "title_ar": "ممثل طفل",
     },
     {
         "id": 1130,
@@ -2207,7 +2207,7 @@ communities = [
         "title_zh_hant": "電影",
         "title_es": "película",
         "title_ru": "фильм",
-        "title_ar": "فيلم"
+        "title_ar": "فيلم",
     },
     {
         "id": 1131,
@@ -2224,7 +2224,7 @@ communities = [
         "title_zh_hant": "戲劇",
         "title_es": "drama",
         "title_ru": "драма",
-        "title_ar": "دراما"
+        "title_ar": "دراما",
     },
     {
         "id": 1132,
@@ -2241,7 +2241,7 @@ communities = [
         "title_zh_hant": "記錄",
         "title_es": "documental",
         "title_ru": "документальный",
-        "title_ar": "وثائقي"
+        "title_ar": "وثائقي",
     },
     {
         "id": 1133,
@@ -2258,7 +2258,7 @@ communities = [
         "title_zh_hant": "劇院",
         "title_es": "teatro",
         "title_ru": "театр",
-        "title_ar": "مسرح"
+        "title_ar": "مسرح",
     },
     {
         "id": 1134,
@@ -2275,7 +2275,7 @@ communities = [
         "title_zh_hant": "音樂",
         "title_es": "musical",
         "title_ru": "мюзикл",
-        "title_ar": "موسيقي"
+        "title_ar": "موسيقي",
     },
     {
         "id": 1135,
@@ -2292,7 +2292,7 @@ communities = [
         "title_zh_hant": "歌劇",
         "title_es": "ópera",
         "title_ru": "опера",
-        "title_ar": "أوبرا"
+        "title_ar": "أوبرا",
     },
     {
         "id": 1136,
@@ -2309,7 +2309,7 @@ communities = [
         "title_zh_hant": "ETC",
         "title_es": "etc.",
         "title_ru": "и т. д.",
-        "title_ar": "إلخ"
+        "title_ar": "إلخ",
     },
     {
         "id": 1137,
@@ -2326,7 +2326,7 @@ communities = [
         "title_zh_hant": "音樂家",
         "title_es": "músico",
         "title_ru": "музыкант",
-        "title_ar": "موسيقي او عازف"
+        "title_ar": "موسيقي او عازف",
     },
     {
         "id": 1138,
@@ -2343,7 +2343,7 @@ communities = [
         "title_zh_hant": "韓國流行音樂",
         "title_es": "Kpop",
         "title_ru": "К-поп",
-        "title_ar": "الكيبوب"
+        "title_ar": "الكيبوب",
     },
     {
         "id": 1139,
@@ -2360,7 +2360,7 @@ communities = [
         "title_zh_hant": "日本流行音樂",
         "title_es": "pop japonés",
         "title_ru": "Джей-поп",
-        "title_ar": "جي بوب"
+        "title_ar": "جي بوب",
     },
     {
         "id": 1140,
@@ -2377,7 +2377,7 @@ communities = [
         "title_zh_hant": "廣告看板",
         "title_es": "cartelera",
         "title_ru": "рекламный щит",
-        "title_ar": "لوحة"
+        "title_ar": "لوحة",
     },
     {
         "id": 1141,
@@ -2394,7 +2394,7 @@ communities = [
         "title_zh_hant": "敘事曲",
         "title_es": "Balada",
         "title_ru": "Баллада",
-        "title_ar": "باليد"
+        "title_ar": "باليد",
     },
     {
         "id": 1142,
@@ -2411,7 +2411,7 @@ communities = [
         "title_zh_hant": "流行音樂",
         "title_es": "estallido",
         "title_ru": "поп",
-        "title_ar": "البوب"
+        "title_ar": "البوب",
     },
     {
         "id": 1143,
@@ -2428,7 +2428,7 @@ communities = [
         "title_zh_hant": "岩石",
         "title_es": "roca",
         "title_ru": "камень",
-        "title_ar": "صخر"
+        "title_ar": "صخر",
     },
     {
         "id": 1144,
@@ -2445,7 +2445,7 @@ communities = [
         "title_zh_hant": "嘻哈",
         "title_es": "Hip hop",
         "title_ru": "Хип-хоп",
-        "title_ar": "هيب هوب"
+        "title_ar": "هيب هوب",
     },
     {
         "id": 1145,
@@ -2462,7 +2462,7 @@ communities = [
         "title_zh_hant": "電火花加工",
         "title_es": "electroerosión",
         "title_ru": "электроэрозионная обработка",
-        "title_ar": "موسيقى الرقص الإلكترونية"
+        "title_ar": "موسيقى الرقص الإلكترونية",
     },
     {
         "id": 1146,
@@ -2479,7 +2479,7 @@ communities = [
         "title_zh_hant": "爵士樂",
         "title_es": "jazz",
         "title_ru": "джаз",
-        "title_ar": "موسيقى الجاز"
+        "title_ar": "موسيقى الجاز",
     },
     {
         "id": 1147,
@@ -2496,7 +2496,7 @@ communities = [
         "title_zh_hant": "雷鬼",
         "title_es": "reggae",
         "title_ru": "регги",
-        "title_ar": "موسيقى الريغي"
+        "title_ar": "موسيقى الريغي",
     },
     {
         "id": 1148,
@@ -2513,7 +2513,7 @@ communities = [
         "title_zh_hant": "金屬",
         "title_es": "metal",
         "title_ru": "металл",
-        "title_ar": "معدن"
+        "title_ar": "معدن",
     },
     {
         "id": 1149,
@@ -2530,7 +2530,7 @@ communities = [
         "title_zh_hant": "節奏藍調",
         "title_es": "R&B",
         "title_ru": "Р&Б",
-        "title_ar": "آر أند بي"
+        "title_ar": "آر أند بي",
     },
     {
         "id": 1150,
@@ -2547,7 +2547,7 @@ communities = [
         "title_zh_hant": "ETC",
         "title_es": "etc.",
         "title_ru": "и т. д.",
-        "title_ar": "إلخ"
+        "title_ar": "إلخ",
     },
     {
         "id": 1151,
@@ -2564,7 +2564,7 @@ communities = [
         "title_zh_hant": "模型",
         "title_es": "Modelo",
         "title_ru": "Модель",
-        "title_ar": "نموذج"
+        "title_ar": "نموذج",
     },
     {
         "id": 1152,
@@ -2581,7 +2581,7 @@ communities = [
         "title_zh_hant": "運動運動員",
         "title_es": "deportista",
         "title_ru": "спортивный игрок",
-        "title_ar": "لاعب رياضي"
+        "title_ar": "لاعب رياضي",
     },
     {
         "id": 1153,
@@ -2598,7 +2598,7 @@ communities = [
         "title_zh_hant": "音樂家",
         "title_es": "Músico",
         "title_ru": "Музыкант",
-        "title_ar": "موسيقي او عازف"
+        "title_ar": "موسيقي او عازف",
     },
     {
         "id": 1154,
@@ -2615,7 +2615,7 @@ communities = [
         "title_zh_hant": "藝人",
         "title_es": "artista",
         "title_ru": "артист",
-        "title_ar": "فنان"
+        "title_ar": "فنان",
     },
     {
         "id": 1155,
@@ -2632,7 +2632,7 @@ communities = [
         "title_zh_hant": "pod音員",
         "title_es": "locutor",
         "title_ru": "диктор",
-        "title_ar": "مذيع"
+        "title_ar": "مذيع",
     },
     {
         "id": 1156,
@@ -2649,7 +2649,7 @@ communities = [
         "title_zh_hant": "作者",
         "title_es": "autor",
         "title_ru": "автор",
-        "title_ar": "مؤلف"
+        "title_ar": "مؤلف",
     },
     {
         "id": 1157,
@@ -2666,7 +2666,7 @@ communities = [
         "title_zh_hant": "ETC",
         "title_es": "etc.",
         "title_ru": "и т. д.",
-        "title_ar": "إلخ"
+        "title_ar": "إلخ",
     },
     {
         "id": 1158,
@@ -2683,7 +2683,7 @@ communities = [
         "title_zh_hant": "運動的",
         "title_es": "Deportes",
         "title_ru": "виды спорта",
-        "title_ar": "رياضات"
+        "title_ar": "رياضات",
     },
     {
         "id": 1159,
@@ -2700,7 +2700,7 @@ communities = [
         "title_zh_hant": "足球",
         "title_es": "fútbol",
         "title_ru": "футбольный",
-        "title_ar": "كرة القدم"
+        "title_ar": "كرة القدم",
     },
     {
         "id": 1160,
@@ -2717,7 +2717,7 @@ communities = [
         "title_zh_hant": "英語語言課程",
         "title_es": "PEL",
         "title_ru": "ЭЛП",
-        "title_ar": "ايل ع"
+        "title_ar": "ايل ع",
     },
     {
         "id": 1161,
@@ -2734,7 +2734,7 @@ communities = [
         "title_zh_hant": "西甲聯賽",
         "title_es": "la Liga",
         "title_ru": "Ла Лига",
-        "title_ar": "الدوري الاسباني"
+        "title_ar": "الدوري الاسباني",
     },
     {
         "id": 1162,
@@ -2751,7 +2751,7 @@ communities = [
         "title_zh_hant": "意甲聯賽",
         "title_es": "serie A",
         "title_ru": "Серия А",
-        "title_ar": "الدوري الإيطالي أ"
+        "title_ar": "الدوري الإيطالي أ",
     },
     {
         "id": 1163,
@@ -2768,7 +2768,7 @@ communities = [
         "title_zh_hant": "德甲聯賽",
         "title_es": "Bundesliga",
         "title_ru": "Бундеслига",
-        "title_ar": "الدوري الألماني"
+        "title_ar": "الدوري الألماني",
     },
     {
         "id": 1164,
@@ -2785,7 +2785,7 @@ communities = [
         "title_zh_hant": "聯賽1",
         "title_es": "liga 1",
         "title_ru": "лига 1",
-        "title_ar": "الدوري 1"
+        "title_ar": "الدوري 1",
     },
     {
         "id": 1165,
@@ -2802,7 +2802,7 @@ communities = [
         "title_zh_hant": "巴西甲級聯賽",
         "title_es": "Serie A brasileña",
         "title_ru": "Бразильская Серия А",
-        "title_ar": "الدوري البرازيلي أ"
+        "title_ar": "الدوري البرازيلي أ",
     },
     {
         "id": 1166,
@@ -2819,7 +2819,7 @@ communities = [
         "title_zh_hant": "阿根廷甲級聯賽",
         "title_es": "Primera División Argentina",
         "title_ru": "Аргентина Примера Дивизион",
-        "title_ar": "دوري الدرجة الأولى الأرجنتيني"
+        "title_ar": "دوري الدرجة الأولى الأرجنتيني",
     },
     {
         "id": 1167,
@@ -2836,7 +2836,7 @@ communities = [
         "title_zh_hant": "墨西哥足球甲級聯賽",
         "title_es": "Liga MX",
         "title_ru": "Лига МХ",
-        "title_ar": "الدوري المكسيكي"
+        "title_ar": "الدوري المكسيكي",
     },
     {
         "id": 1168,
@@ -2853,7 +2853,7 @@ communities = [
         "title_zh_hant": "K聯賽",
         "title_es": "Liga K",
         "title_ru": "К-лига",
-        "title_ar": "دوري ك"
+        "title_ar": "دوري ك",
     },
     {
         "id": 1169,
@@ -2870,7 +2870,7 @@ communities = [
         "title_zh_hant": "J聯賽",
         "title_es": "Liga J",
         "title_ru": "Джей-лига",
-        "title_ar": "دوري ي"
+        "title_ar": "دوري ي",
     },
     {
         "id": 1170,
@@ -2887,7 +2887,7 @@ communities = [
         "title_zh_hant": "中超聯賽",
         "title_es": "CSL",
         "title_ru": "CSL",
-        "title_ar": "CSL"
+        "title_ar": "CSL",
     },
     {
         "id": 1171,
@@ -2904,7 +2904,7 @@ communities = [
         "title_zh_hant": "青少年足球",
         "title_es": "futbol juvenil",
         "title_ru": "молодежный футбол",
-        "title_ar": "كرة القدم للشباب"
+        "title_ar": "كرة القدم للشباب",
     },
     {
         "id": 1172,
@@ -2921,7 +2921,7 @@ communities = [
         "title_zh_hant": "足球造福社會",
         "title_es": "futbol para la sociedad",
         "title_ru": "футбол для общества",
-        "title_ar": "كرة القدم من أجل المجتمع"
+        "title_ar": "كرة القدم من أجل المجتمع",
     },
     {
         "id": 1173,
@@ -2938,7 +2938,7 @@ communities = [
         "title_zh_hant": "女子足球",
         "title_es": "futbol femenino",
         "title_ru": "женский футбол",
-        "title_ar": "كرة القدم النسائية"
+        "title_ar": "كرة القدم النسائية",
     },
     {
         "id": 1174,
@@ -2955,7 +2955,7 @@ communities = [
         "title_zh_hant": "ETC",
         "title_es": "etc.",
         "title_ru": "и т. д.",
-        "title_ar": "إلخ"
+        "title_ar": "إلخ",
     },
     {
         "id": 1175,
@@ -2972,7 +2972,7 @@ communities = [
         "title_zh_hant": "棒球",
         "title_es": "béisbol",
         "title_ru": "бейсбол",
-        "title_ar": "البيسبول"
+        "title_ar": "البيسبول",
     },
     {
         "id": 1176,
@@ -2989,7 +2989,7 @@ communities = [
         "title_zh_hant": "美國職棒大聯盟",
         "title_es": "Grandes Ligas",
         "title_ru": "МЛБ",
-        "title_ar": "MLB"
+        "title_ar": "MLB",
     },
     {
         "id": 1177,
@@ -3006,7 +3006,7 @@ communities = [
         "title_zh_hant": "柯伊伯帶天體",
         "title_es": "KBO",
         "title_ru": "КБО",
-        "title_ar": "KBO"
+        "title_ar": "KBO",
     },
     {
         "id": 1178,
@@ -3023,7 +3023,7 @@ communities = [
         "title_zh_hant": "NPB",
         "title_es": "NPB",
         "title_ru": "НПБ",
-        "title_ar": "نب"
+        "title_ar": "نب",
     },
     {
         "id": 1179,
@@ -3040,7 +3040,7 @@ communities = [
         "title_zh_hant": "CPBL",
         "title_es": "CPBL",
         "title_ru": "КПБЛ",
-        "title_ar": "CPBL"
+        "title_ar": "CPBL",
     },
     {
         "id": 1180,
@@ -3057,7 +3057,7 @@ communities = [
         "title_zh_hant": "LMB",
         "title_es": "LMB",
         "title_ru": "Л.М.Б.",
-        "title_ar": "L.M.B."
+        "title_ar": "L.M.B.",
     },
     {
         "id": 1181,
@@ -3074,7 +3074,7 @@ communities = [
         "title_zh_hant": "左心室血壓",
         "title_es": "LVBP",
         "title_ru": "ЛЖБП",
-        "title_ar": "LVBP"
+        "title_ar": "LVBP",
     },
     {
         "id": 1182,
@@ -3091,7 +3091,7 @@ communities = [
         "title_zh_hant": "青少年棒球",
         "title_es": "béisbol juvenil",
         "title_ru": "молодежный бейсбол",
-        "title_ar": "البيسبول الشباب"
+        "title_ar": "البيسبول الشباب",
     },
     {
         "id": 1183,
@@ -3108,7 +3108,7 @@ communities = [
         "title_zh_hant": "棒球協會會員",
         "title_es": "miembro de la sociedad de beisbol",
         "title_ru": "член общества бейсбола",
-        "title_ar": "عضو في مجتمع البيسبول"
+        "title_ar": "عضو في مجتمع البيسبول",
     },
     {
         "id": 1184,
@@ -3125,7 +3125,7 @@ communities = [
         "title_zh_hant": "女子棒球",
         "title_es": "beisbol femenino",
         "title_ru": "женский бейсбол",
-        "title_ar": "لعبة البيسبول النسائية"
+        "title_ar": "لعبة البيسبول النسائية",
     },
     {
         "id": 1185,
@@ -3142,7 +3142,7 @@ communities = [
         "title_zh_hant": "ETC",
         "title_es": "etc.",
         "title_ru": "и т. д.",
-        "title_ar": "إلخ"
+        "title_ar": "إلخ",
     },
     {
         "id": 1186,
@@ -3159,7 +3159,7 @@ communities = [
         "title_zh_hant": "籃球",
         "title_es": "baloncesto",
         "title_ru": "баскетбол",
-        "title_ar": "كرة سلة"
+        "title_ar": "كرة سلة",
     },
     {
         "id": 1187,
@@ -3176,7 +3176,7 @@ communities = [
         "title_zh_hant": "排球",
         "title_es": "vóleibol",
         "title_ru": "волейбол",
-        "title_ar": "الكرة الطائرة"
+        "title_ar": "الكرة الطائرة",
     },
     {
         "id": 1188,
@@ -3193,7 +3193,7 @@ communities = [
         "title_zh_hant": "網球/羽毛球",
         "title_es": "Tenis/Bádminton",
         "title_ru": "Теннис/Бадминтон",
-        "title_ar": "التنس / كرة الريشة"
+        "title_ar": "التنس / كرة الريشة",
     },
     {
         "id": 1189,
@@ -3210,7 +3210,7 @@ communities = [
         "title_zh_hant": "高爾夫球",
         "title_es": "golf",
         "title_ru": "гольф",
-        "title_ar": "جولف"
+        "title_ar": "جولف",
     },
     {
         "id": 1190,
@@ -3227,7 +3227,7 @@ communities = [
         "title_zh_hant": "乒乓球/撞球",
         "title_es": "Tenis de mesa/billar",
         "title_ru": "Настольный теннис/бильярд",
-        "title_ar": "تنس الطاولة/البلياردو"
+        "title_ar": "تنس الطاولة/البلياردو",
     },
     {
         "id": 1191,
@@ -3244,7 +3244,7 @@ communities = [
         "title_zh_hant": "游泳",
         "title_es": "nadar",
         "title_ru": "плавание",
-        "title_ar": "سباحة"
+        "title_ar": "سباحة",
     },
     {
         "id": 1192,
@@ -3261,7 +3261,7 @@ communities = [
         "title_zh_hant": "健康",
         "title_es": "salud",
         "title_ru": "здоровье",
-        "title_ar": "صحة"
+        "title_ar": "صحة",
     },
     {
         "id": 1193,
@@ -3278,7 +3278,7 @@ communities = [
         "title_zh_hant": "休閒運動",
         "title_es": "Deportes de ocio",
         "title_ru": "Спортивный отдых",
-        "title_ar": "الرياضات الترفيهية"
+        "title_ar": "الرياضات الترفيهية",
     },
     {
         "id": 1194,
@@ -3295,7 +3295,7 @@ communities = [
         "title_zh_hant": "武術",
         "title_es": "Artes marciales",
         "title_ru": "Боевые искусства",
-        "title_ar": "الفنون العسكرية"
+        "title_ar": "الفنون العسكرية",
     },
     {
         "id": 1195,
@@ -3312,7 +3312,7 @@ communities = [
         "title_zh_hant": "賽車",
         "title_es": "carreras",
         "title_ru": "гонки",
-        "title_ar": "سباق"
+        "title_ar": "سباق",
     },
     {
         "id": 1196,
@@ -3329,7 +3329,7 @@ communities = [
         "title_zh_hant": "ETC",
         "title_es": "etc.",
         "title_ru": "и т. д.",
-        "title_ar": "إلخ"
+        "title_ar": "إلخ",
     },
     {
         "id": 1197,
@@ -3346,7 +3346,7 @@ communities = [
         "title_zh_hant": "動物",
         "title_es": "animal",
         "title_ru": "животное",
-        "title_ar": "حيوان"
+        "title_ar": "حيوان",
     },
     {
         "id": 1198,
@@ -3363,7 +3363,7 @@ communities = [
         "title_zh_hant": "狗/小狗",
         "title_es": "perro/cachorro",
         "title_ru": "собака/щенок",
-        "title_ar": "الكلب، الجرو"
+        "title_ar": "الكلب، الجرو",
     },
     {
         "id": 1199,
@@ -3380,7 +3380,7 @@ communities = [
         "title_zh_hant": "貓",
         "title_es": "gato",
         "title_ru": "кот",
-        "title_ar": "قطة"
+        "title_ar": "قطة",
     },
     {
         "id": 1200,
@@ -3397,7 +3397,7 @@ communities = [
         "title_zh_hant": "鳥/禽",
         "title_es": "pájaro/aviar",
         "title_ru": "птица/птица",
-        "title_ar": "الطيور / الطيور"
+        "title_ar": "الطيور / الطيور",
     },
     {
         "id": 1201,
@@ -3414,7 +3414,7 @@ communities = [
         "title_zh_hant": "魚類/甲殼類",
         "title_es": "Pescado/crustáceos",
         "title_ru": "Рыба/ракообразные",
-        "title_ar": "الأسماك/القشريات"
+        "title_ar": "الأسماك/القشريات",
     },
     {
         "id": 1202,
@@ -3431,7 +3431,7 @@ communities = [
         "title_zh_hant": "爬蟲類/兩棲類",
         "title_es": "Reptiles/Anfibios",
         "title_ru": "Рептилии/амфибии",
-        "title_ar": "الزواحف / البرمائيات"
+        "title_ar": "الزواحف / البرمائيات",
     },
     {
         "id": 1203,
@@ -3448,7 +3448,7 @@ communities = [
         "title_zh_hant": "昆蟲",
         "title_es": "insectos",
         "title_ru": "насекомые",
-        "title_ar": "الحشرات"
+        "title_ar": "الحشرات",
     },
     {
         "id": 1204,
@@ -3465,7 +3465,7 @@ communities = [
         "title_zh_hant": "動物保護",
         "title_es": "protección animal",
         "title_ru": "защита животных",
-        "title_ar": "حماية الحيوان"
+        "title_ar": "حماية الحيوان",
     },
     {
         "id": 1205,
@@ -3482,7 +3482,7 @@ communities = [
         "title_zh_hant": "ETC",
         "title_es": "etc.",
         "title_ru": "и т. д.",
-        "title_ar": "إلخ"
+        "title_ar": "إلخ",
     },
     {
         "id": 1206,
@@ -3499,7 +3499,7 @@ communities = [
         "title_zh_hant": "嗜好",
         "title_es": "pasatiempo",
         "title_ru": "хобби",
-        "title_ar": "هواية"
+        "title_ar": "هواية",
     },
     {
         "id": 1207,
@@ -3516,7 +3516,7 @@ communities = [
         "title_zh_hant": "旅行",
         "title_es": "viajar",
         "title_ru": "путешествовать",
-        "title_ar": "يسافر"
+        "title_ar": "يسافر",
     },
     {
         "id": 1208,
@@ -3533,7 +3533,7 @@ communities = [
         "title_zh_hant": "收藏",
         "title_es": "recopilación",
         "title_ru": "коллекция",
-        "title_ar": "مجموعة"
+        "title_ar": "مجموعة",
     },
     {
         "id": 1209,
@@ -3550,7 +3550,7 @@ communities = [
         "title_zh_hant": "模型",
         "title_es": "modelo",
         "title_ru": "модель",
-        "title_ar": "نموذج"
+        "title_ar": "نموذج",
     },
     {
         "id": 1210,
@@ -3567,7 +3567,7 @@ communities = [
         "title_zh_hant": "手工業",
         "title_es": "artesanía",
         "title_ru": "ремесло",
-        "title_ar": "حرفي - حرفة يدوية"
+        "title_ar": "حرفي - حرفة يدوية",
     },
     {
         "id": 1211,
@@ -3584,7 +3584,7 @@ communities = [
         "title_zh_hant": "園藝",
         "title_es": "horticultura",
         "title_ru": "садоводство",
-        "title_ar": "البستنة"
+        "title_ar": "البستنة",
     },
     {
         "id": 1212,
@@ -3601,7 +3601,7 @@ communities = [
         "title_zh_hant": "角色扮演",
         "title_es": "cosplay",
         "title_ru": "косплей",
-        "title_ar": "التنكر"
+        "title_ar": "التنكر",
     },
     {
         "id": 1213,
@@ -3618,7 +3618,7 @@ communities = [
         "title_zh_hant": "魔法",
         "title_es": "magia",
         "title_ru": "Магия",
-        "title_ar": "سحر"
+        "title_ar": "سحر",
     },
     {
         "id": 1214,
@@ -3635,7 +3635,7 @@ communities = [
         "title_zh_hant": "玩",
         "title_es": "jugar",
         "title_ru": "играть",
-        "title_ar": "يلعب"
+        "title_ar": "يلعب",
     },
     {
         "id": 1215,
@@ -3652,7 +3652,7 @@ communities = [
         "title_zh_hant": "ETC",
         "title_es": "etc.",
         "title_ru": "и т. д.",
-        "title_ar": "إلخ"
+        "title_ar": "إلخ",
     },
     {
         "id": 1216,
@@ -3669,7 +3669,7 @@ communities = [
         "title_zh_hant": "時尚/美容",
         "title_es": "Belleza de la moda",
         "title_ru": "Мода/Красота",
-        "title_ar": "الجمال الأزياء"
+        "title_ar": "الجمال الأزياء",
     },
     {
         "id": 1217,
@@ -3686,7 +3686,7 @@ communities = [
         "title_zh_hant": "衣服",
         "title_es": "ropa",
         "title_ru": "одежда",
-        "title_ar": "ملابس"
+        "title_ar": "ملابس",
     },
     {
         "id": 1218,
@@ -3703,7 +3703,7 @@ communities = [
         "title_zh_hant": "時尚雜貨",
         "title_es": "Artículos diversos de moda.",
         "title_ru": "Модные разные товары",
-        "title_ar": "أزياء السلع المتنوعة"
+        "title_ar": "أزياء السلع المتنوعة",
     },
     {
         "id": 1219,
@@ -3720,7 +3720,7 @@ communities = [
         "title_zh_hant": "配件",
         "title_es": "accesorio",
         "title_ru": "аксессуар",
-        "title_ar": "ملحق"
+        "title_ar": "ملحق",
     },
     {
         "id": 1220,
@@ -3737,7 +3737,7 @@ communities = [
         "title_zh_hant": "奢華",
         "title_es": "Lujo",
         "title_ru": "Роскошь",
-        "title_ar": "رفاهية"
+        "title_ar": "رفاهية",
     },
     {
         "id": 1221,
@@ -3754,7 +3754,7 @@ communities = [
         "title_zh_hant": "皮膚護理",
         "title_es": "protección de la piel",
         "title_ru": "уход за кожей",
-        "title_ar": "العناية بالبشرة"
+        "title_ar": "العناية بالبشرة",
     },
     {
         "id": 1222,
@@ -3771,7 +3771,7 @@ communities = [
         "title_zh_hant": "頭髮/指甲",
         "title_es": "Cabello/Uñas",
         "title_ru": "Волосы/Ногти",
-        "title_ar": "الشعر/الأظافر"
+        "title_ar": "الشعر/الأظافر",
     },
     {
         "id": 1223,
@@ -3788,7 +3788,7 @@ communities = [
         "title_zh_hant": "彩妝/香水",
         "title_es": "Maquillaje/Perfume",
         "title_ru": "Макияж/Парфюмерия",
-        "title_ar": "مكياج/عطور"
+        "title_ar": "مكياج/عطور",
     },
     {
         "id": 1224,
@@ -3805,7 +3805,7 @@ communities = [
         "title_zh_hant": "整形外科",
         "title_es": "cirugía plástica",
         "title_ru": "пластическая хирургия",
-        "title_ar": "جراحة تجميلية"
+        "title_ar": "جراحة تجميلية",
     },
     {
         "id": 1225,
@@ -3822,7 +3822,7 @@ communities = [
         "title_zh_hant": "ETC",
         "title_es": "etc.",
         "title_ru": "и т. д.",
-        "title_ar": "إلخ"
+        "title_ar": "إلخ",
     },
     {
         "id": 1226,
@@ -3839,7 +3839,7 @@ communities = [
         "title_zh_hant": "健康",
         "title_es": "salud",
         "title_ru": "здоровье",
-        "title_ar": "صحة"
+        "title_ar": "صحة",
     },
     {
         "id": 1227,
@@ -3856,7 +3856,7 @@ communities = [
         "title_zh_hant": "飲食/飲食",
         "title_es": "Dieta/Dieta",
         "title_ru": "Диета/Диета",
-        "title_ar": "النظام الغذائي / النظام الغذائي"
+        "title_ar": "النظام الغذائي / النظام الغذائي",
     },
     {
         "id": 1228,
@@ -3873,7 +3873,7 @@ communities = [
         "title_zh_hant": "飲食/飲食習慣",
         "title_es": "Dieta/hábitos alimentarios",
         "title_ru": "Диета/привычки в еде",
-        "title_ar": "النظام الغذائي / عادات الأكل"
+        "title_ar": "النظام الغذائي / عادات الأكل",
     },
     {
         "id": 1229,
@@ -3890,7 +3890,7 @@ communities = [
         "title_zh_hant": "鍛鍊",
         "title_es": "ejercicio",
         "title_ru": "тренировка",
-        "title_ar": "اكتشف - حل"
+        "title_ar": "اكتشف - حل",
     },
     {
         "id": 1230,
@@ -3907,7 +3907,7 @@ communities = [
         "title_zh_hant": "衛生保健",
         "title_es": "cuidado de la salud",
         "title_ru": "здравоохранение",
-        "title_ar": "الرعاىة الصحية"
+        "title_ar": "الرعاىة الصحية",
     },
     {
         "id": 1231,
@@ -3924,7 +3924,7 @@ communities = [
         "title_zh_hant": "飲食",
         "title_es": "dieta",
         "title_ru": "диета",
-        "title_ar": "نظام عذائي"
+        "title_ar": "نظام عذائي",
     },
     {
         "id": 1232,
@@ -3941,7 +3941,7 @@ communities = [
         "title_zh_hant": "疾病/症狀",
         "title_es": "Enfermedad/Síntomas",
         "title_ru": "Болезнь/Симптомы",
-        "title_ar": "المرض/الأعراض"
+        "title_ar": "المرض/الأعراض",
     },
     {
         "id": 1233,
@@ -3958,7 +3958,7 @@ communities = [
         "title_zh_hant": "醫療機構",
         "title_es": "Institución medica",
         "title_ru": "медицинское учреждение",
-        "title_ar": "مؤسسة طبية"
+        "title_ar": "مؤسسة طبية",
     },
     {
         "id": 1234,
@@ -3975,7 +3975,7 @@ communities = [
         "title_zh_hant": "心理諮商",
         "title_es": "Asesoramiento psicológico",
         "title_ru": "Психологическое консультирование",
-        "title_ar": "الإرشاد النفسي"
+        "title_ar": "الإرشاد النفسي",
     },
     {
         "id": 1235,
@@ -3992,7 +3992,7 @@ communities = [
         "title_zh_hant": "ETC",
         "title_es": "etc.",
         "title_ru": "и т. д.",
-        "title_ar": "إلخ"
+        "title_ar": "إلخ",
     },
     {
         "id": 1236,
@@ -4009,7 +4009,7 @@ communities = [
         "title_zh_hant": "家庭/兒童保育",
         "title_es": "Familia/Cuidado de niños",
         "title_ru": "Семья/Уход за детьми",
-        "title_ar": "الأسرة/رعاية الأطفال"
+        "title_ar": "الأسرة/رعاية الأطفال",
     },
     {
         "id": 1237,
@@ -4026,7 +4026,7 @@ communities = [
         "title_zh_hant": "婚姻",
         "title_es": "casamiento",
         "title_ru": "свадьба",
-        "title_ar": "زواج"
+        "title_ar": "زواج",
     },
     {
         "id": 1238,
@@ -4043,7 +4043,7 @@ communities = [
         "title_zh_hant": "兒童福利/收養",
         "title_es": "Bienestar infantil/adopción",
         "title_ru": "Защита детей/Усыновление",
-        "title_ar": "رعاية الطفل/التبني"
+        "title_ar": "رعاية الطفل/التبني",
     },
     {
         "id": 1239,
@@ -4060,7 +4060,7 @@ communities = [
         "title_zh_hant": "結婚夫妻",
         "title_es": "Pareja casada",
         "title_ru": "женатая пара",
-        "title_ar": "زوجين"
+        "title_ar": "زوجين",
     },
     {
         "id": 1240,
@@ -4077,7 +4077,7 @@ communities = [
         "title_zh_hant": "懷孕/分娩",
         "title_es": "Embarazo/Parto",
         "title_ru": "Беременность/Роды",
-        "title_ar": "الحمل/الولادة"
+        "title_ar": "الحمل/الولادة",
     },
     {
         "id": 1241,
@@ -4094,7 +4094,7 @@ communities = [
         "title_zh_hant": "育兒/女性",
         "title_es": "Crianza/Mujeres",
         "title_ru": "Воспитание/Женщины",
-        "title_ar": "الأبوة والأمومة / المرأة"
+        "title_ar": "الأبوة والأمومة / المرأة",
     },
     {
         "id": 1242,
@@ -4111,7 +4111,7 @@ communities = [
         "title_zh_hant": "家庭/家庭活動",
         "title_es": "Eventos familiares/familiares",
         "title_ru": "Семья/Семейные мероприятия",
-        "title_ar": "الأحداث العائلية / العائلية"
+        "title_ar": "الأحداث العائلية / العائلية",
     },
     {
         "id": 1243,
@@ -4128,7 +4128,7 @@ communities = [
         "title_zh_hant": "移民",
         "title_es": "inmigrante",
         "title_ru": "иммигрант",
-        "title_ar": "مهاجر"
+        "title_ar": "مهاجر",
     },
     {
         "id": 1244,
@@ -4145,7 +4145,7 @@ communities = [
         "title_zh_hant": "ETC",
         "title_es": "etc.",
         "title_ru": "и т. д.",
-        "title_ar": "إلخ"
+        "title_ar": "إلخ",
     },
     {
         "id": 1245,
@@ -4162,7 +4162,7 @@ communities = [
         "title_zh_hant": "數字/IT",
         "title_es": "Digital/TI",
         "title_ru": "Цифровой/ИТ",
-        "title_ar": "الرقمية / تكنولوجيا المعلومات"
+        "title_ar": "الرقمية / تكنولوجيا المعلومات",
     },
     {
         "id": 1246,
@@ -4179,7 +4179,7 @@ communities = [
         "title_zh_hant": "程式設計",
         "title_es": "programación",
         "title_ru": "программирование",
-        "title_ar": "برمجة"
+        "title_ar": "برمجة",
     },
     {
         "id": 1247,
@@ -4196,7 +4196,7 @@ communities = [
         "title_zh_hant": "電信/網路",
         "title_es": "Telecomunicaciones/Red",
         "title_ru": "Телекоммуникации/Сеть",
-        "title_ar": "الاتصالات/الشبكة"
+        "title_ar": "الاتصالات/الشبكة",
     },
     {
         "id": 1248,
@@ -4213,7 +4213,7 @@ communities = [
         "title_zh_hant": "網頁設計/網頁策劃",
         "title_es": "Diseño Web/Planificación Web",
         "title_ru": "Веб-дизайн/Веб-планирование",
-        "title_ar": "تصميم الويب/تخطيط الويب"
+        "title_ar": "تصميم الويب/تخطيط الويب",
     },
     {
         "id": 1249,
@@ -4230,7 +4230,7 @@ communities = [
         "title_zh_hant": "作業系統",
         "title_es": "Sistema operativo",
         "title_ru": "Операционная система",
-        "title_ar": "نظام التشغيل"
+        "title_ar": "نظام التشغيل",
     },
     {
         "id": 1250,
@@ -4247,7 +4247,7 @@ communities = [
         "title_zh_hant": "軟體",
         "title_es": "software",
         "title_ru": "программное обеспечение",
-        "title_ar": "برمجة"
+        "title_ar": "برمجة",
     },
     {
         "id": 1251,
@@ -4264,7 +4264,7 @@ communities = [
         "title_zh_hant": "硬體",
         "title_es": "hardware",
         "title_ru": "аппаратное обеспечение",
-        "title_ar": "المعدات"
+        "title_ar": "المعدات",
     },
     {
         "id": 1252,
@@ -4281,7 +4281,7 @@ communities = [
         "title_zh_hant": "多媒體",
         "title_es": "multimedia",
         "title_ru": "мультимедиа",
-        "title_ar": "الوسائط المتعددة"
+        "title_ar": "الوسائط المتعددة",
     },
     {
         "id": 1253,
@@ -4298,7 +4298,7 @@ communities = [
         "title_zh_hant": "安全",
         "title_es": "seguridad",
         "title_ru": "безопасность",
-        "title_ar": "حماية"
+        "title_ar": "حماية",
     },
     {
         "id": 1254,
@@ -4315,7 +4315,7 @@ communities = [
         "title_zh_hant": "移動的",
         "title_es": "móvil",
         "title_ru": "мобильный",
-        "title_ar": "متحرك"
+        "title_ar": "متحرك",
     },
     {
         "id": 1255,
@@ -4332,7 +4332,7 @@ communities = [
         "title_zh_hant": "ETC",
         "title_es": "etc.",
         "title_ru": "и т. д.",
-        "title_ar": "إلخ"
+        "title_ar": "إلخ",
     },
     {
         "id": 1256,
@@ -4349,7 +4349,7 @@ communities = [
         "title_zh_hant": "金融",
         "title_es": "finanzas",
         "title_ru": "финансы",
-        "title_ar": "تمويل"
+        "title_ar": "تمويل",
     },
     {
         "id": 1257,
@@ -4366,7 +4366,7 @@ communities = [
         "title_zh_hant": "投資",
         "title_es": "invertir",
         "title_ru": "вкладывать деньги",
-        "title_ar": "يستثمر"
+        "title_ar": "يستثمر",
     },
     {
         "id": 1258,
@@ -4383,7 +4383,7 @@ communities = [
         "title_zh_hant": "保險",
         "title_es": "seguro",
         "title_ru": "страхование",
-        "title_ar": "تأمين"
+        "title_ar": "تأمين",
     },
     {
         "id": 1259,
@@ -4400,7 +4400,7 @@ communities = [
         "title_zh_hant": "房地產",
         "title_es": "bienes raíces",
         "title_ru": "недвижимость",
-        "title_ar": "العقارات"
+        "title_ar": "العقارات",
     },
     {
         "id": 1260,
@@ -4417,7 +4417,7 @@ communities = [
         "title_zh_hant": "虛擬貨幣",
         "title_es": "moneda virtual",
         "title_ru": "виртуальная валюта",
-        "title_ar": "العملة الافتراضية"
+        "title_ar": "العملة الافتراضية",
     },
     {
         "id": 1261,
@@ -4434,7 +4434,7 @@ communities = [
         "title_zh_hant": "比特幣",
         "title_es": "bitcóin",
         "title_ru": "биткойн",
-        "title_ar": "بيتكوين"
+        "title_ar": "بيتكوين",
     },
     {
         "id": 1262,
@@ -4451,7 +4451,7 @@ communities = [
         "title_zh_hant": "以太坊",
         "title_es": "Etereum",
         "title_ru": "Эфириум",
-        "title_ar": "ايثريوم"
+        "title_ar": "ايثريوم",
     },
     {
         "id": 1263,
@@ -4468,7 +4468,7 @@ communities = [
         "title_zh_hant": "波紋",
         "title_es": "onda",
         "title_ru": "пульсация",
-        "title_ar": "تموج"
+        "title_ar": "تموج",
     },
     {
         "id": 1264,
@@ -4485,7 +4485,7 @@ communities = [
         "title_zh_hant": "安倍",
         "title_es": "abe",
         "title_ru": "Эйб",
-        "title_ar": "آبي"
+        "title_ar": "آبي",
     },
     {
         "id": 1265,
@@ -4502,7 +4502,7 @@ communities = [
         "title_zh_hant": "多元宇宙",
         "title_es": "Multiverso",
         "title_ru": "Мультивселенная",
-        "title_ar": "الكون المتعدد"
+        "title_ar": "الكون المتعدد",
     },
     {
         "id": 1266,
@@ -4519,7 +4519,7 @@ communities = [
         "title_zh_hant": "索拉納",
         "title_es": "solana",
         "title_ru": "Солана",
-        "title_ar": "سولانا"
+        "title_ar": "سولانا",
     },
     {
         "id": 1267,
@@ -4536,7 +4536,7 @@ communities = [
         "title_zh_hant": "罷工",
         "title_es": "huelga",
         "title_ru": "ударять",
-        "title_ar": "يضرب"
+        "title_ar": "يضرب",
     },
     {
         "id": 1268,
@@ -4553,7 +4553,7 @@ communities = [
         "title_zh_hant": "ETC",
         "title_es": "etc.",
         "title_ru": "и т. д.",
-        "title_ar": "إلخ"
+        "title_ar": "إلخ",
     },
     {
         "id": 1269,
@@ -4570,7 +4570,7 @@ communities = [
         "title_zh_hant": "NFT",
         "title_es": "NFT",
         "title_ru": "НФТ",
-        "title_ar": "نفت"
+        "title_ar": "نفت",
     },
     {
         "id": 1270,
@@ -4587,7 +4587,7 @@ communities = [
         "title_zh_hant": "資產管理",
         "title_es": "gestión de activos",
         "title_ru": "управление активами",
-        "title_ar": "إدارة الأصول"
+        "title_ar": "إدارة الأصول",
     },
     {
         "id": 1271,
@@ -4604,7 +4604,7 @@ communities = [
         "title_zh_hant": "ETC",
         "title_es": "etc.",
         "title_ru": "и т. д.",
-        "title_ar": "إلخ"
+        "title_ar": "إلخ",
     },
     {
         "id": 1272,
@@ -4621,7 +4621,7 @@ communities = [
         "title_zh_hant": "教育",
         "title_es": "educación",
         "title_ru": "образование",
-        "title_ar": "تعليم"
+        "title_ar": "تعليم",
     },
     {
         "id": 1273,
@@ -4638,7 +4638,7 @@ communities = [
         "title_zh_hant": "嬰兒",
         "title_es": "niño",
         "title_ru": "младенец",
-        "title_ar": "رضيع"
+        "title_ar": "رضيع",
     },
     {
         "id": 1274,
@@ -4655,7 +4655,7 @@ communities = [
         "title_zh_hant": "小學",
         "title_es": "escuela primaria",
         "title_ru": "Начальная школа",
-        "title_ar": "مدرسة ابتدائية"
+        "title_ar": "مدرسة ابتدائية",
     },
     {
         "id": 1275,
@@ -4672,7 +4672,7 @@ communities = [
         "title_zh_hant": "中學",
         "title_es": "escuela intermedia",
         "title_ru": "Средняя школа",
-        "title_ar": "المدرسة المتوسطة"
+        "title_ar": "المدرسة المتوسطة",
     },
     {
         "id": 1276,
@@ -4689,7 +4689,7 @@ communities = [
         "title_zh_hant": "中學",
         "title_es": "escuela secundaria",
         "title_ru": "средняя школа",
-        "title_ar": "المدرسة الثانوية"
+        "title_ar": "المدرسة الثانوية",
     },
     {
         "id": 1277,
@@ -4706,7 +4706,7 @@ communities = [
         "title_zh_hant": "大學",
         "title_es": "universidad",
         "title_ru": "Университет",
-        "title_ar": "جامعة"
+        "title_ar": "جامعة",
     },
     {
         "id": 1278,
@@ -4723,7 +4723,7 @@ communities = [
         "title_zh_hant": "特殊教育",
         "title_es": "educación especial",
         "title_ru": "специальное образование",
-        "title_ar": "التعليم الخاص"
+        "title_ar": "التعليم الخاص",
     },
     {
         "id": 1279,
@@ -4740,7 +4740,7 @@ communities = [
         "title_zh_hant": "職業教育",
         "title_es": "Educación vocacional",
         "title_ru": "Профессионально-техническое образование",
-        "title_ar": "التعليم المهني"
+        "title_ar": "التعليم المهني",
     },
     {
         "id": 1280,
@@ -4757,7 +4757,7 @@ communities = [
         "title_zh_hant": "終身教育",
         "title_es": "Educación permanente",
         "title_ru": "Непрерывное образование",
-        "title_ar": "التعليم مدى الحياة"
+        "title_ar": "التعليم مدى الحياة",
     },
     {
         "id": 1281,
@@ -4774,7 +4774,7 @@ communities = [
         "title_zh_hant": "出國留學/語言培訓",
         "title_es": "Estudiar en el extranjero/formación de idiomas",
         "title_ru": "Обучение за рубежом/языковая подготовка",
-        "title_ar": "الدراسة في الخارج / التدريب على اللغة"
+        "title_ar": "الدراسة في الخارج / التدريب على اللغة",
     },
     {
         "id": 1282,
@@ -4791,7 +4791,7 @@ communities = [
         "title_zh_hant": "學院/輔導",
         "title_es": "Academia/tutoría",
         "title_ru": "Академия/репетиторство",
-        "title_ar": "الأكاديمية / التدريس"
+        "title_ar": "الأكاديمية / التدريس",
     },
     {
         "id": 1283,
@@ -4808,7 +4808,7 @@ communities = [
         "title_zh_hant": "考試/證書",
         "title_es": "Examen/Certificado",
         "title_ru": "Экзамен/Сертификат",
-        "title_ar": "الامتحان/الشهادة"
+        "title_ar": "الامتحان/الشهادة",
     },
     {
         "id": 1284,
@@ -4825,7 +4825,7 @@ communities = [
         "title_zh_hant": "教育方法/政策",
         "title_es": "Métodos/políticas educativas",
         "title_ru": "Методы/политика образования",
-        "title_ar": "أساليب/سياسات التعليم"
+        "title_ar": "أساليب/سياسات التعليم",
     },
     {
         "id": 313,
@@ -4842,7 +4842,7 @@ communities = [
         "title_zh_hant": "ETC",
         "title_es": "etc.",
         "title_ru": "и т. д.",
-        "title_ar": "إلخ"
+        "title_ar": "إلخ",
     },
     {
         "id": 1286,
@@ -4859,7 +4859,7 @@ communities = [
         "title_zh_hant": "政治/社會",
         "title_es": "Política/Sociedad",
         "title_ru": "Политика/Общество",
-        "title_ar": "السياسة/المجتمع"
+        "title_ar": "السياسة/المجتمع",
     },
     {
         "id": 1287,
@@ -4876,7 +4876,7 @@ communities = [
         "title_zh_hant": "法律",
         "title_es": "ley",
         "title_ru": "закон",
-        "title_ar": "قانون"
+        "title_ar": "قانون",
     },
     {
         "id": 1288,
@@ -4893,7 +4893,7 @@ communities = [
         "title_zh_hant": "行政/民事申訴",
         "title_es": "Administración/Quejas civiles",
         "title_ru": "Администрация/Гражданские жалобы",
-        "title_ar": "الإدارة / الشكاوى المدنية"
+        "title_ar": "الإدارة / الشكاوى المدنية",
     },
     {
         "id": 1289,
@@ -4910,7 +4910,7 @@ communities = [
         "title_zh_hant": "政治/選舉",
         "title_es": "Política/Elecciones",
         "title_ru": "Политика/Выборы",
-        "title_ar": "سياسة/انتخابات"
+        "title_ar": "سياسة/انتخابات",
     },
     {
         "id": 1290,
@@ -4927,7 +4927,7 @@ communities = [
         "title_zh_hant": "國際關係/統一",
         "title_es": "Relaciones Internacionales/Unificación",
         "title_ru": "Международные отношения/Объединение",
-        "title_ar": "العلاقات الدولية/التوحيد"
+        "title_ar": "العلاقات الدولية/التوحيد",
     },
     {
         "id": 1291,
@@ -4944,7 +4944,7 @@ communities = [
         "title_zh_hant": "國防/軍事服務",
         "title_es": "Defensa Nacional/Servicio Militar",
         "title_ru": "Национальная оборона/Военная служба",
-        "title_ar": "الدفاع الوطني/الخدمة العسكرية"
+        "title_ar": "الدفاع الوطني/الخدمة العسكرية",
     },
     {
         "id": 1292,
@@ -4961,7 +4961,7 @@ communities = [
         "title_zh_hant": "環境/災難",
         "title_es": "Medio ambiente/desastre",
         "title_ru": "Окружающая среда/Катастрофа",
-        "title_ar": "البيئة/الكوارث"
+        "title_ar": "البيئة/الكوارث",
     },
     {
         "id": 1293,
@@ -4978,7 +4978,7 @@ communities = [
         "title_zh_hant": "福利/人權",
         "title_es": "Bienestar/Derechos Humanos",
         "title_ru": "Благосостояние/права человека",
-        "title_ar": "الرعاية الاجتماعية/حقوق الإنسان"
+        "title_ar": "الرعاية الاجتماعية/حقوق الإنسان",
     },
     {
         "id": 1294,
@@ -4995,7 +4995,7 @@ communities = [
         "title_zh_hant": "社會與文化",
         "title_es": "sociedad y Cultura",
         "title_ru": "общество и культура",
-        "title_ar": "المجتمع والثقافة"
+        "title_ar": "المجتمع والثقافة",
     },
     {
         "id": 1295,
@@ -5012,7 +5012,7 @@ communities = [
         "title_zh_hant": "政治/一般社會",
         "title_es": "Política/Sociedad General",
         "title_ru": "Политика/Общество в целом",
-        "title_ar": "سياسة/المجتمع العام"
+        "title_ar": "سياسة/المجتمع العام",
     },
     {
         "id": 1296,
@@ -5029,7 +5029,7 @@ communities = [
         "title_zh_hant": "志工服務/慈善",
         "title_es": "Voluntariado/Caridad",
         "title_ru": "Волонтерство/Благотворительность",
-        "title_ar": "العمل التطوعي/الخيرية"
+        "title_ar": "العمل التطوعي/الخيرية",
     },
     {
         "id": 1297,
@@ -5046,7 +5046,7 @@ communities = [
         "title_zh_hant": "ETC",
         "title_es": "etc.",
         "title_ru": "и т. д.",
-        "title_ar": "إلخ"
+        "title_ar": "إلخ",
     },
     {
         "id": 1298,
@@ -5063,7 +5063,7 @@ communities = [
         "title_zh_hant": "宗教",
         "title_es": "religión",
         "title_ru": "религия",
-        "title_ar": "دِين"
+        "title_ar": "دِين",
     },
     {
         "id": 1299,
@@ -5080,7 +5080,7 @@ communities = [
         "title_zh_hant": "天主教",
         "title_es": "católico",
         "title_ru": "Католик",
-        "title_ar": "كاثوليكي"
+        "title_ar": "كاثوليكي",
     },
     {
         "id": 1300,
@@ -5097,7 +5097,7 @@ communities = [
         "title_zh_hant": "新教",
         "title_es": "protestante",
         "title_ru": "протестант",
-        "title_ar": "البروتستانتية"
+        "title_ar": "البروتستانتية",
     },
     {
         "id": 1301,
@@ -5114,7 +5114,7 @@ communities = [
         "title_zh_hant": "伊斯蘭教",
         "title_es": "islam",
         "title_ru": "ислам",
-        "title_ar": "دين الاسلام"
+        "title_ar": "دين الاسلام",
     },
     {
         "id": 1302,
@@ -5131,7 +5131,7 @@ communities = [
         "title_zh_hant": "猶太教",
         "title_es": "judaísmo",
         "title_ru": "иудаизм",
-        "title_ar": "اليهودية"
+        "title_ar": "اليهودية",
     },
     {
         "id": 1303,
@@ -5148,7 +5148,7 @@ communities = [
         "title_zh_hant": "印度教",
         "title_es": "hinduismo",
         "title_ru": "индуизм",
-        "title_ar": "الهندوسية"
+        "title_ar": "الهندوسية",
     },
     {
         "id": 1304,
@@ -5165,7 +5165,7 @@ communities = [
         "title_zh_hant": "佛教",
         "title_es": "budismo",
         "title_ru": "буддизм",
-        "title_ar": "البوذية"
+        "title_ar": "البوذية",
     },
     {
         "id": 1305,
@@ -5182,7 +5182,7 @@ communities = [
         "title_zh_hant": "薩滿教",
         "title_es": "chamanismo",
         "title_ru": "шаманизм",
-        "title_ar": "الشامانية"
+        "title_ar": "الشامانية",
     },
     {
         "id": 1306,
@@ -5199,7 +5199,7 @@ communities = [
         "title_zh_hant": "小宗教",
         "title_es": "pequeña religión",
         "title_ru": "маленькая религия",
-        "title_ar": "دين صغير"
+        "title_ar": "دين صغير",
     },
     {
         "id": 1307,
@@ -5216,6 +5216,6 @@ communities = [
         "title_zh_hant": "ETC",
         "title_es": "etc.",
         "title_ru": "и т. д.",
-        "title_ar": "إلخ"
-    }
+        "title_ar": "إلخ",
+    },
 ]
