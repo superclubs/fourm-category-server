@@ -18,6 +18,7 @@ from community.apps.users.models.mixins import (
     UserPointModelMixin,
     UserPostBookmarkModelMixin,
     UserPostModelMixin,
+    UserSyncModelMixin,
 )
 
 # Bases
@@ -36,6 +37,7 @@ class User(
     UserFriendModelMixin,
     UserPostBookmarkModelMixin,
     UserPointModelMixin,
+    UserSyncModelMixin,
     AbstractUser,
     Model,
 ):

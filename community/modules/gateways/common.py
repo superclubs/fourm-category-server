@@ -67,5 +67,10 @@ class Gateway(BaseGateway):
         path = f"users/sync"
         return self.request(method="GET", path=path)
 
+    def get_user_by_id(self, id: int, language: str):
+        path = f"user/{id}"
+        headers = {"Accept-Language": language}
+        return self.request(method="GET", path=path, headers=headers)
+
 
 gateway = Gateway()
