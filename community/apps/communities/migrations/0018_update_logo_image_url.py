@@ -8,6 +8,8 @@ def forwards_update_logo_image_url(apps, schema_editor):
     communities = Community.objects.all()
 
     for community in communities:
+        if not community.logo_image_url:
+            continue
         community.logo_image_url = community.logo_image_url.replace('svg', 'png')
         community.save()
 
