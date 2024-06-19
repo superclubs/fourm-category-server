@@ -1,0 +1,42 @@
+name: Random Reviewer
+
+on:
+  pull_request:
+    types:
+      - opened
+      - reopened
+    branches-ignore:
+      - main
+
+jobs:
+  set-random-reviewer:
+    permissions: write-all
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Mention Random reviewers
+        uses: actions/github-script@v5
+        with:
+          github-token: ${{secrets.GITHUB_TOKEN}}
+          script: |
+            const selectRandomReviewer = (members) => members[Math.floor(Math.random() * members.length)];
+
+            const members = ['runners-rosie', 'andyingi', 'LiamKim55'].filter(member => member !== "${{ github.event.pull_request.user.login }}");
+            const allMembers = [...members]
+            allMembers.sort(() => Math.random() - 0.5);
+            const randomReviewer = [selectRandomReviewer(allMembers)];
+
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: `@${randomReviewer.join(' @')} 리뷰 부탁드립니다.🙏`
+            })
+            github.rest.pulls.requestReviewers({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              pull_number: context.issue.number,
+              reviewers: randomReviewer
+            })

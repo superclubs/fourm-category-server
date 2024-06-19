@@ -25,6 +25,5 @@ class CommunityCommentModelMixin(models.Model):
         self.comment_point = self.comment_point - POINT_PER_COMMENT
         self.point = self.point - POINT_PER_COMMENT
 
-
     def update_community_comment_count(self):
         self.comment_count = self.comments.filter(is_active=True).count()

@@ -14,6 +14,7 @@ from rest_framework.filters import SearchFilter
 from community.apps.users.api.serializers import (
     UserMeSerializer,
     UserSerializer,
+    UserCreateSerializer,
 )
 
 # Mixins
@@ -47,9 +48,10 @@ class UsersViewSet(mixins.ListModelMixin, GenericViewSet):
         return super().list(self, request, *args, **kwargs)
 
 
-class UserViewSet(UserSyncViewMixin, GenericViewSet):
+class UserViewSet(mixins.CreateModelMixin, UserSyncViewMixin, GenericViewSet):
     serializers = {
         "default": UserSerializer,
+        "create": UserCreateSerializer,
     }
     queryset = User.available.all()
     filter_backends = (DjangoFilterBackend,)
@@ -64,3 +66,16 @@ class UserViewSet(UserSyncViewMixin, GenericViewSet):
             message="ok",
             data=UserMeSerializer(instance=request.user, context={"request": request}).data,
         )
+
+    @swagger_auto_schema(
+        **swagger_decorator(
+            tag="1. 유저",
+            id="유저 생성",
+            description="",
+            request=UserCreateSerializer,
+            response={201: UserCreateSerializer},
+        )
+    )
+    def create(self, request, *args, **kwargs):
+        return super().create(request, *args, **kwargs)
+

@@ -1,12 +1,6 @@
-# Django
 from celery import shared_task
 
 from community.apps.badges.models import Badge
-
-# Serializer
-from community.apps.users.api.serializers import UserProfileSerializer
-
-# Model
 from community.apps.users.models import User
 
 
@@ -67,6 +61,7 @@ def user_task(
 @shared_task(name="sync_user_task", bind=True)
 def sync_user_task(self, user_id):
     print("========== User: sync_user_task ==========")
+    from community.apps.users.api.serializers import UserProfileSerializer
 
     user = User.objects.filter(id=user_id).first()
     if not user:
