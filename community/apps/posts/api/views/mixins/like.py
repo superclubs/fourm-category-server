@@ -1,20 +1,10 @@
-# DRF
-# Third Party
 from drf_yasg.utils import no_body, swagger_auto_schema
 from rest_framework import status
 from rest_framework.decorators import action
 
-# Serializers
 from community.apps.likes.api.serializers import PostLikeCreateSerializer
-from community.apps.posts.api.serializers import (
-    PostLikeResponseSerializer,
-    PostListSerializer,
-)
-
-# Utils
+from community.apps.posts.api.serializers import PostLikeResponseSerializer
 from community.utils.api.response import Response
-
-# Decorators
 from community.utils.decorators import swagger_decorator
 
 
@@ -26,7 +16,7 @@ class PostLikeViewMixin:
             id="포스트 좋아요",
             description="",
             request=PostLikeCreateSerializer,
-            response={201: PostListSerializer},
+            response={201: PostLikeResponseSerializer},
         )
     )
     @action(detail=True, methods=["post"], url_path="like", url_name="post_like")
@@ -44,7 +34,7 @@ class PostLikeViewMixin:
 
     @swagger_auto_schema(
         **swagger_decorator(
-            tag="03. 포스트", id="포스트 좋아요 취소", description="", request=no_body, response={200: PostListSerializer}
+            tag="03. 포스트", id="포스트 좋아요 취소", description="", request=no_body, response={200: PostLikeResponseSerializer}
         )
     )
     @action(detail=True, methods=["post"], url_path="unlike", url_name="post_unlike")
@@ -61,7 +51,7 @@ class PostLikeViewMixin:
 
     @swagger_auto_schema(
         **swagger_decorator(
-            tag="03. 포스트", id="포스트 싫어요", description="", request=no_body, response={201: PostListSerializer}
+            tag="03. 포스트", id="포스트 싫어요", description="", request=no_body, response={201: PostLikeResponseSerializer}
         )
     )
     @action(detail=True, methods=["post"], url_path="dislike", url_name="post_dislike")
@@ -78,7 +68,7 @@ class PostLikeViewMixin:
 
     @swagger_auto_schema(
         **swagger_decorator(
-            tag="03. 포스트", id="포스트 싫어요 취소", description="", request=no_body, response={200: PostListSerializer}
+            tag="03. 포스트", id="포스트 싫어요 취소", description="", request=no_body, response={200: PostLikeResponseSerializer}
         )
     )
     @action(detail=True, methods=["post"], url_path="undislike", url_name="post_undislike")
