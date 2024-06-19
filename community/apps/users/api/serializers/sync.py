@@ -37,7 +37,6 @@ class AdminUserSyncSerializer(ModelSerializer):
         return instance
 
 
-
 class UserSyncSerializer(ModelSerializer):
     id = serializers.IntegerField()
     badge_title_en = serializers.CharField(required=False)

@@ -3,7 +3,6 @@ from django.conf import settings
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 
-from community.apps.communities.constants.categories import categories
 
 # Mixins
 from community.apps.communities.models.mixins import (
@@ -77,21 +76,3 @@ class Community(
 
     def __str__(self):
         return f"{self.id} | {self.title}"
-
-    def save(self, *args, **kwargs):
-        self.update_titles()
-        return super(Community, self).save(*args, **kwargs)
-
-    def update_titles(self):
-        if self.title and self.title_en:
-            return
-        category_data = categories.get(self.title)
-        if not category_data:
-            return
-
-        for lang_code, lang_name in settings.LANGUAGES:
-            lang_code_with_underscore = lang_code.replace("-", "_")
-            title_key = f"title_{lang_code_with_underscore}"
-            if title_key in category_data:
-                if category_data[title_key]:
-                    setattr(self, title_key, category_data[title_key])

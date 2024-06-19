@@ -95,6 +95,7 @@ class PostLikeResponseSerializer(ModelSerializer):
             "is_liked",
             "is_disliked",
             "liked_users",
+            "user_like_type",
         )
 
     def get_is_liked(self, obj):
