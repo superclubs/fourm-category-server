@@ -5,13 +5,12 @@ import traceback
 # Django
 from django.utils.translation import ugettext_lazy as _
 
-# Django Rest Framework
-from rest_framework.settings import api_settings
-from rest_framework import status, exceptions
-from rest_framework.exceptions import APIException, _get_error_details
-
 # Third Party
 from drf_pretty_exception_handler import exception_handler
+from rest_framework import exceptions, status
+
+# DRF
+from rest_framework.settings import api_settings
 
 # Local
 from community.utils.api.response import Response
@@ -19,7 +18,7 @@ from community.utils.api.response import Response
 
 class CustomForbiddenException(exceptions.APIException):
     status_code = status.HTTP_403_FORBIDDEN
-    default_code = 'error'
+    default_code = "error"
 
     def __init__(self, detail, status_code=None):
         self.detail = detail
@@ -66,8 +65,8 @@ def custom_exception_handler(exc, context):
             "field_errors": {k: list(map(str, v)) for k, v in field_errors.items()},
             "non_field_errors": non_field_errors,
         }
-        print('field_errors : ', field_errors)
-        print('non_field_errors : ', non_field_errors)
+        print("field_errors : ", field_errors)
+        print("non_field_errors : ", non_field_errors)
 
     response = Response.from_drf_response(response, code=default_code, message=default_message, errors=errors)
 

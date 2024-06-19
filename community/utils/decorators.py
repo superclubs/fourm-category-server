@@ -1,31 +1,26 @@
 # Django
 from django.utils.translation import gettext_lazy as _
 
-# Django Rest Framework
-from rest_framework.serializers import SerializerMetaclass
-
 # Third Party
 from drf_yasg import openapi
+
+# DRF
+from rest_framework.serializers import SerializerMetaclass
 
 
 # Main Section
 def swagger_decorator(
     tag,
     id=None,
-    description='',
+    description="",
     request=None,
     response=None,
 ):
 
-    data = dict(
-        operation_id=_(id),
-        operation_description=_(description),
-        tags=[tag],
-        responses={}
-    )
+    data = dict(operation_id=_(id), operation_description=_(description), tags=[tag], responses={})
 
     if request:
-        data['request_body'] = request
+        data["request_body"] = request
 
     for response_code in response.keys():
         message = None
@@ -33,11 +28,11 @@ def swagger_decorator(
 
         if isinstance(response[response_code], str):
             message = response[response_code]
-            data['responses'][response_code] = openapi.Response(_(message))
+            data["responses"][response_code] = openapi.Response(_(message))
 
         elif isinstance(response[response_code], SerializerMetaclass):
             serializer = response[response_code]
-            data['responses'][response_code] = openapi.Response(_('ok'), serializer)
+            data["responses"][response_code] = openapi.Response(_("ok"), serializer)
 
         elif isinstance(response[response_code], tuple) or isinstance(response[response_code], list):
             print(response[response_code])
@@ -47,6 +42,6 @@ def swagger_decorator(
                 elif isinstance(value, SerializerMetaclass):
                     serializer = value
 
-            data['responses'][response_code] = openapi.Response(_(message), serializer)
+            data["responses"][response_code] = openapi.Response(_(message), serializer)
 
     return data

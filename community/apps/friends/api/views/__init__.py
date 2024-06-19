@@ -1,1 +1,1 @@
-from community.apps.friends.api.views.index import FriendViewSet, FriendRequestViewSet
+from community.apps.friends.api.views.index import FriendRequestViewSet, FriendViewSet

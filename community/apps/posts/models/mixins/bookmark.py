@@ -2,7 +2,7 @@
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 
-# Django Rest Framework
+# DRF
 from rest_framework.exceptions import ParseError
 
 # Models
@@ -14,7 +14,7 @@ from community.utils.point import POINT_PER_BOOKMARK
 
 # Main Section
 class PostBookmarkModelMixin(models.Model):
-    bookmark_count = models.IntegerField(_('Bookmark Count'), default=0)
+    bookmark_count = models.IntegerField(_("Bookmark Count"), default=0)
 
     class Meta:
         abstract = True
@@ -46,7 +46,7 @@ class PostBookmarkModelMixin(models.Model):
     def unbookmark_post(self, user):
         instance = self.post_bookmarks.filter(user=user).first()
         if not instance:
-            raise ParseError('북마크 객체가 없습니다.')
+            raise ParseError("북마크 객체가 없습니다.")
         instance.is_active = False
         instance.save()
         return instance

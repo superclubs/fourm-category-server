@@ -1,11 +1,11 @@
-# Django Rest Framework
+# DRF
 from django_filters.rest_framework import DjangoFilterBackend
-
-# Bases
-from community.bases.api.viewsets import GenericViewSet
 
 # Models
 from community.apps.reports.models import ReportGroup
+
+# Bases
+from community.bases.api.viewsets import GenericViewSet
 
 
 # Main Section

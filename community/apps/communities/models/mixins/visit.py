@@ -1,10 +1,7 @@
-# Python
-import math
 from dateutil.relativedelta import relativedelta
 
 # Django
 from django.db import models
-from django.db.models import Sum
 from django.utils.timezone import now
 from django.utils.translation import gettext_lazy as _
 
@@ -12,12 +9,12 @@ from django.utils.translation import gettext_lazy as _
 from community.apps.visits.models import CommunityVisit
 
 # Utils
-from community.utils.point import POINT_PER_POST_VISIT, POINT_PER_COMMUNITY_LEVEL
+from community.utils.point import POINT_PER_POST_VISIT
 
 
 # Main Section
 class CommunityVisitModelMixin(models.Model):
-    visit_count = models.IntegerField(_('Visit Count'), default=0)
+    visit_count = models.IntegerField(_("Visit Count"), default=0)
 
     class Meta:
         abstract = True
@@ -44,11 +41,11 @@ class CommunityVisitModelMixin(models.Model):
 
             else:
                 community_visit.last_seen = now()
-                community_visit.save(update_fields=['last_seen'])
+                community_visit.save(update_fields=["last_seen"])
 
 
 class CommunityPostVisitModelMixin(models.Model):
-    posts_visit_count = models.IntegerField(_('Posts Visit Count'), default=0)
+    posts_visit_count = models.IntegerField(_("Posts Visit Count"), default=0)
 
     class Meta:
         abstract = True
@@ -59,5 +56,3 @@ class CommunityPostVisitModelMixin(models.Model):
         # Point
         self.posts_visit_point = self.posts_visit_point + POINT_PER_POST_VISIT
         self.point = self.point + POINT_PER_POST_VISIT
-
-        self.level = math.floor(self.point ** POINT_PER_COMMUNITY_LEVEL) + 1

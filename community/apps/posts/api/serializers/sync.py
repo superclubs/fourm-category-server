@@ -1,14 +1,15 @@
 # Django
 from django.conf import settings
 
-# Django Rest Framework
+# DRF
 from rest_framework import serializers
 
-# Serializers
-from community.apps.post_tags.api.serializers.list import PostTagListSerializer
 from community.apps.badges.api.serializers.list import BadgeListSerializer
 from community.apps.comments.api.serializers.index import CommentSerializer
 from community.apps.likes.api.serializers.index import PostLikeSerializer
+
+# Serializers
+from community.apps.post_tags.api.serializers.list import PostTagListSerializer
 
 # Models
 from community.apps.posts.models.index import Post
@@ -20,11 +21,11 @@ from community.bases.api.serializers import ModelSerializer
 # Main Section
 class PostSyncSerializer(ModelSerializer):
     service_type = serializers.SerializerMethodField()
-    post_id = serializers.IntegerField(source='id')
-    community_id = serializers.IntegerField(source='community.id')
-    depth1_category_id = serializers.IntegerField(source='depth1_community_id')
-    depth2_category_id = serializers.IntegerField(source='depth2_community_id')
-    depth3_category_id = serializers.IntegerField(source='depth3_community_id')
+    post_id = serializers.IntegerField(source="id")
+    community_id = serializers.IntegerField(source="community.id")
+    depth1_category_id = serializers.IntegerField(source="depth1_community_id")
+    depth2_category_id = serializers.IntegerField(source="depth2_community_id")
+    depth3_category_id = serializers.IntegerField(source="depth3_community_id")
     badges_data = serializers.SerializerMethodField()
     tags_data = serializers.SerializerMethodField()
     liked_users_data = serializers.SerializerMethodField()
@@ -34,71 +35,94 @@ class PostSyncSerializer(ModelSerializer):
         model = Post
         fields = (
             # Service
-            'service_type',
-
+            "service_type",
             # Post
-            'post_id',
-
+            "post_id",
             # 'Community'
-            'community_id', 'depth1_category_id', 'depth2_category_id', 'depth3_category_id',
-
+            "community_id",
+            "depth1_category_id",
+            "depth2_category_id",
+            "depth3_category_id",
             # Board Group
-            'board_group_id', 'board_group_title',
-
+            "board_group_id",
+            "board_group_title",
             # Board
-            'board_id', 'board_title',
-
+            "board_id",
+            "board_title",
             # User
-            'user', 'user_data',
-
+            "user",
+            "user_data",
             # Profile
-            'profile', 'profile_data',
-
+            "profile",
+            "profile_data",
             # Permission
-            'read_permission',
-
+            "read_permission",
             # Badges
-            'badges_data',
-
+            "badges_data",
             # Tags
-            'tags_data',
-
+            "tags_data",
             # Media
-            'thumbnail_media_url', 'medias_data',
-
+            "thumbnail_media_url",
+            "medias_data",
             # Main
-            'title', 'content_summary',
-            'password', 'public_type', 'reserved_at', 'boomed_at',
-
+            "title",
+            "content_summary",
+            "password",
+            "public_type",
+            "reserved_at",
+            "boomed_at",
             # Rank
-            'point', 'live_rank', 'rising_rank', 'weekly_rank', 'monthly_rank',
-            'live_rank_change', 'rising_rank_change', 'weekly_rank_change', 'monthly_rank_change',
-
+            "point",
+            "live_rank",
+            "rising_rank",
+            "weekly_rank",
+            "monthly_rank",
+            "live_rank_change",
+            "rising_rank_change",
+            "weekly_rank_change",
+            "monthly_rank_change",
             # Count
-            'comment_count', 'visit_count', 'share_count',
-            'total_like_count', 'like_count', 'dislike_count',
-            'fun_count', 'healing_count', 'legend_count', 'useful_count', 'empathy_count', 'devil_count',
-
+            "comment_count",
+            "visit_count",
+            "share_count",
+            "total_like_count",
+            "like_count",
+            "dislike_count",
+            "fun_count",
+            "healing_count",
+            "legend_count",
+            "useful_count",
+            "empathy_count",
+            "devil_count",
             # Boolean
-            'is_active', 'is_notice', 'is_event', 'is_temporary', 'is_secret',
-            'is_search', 'is_share', 'is_comment', 'is_reserved', 'is_boomed',
-
+            "is_notice",
+            "is_event",
+            "is_temporary",
+            "is_secret",
+            "is_search",
+            "is_share",
+            "is_comment",
+            "is_reserved",
+            "is_boomed",
+            "is_active",
+            "is_deleted",
             # Serializer
-            'liked_users_data', 'commented_users_data',
-
+            "liked_users_data",
+            "commented_users_data",
             # Date
-            'created', 'achieved_20_points_at',
+            "created",
+            "achieved_20_points_at",
         )
 
     def get_service_type(self, obj):
         return settings.SERVICE_TITLE
 
     def get_badges_data(self, obj):
-        instance = obj.badges.order_by('id')
+        instance = obj.badges.order_by("id")
         return BadgeListSerializer(instance=instance, many=True).data
 
     def get_tags_data(self, obj):
-        instance = obj.post_tags.order_by('order')
+        instance = obj.post_tags.order_by("order")
         return PostTagListSerializer(instance=instance, many=True).data
 
     def get_liked_users_data(self, obj):
@@ -109,7 +133,7 @@ class PostSyncSerializer(ModelSerializer):
             return None
 
     def get_commented_users_data(self, obj):
-        comment = obj.comments.filter(is_active=True, is_deleted=False).order_by('-point').first()
+        comment = obj.comments.filter(is_active=True, is_deleted=False).order_by("-point").first()
         if comment:
             return CommentSerializer(instance=comment).data
         else:

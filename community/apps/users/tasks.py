@@ -1,18 +1,35 @@
-# Django
 from celery import shared_task
 
-# Serializer
-from community.apps.users.api.serializers import UserProfileSerializer
-
-# Model
+from community.apps.badges.models import Badge
 from community.apps.users.models import User
 
 
 # Main Section
-@shared_task(name='user_task', bind=True)
-def user_task(self, user_id, username, email, phone, level, grade_title, ring_color, badge_image_url,
-              profile_image_url, banner_image_url, friend_count, status, wallet_address):
-    print('========== User: user_task ==========')
+@shared_task(name="user_task", bind=True)
+def user_task(
+    self,
+    user_id,
+    username,
+    email,
+    phone,
+    level,
+    grade_title,
+    ring_color,
+    badge_image_url,
+    profile_image_url,
+    banner_image_url,
+    friend_count,
+    status,
+    wallet_address,
+    gender,
+    birth,
+    nation,
+    sdk_id,
+    sdk_uuid,
+    card_profile_image_url,
+    badge_title_en,
+):
+    print("========== User: user_task ==========")
 
     user = User.objects.filter(id=user_id).first()
     if not user:
@@ -30,13 +47,21 @@ def user_task(self, user_id, username, email, phone, level, grade_title, ring_co
     user.friend_count = friend_count
     user.status = status
     user.wallet_address = wallet_address
+    user.gender = gender
+    user.birth = birth
+    user.nation = nation
+    user.sdk_id = sdk_id
+    user.sdk_uuid = sdk_uuid
+    user.card_profile_image_url = card_profile_image_url
+    user.badge = Badge.available.filter(title_en=badge_title_en, model_type="COMMON").first()
 
     user.save()
 
 
-@shared_task(name='sync_user_task', bind=True)
+@shared_task(name="sync_user_task", bind=True)
 def sync_user_task(self, user_id):
-    print('========== User: sync_user_task ==========')
+    print("========== User: sync_user_task ==========")
+    from community.apps.users.api.serializers import UserProfileSerializer
 
     user = User.objects.filter(id=user_id).first()
     if not user:

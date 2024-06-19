@@ -1,16 +1,17 @@
-# Django Rest Framework
+# DRF
 from rest_framework import serializers
+
+# Models
+from community.apps.comments.models import Comment
+from community.apps.users.api.serializers import UserSerializer
 
 # Serializers
 from community.bases.api.serializers import ModelSerializer
 
-# Models
-from community.apps.comments.models import Comment
-
 
 # Main Section
 class CommentListSerializer(ModelSerializer):
-    user = serializers.JSONField(source='user_data')
+    user = UserSerializer()
     is_liked = serializers.SerializerMethodField()
     is_disliked = serializers.SerializerMethodField()
     is_reported = serializers.SerializerMethodField()
@@ -20,24 +21,42 @@ class CommentListSerializer(ModelSerializer):
         model = Comment
         fields = (
             # Main
-            'parent_comment', 'id', 'community', 'post', 'user', 'image_url', 'content', 'point', 'created', 'modified',
-
+            "parent_comment",
+            "id",
+            "community",
+            "post",
+            "user",
+            "image_url",
+            "content",
+            "point",
+            "created",
+            "modified",
             # Boolean
-            'is_deleted', 'is_secret',
-
+            "is_deleted",
+            "is_secret",
             # Count
-            'total_like_count', 'dislike_count', 'like_count', 'fun_count', 'healing_count', 'legend_count',
-            'useful_count', 'empathy_count', 'devil_count', 'reported_count',
-
+            "total_like_count",
+            "dislike_count",
+            "like_count",
+            "fun_count",
+            "healing_count",
+            "legend_count",
+            "useful_count",
+            "empathy_count",
+            "devil_count",
+            "reported_count",
             # Serializer
-            'is_liked', 'is_disliked', 'is_reported', 'comment_count',
+            "is_liked",
+            "is_disliked",
+            "is_reported",
+            "comment_count",
         )
 
     def get_comment_count(self, obj):
         return obj.post.comments.filter(is_active=True, is_deleted=False).count()
 
     def get_is_liked(self, obj):
-        request = self.context.get('request', None)
+        request = self.context.get("request", None)
         if not request:
             return None
         user = request.user
@@ -49,7 +68,7 @@ class CommentListSerializer(ModelSerializer):
         return True
 
     def get_is_disliked(self, obj):
-        request = self.context.get('request', None)
+        request = self.context.get("request", None)
         if not request:
             return None
         user = request.user
@@ -61,7 +80,7 @@ class CommentListSerializer(ModelSerializer):
         return True
 
     def get_is_reported(self, obj):
-        request = self.context.get('request', None)
+        request = self.context.get("request", None)
         if not request:
             return None
         user = request.user
@@ -84,7 +103,7 @@ class ParentCommentListSerializer(CommentListSerializer):
 
     class Meta:
         model = Comment
-        fields = CommentListSerializer.Meta.fields + ('child_comments',)
+        fields = CommentListSerializer.Meta.fields + ("child_comments",)
 
     def get_child_comments(self, obj):
-        return ChildCommentListSerializer(obj.comments, many=True, context={'request': self.context['request']}).data
+        return ChildCommentListSerializer(obj.comments, many=True, context={"request": self.context["request"]}).data

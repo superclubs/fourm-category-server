@@ -1,11 +1,11 @@
-# Django Rest Framework
+# DRF
 from rest_framework import serializers
+
+# Model
+from community.apps.friends.models import Friend, FriendRequest
 
 # Serializer
 from community.bases.api.serializers import ModelSerializer
-
-# Model
-from community.apps.friends.models import FriendRequest, Friend
 
 
 # Main Section
@@ -14,7 +14,7 @@ class FriendRequestCreateSerializer(ModelSerializer):
 
     class Meta:
         model = FriendRequest
-        fields = ('id', 'sender', 'receiver', 'status')
+        fields = ("id", "sender", "receiver", "status")
 
 
 class FriendCreateSerializer(ModelSerializer):
@@ -22,4 +22,4 @@ class FriendCreateSerializer(ModelSerializer):
 
     class Meta:
         model = Friend
-        fields = ('id', 'friend_request', 'me', 'user')
+        fields = ("id", "friend_request", "me", "user")

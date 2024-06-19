@@ -1,17 +1,15 @@
-# Django Rest Framework
-from rest_framework import serializers
+# Models
+from community.apps.profiles.models import Profile
+from community.apps.users.api.serializers import UserSerializer
 
 # Serializers
 from community.bases.api.serializers import ModelSerializer
 
-# Models
-from community.apps.profiles.models import Profile
-
 
 # Main Section
 class ProfileSerializer(ModelSerializer):
-    user = serializers.JSONField(source='user_data')
+    user = UserSerializer()
 
     class Meta:
         model = Profile
-        fields = ('id', 'community', 'user', 'post_count', 'comment_count', 'community_visit_count', 'point', 'level')
+        fields = ("id", "community", "user", "post_count", "comment_count", "community_visit_count", "point", "level")

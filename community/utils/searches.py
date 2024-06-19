@@ -6,43 +6,43 @@ from functools import reduce
 from django.db import models
 from django.utils.encoding import force_str
 from django.utils.translation import gettext_lazy as _
-
-# Django Rest Framework
-from rest_framework.filters import SearchFilter
 from rest_framework.compat import coreapi, coreschema, distinct
+
+# DRF
+from rest_framework.filters import SearchFilter
 
 
 # Main Section
 class AdvancedSearchFilter(SearchFilter):
-    search_or_param = 'or'
-    search_or_title = _('Search')
-    search_or_description = _('A search term.')
+    search_or_param = "or"
+    search_or_title = _("Search")
+    search_or_description = _("A search term.")
 
-    search_and_param = 'and'
-    search_and_title = _('Search')
-    search_and_description = _('A search term.')
+    search_and_param = "and"
+    search_and_title = _("Search")
+    search_and_description = _("A search term.")
 
-    search_exclude_param = 'exclude'
-    search_exclude_title = _('Search')
-    search_exclude_description = _('A search term.')
+    search_exclude_param = "exclude"
+    search_exclude_title = _("Search")
+    search_exclude_description = _("A search term.")
 
     def get_search_terms(self, request, param=None):
-        params = request.query_params.get(param, '')
-        params = params.replace('\x00', '')
-        params = params.replace(',', ' ')
+        params = request.query_params.get(param, "")
+        params = params.replace("\x00", "")
+        params = params.replace(",", " ")
         return params.split()
 
     def get_all_search_terms(self, request):
-        all_search_terms = {'or': [], 'and': [], 'exclude': []}
-        for search_param in [self.search_param, 'or', 'and', 'exclude']:
+        all_search_terms = {"or": [], "and": [], "exclude": []}
+        for search_param in [self.search_param, "or", "and", "exclude"]:
             search_terms = self.get_search_terms(request, search_param)
             if search_terms:
-                if search_param == 'and':
-                    all_search_terms['and'] = search_terms
-                elif search_param == 'exclude':
-                    all_search_terms['exclude'] = search_terms
+                if search_param == "and":
+                    all_search_terms["and"] = search_terms
+                elif search_param == "exclude":
+                    all_search_terms["exclude"] = search_terms
                 else:
-                    all_search_terms['or'] += search_terms
+                    all_search_terms["or"] += search_terms
 
         return all_search_terms
 
@@ -51,17 +51,15 @@ class AdvancedSearchFilter(SearchFilter):
         all_search_terms = self.get_all_search_terms(request)
 
         if not search_fields or not (
-            len(all_search_terms['or']) or len(all_search_terms['and']) or len(all_search_terms['exclude'])):
+            len(all_search_terms["or"]) or len(all_search_terms["and"]) or len(all_search_terms["exclude"])
+        ):
             return queryset
 
-        orm_lookups = [
-            self.construct_search(str(search_field))
-            for search_field in search_fields
-        ]
+        orm_lookups = [self.construct_search(str(search_field)) for search_field in search_fields]
 
         base = queryset
 
-        for param in ['or', 'and', 'exclude']:
+        for param in ["or", "and", "exclude"]:
             terms = all_search_terms[param]
 
             if not terms:
@@ -75,11 +73,11 @@ class AdvancedSearchFilter(SearchFilter):
                 conditions.append(reduce(operator.or_, get_queries(term)))
 
             if conditions:
-                if param == 'or':
+                if param == "or":
                     queryset = queryset.filter(reduce(operator.or_, conditions))
-                elif param == 'and':
+                elif param == "and":
                     queryset = queryset.filter(reduce(operator.and_, conditions))
-                elif param == 'exclude':
+                elif param == "exclude":
                     queryset = queryset.exclude(reduce(operator.or_, conditions))
 
         if self.must_call_distinct(queryset, search_fields):
@@ -87,43 +85,39 @@ class AdvancedSearchFilter(SearchFilter):
         return queryset
 
     def get_schema_fields(self, view):
-        assert coreapi is not None, 'coreapi must be installed to use `get_schema_fields()`'
-        assert coreschema is not None, 'coreschema must be installed to use `get_schema_fields()`'
+        assert coreapi is not None, "coreapi must be installed to use `get_schema_fields()`"
+        assert coreschema is not None, "coreschema must be installed to use `get_schema_fields()`"
         return [
             coreapi.Field(
                 name=self.search_param,
                 required=False,
-                location='query',
+                location="query",
                 schema=coreschema.String(
-                    title=force_str(self.search_title),
-                    description=force_str(self.search_description)
-                )
+                    title=force_str(self.search_title), description=force_str(self.search_description)
+                ),
             ),
             coreapi.Field(
                 name=self.search_or_param,
                 required=False,
-                location='query',
+                location="query",
                 schema=coreschema.String(
-                    title=force_str(self.search_title),
-                    description=force_str(self.search_description)
-                )
+                    title=force_str(self.search_title), description=force_str(self.search_description)
+                ),
             ),
             coreapi.Field(
                 name=self.search_and_param,
                 required=False,
-                location='query',
+                location="query",
                 schema=coreschema.String(
-                    title=force_str(self.search_title),
-                    description=force_str(self.search_description)
-                )
+                    title=force_str(self.search_title), description=force_str(self.search_description)
+                ),
             ),
             coreapi.Field(
                 name=self.search_exclude_param,
                 required=False,
-                location='query',
+                location="query",
                 schema=coreschema.String(
-                    title=force_str(self.search_title),
-                    description=force_str(self.search_description)
-                )
+                    title=force_str(self.search_title), description=force_str(self.search_description)
+                ),
             ),
         ]

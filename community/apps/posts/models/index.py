@@ -3,9 +3,9 @@ from datetime import timedelta
 
 # Django
 from django.db import models
+from django.db.models import Q
 from django.utils.timezone import now
 from django.utils.translation import gettext_lazy as _
-from django.db.models import Q
 
 # Models
 from community.apps.badges.models import Badge
@@ -13,19 +13,25 @@ from community.apps.badges.models import Badge
 # Managers
 from community.apps.posts.models.managers.active import PostActiveManager
 
-# Bases
-from community.bases.models import Model
-
 # Mixins
-from community.apps.posts.models.mixins import PostCommentModelMixin, PostLikeModelMixin, PostShareModelMixin, \
-    PostVisitModelMixin, PostTagModelMixin, PostReportModelMixin, PostRankModelMixin, PostBadgeModelMixin, \
-    PostMediaModelMixin, PostBookmarkModelMixin, PostPointModelMixin, PostCommunityModelMixin
-
-# Bases
-from community.bases.models import Manager
+from community.apps.posts.models.mixins import (
+    PostBadgeModelMixin,
+    PostBookmarkModelMixin,
+    PostCommentModelMixin,
+    PostCommunityModelMixin,
+    PostLikeModelMixin,
+    PostMediaModelMixin,
+    PostPointModelMixin,
+    PostRankModelMixin,
+    PostReportModelMixin,
+    PostShareModelMixin,
+    PostTagModelMixin,
+    PostVisitModelMixin,
+)
+from community.bases.models import Manager, Model
 
 # Modules
-from community.modules.choices import PUBLIC_TYPE_CHOICES, BOOM_PERIOD_CHOICES
+from community.modules.choices import BOOM_PERIOD_CHOICES, PUBLIC_TYPE_CHOICES
 
 # Utils
 from community.utils.fields import extract_content_summary
@@ -35,7 +41,7 @@ from community.utils.fields import extract_content_summary
 class PostBadgeManager(Manager):
     def get_new_badge(self):
         # 1. Get New Badge
-        new_badge = Badge.objects.get(title='New', model_type='POST')
+        new_badge = Badge.objects.get(title="New", model_type="POST")
 
         # 2. Get Posts
         date = now() - timedelta(days=7)
@@ -53,13 +59,13 @@ class PostBadgeManager(Manager):
 
     def get_grade_badge(self):
 
-        nice_badge = Badge.objects.get(title='Nice', model_type='POST')
-        good_badge = Badge.objects.get(title='Good', model_type='POST')
-        excellent_badge = Badge.objects.get(title='Excellent', model_type='POST')
-        great_badge = Badge.objects.get(title='Great', model_type='POST')
-        wonderful_badge = Badge.objects.get(title='Wonderful', model_type='POST')
-        fantastic_badge = Badge.objects.get(title='Fantastic', model_type='POST')
-        amazing_badge = Badge.objects.get(title='Amazing', model_type='POST')
+        nice_badge = Badge.objects.get(title="Nice", model_type="POST")
+        good_badge = Badge.objects.get(title="Good", model_type="POST")
+        excellent_badge = Badge.objects.get(title="Excellent", model_type="POST")
+        great_badge = Badge.objects.get(title="Great", model_type="POST")
+        wonderful_badge = Badge.objects.get(title="Wonderful", model_type="POST")
+        fantastic_badge = Badge.objects.get(title="Fantastic", model_type="POST")
+        amazing_badge = Badge.objects.get(title="Amazing", model_type="POST")
 
         nice_posts = Post.objects.filter(Q(point__range=[100, 499]), ~Q(badges=nice_badge))
         good_posts = Post.objects.filter(Q(point__range=[500, 999]), ~Q(badges=good_badge))
@@ -98,77 +104,90 @@ class PostBadgeManager(Manager):
 
 
 # Main Section
-class Post(PostCommentModelMixin,
-           PostLikeModelMixin,
-           PostShareModelMixin,
-           PostVisitModelMixin,
-           PostBookmarkModelMixin,
-           PostTagModelMixin,
-           PostReportModelMixin,
-           PostRankModelMixin,
-           PostBadgeModelMixin,
-           PostMediaModelMixin,
-           PostPointModelMixin,
-           PostCommunityModelMixin,
-           Model):
+class Post(
+    PostCommentModelMixin,
+    PostLikeModelMixin,
+    PostShareModelMixin,
+    PostVisitModelMixin,
+    PostBookmarkModelMixin,
+    PostTagModelMixin,
+    PostReportModelMixin,
+    PostRankModelMixin,
+    PostBadgeModelMixin,
+    PostMediaModelMixin,
+    PostPointModelMixin,
+    PostCommunityModelMixin,
+    Model,
+):
 
     # Community
-    community = models.ForeignKey('communities.Community', verbose_name=_('Community'), on_delete=models.CASCADE,
-                                  related_name='posts')
-    community_title = models.CharField(_('Community Title'), max_length=60, null=True, blank=True)
+    community = models.ForeignKey(
+        "communities.Community", verbose_name=_("Community"), on_delete=models.CASCADE, related_name="posts"
+    )
+    community_title = models.CharField(_("Community Title"), max_length=60, null=True, blank=True)
 
     # Board Group
-    board_group = models.ForeignKey('boards.BoardGroup', verbose_name=_('Board Group'), on_delete=models.SET_NULL,
-                                    null=True, related_name='posts')
-    board_group_title = models.CharField(_('Board Group Title'), max_length=60, null=True, blank=True)
+    board_group = models.ForeignKey(
+        "boards.BoardGroup", verbose_name=_("Board Group"), on_delete=models.SET_NULL, null=True, related_name="posts"
+    )
+    board_group_title = models.CharField(_("Board Group Title"), max_length=60, null=True, blank=True)
 
     # Board
-    board = models.ForeignKey('boards.Board', verbose_name=_('Board'), on_delete=models.SET_NULL, null=True, blank=True,
-                              related_name='posts')
-    board_title = models.CharField(_('Board Title'), max_length=60, null=True, blank=True)
-    read_permission = models.IntegerField(_('Read Permission'), null=True, blank=True)
+    board = models.ForeignKey(
+        "boards.Board", verbose_name=_("Board"), on_delete=models.SET_NULL, null=True, blank=True, related_name="posts"
+    )
+    board_title = models.CharField(_("Board Title"), max_length=60, null=True, blank=True)
+    read_permission = models.IntegerField(_("Read Permission"), null=True, blank=True)
 
     # FK
-    badges = models.ManyToManyField('badges.Badge', verbose_name=_('Badge'), related_name='posts', blank=True)
-    user = models.ForeignKey('users.User', verbose_name=_('User'), on_delete=models.SET_NULL, null=True, blank=True,
-                             related_name='posts')
-    user_data = models.JSONField(_('User Data'), null=True, blank=True)
-    profile = models.ForeignKey('profiles.Profile', verbose_name=_('Profile'), on_delete=models.SET_NULL, null=True,
-                                blank=True, related_name='posts')
-    profile_data = models.JSONField(_('Profile Data'), null=True, blank=True)
+    badges = models.ManyToManyField("badges.Badge", verbose_name=_("Badge"), related_name="posts", blank=True)
+    user = models.ForeignKey(
+        "users.User", verbose_name=_("User"), on_delete=models.SET_NULL, null=True, blank=True, related_name="posts"
+    )
+    user_data = models.JSONField(_("User Data"), null=True, blank=True)
+    profile = models.ForeignKey(
+        "profiles.Profile",
+        verbose_name=_("Profile"),
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        related_name="posts",
+    )
+    profile_data = models.JSONField(_("Profile Data"), null=True, blank=True)
 
     # Main
-    title = models.CharField(_('Title'), max_length=100, null=True, blank=True, default='Untitled')
-    content = models.TextField(_('Content'), null=True, blank=True)
-    content_summary = models.TextField(_('Content Summary'), null=True, blank=True)
-    public_type = models.CharField(_('Public Type'), choices=PUBLIC_TYPE_CHOICES, max_length=100, default='PUBLIC')
-    password = models.IntegerField(_('Password'), null=True, blank=True)
-    reserved_at = models.DateTimeField(_('Reserved At'), null=True, blank=True)
-    boomed_period = models.CharField(_('Boomed Period'), choices=BOOM_PERIOD_CHOICES, max_length=100, null=True,
-                                     blank=True)
-    boomed_at = models.DateTimeField(_('Boomed At'), null=True, blank=True)
-    web_url = models.URLField(_('Web URL'), null=True, blank=True)
+    title = models.CharField(_("Title"), max_length=100, null=True, blank=True, default="Untitled")
+    content = models.TextField(_("Content"), null=True, blank=True)
+    content_summary = models.TextField(_("Content Summary"), null=True, blank=True)
+    public_type = models.CharField(_("Public Type"), choices=PUBLIC_TYPE_CHOICES, max_length=100, default="PUBLIC")
+    password = models.IntegerField(_("Password"), null=True, blank=True)
+    reserved_at = models.DateTimeField(_("Reserved At"), null=True, blank=True)
+    boomed_period = models.CharField(
+        _("Boomed Period"), choices=BOOM_PERIOD_CHOICES, max_length=100, null=True, blank=True
+    )
+    boomed_at = models.DateTimeField(_("Boomed At"), null=True, blank=True)
+    web_url = models.URLField(_("Web URL"), null=True, blank=True)
 
     # Boolean
-    is_temporary = models.BooleanField(_('Is Temporary'), default=False)
-    is_secret = models.BooleanField(_('Is Secret'), default=False)
-    is_reserved = models.BooleanField(_('Is Reserved'), default=False)
-    is_boomed = models.BooleanField(_('Is Boomed'), default=False)
-    is_agenda = models.BooleanField(_('Is Agenda'), default=False)
-    is_vote = models.BooleanField(_('Is Vote'), default=False)
+    is_temporary = models.BooleanField(_("Is Temporary"), default=False)
+    is_secret = models.BooleanField(_("Is Secret"), default=False)
+    is_reserved = models.BooleanField(_("Is Reserved"), default=False)
+    is_boomed = models.BooleanField(_("Is Boomed"), default=False)
+    is_agenda = models.BooleanField(_("Is Agenda"), default=False)
+    is_vote = models.BooleanField(_("Is Vote"), default=False)
 
-    is_notice = models.BooleanField(_('Is Notice'), default=False)
-    is_event = models.BooleanField(_('Is Event'), default=False)
+    is_notice = models.BooleanField(_("Is Notice"), default=False)
+    is_event = models.BooleanField(_("Is Event"), default=False)
 
-    is_comment = models.BooleanField(_('Is Comment'), default=True)
-    is_share = models.BooleanField(_('Is Share'), default=True)
-    is_search = models.BooleanField(_('Is Search'), default=True)
+    is_comment = models.BooleanField(_("Is Comment"), default=True)
+    is_share = models.BooleanField(_("Is Share"), default=True)
+    is_search = models.BooleanField(_("Is Search"), default=True)
 
-    is_default = models.BooleanField(_('Is Default'), default=False)
+    is_default = models.BooleanField(_("Is Default"), default=False)
 
     # Date
     created = models.DateTimeField(default=now)
-    achieved_20_points_at = models.DateTimeField(_('Achieved 20 Points At'), null=True, blank=True)
+    achieved_20_points_at = models.DateTimeField(_("Achieved 20 Points At"), null=True, blank=True)
 
     __public_type = None
     __is_temporary = None
@@ -177,11 +196,11 @@ class Post(PostCommentModelMixin,
     active = PostActiveManager()
 
     class Meta:
-        verbose_name = verbose_name_plural = _('Post')
-        ordering = ['-created']
+        verbose_name = verbose_name_plural = _("Post")
+        ordering = ["-created"]
 
     def __str__(self):
-        return f'{self.id} / {self.title}'
+        return f"{self.id} / {self.title}"
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -189,7 +208,9 @@ class Post(PostCommentModelMixin,
         self.__is_temporary = self.is_temporary
 
     def save(self, *args, **kwargs):
-        if self.id is None:
+        is_created = False
+        if self._state.adding:
+            is_created = True
             self.community_title = self.community.title
 
             if self.content:
@@ -201,22 +222,24 @@ class Post(PostCommentModelMixin,
                 self.board_group = self.board.board_group
                 # self.board_group_title = self.board.board_group.title
 
-            if not self.is_temporary and not self.is_agenda and not self.is_reserved and self.public_type != 'ONLY_ME':
-                self.increase_related_model_post_count()
-
-        else:
-            if (self.__public_type == 'ONLY_ME' and self.__public_type != self.public_type) or (
-                self.__is_temporary and not self.is_temporary):
-                self.increase_related_model_post_count(post_tag=True)
-
-            elif self.public_type == 'ONLY_ME' and self.__public_type != self.public_type:
-                self.decrease_related_model_post_count(post_tag=True)
-
         # Point
         if self.point >= 20 and not self.achieved_20_points_at:
             self.achieved_20_points_at = now()
 
-        return super(Post, self).save(*args, **kwargs)
+        super(Post, self).save(*args, **kwargs)
+
+        if is_created:
+            if not self.is_temporary and not self.is_agenda and not self.is_reserved and self.public_type != "ONLY_ME":
+                self.increase_related_model_post_count()
+
+        else:
+            if (self.__public_type == "ONLY_ME" and self.__public_type != self.public_type) or (
+                self.__is_temporary and not self.is_temporary
+            ):
+                self.increase_related_model_post_count(post_tag=True)
+
+            elif self.public_type == "ONLY_ME" and self.__public_type != self.public_type:
+                self.decrease_related_model_post_count(post_tag=True)
 
     def increase_related_model_post_count(self, post_tag=False):
         # User Post Count
@@ -256,10 +279,6 @@ class Post(PostCommentModelMixin,
         self.board.decrease_board_post_count()
         self.board.save()
 
-        # Profile Post Count
-        self.profile.decrease_profile_post_count()
-        self.profile.save()
-
         # Post Tag Post Count
         if post_tag:
             post_tags = self.post_tags.filter(is_active=True)
@@ -267,7 +286,8 @@ class Post(PostCommentModelMixin,
                 post_tag.tag.decrease_tag_post_count()
                 post_tag.tag.save()
 
-    def delete(self, *args, request=None, **kwargs):
+    # TODO: is_delete 로직 개선
+    def soft_delete(self, *args, request=None, **kwargs):
         from community.apps.posts.api.serializers import PostDeleteSerializer
         from community.modules.gateways.post import gateway as gateway_post
 
@@ -280,4 +300,8 @@ class Post(PostCommentModelMixin,
         # API Gateway
         gateway_post.delete_post(data)
 
-        return super(Post, self).delete(*args, **kwargs)
+        # Delete Post
+        super(Post, self).soft_delete(*args, **kwargs)
+
+        if not self.is_temporary and not self.is_agenda and not self.is_reserved and self.public_type != "ONLY_ME":
+            self.decrease_related_model_post_count(post_tag=True)

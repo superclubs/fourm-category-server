@@ -1,26 +1,28 @@
 """
 Base settings to build other settings files upon.
 """
-# Python
-import os
-import environ
-from datetime import timedelta
-import urllib.parse
 import logging
 
-# Django
-from django.utils.translation import ugettext_lazy as _
+# Python
+import os
+import urllib.parse
+from datetime import timedelta
 
 # Third Party
 from pathlib import Path
 from typing import List
-from corsheaders.defaults import default_methods, default_headers
+
+import environ
 
 # Sentry
 import sentry_sdk
+from corsheaders.defaults import default_headers, default_methods
+
+# Django
+from django.utils.translation import ugettext_lazy as _
+from sentry_sdk.integrations.celery import CeleryIntegration
 from sentry_sdk.integrations.django import DjangoIntegration
 from sentry_sdk.integrations.logging import LoggingIntegration
-from sentry_sdk.integrations.celery import CeleryIntegration
 from sentry_sdk.integrations.redis import RedisIntegration
 
 # Paths
@@ -32,7 +34,7 @@ env = environ.Env()
 # ENVIRONMENT
 # ---------------------------------------------------------------------------------
 DJANGO_SETTINGS_MODULE = env("DJANGO_SETTINGS_MODULE")
-print('DJANGO_SETTINGS_MODULE : ', DJANGO_SETTINGS_MODULE)
+print("DJANGO_SETTINGS_MODULE : ", DJANGO_SETTINGS_MODULE)
 
 DJANGO_ENV = DJANGO_SETTINGS_MODULE.split(".")[-1]  # config.settings.(.+)
 print(f"Running server using {DJANGO_ENV} settings")
@@ -69,8 +71,8 @@ if files_not_exist:
 
 print("")
 
-SERVICE_TITLE = env('SERVICE_TITLE', default='COMMUNITY')
-SERVICE_PATH = ''.join(SERVICE_TITLE.lower().split('_'))
+SERVICE_TITLE = env("SERVICE_TITLE", default="COMMUNITY")
+SERVICE_PATH = "".join(SERVICE_TITLE.lower().split("_"))
 
 # GENERAL
 # ------------------------------------------------------------------------------
@@ -94,6 +96,21 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/dev/ref/settings/#locale-paths
 LOCALE_PATHS = [str(ROOT_DIR / "locale")]
 
+LANGUAGES = [
+    ("en", "English"),
+    ("ko", "Korean"),
+    ("ja", "Japanese"),
+    ("zh-hans", "Simplified Chinese"),  # 간체 중국어
+    ("zh-hant", "Traditional Chinese"),  # 번체 중국어
+    ("es", "Spanish"),
+    ("ru", "Russian"),
+    ("ar", "Arabic"),
+]
+
+# Model Translation
+MODELTRANSLATION_DEFAULT_LANGUAGE = "en"
+MODELTRANSLATION_LANGUAGES = (lang_code for lang_code, lang_name in LANGUAGES)
+
 # DATABASES
 # ------------------------------------------------------------------------------
 # https://docs.djangoproject.com/en/dev/ref/settings/#databases
@@ -106,16 +123,18 @@ DATABASES = {
 }
 DATABASES["default"]["ATOMIC_REQUESTS"] = True
 
-if DATABASES["default"]["ENGINE"] == 'django.db.backends.mysql':
-    DATABASES["default"]["OPTIONS"] = {'charset': 'utf8mb4', 'use_unicode': True,
-                                       'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
-                                       'isolation_level': 'READ COMMITTED'
-                                       }
+if DATABASES["default"]["ENGINE"] == "django.db.backends.mysql":
+    DATABASES["default"]["OPTIONS"] = {
+        "charset": "utf8mb4",
+        "use_unicode": True,
+        "init_command": "SET sql_mode='STRICT_TRANS_TABLES'",
+        "isolation_level": "READ COMMITTED",
+    }
 
 # https://docs.djangoproject.com/en/stable/ref/settings/#std:setting-DEFAULT_AUTO_FIELD
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
-print('DATABASES : ', DATABASES)
+print("DATABASES : ", DATABASES)
 
 # URLS
 # ------------------------------------------------------------------------------
@@ -127,27 +146,25 @@ WSGI_APPLICATION = "config.wsgi.application"
 # APPS
 # ------------------------------------------------------------------------------
 DJANGO_APPS = [
-    'jet',
+    "jet",
     "django.contrib.auth",
     "django.contrib.contenttypes",
     "django.contrib.sessions",
     "django.contrib.sites",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "modeltranslation",
     "django.contrib.admin",
     "django.forms",
 ]
 
 THIRD_PARTY_APPS = [
     "rest_framework_simplejwt",
-
     # Django Model
     "phonenumber_field",
     "django_redis",
-
     # Django Form
     "crispy_forms",
-
     # Django Admin
     "admin_reorder",
     "django_admin_relation_links",
@@ -155,16 +172,14 @@ THIRD_PARTY_APPS = [
     "import_export",
     "inline_actions",
     "rangefilter",
-    'nested_inline',
+    "nested_inline",
     "admin_numeric_filter",
-
     # django-allauth
     "allauth",
     "allauth.account",
     "allauth.socialaccount",
     "allauth.socialaccount.providers.kakao",
     "allauth.socialaccount.providers.apple",
-
     # django-rest-framework
     "rest_framework",
     "rest_framework.authtoken",
@@ -173,26 +188,27 @@ THIRD_PARTY_APPS = [
     "drf_extra_fields",
     "drf_yasg",
     "url_filter",
-
     # django-health-check
     "health_check",
     "health_check.db",
     "health_check.storage",
     "health_check.contrib.migrations",
     "health_check.contrib.psutil",
-
     # Editor
     "django_summernote",
-
     # Crontab
-    'django_crontab',
+    "django_crontab",
 ]
 
 LOCAL_APPS = [
     "community.apps.badges.apps.BadgesConfig",
+    "community.apps.bans.apps.BansConfig",
     "community.apps.boards.apps.BoardsConfig",
     "community.apps.bookmarks.apps.BookmarksConfig",
     "community.apps.communities.apps.CommunitiesConfig",
+    "community.apps.community_medias.apps.CommunityMediasConfig",
+    "community.apps.community_posts.apps.CommunityPostsConfig",
+    "community.apps.community_users.apps.CommunityUsersConfig",
     "community.apps.comments.apps.CommentsConfig",
     "community.apps.friends.apps.FriendsConfig",
     "community.apps.likes.apps.LikesConfig",
@@ -240,9 +256,7 @@ PASSWORD_HASHERS = [
 ]
 # https://docs.djangoproject.com/en/dev/ref/settings/#auth-password-validators
 AUTH_PASSWORD_VALIDATORS = [
-    {
-        "NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator"
-    },
+    {"NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator"},
     {"NAME": "django.contrib.auth.password_validation.MinimumLengthValidator"},
     {"NAME": "django.contrib.auth.password_validation.CommonPasswordValidator"},
     {"NAME": "django.contrib.auth.password_validation.NumericPasswordValidator"},
@@ -263,7 +277,7 @@ MIDDLEWARE = [
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.common.BrokenLinkEmailsMiddleware",
     # "django.middleware.clickjacking.XFrameOptionsMiddleware",
-    'admin_reorder.middleware.ModelAdminReorder',
+    "admin_reorder.middleware.ModelAdminReorder",
 ]
 
 # STORAGES
@@ -281,9 +295,7 @@ AWS_QUERYSTRING_AUTH = False
 # DO NOT change these unless you know what you're doing.
 _AWS_EXPIRY = 60 * 60 * 24 * 7
 # https://django-storages.readthedocs.io/en/latest/backends/amazon-S3.html#settings
-AWS_S3_OBJECT_PARAMETERS = {
-    "CacheControl": f"max-age={_AWS_EXPIRY}, s-maxage={_AWS_EXPIRY}, must-revalidate"
-}
+AWS_S3_OBJECT_PARAMETERS = {"CacheControl": f"max-age={_AWS_EXPIRY}, s-maxage={_AWS_EXPIRY}, must-revalidate"}
 # https://django-storages.readthedocs.io/en/latest/backends/amazon-S3.html#settings
 AWS_S3_REGION_NAME = env("DJANGO_AWS_S3_REGION_NAME", default=None)
 # https://django-storages.readthedocs.io/en/latest/backends/amazon-S3.html#cloudfront
@@ -370,8 +382,22 @@ ADMINS = [("""Leo Yunhyung Lee""", "leoyunhyung@gmail.com")]
 MANAGERS = ADMINS
 
 ADMIN_REORDER = (
-    'users', 'communities', 'reports', 'profiles', 'posts', 'comments', 'likes', 'rankings', 'badges', 'categories',
-    'boards', 'tags', 'visits', 'bookmarks', 'shares', 'community_medias'
+    "users",
+    "communities",
+    "community_users",
+    "reports",
+    "profiles",
+    "posts",
+    "comments",
+    "likes",
+    "rankings",
+    "badges",
+    "categories",
+    "boards",
+    "tags",
+    "visits",
+    "bookmarks",
+    "shares",
 )
 
 # LOGGING
@@ -383,12 +409,7 @@ LOGGING = {
     "version": 1,
     "disable_existing_loggers": False,
     "filters": {"require_debug_false": {"()": "django.utils.log.RequireDebugFalse"}},
-    "formatters": {
-        "verbose": {
-            "format": "%(levelname)s %(asctime)s %(module)s "
-                      "%(process)d %(thread)d %(message)s"
-        }
-    },
+    "formatters": {"verbose": {"format": "%(levelname)s %(asctime)s %(module)s " "%(process)d %(thread)d %(message)s"}},
     "handlers": {
         "mail_admins": {
             "level": "ERROR",
@@ -454,7 +475,7 @@ REST_FRAMEWORK = {
 # django-cors-headers - https://github.com/adamchainz/django-cors-headers#setup
 CORS_ALLOW_ALL_ORIGINS = True
 CORS_ALLOW_METHODS = default_methods
-CORS_ALLOW_HEADERS = default_headers + ('Language-Code', )
+CORS_ALLOW_HEADERS = default_headers + ("Language-Code",)
 
 # Your stuff...
 # ------------------------------------------------------------------------------
@@ -495,58 +516,52 @@ SWAGGER_SETTINGS = {
             "in": "header",
         },
     },
-    'OPERATIONS_SORTER': 'method',
-    'TAGS_SORTER': 'alpha',
+    "OPERATIONS_SORTER": "method",
+    "TAGS_SORTER": "alpha",
 }
 
-private_key = open(BASE_DIR + '/private_key.pem', 'rb').read()
-public_key = open(BASE_DIR + '/public_key.pem', 'rb').read()
+private_key = open(BASE_DIR + "/private_key.pem", "rb").read()
+public_key = open(BASE_DIR + "/public_key.pem", "rb").read()
 
 # django-rest-framework-simplejwt
 SIMPLE_JWT = {
-    'ACCESS_TOKEN_LIFETIME': timedelta(days=30),
-    'REFRESH_TOKEN_LIFETIME': timedelta(days=180),
-    'ROTATE_REFRESH_TOKENS': False,
-    'BLACKLIST_AFTER_ROTATION': False,
-    'UPDATE_LAST_LOGIN': False,
-
-    'ALGORITHM': 'RS256',
-    'SIGNING_KEY': private_key,
+    "ACCESS_TOKEN_LIFETIME": timedelta(days=30),
+    "REFRESH_TOKEN_LIFETIME": timedelta(days=180),
+    "ROTATE_REFRESH_TOKENS": False,
+    "BLACKLIST_AFTER_ROTATION": False,
+    "UPDATE_LAST_LOGIN": False,
+    "ALGORITHM": "RS256",
+    "SIGNING_KEY": private_key,
     # 'SIGNING_KEY': env('SIGNING_KEY', default=None).encode('ascii'),
-    'VERIFYING_KEY': public_key,
+    "VERIFYING_KEY": public_key,
     # 'VERIFYING_KEY': env('VERIFYING_KEY', default=None).encode('ascii'),
-    'AUDIENCE': None,
-    'ISSUER': None,
-    'JWK_URL': None,
-    'LEEWAY': 0,
-
-    'AUTH_HEADER_TYPES': ('Bearer',),
-    'AUTH_HEADER_NAME': 'HTTP_AUTHORIZATION',
-    'USER_ID_FIELD': 'id',
+    "AUDIENCE": None,
+    "ISSUER": None,
+    "JWK_URL": None,
+    "LEEWAY": 0,
+    "AUTH_HEADER_TYPES": ("Bearer",),
+    "AUTH_HEADER_NAME": "HTTP_AUTHORIZATION",
+    "USER_ID_FIELD": "id",
     # 'USER_ID_CLAIM': 'user_id',
-    'USER_ID_CLAIM': 'account_id',
-    'USER_AUTHENTICATION_RULE': 'rest_framework_simplejwt.authentication.default_user_authentication_rule',
-
-    'AUTH_TOKEN_CLASSES': ('rest_framework_simplejwt.tokens.AccessToken',),
+    "USER_ID_CLAIM": "account_id",
+    "USER_AUTHENTICATION_RULE": "rest_framework_simplejwt.authentication.default_user_authentication_rule",
+    "AUTH_TOKEN_CLASSES": ("rest_framework_simplejwt.tokens.AccessToken",),
     # 'TOKEN_TYPE_CLAIM': 'token_type',
-    'TOKEN_TYPE_CLAIM': None,
-    'TOKEN_USER_CLASS': 'rest_framework_simplejwt.models.TokenUser',
-
-    'JTI_CLAIM': None,
-
-    'SLIDING_TOKEN_REFRESH_EXP_CLAIM': 'refresh_exp',
-    'SLIDING_TOKEN_LIFETIME': timedelta(minutes=5),
-    'SLIDING_TOKEN_REFRESH_LIFETIME': timedelta(days=1),
+    "TOKEN_TYPE_CLAIM": None,
+    "TOKEN_USER_CLASS": "rest_framework_simplejwt.models.TokenUser",
+    "JTI_CLAIM": None,
+    "SLIDING_TOKEN_REFRESH_EXP_CLAIM": "refresh_exp",
+    "SLIDING_TOKEN_LIFETIME": timedelta(minutes=5),
+    "SLIDING_TOKEN_REFRESH_LIFETIME": timedelta(days=1),
 }
 
 # Crontab
 # ------------------------------------------------------------------------------------
 CRONJOBS = [
     # 매 시 30분 실행
-    ('30 * * * *', 'config.crons.cron_ranking_group_post_hourly', '>> cron.log'),
-
+    ("30 * * * *", "config.crons.cron_ranking_group_post_hourly", ">> cron.log"),
     # 매일 오전 6시 실행
-    ('* 6 * * *', 'config.crons.cron_ranking_group_post_daily', '>> cron.log'),
+    ("* 6 * * *", "config.crons.cron_ranking_group_post_daily", ">> cron.log"),
 ]
 
 # Celery
@@ -555,12 +570,14 @@ CELERY_ACCEPT_CONTENT = ["application/json"]
 CELERY_TASK_SERIALIZER = "json"
 CELERY_RESULT_SERIALIZER = "json"
 CELERY_TIMEZONE = "Asia/Seoul"
+CELERY_TASK_ACKS_LATE = True
+CELERY_TASK_REJECT_ON_WORKER_LOST = True
 
 # Credentials
 AWS_ACCESS_KEY_ID = env("DJANGO_AWS_ACCESS_KEY_ID", default=None)
 AWS_SECRET_ACCESS_KEY = env("DJANGO_AWS_SECRET_ACCESS_KEY", default=None)
-aws_access_key_id = urllib.parse.quote(f'{AWS_ACCESS_KEY_ID}', safe='')
-aws_secret_access_key = urllib.parse.quote(f'{AWS_SECRET_ACCESS_KEY}', safe='')
+aws_access_key_id = urllib.parse.quote(f"{AWS_ACCESS_KEY_ID}", safe="")
+aws_secret_access_key = urllib.parse.quote(f"{AWS_SECRET_ACCESS_KEY}", safe="")
 
 # Celery
 CELERY_BROKER_URL = f"sqs://{aws_access_key_id}:{aws_secret_access_key}@"
@@ -587,12 +604,12 @@ if env("REDIS_URL", default=None):
     }
 
 # External API
-SUPERCLUB_SERVER_HOST = env('SUPERCLUB_SERVER_HOST', default='')
-SUPERCLUB_API_VERSION = env('SUPERCLUB_API_VERSION', default='v1')
-SUPERCLUB_WEB_HOST = env('SUPERCLUB_WEB_HOST', default='')
+SUPERCLUB_SERVER_HOST = env("SUPERCLUB_SERVER_HOST", default="")
+SUPERCLUB_API_VERSION = env("SUPERCLUB_API_VERSION", default="v1")
+SUPERCLUB_WEB_HOST = env("SUPERCLUB_WEB_HOST", default="")
 
-POST_SERVER_HOST = env('POST_SERVER_HOST', default='')
-POST_API_VERSION = env('POST_API_VERSION', default='v1')
+POST_SERVER_HOST = env("POST_SERVER_HOST", default="")
+POST_API_VERSION = env("POST_API_VERSION", default="v1")
 
 # Sentry
 # ------------------------------------------------------------------------------

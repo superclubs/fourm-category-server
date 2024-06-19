@@ -1,4 +1,4 @@
-# Django Rest Framework
+# DRF
 from rest_framework.permissions import BasePermission
 
 
@@ -6,7 +6,7 @@ from rest_framework.permissions import BasePermission
 class PostPermission(BasePermission):
     def has_object_permission(self, request, view, obj):
         if obj.community:
-            if view.action in ['post_report', 'post_comment']:
+            if view.action in ["post_report", "post_comment"]:
                 if request.user.id is None:
                     return False
 

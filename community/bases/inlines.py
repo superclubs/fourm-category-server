@@ -1,6 +1,5 @@
 from django.db import models
 from django.forms import Textarea
-
 from nested_inline.admin import NestedStackedInline, NestedTabularInline
 
 from community.utils.inlines import ReadOnlyFieldsMixin

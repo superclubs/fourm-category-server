@@ -2,7 +2,7 @@
 
 # Create the celery systemd service file
 echo "[Unit]
-Description=Celery Beat Service for SUPERCLUB's CLUB
+Description=Celery Beat Service for SUPERCLUB's COMMUNITY
 After=network.target
 
 [Service]
