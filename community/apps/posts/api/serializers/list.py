@@ -1,7 +1,4 @@
-# Django
 from django.db.models import Prefetch
-
-# DRF
 from rest_framework import serializers
 
 from community.apps.badges.api.serializers import BadgeListSerializer
@@ -9,19 +6,15 @@ from community.apps.badges.models import Badge
 from community.apps.bookmarks.models import PostBookmark
 from community.apps.comments.api.serializers import CommentSerializer
 from community.apps.comments.models import Comment
+from community.apps.friends.models import Friend
 from community.apps.likes.api.serializers import PostLikeSerializer
 from community.apps.likes.models import PostDislike, PostLike
-
-# Serializers
 from community.apps.post_tags.api.serializers import PostTagListSerializer
 from community.apps.post_tags.models import PostTag
-
-# Models
 from community.apps.posts.models import Post
 from community.apps.users.api.serializers import UserSerializer
-
-# Bases
 from community.bases.api.serializers import ModelSerializer
+from community.modules.choices import PUBLIC_TYPE_CHOICES
 
 
 # Main Section
@@ -114,22 +107,33 @@ class PostListSerializer(ModelSerializer):
         )
 
     def prefetch_related(self, queryset, user):
-        queryset = queryset.prefetch_related(
-            Prefetch("user"),
-            Prefetch("post_likes", queryset=PostLike.objects.filter(is_active=True), to_attr="active_likes"),
-            Prefetch("comments", queryset=Comment.objects.filter(is_active=True, is_deleted=False).order_by("-point")),
-            Prefetch("badges", queryset=Badge.objects.all().order_by("id")),
-            Prefetch("post_tags", queryset=PostTag.objects.all().order_by("id")),
+        queryset = (
+            queryset
+            .select_related("user", "user__badge")
+            .prefetch_related(
+                Prefetch("post_likes",
+                         queryset=PostLike.available.all().select_related("user", "user__badge"),
+                         to_attr="active_likes"
+                         ),
+                Prefetch("comments",
+                         queryset=
+                         Comment.available.filter(is_secret=False)
+                         .select_related("user", "user__badge")
+                         .order_by("-point")
+                         ),
+                Prefetch("badges", queryset=Badge.available.all().order_by("id")),
+                Prefetch("post_tags", queryset=PostTag.available.all().order_by("id")),
+            )
         )
-        if user and user.id:
+        if user.is_authenticated:
             queryset = queryset.prefetch_related(
-                Prefetch("post_bookmarks", queryset=PostBookmark.objects.filter(user=user, is_active=True)),
-                Prefetch(
-                    "post_likes",
-                    queryset=PostLike.objects.filter(user=user, is_active=True),
-                    to_attr="user_active_likes",
-                ),
-                Prefetch("post_dislikes", queryset=PostDislike.objects.filter(user=user, is_active=True)),
+                Prefetch("post_bookmarks", queryset=PostBookmark.available.filter(user=user)),
+                Prefetch("post_likes",
+                         queryset=PostLike.available.filter(user=user),
+                         to_attr="user_active_likes",
+                         ),
+                Prefetch("post_dislikes", queryset=PostDislike.available.filter(user=user)),
+                Prefetch("user__my_friends", queryset=Friend.available.filter(user=user), to_attr="prefetched_friends")
             )
         return queryset
 
@@ -140,7 +144,7 @@ class PostListSerializer(ModelSerializer):
         user = request.user
         if not user.id:
             return None
-        if user == obj.user and obj.public_type == "ONLY_ME":
+        if user == obj.user and obj.public_type == PUBLIC_TYPE_CHOICES.ONLY_ME:
             return True
         return False
 
@@ -149,14 +153,12 @@ class PostListSerializer(ModelSerializer):
         if not request:
             return None
         user = request.user
-        if not user.id:
+        if not user.is_authenticated:
             return None
         if user == obj.user:
             return True
 
-        other = user.my_friends.filter(user=obj.user, is_active=True).first()
-
-        if not other:
+        if not hasattr(obj, "prefetched_friends"):
             return False
         return True
 
