@@ -106,3 +106,10 @@ BADGE_TYPE_CHOICES = Choices(
     ("POST_ACTIVE", _("포스트 활성화")),
     ("POST_PERIOD", _("포스트 기간")),
 )
+
+ICON_TYPE = Choices(
+    ("BADGE", _("BADGE")),
+    ("PROFILE_BADGE", _("PROFILE_BADGE")),
+    ("LABEL", _("LABEL")),
+    ("USER_INFO", _("USER_INFO")),
+)

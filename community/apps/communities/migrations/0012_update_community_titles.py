@@ -2,8 +2,10 @@
 from django.conf import settings
 from django.db import migrations
 
+from community.apps.communities.constants import categories
+
+
 # App
-from community.apps.communities.constants.categories import categories
 
 
 # Main Section

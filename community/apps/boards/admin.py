@@ -64,4 +64,4 @@ class BoardAdmin(Admin):
         ("2. 활성화 여부", {"fields": ("is_active",)}),
         ("3. 보드 권한", {"fields": ("write_permission", "read_permission")}),
     )
-    readonly_fields = ("post_count", )
+    readonly_fields = ("post_count",)

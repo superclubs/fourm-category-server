@@ -1,6 +1,6 @@
 from django.db import migrations
 
-from community.apps.communities.constants.categories import categories
+from community.apps.communities.constants import categories
 
 
 def update_category_titles(apps, schema_editor):
