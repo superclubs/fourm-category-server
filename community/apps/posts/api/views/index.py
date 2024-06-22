@@ -1,4 +1,6 @@
 # DRF
+from django.db.models import Q
+from django.utils.timezone import now
 from django_filters.rest_framework import DjangoFilterBackend
 
 # Third Party
@@ -137,6 +139,19 @@ class PostViewSet(
     permission_classes = (PostPermission,)
 
     queryset = Post.objects.all()
+
+    def get_queryset(self):
+        if getattr(self, "swagger_fake_view", False):
+            return None
+
+        queryset = self.queryset.exclude(Q(Q(is_boomed=True) & Q(boomed_at__lt=now())))
+        user = self.request.user
+        exclude_reserved_Q = Q(Q(is_reserved=True) & Q(reserved_at__gt=now()))
+        if user.is_authenticated:
+            queryset = queryset.exclude(Q(exclude_reserved_Q & ~(Q(user=user))))
+        else:
+            queryset = queryset.exclude(exclude_reserved_Q)
+        return queryset
 
     @swagger_auto_schema(
         **swagger_decorator(
