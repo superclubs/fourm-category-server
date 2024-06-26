@@ -1,4 +1,5 @@
 # DRF
+from django.core.cache import cache
 from django.db.models import Q
 from django.utils.timezone import now
 from django_filters.rest_framework import DjangoFilterBackend
@@ -163,6 +164,14 @@ class PostViewSet(
         )
     )
     def create(self, request, *args, **kwargs):
+        if cache.get(f"posts::create::{request.user.id}"):
+            return Response(
+                status=status.HTTP_429_TOO_MANY_REQUESTS,
+                code=429,
+                message="Too many requests",
+            )
+        cache.set(f"posts::create::{request.user.id}", "active", timeout=4)
+
         user = request.user
         serializer = PostCreateSerializer(data=request.data, context={"user": user})
         if serializer.is_valid(raise_exception=True):
