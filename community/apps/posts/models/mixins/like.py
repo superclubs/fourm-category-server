@@ -3,6 +3,7 @@ import random
 
 # Django
 from django.db import models, transaction
+from django.db.models import Count
 from django.utils.translation import gettext_lazy as _
 
 # DRF
