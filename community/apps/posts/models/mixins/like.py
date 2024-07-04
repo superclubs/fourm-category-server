@@ -2,7 +2,8 @@
 import random
 
 # Django
-from django.db import models
+from django.db import models, transaction
+from django.db.models import Count
 from django.utils.translation import gettext_lazy as _
 
 # DRF
@@ -32,162 +33,83 @@ class PostLikeModelMixin(models.Model):
     class Meta:
         abstract = True
 
-    def increase_post_total_like_count(self):
-        self.total_like_count = self.total_like_count + 1
+    def set_point(self):
+        return self.dislike_point + self.like_point + self.bookmark_point + self.comment_point + self.visit_point
 
-        # Point
-        self.like_point = self.like_point + POINT_PER_POST_LIKE
-        self.point = self.point + POINT_PER_POST_LIKE
+    def set_type_count(self):
+        like_counts = self.post_likes.filter(is_active=True).values('type').annotate(count=Count('type'))
+        counts_dict = {item['type']: item['count'] for item in like_counts}
 
-    def decrease_post_total_like_count(self):
-        self.total_like_count = self.total_like_count - 1
-
-        # Point
-        self.like_point = self.like_point - POINT_PER_POST_LIKE
-        self.point = self.point - POINT_PER_POST_LIKE
-
-    def increase_post_dislike_count(self):
-        self.dislike_count = self.dislike_count + 1
-
-        # Point
-        self.dislike_point = self.dislike_point + POINT_PER_POST_DISLIKE
-        self.point = self.point + POINT_PER_POST_DISLIKE
-
-    def decrease_post_dislike_count(self):
-        self.dislike_count = self.dislike_count - 1
-
-        # Point
-        self.dislike_point = self.dislike_point - POINT_PER_POST_DISLIKE
-        self.point = self.point - POINT_PER_POST_DISLIKE
-
-    def increase_post_like_count(self):
-        self.like_count = self.like_count + 1
-
-    def decrease_post_like_count(self):
-        self.like_count = self.like_count - 1
-
-    def increase_post_fun_count(self):
-        self.fun_count = self.fun_count + 1
-
-    def decrease_post_fun_count(self):
-        self.fun_count = self.fun_count - 1
-
-    def increase_post_healing_count(self):
-        self.healing_count = self.healing_count + 1
-
-    def decrease_post_healing_count(self):
-        self.healing_count = self.healing_count - 1
-
-    def increase_post_legend_count(self):
-        self.legend_count = self.legend_count + 1
-
-    def decrease_post_legend_count(self):
-        self.legend_count = self.legend_count - 1
-
-    def increase_post_useful_count(self):
-        self.useful_count = self.useful_count + 1
-
-    def decrease_post_useful_count(self):
-        self.useful_count = self.useful_count - 1
-
-    def increase_post_empathy_count(self):
-        self.empathy_count = self.empathy_count + 1
-
-    def decrease_post_empathy_count(self):
-        self.empathy_count = self.empathy_count - 1
-
-    def increase_post_devil_count(self):
-        self.devil_count = self.devil_count + 1
-
-    def decrease_post_devil_count(self):
-        self.devil_count = self.devil_count - 1
+        for field in ('like', 'fun', 'healing', 'legend', 'useful', 'empathy', 'devil'):
+            setattr(self, f"{field}_count", counts_dict.get(field.upper(), 0))
 
     def update_post_total_like_count(self):
         self.total_like_count = self.post_likes.filter(is_active=True).count()
 
-    def update_post_like_count(self):
-        self.like_count = self.post_likes.filter(is_active=True, type="LIKE").count()
-
-    def update_post_fun_count(self):
-        self.fun_count = self.post_likes.filter(is_active=True, type="FUN").count()
-
-    def update_post_healing_count(self):
-        self.healing_count = self.post_likes.filter(is_active=True, type="HEALING").count()
-
-    def update_post_legend_count(self):
-        self.legend_count = self.post_likes.filter(is_active=True, type="LEGEND").count()
-
-    def update_post_useful_count(self):
-        self.useful_count = self.post_likes.filter(is_active=True, type="USEFUL").count()
-
-    def update_post_empathy_count(self):
-        self.empathy_count = self.post_likes.filter(is_active=True, type="EMPATHY").count()
-
-    def update_post_devil_count(self):
-        self.devil_count = self.post_likes.filter(is_active=True, type="DEVIL").count()
+        # Point
+        self.like_point = self.total_like_count * POINT_PER_POST_LIKE
+        self.set_point()
+        self.set_type_count()
+        self.save()
 
     def update_post_dislike_count(self):
         self.dislike_count = self.post_dislikes.filter(is_active=True).count()
 
+        # Point
+        self.dislike_point = self.dislike_count * POINT_PER_POST_DISLIKE
+        self.set_point()
+        self.save(update_fields=["dislike_count", "dislike_point", "point"])
+
     def like_post(self, user, like_type):
-        profile = self.community.profiles.filter(user=user).first()
+        with transaction.atomic():
+            profile = self.community.profiles.filter(user=user).first()
+            if not profile:
+                profile = Profile.objects.create(community=self.community, user=user)
 
-        if self.community and not profile:
-            profile = Profile.objects.create(community=self.community, user=user)
+            if post_dislike := self.post_dislikes.filter(user=user).first():
+                post_dislike.update(is_active=False)
 
-        post_dislike = self.post_dislikes.filter(user=user).first()
-        if post_dislike:
-            post_dislike.is_active = False
-            post_dislike.save()
+            post_like, created = PostLike.objects.update_or_create(user=user, post=self, defaults={
+                "is_active": True,
+                "type": like_type,
+                "profile": profile,
+                "community": self.community,
+            })
 
-        if post_like := self.post_likes.filter(user=user).first():
-            post_like.is_active = True
-            post_like.type = like_type
-            post_like.save(update_fields=["is_active", "type"])
-        else:
-            post_like = PostLike.objects.create(
-                user=user, post=self, profile=profile, community=self.community, type=like_type
-            )
-
-        return post_like.post
+            return post_like.post
 
     def unlike_post(self, user):
-        instance = self.post_likes.filter(user=user, is_active=True).first()
-        if not instance:
-            raise ParseError("좋아요 객체가 없습니다.")
-        instance.is_active = False
-        instance.save()
-
-        return instance.post
+        with transaction.atomic():
+            if post_like := self.post_likes.filter(user=user, is_active=True).first():
+                post_like.update(is_active=False)
+                return post_like.post
+            else:
+                raise ParseError("좋아요 객체가 없습니다.")
 
     def dislike_post(self, user):
-        profile = self.community.profiles.filter(user=user).first()
+        with transaction.atomic():
+            profile, created = self.community.profiles.get_or_create(user=user, defaults={'community': self.community})
 
-        if self.community and not profile:
-            profile = Profile.objects.create(community=self.community, user=user)
+            if post_like := self.post_likes.filter(user=user).first():
+                post_like.update(is_active=False)
 
-        post_like = self.post_likes.filter(user=user).first()
-        if post_like:
-            post_like.is_active = False
-            post_like.save()
+            post_dislike, created = PostDislike.objects.update_or_create(
+                user=user, post=self, defaults={
+                    "is_active": True,
+                    'profile': profile,
+                    'community': self.community
+                }
+            )
 
-        post_dislike, created = PostDislike.objects.get_or_create(
-            user=user, post=self, profile=profile, community=self.community
-        )
-        if not created:
-            post_dislike.is_active = True
-            post_dislike.save()
-
-        return post_dislike.post
+            return post_dislike.post
 
     def undislike_post(self, user):
-        instance = self.post_dislikes.filter(user=user, is_active=True).first()
-        if not instance:
-            raise ParseError("싫어요 객체가 없습니다.")
-        instance.is_active = False
-        instance.save()
-
-        return instance.post
+        with transaction.atomic():
+            if post_dislike := self.post_dislikes.filter(user=user, is_active=True).first():
+                post_dislike.update(is_active=False)
+                return post_dislike.post
+            else:
+                raise ParseError("싫어요 객체가 없습니다.")
 
     # Admin Site Inline Action
     def create_post_like(self):

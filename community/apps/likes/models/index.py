@@ -42,12 +42,6 @@ class PostLike(Model):
         community = post.community
 
         if self.id is None:
-            # Post PostLike Count
-            post.increase_post_total_like_count()
-            increase_count = getattr(post, f"increase_post_{self.type.lower()}_count")
-            increase_count()
-            post.save()
-
             # Profile PostLike Count
             profile.increase_profile_posts_like_count()
             profile.save()
@@ -62,32 +56,15 @@ class PostLike(Model):
 
                 # Update Post, Profile, Club PostLike Count
                 if self.is_active:
-                    post.increase_post_total_like_count()
-                    post_count = getattr(post, f"increase_post_{self.type.lower()}_count")
-                    post_count()
                     profile.increase_profile_posts_like_count()
                     community.increase_community_posts_like_count()
 
                 else:
-                    post.decrease_post_total_like_count()
-                    post_count = getattr(post, f"decrease_post_{self.type.lower()}_count")
-                    post_count()
                     profile.decrease_profile_posts_like_count()
                     community.decrease_community_posts_like_count()
 
-                post.save()
                 community.save()
                 profile.save()
-
-            # Change Like Section
-            if self.__is_active == self.is_active and self.__type != self.type:
-                # Update Post PostLike Count
-                increase_count = getattr(post, f"increase_post_{self.type.lower()}_count")
-                increase_count()
-                decrease_count = getattr(post, f"decrease_post_{self.__type.lower()}_count")
-                decrease_count()
-
-                post.save()
 
         return super(PostLike, self).save(*args, **kwargs)
 
@@ -117,15 +94,10 @@ class PostDislike(Model):
 
     def save(self, *args, **kwargs):
         # Common Variable Assignment
-        post = self.post
         profile = self.profile
         community = self.community
 
         if self.id is None:
-            # Post PostDislike Count
-            post.increase_post_dislike_count()
-            post.save()
-
             # Profile PostDislike Count
             profile.increase_profile_posts_dislike_count()
             profile.save()
@@ -139,16 +111,13 @@ class PostDislike(Model):
             if self.__is_active != self.is_active:
                 # Update Post, Profile, Club PostDisLike Count
                 if self.is_active:
-                    post.increase_post_dislike_count()
                     profile.increase_profile_posts_dislike_count()
                     community.increase_community_posts_dislike_count()
 
                 else:
-                    post.decrease_post_dislike_count()
                     profile.decrease_profile_posts_dislike_count()
                     community.decrease_community_posts_dislike_count()
 
-                post.save()
                 community.save()
                 profile.save()
 

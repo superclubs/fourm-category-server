@@ -1,4 +1,7 @@
 # DRF
+from django.core.cache import cache
+from django.db.models import Q
+from django.utils.timezone import now
 from django_filters.rest_framework import DjangoFilterBackend
 
 # Third Party
@@ -138,6 +141,19 @@ class PostViewSet(
 
     queryset = Post.objects.all()
 
+    def get_queryset(self):
+        if getattr(self, "swagger_fake_view", False):
+            return None
+
+        queryset = self.queryset.exclude(Q(Q(is_boomed=True) & Q(boomed_at__lt=now())))
+        user = self.request.user
+        exclude_reserved_Q = Q(Q(is_reserved=True) & Q(reserved_at__gt=now()))
+        if user.is_authenticated:
+            queryset = queryset.exclude(Q(exclude_reserved_Q & ~(Q(user=user))))
+        else:
+            queryset = queryset.exclude(exclude_reserved_Q)
+        return queryset
+
     @swagger_auto_schema(
         **swagger_decorator(
             tag="03. 포스트",
@@ -148,6 +164,14 @@ class PostViewSet(
         )
     )
     def create(self, request, *args, **kwargs):
+        if cache.get(f"posts::create::{request.user.id}"):
+            return Response(
+                status=status.HTTP_429_TOO_MANY_REQUESTS,
+                code=429,
+                message="Too many requests",
+            )
+        cache.set(f"posts::create::{request.user.id}", "active", timeout=4)
+
         user = request.user
         serializer = PostCreateSerializer(data=request.data, context={"user": user})
         if serializer.is_valid(raise_exception=True):
