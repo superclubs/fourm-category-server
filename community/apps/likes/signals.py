@@ -17,59 +17,39 @@ from community.apps.users.api.serializers import UserSerializer
 @receiver(pre_save, sender=PostLike)
 def post_like_pre_save(sender, instance, *args, **kwargs):
     print("========== PostLike pre_save: Sync Post Like ==========")
-    # Initialize Like
-    if instance.id is None:
+    if not instance.id:
         instance.user_data = UserSerializer(instance=instance.user).data
         instance.profile_data = ProfileSerializer(instance=instance.profile).data
-
-    # Synchronize Like
+        instance._is_changed = False
     else:
         _instance = PostLike.objects.filter(id=instance.id).first()
-        if _instance:
-            for field in [
-                # Main
-                "type",
-                # Boolean
-                "is_active",
-            ]:
-                _value = getattr(_instance, field)
-                value = getattr(instance, field)
+        instance._is_changed = _instance.type != instance.type or _instance.is_active != instance.is_active
 
-                if _value != value:
-                    sync_like_task.apply_async((instance.id,), countdown=1)
-                    break
+    @receiver(post_save, sender=PostLike)
+    def post_like_post_save(sender, instance, created, **kwargs):
+        print("========== PostLike pre_save: Sync Post Like ==========")
 
+        is_changed = instance._is_changed
 
-@receiver(post_save, sender=PostLike)
-def post_like_post_save(sender, instance, created, **kwargs):
-    print("========== PostLike pre_save: Sync Post Like ==========")
+        if created or is_changed:
+            instance.post.update_post_total_like_count()
+            sync_like_task.apply_async((instance.id,), countdown=1)
 
-    if created:
-        sync_like_task.apply_async((instance.id,), countdown=1)
+    @receiver(pre_save, sender=PostDislike)
+    def post_dislike_pre_save(sender, instance, *args, **kwargs):
+        print("========== PostDislike pre_save: Sync Post Dislike ==========")
+        # Synchronize DisLike
+        if not instance.id:
+            instance._is_changed = False
+        else:
+            _instance = PostDislike.objects.filter(id=instance.id).first()
+            instance._is_changed = _instance.is_active != instance.is_active
 
+    @receiver(post_save, sender=PostDislike)
+    def post_dislike_post_save(sender, instance, created, **kwargs):
+        print("========== PostDislike post_save: Sync Post DisLike ==========")
 
-@receiver(pre_save, sender=PostDislike)
-def post_dislike_pre_save(sender, instance, *args, **kwargs):
-    print("========== PostDislike pre_save: Sync Post Dislike ==========")
-    # Synchronize DisLike
-    if instance.id is not None:
-        _instance = PostDislike.objects.filter(id=instance.id).first()
-        if _instance:
-            for field in [
-                # Boolean
-                "is_active",
-            ]:
-                _value = getattr(_instance, field)
-                value = getattr(instance, field)
-
-                if _value != value:
-                    sync_dislike_task.apply_async((instance.id,), countdown=1)
-                    break
-
-
-@receiver(post_save, sender=PostDislike)
-def post_dislike_post_save(sender, instance, created, **kwargs):
-    print("========== PostDislike post_save: Sync Post DisLike ==========")
-
-    if created:
-        sync_dislike_task.apply_async((instance.id,), countdown=1)
+        is_changed = instance._is_changed
+        if created or is_changed:
+            instance.post.update_post_dislike_count()
+            sync_dislike_task.apply_async((instance.id,), countdown=1)
