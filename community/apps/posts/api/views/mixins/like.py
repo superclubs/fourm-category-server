@@ -24,12 +24,12 @@ class PostLikeViewMixin:
         post = self.get_object()
         user = request.user
         like_type = request.data.get("type")
-        post = post.like_post(user, like_type)
+        instance = post.like_post(user, like_type)
         return Response(
             status=status.HTTP_201_CREATED,
             code=201,
             message="ok",
-            data=PostLikeResponseSerializer(instance=post, context={"request": request}).data,
+            data=PostLikeResponseSerializer(instance=instance, context={"request": request}).data,
         )
 
     @swagger_auto_schema(
@@ -41,12 +41,12 @@ class PostLikeViewMixin:
     def post_unlike(self, request, pk=None):
         post = self.get_object()
         user = request.user
-        post = post.unlike_post(user)
+        instance = post.unlike_post(user)
         return Response(
             status=status.HTTP_200_OK,
             code=200,
             message="ok",
-            data=PostLikeResponseSerializer(instance=post, context={"request": request}).data,
+            data=PostLikeResponseSerializer(instance=instance, context={"request": request}).data,
         )
 
     @swagger_auto_schema(
@@ -58,12 +58,12 @@ class PostLikeViewMixin:
     def post_dislike(self, request, pk=None):
         post = self.get_object()
         user = request.user
-        post = post.dislike_post(user)
+        instance = post.dislike_post(user)
         return Response(
             status=status.HTTP_201_CREATED,
             code=201,
             message="ok",
-            data=PostLikeResponseSerializer(instance=post, context={"request": request}).data,
+            data=PostLikeResponseSerializer(instance=instance, context={"request": request}).data,
         )
 
     @swagger_auto_schema(
@@ -75,10 +75,10 @@ class PostLikeViewMixin:
     def post_undislike(self, request, pk=None):
         post = self.get_object()
         user = request.user
-        post = post.undislike_post(user)
+        instance = post.undislike_post(user)
         return Response(
             status=status.HTTP_200_OK,
             code=200,
             message="ok",
-            data=PostLikeResponseSerializer(instance=post, context={"request": request}).data,
+            data=PostLikeResponseSerializer(instance=instance, context={"request": request}).data,
         )
