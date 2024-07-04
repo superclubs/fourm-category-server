@@ -3,6 +3,7 @@ import random
 
 # Django
 from django.db import models, transaction
+from django.db.models import Count
 from django.utils.translation import gettext_lazy as _
 
 # DRF
@@ -58,75 +59,6 @@ class PostLikeModelMixin(models.Model):
         self.dislike_point = self.dislike_count * POINT_PER_POST_DISLIKE
         self.set_point()
         self.save(update_fields=["dislike_count", "dislike_point", "point"])
-
-    def increase_post_like_count(self):
-        self.like_count = self.like_count + 1
-
-    def decrease_post_like_count(self):
-        self.like_count = self.like_count - 1
-
-    def increase_post_fun_count(self):
-        self.fun_count = self.fun_count + 1
-
-    def decrease_post_fun_count(self):
-        self.fun_count = self.fun_count - 1
-
-    def increase_post_healing_count(self):
-        self.healing_count = self.healing_count + 1
-
-    def decrease_post_healing_count(self):
-        self.healing_count = self.healing_count - 1
-
-    def increase_post_legend_count(self):
-        self.legend_count = self.legend_count + 1
-
-    def decrease_post_legend_count(self):
-        self.legend_count = self.legend_count - 1
-
-    def increase_post_useful_count(self):
-        self.useful_count = self.useful_count + 1
-
-    def decrease_post_useful_count(self):
-        self.useful_count = self.useful_count - 1
-
-    def increase_post_empathy_count(self):
-        self.empathy_count = self.empathy_count + 1
-
-    def decrease_post_empathy_count(self):
-        self.empathy_count = self.empathy_count - 1
-
-    def increase_post_devil_count(self):
-        self.devil_count = self.devil_count + 1
-
-    def decrease_post_devil_count(self):
-        self.devil_count = self.devil_count - 1
-
-    def update_post_total_like_count(self):
-        self.total_like_count = self.post_likes.filter(is_active=True).count()
-
-    def update_post_like_count(self):
-        self.like_count = self.post_likes.filter(is_active=True, type="LIKE").count()
-
-    def update_post_fun_count(self):
-        self.fun_count = self.post_likes.filter(is_active=True, type="FUN").count()
-
-    def update_post_healing_count(self):
-        self.healing_count = self.post_likes.filter(is_active=True, type="HEALING").count()
-
-    def update_post_legend_count(self):
-        self.legend_count = self.post_likes.filter(is_active=True, type="LEGEND").count()
-
-    def update_post_useful_count(self):
-        self.useful_count = self.post_likes.filter(is_active=True, type="USEFUL").count()
-
-    def update_post_empathy_count(self):
-        self.empathy_count = self.post_likes.filter(is_active=True, type="EMPATHY").count()
-
-    def update_post_devil_count(self):
-        self.devil_count = self.post_likes.filter(is_active=True, type="DEVIL").count()
-
-    def update_post_dislike_count(self):
-        self.dislike_count = self.post_dislikes.filter(is_active=True).count()
 
     def like_post(self, user, like_type):
         with transaction.atomic():
