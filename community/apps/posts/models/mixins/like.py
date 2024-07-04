@@ -32,33 +32,32 @@ class PostLikeModelMixin(models.Model):
     class Meta:
         abstract = True
 
-    def increase_post_total_like_count(self):
-        self.total_like_count = self.total_like_count + 1
+    def set_point(self):
+        return self.dislike_point + self.like_point + self.bookmark_point + self.comment_point + self.visit_point
+
+    def set_type_count(self):
+        like_counts = self.post_likes.filter(is_active=True).values('type').annotate(count=Count('type'))
+        counts_dict = {item['type']: item['count'] for item in like_counts}
+
+        for field in ('like', 'fun', 'healing', 'legend', 'useful', 'empathy', 'devil'):
+            setattr(self, f"{field}_count", counts_dict.get(field.upper(), 0))
+
+    def update_post_total_like_count(self):
+        self.total_like_count = self.post_likes.filter(is_active=True).count()
 
         # Point
-        self.like_point = self.like_point + POINT_PER_POST_LIKE
-        self.point = self.point + POINT_PER_POST_LIKE
+        self.like_point = self.total_like_count * POINT_PER_POST_LIKE
+        self.set_point()
+        self.set_type_count()
+        self.save()
 
-    def decrease_post_total_like_count(self):
-        self.total_like_count = self.total_like_count - 1
-
-        # Point
-        self.like_point = self.like_point - POINT_PER_POST_LIKE
-        self.point = self.point - POINT_PER_POST_LIKE
-
-    def increase_post_dislike_count(self):
-        self.dislike_count = self.dislike_count + 1
+    def update_post_dislike_count(self):
+        self.dislike_count = self.post_dislikes.filter(is_active=True).count()
 
         # Point
-        self.dislike_point = self.dislike_point + POINT_PER_POST_DISLIKE
-        self.point = self.point + POINT_PER_POST_DISLIKE
-
-    def decrease_post_dislike_count(self):
-        self.dislike_count = self.dislike_count - 1
-
-        # Point
-        self.dislike_point = self.dislike_point - POINT_PER_POST_DISLIKE
-        self.point = self.point - POINT_PER_POST_DISLIKE
+        self.dislike_point = self.dislike_count * POINT_PER_POST_DISLIKE
+        self.set_point()
+        self.save(update_fields=["dislike_count", "dislike_point", "point"])
 
     def increase_post_like_count(self):
         self.like_count = self.like_count + 1
@@ -173,11 +172,12 @@ class PostLikeModelMixin(models.Model):
             return post_dislike.post
 
     def undislike_post(self, user):
-        if post_dislike := self.post_dislikes.filter(user=user, is_active=True).first():
-            post_dislike.update(is_active=False)
-            return post_dislike.post
-        else:
-            raise ParseError("싫어요 객체가 없습니다.")
+        with transaction.atomic():
+            if post_dislike := self.post_dislikes.filter(user=user, is_active=True).first():
+                post_dislike.update(is_active=False)
+                return post_dislike.post
+            else:
+                raise ParseError("싫어요 객체가 없습니다.")
 
     # Admin Site Inline Action
     def create_post_like(self):
