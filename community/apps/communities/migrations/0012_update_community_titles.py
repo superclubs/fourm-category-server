@@ -36,7 +36,7 @@ def reverse_update_community_titles(apps, schema_editor):
 
 class Migration(migrations.Migration):
     dependencies = [
-        ('communities', '0011_auto_20240218_0501'),
+        ('communities', '0009_community_banner_medias_data'),
     ]
 
     operations = [

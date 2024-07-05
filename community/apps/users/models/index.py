@@ -41,7 +41,10 @@ class User(
     AbstractUser,
     Model,
 ):
-    id = models.AutoField(primary_key=True)
+    id_creta = models.CharField(max_length=255, unique=True, null=True, blank=True)
+    is_two_factor = models.BooleanField(default=False)
+    token_creta = models.CharField(max_length=512, null=True, blank=True)
+
     email = models.EmailField(_("Email"), null=True, blank=True)
     username = models.CharField(_("Nickname"), max_length=100, null=True, blank=True)
     phone = CustomPhoneNumberField(_("Phone"), max_length=20, null=True, blank=True)
