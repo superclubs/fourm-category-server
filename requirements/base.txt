@@ -83,3 +83,7 @@ django-modeltranslation
 celery[sqs]
 django-celery-results
 django-celery-beat
+
+# Creta
+# ------------------------------------------------------------------------------
+django_creta_auth==0.1.5

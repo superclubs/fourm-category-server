@@ -632,3 +632,7 @@ if SENTRY_DSN := env("SENTRY_DSN", default=None):
         # environment=env("SENTRY_ENVIRONMENT", default="develop"),
         traces_sample_rate=env.float("SENTRY_TRACES_SAMPLE_RATE", default=1.0),
     )
+
+# Creta
+# ------------------------------------------------------------------------------------
+CRETA_AUTH_BASE_URL = env("CRETA_AUTH_BASE_URL")
