@@ -10,44 +10,44 @@ class Migration(migrations.Migration):
     ]
 
     operations = [
-        # migrations.AddField(
-        #     model_name='community',
-        #     name='title_ar',
-        #     field=models.CharField(max_length=30, null=True, verbose_name='Title'),
-        # ),
-        # migrations.AddField(
-        #     model_name='community',
-        #     name='title_en',
-        #     field=models.CharField(max_length=30, null=True, verbose_name='Title'),
-        # ),
-        # migrations.AddField(
-        #     model_name='community',
-        #     name='title_es',
-        #     field=models.CharField(max_length=30, null=True, verbose_name='Title'),
-        # ),
-        # migrations.AddField(
-        #     model_name='community',
-        #     name='title_ja',
-        #     field=models.CharField(max_length=30, null=True, verbose_name='Title'),
-        # ),
-        # migrations.AddField(
-        #     model_name='community',
-        #     name='title_ko',
-        #     field=models.CharField(max_length=30, null=True, verbose_name='Title'),
-        # ),
-        # migrations.AddField(
-        #     model_name='community',
-        #     name='title_ru',
-        #     field=models.CharField(max_length=30, null=True, verbose_name='Title'),
-        # ),
-        # migrations.AddField(
-        #     model_name='community',
-        #     name='title_zh_hans',
-        #     field=models.CharField(max_length=30, null=True, verbose_name='Title'),
-        # ),
-        # migrations.AddField(
-        #     model_name='community',
-        #     name='title_zh_hant',
-        #     field=models.CharField(max_length=30, null=True, verbose_name='Title'),
-        # ),
+        migrations.AddField(
+            model_name='community',
+            name='title_ar',
+            field=models.CharField(max_length=30, null=True, verbose_name='Title'),
+        ),
+        migrations.AddField(
+            model_name='community',
+            name='title_en',
+            field=models.CharField(max_length=30, null=True, verbose_name='Title'),
+        ),
+        migrations.AddField(
+            model_name='community',
+            name='title_es',
+            field=models.CharField(max_length=30, null=True, verbose_name='Title'),
+        ),
+        migrations.AddField(
+            model_name='community',
+            name='title_ja',
+            field=models.CharField(max_length=30, null=True, verbose_name='Title'),
+        ),
+        migrations.AddField(
+            model_name='community',
+            name='title_ko',
+            field=models.CharField(max_length=30, null=True, verbose_name='Title'),
+        ),
+        migrations.AddField(
+            model_name='community',
+            name='title_ru',
+            field=models.CharField(max_length=30, null=True, verbose_name='Title'),
+        ),
+        migrations.AddField(
+            model_name='community',
+            name='title_zh_hans',
+            field=models.CharField(max_length=30, null=True, verbose_name='Title'),
+        ),
+        migrations.AddField(
+            model_name='community',
+            name='title_zh_hant',
+            field=models.CharField(max_length=30, null=True, verbose_name='Title'),
+        ),
     ]
