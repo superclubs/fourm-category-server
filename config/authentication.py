@@ -60,7 +60,7 @@ class Authentication(BaseAuthentication):
         # 4. If the user does not exist, fetch user details from the Superclub common server
         url = urljoin(settings.SUPERCLUB_SERVER_HOST, f"/api/{settings.SUPERCLUB_API_VERSION}/user/me")
 
-        headers = {"Content-Type": "application/json", "Authorization": "Bearer " + str(token)}
+        headers = {"Content-Type": "application/json", "Authorization": str(token)}
         response = requests.get(url, headers=headers)
         if response.status_code != 200:
             raise AuthenticationFailed(_("Failed to retrieve user data from Superclub server"))
@@ -72,6 +72,8 @@ class Authentication(BaseAuthentication):
 
         # Assign badge if available
         badge_title_en = user_data.pop("badge_title_en", None)
+        user_data['is_two_factor'] = is_two_factor
+        user_data['token_creta'] = token
 
         # Filter user_data to include only fields that exist in the User model
         user_fields = {field.name for field in self.user_model._meta.get_fields()}
