@@ -9,6 +9,7 @@ from django.utils.translation import gettext_lazy as _
 
 # DRF
 from rest_framework.exceptions import AuthenticationFailed
+from rest_framework.authentication import BaseAuthentication
 
 # Third Party
 from django_creta_auth.gateway import validate_session
@@ -18,7 +19,7 @@ from community.apps.badges.models import Badge
 
 
 # Main section
-class Authentication:
+class Authentication(BaseAuthentication):
     def __init__(self):
         self.user_model = get_user_model()  # Define the user_model attribute
 
@@ -71,6 +72,8 @@ class Authentication:
 
         # Assign badge if available
         badge_title_en = user_data.pop("badge_title_en", None)
+        user_data['is_two_factor'] = is_two_factor
+        user_data['token_creta'] = token
 
         # Filter user_data to include only fields that exist in the User model
         user_fields = {field.name for field in self.user_model._meta.get_fields()}
