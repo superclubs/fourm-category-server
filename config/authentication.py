@@ -60,7 +60,7 @@ class Authentication(BaseAuthentication):
         # 4. If the user does not exist, fetch user details from the Superclub common server
         url = urljoin(settings.SUPERCLUB_SERVER_HOST, f"/api/{settings.SUPERCLUB_API_VERSION}/user/me")
 
-        headers = {"Content-Type": "application/json", "Authorization": str(token)}
+        headers = {"Content-Type": "application/json", "Authorization": "Bearer " + str(token)}
         response = requests.get(url, headers=headers)
         if response.status_code != 200:
             raise AuthenticationFailed(_("Failed to retrieve user data from Superclub server"))
