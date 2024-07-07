@@ -83,4 +83,4 @@ class Authentication(BaseAuthentication):
             filtered_user_data["badge"] = Badge.objects.filter(title_en=badge_title_en, model_type="COMMON").first()
 
         user = self.user_model.objects.create(**filtered_user_data)
-        return user
+        return (user, token)
