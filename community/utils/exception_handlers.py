@@ -32,6 +32,7 @@ _non_field_errors_key = api_settings.NON_FIELD_ERRORS_KEY
 
 _code_and_message_defaults = {
     status.HTTP_400_BAD_REQUEST: (400, _("값이 올바르지 않습니다.")),
+    status.HTTP_401_UNAUTHORIZED: (401, _("접근 권한이 없습니다. 로그인 후 다시 시도해 주세요.")),
     status.HTTP_403_FORBIDDEN: (403, _("접근 권한이 없습니다.")),
     status.HTTP_500_INTERNAL_SERVER_ERROR: (500, _("서버에 예기치 못한 오류가 발생했습니다.")),
 }
@@ -44,10 +45,17 @@ def custom_exception_handler(exc, context):
     print(traceback.format_exc())
 
     response = exception_handler(exc, context)
+    if response is None:
+        return Response(
+            status=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            code=500,
+            message=_("서버에 예기치 못한 오류가 발생했습니다")
+        )
+
     data = response.data
 
-    status = data.pop("status_code")
-    default_code, default_message = _code_and_message_defaults.get(status, _unknown_code_and_message)
+    status_code = data.pop("status_code", response.status_code)
+    default_code, default_message = _code_and_message_defaults.get(status_code, _unknown_code_and_message)
 
     if errors := data.pop("errors", None):
 
