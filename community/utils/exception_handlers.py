@@ -14,7 +14,7 @@ from rest_framework.settings import api_settings
 from rest_framework.views import set_rollback
 
 # Apps
-from forum.utils.api.response import Response as CustomResponse
+from community.utils.api.response import Response as CustomResponse
 
 logger = logging.getLogger(__name__)
 
