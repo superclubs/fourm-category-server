@@ -35,29 +35,7 @@ class Authentication(BaseAuthentication):
         if user:
             return (user, token)
 
-        # 2. Validate the session if user is not found by token
-        session_data, status_code = validate_session(token)
-        if status_code != 200 or not session_data.get('isValid', False):
-            raise AuthenticationFailed(session_data.get('error', 'Invalid session'))
-
-        user_info = session_data.get('sessionUser')
-        if not user_info:
-            raise AuthenticationFailed(_("Invalid session data"))
-
-        user_id = user_info.get("id")
-        is_two_factor = user_info.get("isTwoFactor")
-
-        # 3. Check if a user exists with the id_creta
-        user = self.user_model.objects.filter(id_creta=user_id).first()
-        if user:
-            # Update is_two_factor and token_creta if necessary
-            if user.is_two_factor != is_two_factor or user.token_creta != token:
-                user.is_two_factor = is_two_factor
-                user.token_creta = token
-                user.save()
-            return (user, token)
-
-        # 4. If the user does not exist, fetch user details from the Superclub common server
+        # 2. If the user does not exist, fetch user details from the Superclub common server
         url = urljoin(settings.SUPERCLUB_SERVER_HOST, f"/api/{settings.SUPERCLUB_API_VERSION}/user/me")
 
         headers = {"Content-Type": "application/json", "Authorization": "Bearer " + str(token)}
@@ -70,9 +48,8 @@ class Authentication(BaseAuthentication):
         if not user_data:
             raise AuthenticationFailed(_("Invalid user data from Superclub server"))
 
-        # Assign badge if available
+        # 3. Assign badge if available
         badge_title_en = user_data.pop("badge_title_en", None)
-        user_data['is_two_factor'] = is_two_factor
         user_data['token_creta'] = token
 
         # Filter user_data to include only fields that exist in the User model
@@ -82,5 +59,14 @@ class Authentication(BaseAuthentication):
         if badge_title_en:
             filtered_user_data["badge"] = Badge.objects.filter(title_en=badge_title_en, model_type="COMMON").first()
 
-        user = self.user_model.objects.create(**filtered_user_data)
+        # 4. Check if the user already exists by ID and update or create accordingly
+        user_id = filtered_user_data["id"]
+        user = self.user_model.objects.filter(id=user_id).first()
+        if user:
+            for key, value in filtered_user_data.items():
+                setattr(user, key, value)
+            user.save()
+        else:
+            user = self.user_model.objects.create(**filtered_user_data)
+
         return (user, token)
