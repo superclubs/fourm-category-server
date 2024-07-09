@@ -468,7 +468,7 @@ REST_FRAMEWORK = {
         "rest_framework.authentication.TokenAuthentication",
     ),
     "DEFAULT_PERMISSION_CLASSES": ("rest_framework.permissions.AllowAny",),
-    "EXCEPTION_HANDLER": "community.utils.exception_handlers.custom_exception_handler",
+    "EXCEPTION_HANDLER": "community.utils.exception_handlers.exception_handler",
     "NON_FIELD_ERRORS_KEY": "non_field_errors",
 }
 

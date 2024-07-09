@@ -49,15 +49,15 @@ class Authentication(BaseAuthentication):
             raise AuthenticationFailed(_("Invalid user data from Superclub server"))
 
         # 3. Assign badge if available
-        badge_title_en = user_data.pop("badge_title_en", None)
+        badge_data = user_data.pop("badge", None)
         user_data['token_creta'] = token
 
         # Filter user_data to include only fields that exist in the User model
         user_fields = {field.name for field in self.user_model._meta.get_fields()}
         filtered_user_data = {k: v for k, v in user_data.items() if k in user_fields}
 
-        # if badge_title_en:
-        #     filtered_user_data["badge"] = Badge.objects.filter(title_en=badge_title_en, model_type="COMMON").first()
+        if badge_title_en := badge_data['title']:
+            filtered_user_data["badge"] = Badge.objects.filter(title_en=badge_title_en, model_type="COMMON").first()
 
         # 4. Check if the user already exists by ID and update or create accordingly
         user_id = filtered_user_data["id"]
