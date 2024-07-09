@@ -56,8 +56,8 @@ class Authentication(BaseAuthentication):
         user_fields = {field.name for field in self.user_model._meta.get_fields()}
         filtered_user_data = {k: v for k, v in user_data.items() if k in user_fields}
 
-        if badge_title_en:
-            filtered_user_data["badge"] = Badge.objects.filter(title_en=badge_title_en, model_type="COMMON").first()
+        # if badge_title_en:
+        #     filtered_user_data["badge"] = Badge.objects.filter(title_en=badge_title_en, model_type="COMMON").first()
 
         # 4. Check if the user already exists by ID and update or create accordingly
         user_id = filtered_user_data["id"]
