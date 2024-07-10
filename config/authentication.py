@@ -59,6 +59,11 @@ class Authentication(BaseAuthentication):
         if badge_title_en := badge_data['title']:
             filtered_user_data["badge"] = Badge.objects.filter(title_en=badge_title_en, model_type="COMMON").first()
 
+        # Check if filtered_user_data['id_creta'] exists in another user
+        id_creta = filtered_user_data.get('id_creta')
+        if id_creta and self.user_model.objects.filter(id_creta=id_creta).exclude(id=user_data['id']).exists():
+            filtered_user_data['id_creta'] = None
+
         # 4. Check if the user already exists by ID and update or create accordingly
         user_id = filtered_user_data["id"]
         user = self.user_model.objects.filter(id=user_id).first()
