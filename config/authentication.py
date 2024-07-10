@@ -11,8 +11,6 @@ from django.utils.translation import gettext_lazy as _
 from rest_framework.exceptions import AuthenticationFailed
 from rest_framework.authentication import BaseAuthentication
 
-# Third Party
-from django_creta_auth.gateway import validate_session
 
 # Apps
 from community.apps.badges.models import Badge
@@ -59,11 +57,6 @@ class Authentication(BaseAuthentication):
         if badge_title_en := badge_data['title']:
             filtered_user_data["badge"] = Badge.objects.filter(title_en=badge_title_en, model_type="COMMON").first()
 
-        # Check if filtered_user_data['id_creta'] exists in another user
-        id_creta = filtered_user_data.get('id_creta')
-        if id_creta and self.user_model.objects.filter(id_creta=id_creta).exclude(id=user_data['id']).exists():
-            filtered_user_data['id_creta'] = None
-
         # 4. Check if the user already exists by ID and update or create accordingly
         user_id = filtered_user_data["id"]
         user = self.user_model.objects.filter(id=user_id).first()
@@ -72,6 +65,10 @@ class Authentication(BaseAuthentication):
                 setattr(user, key, value)
             user.save()
         else:
+            # Check for duplicate id_creta and update if necessary
+            id_creta = filtered_user_data.get('id_creta')
+            if id_creta:
+                self.user_model.objects.filter(id_creta=id_creta).exclude(id=user_id).update(id_creta=None)
             user = self.user_model.objects.create(**filtered_user_data)
 
         return (user, token)
