@@ -468,7 +468,7 @@ REST_FRAMEWORK = {
         "rest_framework.authentication.TokenAuthentication",
     ),
     "DEFAULT_PERMISSION_CLASSES": ("rest_framework.permissions.AllowAny",),
-    "EXCEPTION_HANDLER": "community.utils.exception_handlers.custom_exception_handler",
+    "EXCEPTION_HANDLER": "community.utils.exception_handlers.exception_handler",
     "NON_FIELD_ERRORS_KEY": "non_field_errors",
 }
 
@@ -632,3 +632,7 @@ if SENTRY_DSN := env("SENTRY_DSN", default=None):
         # environment=env("SENTRY_ENVIRONMENT", default="develop"),
         traces_sample_rate=env.float("SENTRY_TRACES_SAMPLE_RATE", default=1.0),
     )
+
+# Creta
+# ------------------------------------------------------------------------------------
+CRETA_AUTH_BASE_URL = env("CRETA_AUTH_BASE_URL")
