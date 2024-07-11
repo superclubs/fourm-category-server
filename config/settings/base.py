@@ -590,15 +590,22 @@ CELERY_BROKER_TRANSPORT_OPTIONS = {
 # "AWS": "arn:aws:iam::543061907465:root"
 CELERY_TASK_DEFAULT_QUEUE = "sqs"
 
-# CACHES
-if env("REDIS_URL", default=None):
+# Redis
+REDIS_URL = env("REDIS_URL", default=None)
+REDIS_REPLICA_URL = env("REDIS_REPLICA_URL", default=None)
+
+if REDIS_URL:
+    # 캐시 설정
     CACHES = {
         "default": {
             "BACKEND": "django_redis.cache.RedisCache",
-            "LOCATION": env("REDIS_URL"),
+            "LOCATION": f"{REDIS_URL}/5",
             "OPTIONS": {
                 "CLIENT_CLASS": "django_redis.client.DefaultClient",
                 "IGNORE_EXCEPTIONS": True,
+                "REPLICA_SET": {
+                    "urls": [f"{REDIS_REPLICA_URL}/5"] if REDIS_REPLICA_URL else [],
+                },
             },
         }
     }
