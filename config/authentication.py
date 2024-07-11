@@ -1,138 +1,73 @@
 # Python
 from urllib.parse import urljoin
-
 import requests
 
 # Django
 from django.conf import settings
+from django.contrib.auth import get_user_model
 from django.utils.translation import gettext_lazy as _
 
-# Third Party
-from rest_framework_simplejwt.authentication import JWTAuthentication
-from rest_framework_simplejwt.exceptions import AuthenticationFailed, InvalidToken
-from rest_framework_simplejwt.settings import api_settings
+# DRF
+from rest_framework.exceptions import AuthenticationFailed
+from rest_framework.authentication import BaseAuthentication
 
-# Models
+# Apps
 from community.apps.badges.models import Badge
-
-# Tasks
-from community.apps.users.tasks import user_task
 
 
 # Main section
-class Authentication(JWTAuthentication):
-    def get_user(self, validated_token):
-        try:
-            user_id = validated_token[api_settings.USER_ID_CLAIM]
-        except KeyError:
-            raise InvalidToken(_("Token contained no recognizable user identification"))
-        try:
+class Authentication(BaseAuthentication):
+    def __init__(self):
+        self.user_model = get_user_model()  # Define the user_model attribute
 
-            user = self.user_model.objects.filter(**{api_settings.USER_ID_FIELD: user_id}).first()
+    def authenticate(self, request):
+        auth_header = request.headers.get('Authorization')
+        if not auth_header:
+            return None
 
-            url = urljoin(settings.SUPERCLUB_SERVER_HOST, f"/api/{settings.SUPERCLUB_API_VERSION}/user/me")
-            headers = {"Content-Type": "application/json", "Authorization": "Bearer " + str(validated_token)}
-            response = requests.request("GET", url, headers=headers)
-            data = response.json()
-            print("data : ", data)
+        token = auth_header.split(' ')[1] if ' ' in auth_header else auth_header
 
-            if user_info := data.get("data", None):
+        # 1. Check if a user exists with the given token
+        user = self.user_model.objects.filter(token_creta=token).first()
+        if user:
+            return (user, token)
 
-                username = user_info.get("username", None)
-                email = user_info.get("email", None)
-                phone = user_info.get("phone", None)
-                level = user_info.get("level", None)
-                grade_title = user_info.get("grade_title", None)
-                ring_color = user_info.get("ring_color", None)
-                badge_image_url = user_info.get("badge_image_url", None)
-                profile_image_url = user_info.get("profile_image_url", None)
-                banner_image_url = user_info.get("banner_image_url", None)
-                friend_count = user_info.get("friend_count", None)
-                status = user_info.get("status", None)
-                wallet_address = user_info.get("wallet_address", None)
-                gender = user_info.get("gender", None)
-                birth = user_info.get("birth", None)
-                nation = user_info.get("nation", None)
-                sdk_id = user_info.get("sdk_id", None)
-                sdk_uuid = user_info.get("sdk_uuid", None)
-                card_profile_image_url = user_info.get("card_profile_image_url", None)
-                badge_title_en = user_info.get("badge_title_en", None)
+        # 2. If the user does not exist, fetch user details from the Superclub common server
+        url = urljoin(settings.SUPERCLUB_SERVER_HOST, f"/api/{settings.SUPERCLUB_API_VERSION}/user/me")
 
-                if user:
-                    user_badge_title_en = user.badge.title_en if user.badge else None
-                    if (
-                        user.username != username
-                        or user.phone != phone
-                        or user.email != email
-                        or user.level != level
-                        or user.grade_title != grade_title
-                        or user.ring_color != ring_color
-                        or user.badge_image_url != badge_image_url
-                        or user.profile_image_url != profile_image_url
-                        or user.banner_image_url != banner_image_url
-                        or user.friend_count != friend_count
-                        or user.status != status
-                        or user.wallet_address != wallet_address
-                        or user.gender != gender
-                        or user.birth != birth
-                        or user.nation != nation
-                        or user.sdk_id != sdk_id
-                        or user.sdk_uuid != sdk_uuid
-                        or user.card_profile_image_url != card_profile_image_url
-                        or badge_title_en != user_badge_title_en
-                    ):
-                        user_task.delay(
-                            user.id,
-                            username,
-                            email,
-                            phone,
-                            level,
-                            grade_title,
-                            ring_color,
-                            badge_image_url,
-                            profile_image_url,
-                            banner_image_url,
-                            friend_count,
-                            status,
-                            wallet_address,
-                            gender,
-                            birth,
-                            nation,
-                            sdk_id,
-                            sdk_uuid,
-                            card_profile_image_url,
-                            badge_title_en,
-                        )
+        headers = {"Content-Type": "application/json", "Authorization": "Bearer " + str(token)}
+        response = requests.get(url, headers=headers)
+        if response.status_code != 200:
+            raise AuthenticationFailed(_("Failed to retrieve user data from Superclub server"))
 
-                if not user:
-                    user_data = {
-                        api_settings.USER_ID_FIELD: user_id,
-                        "username": username,
-                        "email": email,
-                        "phone": phone,
-                        "level": level,
-                        "grade_title": grade_title,
-                        "ring_color": ring_color,
-                        "badge_image_url": badge_image_url,
-                        "profile_image_url": profile_image_url,
-                        "banner_image_url": banner_image_url,
-                        "friend_count": friend_count,
-                        "status": status,
-                        "wallet_address": wallet_address,
-                        "gender": gender,
-                        "birth": birth,
-                        "nation": nation,
-                        "sdk_id": sdk_id,
-                        "sdk_uuid": sdk_uuid,
-                        "card_profile_image_url": card_profile_image_url,
-                        "badge": Badge.objects.filter(title_en=badge_title_en, model_type="COMMON").first(),
-                    }
+        data = response.json()
+        user_data = data.get("data", None)
+        if not user_data:
+            raise AuthenticationFailed(_("Invalid user data from Superclub server"))
 
-                    user = self.user_model.objects.create(**user_data)
+        # 3. Assign badge if available
+        badge_data = user_data.pop("badge", None)
+        user_data['token_creta'] = token
 
-        except self.user_model.DoesNotExist:
-            raise AuthenticationFailed(_("User not found"), code="user_not_found")
+        # Filter user_data to include only fields that exist in the User model
+        user_fields = {field.name for field in self.user_model._meta.get_fields()}
+        filtered_user_data = {k: v for k, v in user_data.items() if k in user_fields}
 
-        if user and not user.is_active:
-            raise AuthenticationFailed(_("User is inactive"), code="user_inactive")
-        return user
+        if badge_title_en := badge_data['title']:
+            filtered_user_data["badge"] = Badge.objects.filter(title_en=badge_title_en, model_type="COMMON").first()
+
+        # 4. Check if the user already exists by ID and update or create accordingly
+        user_id = filtered_user_data["id"]
+        user = self.user_model.objects.filter(id=user_id).first()
+        if user:
+            for key, value in filtered_user_data.items():
+                setattr(user, key, value)
+            user.save()
+        else:
+            # Check for duplicate id_creta and update if necessary
+            id_creta = filtered_user_data.get('id_creta')
+            if id_creta:
+                self.user_model.objects.filter(id_creta=id_creta).exclude(id=user_id).update(id_creta=None)
+            user = self.user_model.objects.create(**filtered_user_data)
+
+        return (user, token)
