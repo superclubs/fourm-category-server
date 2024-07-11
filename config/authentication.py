@@ -59,15 +59,17 @@ class Authentication(BaseAuthentication):
         # 4. Check if the user already exists by ID and update or create accordingly
         user_id = filtered_user_data["id"]
         user = self.user_model.objects.filter(id=user_id).first()
+
+        # Check for duplicate id_creta and update if necessary
+        id_creta = filtered_user_data.get('id_creta')
+        if id_creta:
+            self.user_model.objects.filter(id_creta=id_creta).exclude(id=user_id).update(id_creta=None)
+
         if user:
             for key, value in filtered_user_data.items():
                 setattr(user, key, value)
             user.save()
         else:
-            # Check for duplicate id_creta and update if necessary
-            id_creta = filtered_user_data.get('id_creta')
-            if id_creta:
-                self.user_model.objects.filter(id_creta=id_creta).exclude(id=user_id).update(id_creta=None)
             user = self.user_model.objects.create(**filtered_user_data)
 
         return (user, token)
