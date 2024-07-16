@@ -1,13 +1,8 @@
-# DRF
 from rest_framework import serializers
 
-# Serializers
 from community.apps.badges.models import Badge
-
-# Models
 from community.apps.users.models import User
-
-# Bases
+from community.apps.users.tasks import sync_user_data_task
 from community.bases.api.serializers import ModelSerializer
 
 
@@ -48,11 +43,15 @@ class UserSyncSerializer(ModelSerializer):
             "id",
             "username",
             "email",
+            "phone",
+            "gender",
+            "birth",
+            "nation",
             "level",
+            "grade_title",
             "ring_color",
             "status",
             "wallet_address",
-            "grade_title",
             "badge_title_en",
             # Image
             "badge_image_url",
@@ -67,4 +66,8 @@ class UserSyncSerializer(ModelSerializer):
         if badge_title_en := validated_data.pop("badge_title_en", None):
             validated_data["badge"] = Badge.available.filter(title_en=badge_title_en, model_type="COMMON").first()
         instance.update(**validated_data)
+
+        # Sync user_data
+        sync_user_data_task.delay(instance.id)
+
         return instance
