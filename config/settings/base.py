@@ -497,7 +497,8 @@ if CORS_ALLOWED_ORIGINS == [""]:
 else:
     CORS_ALLOW_ALL_ORIGINS = False
 
-CORS_ALLOW_METHODS = list(default_methods) + ["Language-Code"]
+CORS_ALLOW_METHODS = default_methods
+CORS_ALLOW_HEADERS = default_headers + ("Language-Code",)
 CORS_ALLOW_CREDENTIALS = True
 
 # Your stuff...
