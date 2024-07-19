@@ -30,6 +30,7 @@ from community.bases.api.viewsets import GenericViewSet
 # Utils
 from community.utils.api.response import Response
 from community.utils.decorators import swagger_decorator
+from config.settings.develop import ALLOWED_HOSTS
 
 
 # Main Section
@@ -45,6 +46,7 @@ class UsersViewSet(mixins.ListModelMixin, GenericViewSet):
         **swagger_decorator(tag="01. 유저", id="유저 리스트 조회", description="", response={200: UserSerializer})
     )
     def list(self, request, *args, **kwargs):
+        print(ALLOWED_HOSTS)
         return super().list(self, request, *args, **kwargs)
 
 
