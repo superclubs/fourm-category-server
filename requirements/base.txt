@@ -49,7 +49,7 @@ django-inline-actions==2.4.0
 django-admin-rangefilter==0.9.0
 django-advanced-filters==2.0.0
 django-reverse-admin==2.9.6
-django-nested-inline==0.4.5
+django-nested-inline==0.4.6
 django-summernote==0.8.20.0
 
 
