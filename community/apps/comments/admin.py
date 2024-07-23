@@ -9,7 +9,8 @@ from community.apps.comments.models import Comment
 from community.bases.admin import Admin
 
 
-@admin.register(Comment)
+from config._admin.decorators import register_custom_admin
+@register_custom_admin(Comment)
 class CommentAdmin(Admin):
     list_display = (
         "profile_image_tag",

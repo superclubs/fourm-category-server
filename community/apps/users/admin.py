@@ -11,7 +11,8 @@ from community.apps.users.models import User
 from community.bases.admin import Admin
 
 
-@admin.register(User)
+from config._admin.decorators import register_custom_admin
+@register_custom_admin(User)
 class UserAdmin(Admin, UserAdmin):
     list_display = ("profile_image_tag", "username", "email", "auth_token", "is_staff", "web_url")
     search_fields = ("email", "username")

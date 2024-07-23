@@ -5,13 +5,10 @@ from django.utils.translation import gettext_lazy as _
 
 # Fields
 from community.apps.users.models.fields.phone_number import CustomPhoneNumberField
-
 # Manager
 from community.apps.users.models.managers.objects import UserMainManager
-
 # Mixins
 from community.apps.users.models.mixins import (
-    UserAuthModelMixin,
     UserCommentModelMixin,
     UserFriendModelMixin,
     UserImageModelMixin,
@@ -20,17 +17,14 @@ from community.apps.users.models.mixins import (
     UserPostModelMixin,
     UserSyncModelMixin,
 )
-
 # Bases
 from community.bases.models import Model
-
 # Modules
 from community.modules.choices import USER_STATUS_CHOICES
 
 
 # Main Section
 class User(
-    UserAuthModelMixin,
     UserImageModelMixin,
     UserPostModelMixin,
     UserCommentModelMixin,
@@ -68,7 +62,7 @@ class User(
         "badges.Badge", verbose_name=_("Badge"), on_delete=models.SET_NULL, null=True, related_name="users"
     )
 
-    USERNAME_FIELD = "admin_email"
+    USERNAME_FIELD = "email"
     REQUIRED_FIELDS = []
 
     objects = UserMainManager()

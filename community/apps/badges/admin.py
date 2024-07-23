@@ -10,7 +10,8 @@ from community.bases.admin import Admin
 
 
 # Main Section
-@admin.register(Badge)
+from config._admin.decorators import register_custom_admin
+@register_custom_admin(Badge)
 class BadgeAdmin(Admin):
     list_display = ("image_tag", "title", "model_type")
     search_fields = ("title", "model_type")
