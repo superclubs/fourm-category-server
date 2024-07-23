@@ -36,7 +36,6 @@ django-admin-numeric-filter==0.1.6
 django-cors-headers==3.13.0
 drf-pretty-exception-handler==0.1.3
 django-health-check==3.17.0
-django-ebhealthcheck==2.0.2
 
 
 # Django Admin
