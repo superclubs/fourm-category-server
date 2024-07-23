@@ -35,9 +35,10 @@ class User(
     AbstractUser,
     Model,
 ):
-    id_creta = models.CharField(max_length=255, unique=True, null=True, blank=True)
-    is_two_factor = models.BooleanField(default=False)
-    token_creta = models.CharField(max_length=512, null=True, blank=True)
+    id_creta = models.CharField(_("ID (Creta)"), max_length=255, unique=True, null=True, blank=True)
+    is_two_factor = models.BooleanField(_("Is Two Factor (Creta)"), default=False)
+    token_creta = models.CharField(_("Token (Creta)"), max_length=512, null=True, blank=True)
+    token_creta_expired_at = models.DateTimeField(_("Token Expired At (Creta)"), null=True, blank=True)
 
     email = models.EmailField(_("Email"), null=True, blank=True)
     username = models.CharField(_("Nickname"), max_length=100, null=True, blank=True)
