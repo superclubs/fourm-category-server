@@ -191,9 +191,6 @@ THIRD_PARTY_APPS = [
     "health_check.storage",
     "health_check.contrib.migrations",
     "health_check.contrib.psutil",
-
-    "ebhealthcheck.apps.EBHealthCheckConfig",
-
     # Editor
     "django_summernote",
     # Crontab
