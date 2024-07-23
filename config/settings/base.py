@@ -194,6 +194,9 @@ THIRD_PARTY_APPS = [
     "health_check.storage",
     "health_check.contrib.migrations",
     "health_check.contrib.psutil",
+
+    "ebhealthcheck.apps.EBHealthCheckConfig",
+
     # Editor
     "django_summernote",
     # Crontab
@@ -471,11 +474,32 @@ REST_FRAMEWORK = {
     "EXCEPTION_HANDLER": "community.utils.exception_handlers.custom_exception_handler",
     "NON_FIELD_ERRORS_KEY": "non_field_errors",
 }
-
 # django-cors-headers - https://github.com/adamchainz/django-cors-headers#setup
-CORS_ALLOW_ALL_ORIGINS = True
+original_origins = env("DJANGO_CORS_ALLOWED_ORIGINS", default="").split(",")
+
+
+def add_www_versions(origins):
+    new_origins = set()
+    for origin in origins:
+        if origin.startswith("https://"):
+            new_origins.add(origin)
+            if not origin.startswith("https://www."):
+                new_origins.add(origin.replace("https://", "https://www."))
+        else:
+            new_origins.add(origin)
+    return list(new_origins)
+
+
+CORS_ALLOWED_ORIGINS = add_www_versions(original_origins)
+
+if CORS_ALLOWED_ORIGINS == [""]:
+    CORS_ALLOW_ALL_ORIGINS = True
+else:
+    CORS_ALLOW_ALL_ORIGINS = False
+
 CORS_ALLOW_METHODS = default_methods
 CORS_ALLOW_HEADERS = default_headers + ("Language-Code",)
+CORS_ALLOW_CREDENTIALS = True
 
 # Your stuff...
 # ------------------------------------------------------------------------------

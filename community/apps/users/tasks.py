@@ -58,9 +58,9 @@ def user_task(
     user.save()
 
 
-@shared_task(name="sync_user_task", bind=True)
-def sync_user_task(self, user_id):
-    print("========== User: sync_user_task ==========")
+@shared_task(name="sync_user_data_task", bind=True)
+def sync_user_data_task(self, user_id):
+    print("========== User: sync_user_data_task ==========")
     from community.apps.users.api.serializers import UserProfileSerializer
 
     user = User.objects.filter(id=user_id).first()
