@@ -8,7 +8,8 @@ from community.apps.profiles.models import Profile
 from community.bases.admin import Admin
 
 
-@admin.register(Profile)
+from config._admin.decorators import register_custom_admin
+@register_custom_admin(Profile)
 class ProfileAdmin(Admin):
     list_display = (
         "community",

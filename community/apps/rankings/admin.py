@@ -12,7 +12,8 @@ from community.bases.admin import Admin
 
 
 # Main Section
-@admin.register(RankingGroup)
+from config._admin.decorators import register_custom_admin
+@register_custom_admin(RankingGroup)
 class RankingGroupAdmin(Admin):
     list_display = ("model_type", "ranking_type", "is_active")
     search_fields = ()
@@ -26,7 +27,8 @@ class RankingGroupAdmin(Admin):
     inlines = (CommunityRankingInline, PostRankingInline)
 
 
-@admin.register(CommunityRanking)
+from config._admin.decorators import register_custom_admin
+@register_custom_admin(CommunityRanking)
 class CommunityRankingAdmin(Admin):
     list_display = (
         "ranking_group",
@@ -60,7 +62,8 @@ class CommunityRankingAdmin(Admin):
     )
 
 
-@admin.register(PostRanking)
+from config._admin.decorators import register_custom_admin
+@register_custom_admin(PostRanking)
 class PostRankingAdmin(Admin):
     list_display = (
         "ranking_group",

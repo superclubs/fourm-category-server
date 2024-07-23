@@ -4,7 +4,8 @@ from community.apps.tags.models.index import Tag
 from community.bases.admin import CountAdmin
 
 
-@admin.register(Tag)
+from config._admin.decorators import register_custom_admin
+@register_custom_admin(Tag)
 class TagAdmin(CountAdmin):
     list_display = ("title", "community_count", "post_count")
     ordering = ("community_count", "post_count")
