@@ -9,6 +9,7 @@ from community.bases.admin import Admin
 
 
 # Main Section
-@admin.register(CommunityUser)
+from config._admin.decorators import register_custom_admin
+@register_custom_admin(CommunityUser)
 class CommunityUserAdmin(Admin):
     list_display = ("community", "user", "is_active")
