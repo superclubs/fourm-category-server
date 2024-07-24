@@ -1,19 +1,18 @@
-"""
-Base settings to build other settings files upon.
-"""
-import logging
 # Python
 import os
 import urllib.parse
 from datetime import timedelta
+
 # Third Party
 from pathlib import Path
 from typing import List
-
 import environ
+import logging
+
 # Sentry
 import sentry_sdk
 from corsheaders.defaults import default_headers, default_methods
+
 # Django
 from django.utils.translation import ugettext_lazy as _
 from sentry_sdk.integrations.celery import CeleryIntegration
@@ -380,22 +379,11 @@ ADMINS = [("""Leo Yunhyung Lee""", "leoyunhyung@gmail.com")]
 MANAGERS = ADMINS
 
 ADMIN_REORDER = (
-    "users",
-    "communities",
     "community_users",
-    "reports",
-    "profiles",
+    "boards",
     "posts",
     "comments",
-    "likes",
-    "rankings",
-    "badges",
-    "categories",
-    "boards",
-    "tags",
-    "visits",
-    "bookmarks",
-    "shares",
+    "rankings"
 )
 
 # LOGGING
