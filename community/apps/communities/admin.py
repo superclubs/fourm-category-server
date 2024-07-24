@@ -12,7 +12,6 @@ from community.bases.admin import Admin
 
 
 # Main Section
-@admin.register(Community)
 class CommunityAdmin(Admin):
     list_display = (
         "depth",

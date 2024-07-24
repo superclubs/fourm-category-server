@@ -29,7 +29,7 @@ if __name__ == "__main__":
     sys.path.append(str(current_path / "community"))
 
     from django.core.management.commands.runserver import Command as runserver
-    
-    runserver.default_port = "8102"
+
+    runserver.default_port = "9007"
 
     execute_from_command_line(sys.argv)

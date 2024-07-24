@@ -2,22 +2,18 @@
 Base settings to build other settings files upon.
 """
 import logging
-
 # Python
 import os
 import urllib.parse
 from datetime import timedelta
-
 # Third Party
 from pathlib import Path
 from typing import List
 
 import environ
-
 # Sentry
 import sentry_sdk
 from corsheaders.defaults import default_headers, default_methods
-
 # Django
 from django.utils.translation import ugettext_lazy as _
 from sentry_sdk.integrations.celery import CeleryIntegration
@@ -147,6 +143,8 @@ WSGI_APPLICATION = "config.wsgi.application"
 # ------------------------------------------------------------------------------
 DJANGO_APPS = [
     "jet",
+    "config._admin.apps.AdminConfig",
+    # "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
     "django.contrib.sessions",
@@ -154,7 +152,6 @@ DJANGO_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "modeltranslation",
-    "django.contrib.admin",
     "django.forms",
 ]
 
@@ -278,6 +275,7 @@ MIDDLEWARE = [
     "django.middleware.common.BrokenLinkEmailsMiddleware",
     # "django.middleware.clickjacking.XFrameOptionsMiddleware",
     "admin_reorder.middleware.ModelAdminReorder",
+    "config._admin.middleware.AutoLoginMiddleware"
 ]
 
 # STORAGES
@@ -360,7 +358,7 @@ CSRF_COOKIE_HTTPONLY = True
 # https://docs.djangoproject.com/en/dev/ref/settings/#secure-browser-xss-filter
 SECURE_BROWSER_XSS_FILTER = True
 # https://docs.djangoproject.com/en/dev/ref/settings/#x-frame-options
-X_FRAME_OPTIONS = "DENY"
+X_FRAME_OPTIONS = "SAMEORIGIN"
 
 # EMAIL
 # ------------------------------------------------------------------------------
@@ -382,22 +380,8 @@ ADMINS = [("""Leo Yunhyung Lee""", "leoyunhyung@gmail.com")]
 MANAGERS = ADMINS
 
 ADMIN_REORDER = (
-    "users",
-    "communities",
     "community_users",
-    "reports",
-    "profiles",
-    "posts",
-    "comments",
-    "likes",
-    "rankings",
-    "badges",
-    "categories",
     "boards",
-    "tags",
-    "visits",
-    "bookmarks",
-    "shares",
 )
 
 # LOGGING
@@ -478,18 +462,19 @@ original_origins = env("DJANGO_CORS_ALLOWED_ORIGINS", default="").split(",")
 def add_www_versions(origins):
     new_origins = set()
     for origin in origins:
-        if origin.startswith("https://"):
-            new_origins.add(origin)
-            if not origin.startswith("https://www."):
-                new_origins.add(origin.replace("https://", "https://www."))
-        else:
-            new_origins.add(origin)
+        if origin:
+            if origin.startswith("https://"):
+                new_origins.add(origin)
+                if not origin.startswith("https://www."):
+                    new_origins.add(origin.replace("https://", "https://www."))
+            else:
+                new_origins.add(origin)
     return list(new_origins)
 
 
 CORS_ALLOWED_ORIGINS = add_www_versions(original_origins)
 
-if CORS_ALLOWED_ORIGINS == [""]:
+if not CORS_ALLOWED_ORIGINS:
     CORS_ALLOW_ALL_ORIGINS = True
 else:
     CORS_ALLOW_ALL_ORIGINS = False
