@@ -15,9 +15,9 @@ from django.views.decorators.csrf import csrf_protect
 
 
 class CustomAdminSite(admin.AdminSite):
-    site_header = "Custom Admin"
-    site_title = "Custom Admin Portal"
-    index_title = "Welcome to Custom Admin Portal"
+    site_header = "[SUPERCLUB] 포럼 카테고리 관리"
+    site_title = "[SUPERCLUB] 포럼 카테고리 관리"
+    index_title = "[SUPERCLUB] 포럼 카테고리 관리"
 
     @method_decorator(csrf_protect)
     @never_cache
@@ -38,7 +38,7 @@ class CustomAdminSite(admin.AdminSite):
             'username': request.user.get_username(),
         }
         if (REDIRECT_FIELD_NAME not in request.GET and
-                REDIRECT_FIELD_NAME not in request.POST):
+            REDIRECT_FIELD_NAME not in request.POST):
             context[REDIRECT_FIELD_NAME] = reverse('admin:index', current_app=self.name)
         context.update(extra_context or {})
 
