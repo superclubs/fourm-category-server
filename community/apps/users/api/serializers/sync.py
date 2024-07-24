@@ -12,7 +12,7 @@ class AdminUserSyncSerializer(ModelSerializer):
 
     class Meta:
         model = User
-        fields = ("id", "password", "admin_email", "username")
+        fields = ("id", "password", "username")
 
     def create(self, validated_data):
         validated_data.setdefault("is_staff", True)
