@@ -11,7 +11,8 @@ class BoardInline(StackedInline):
     extra = 0
 
 
-@admin.register(BoardGroup)
+from config._admin.decorators import register_custom_admin
+@register_custom_admin(BoardGroup)
 class BoardGroupAdmin(Admin):
     list_display = ("community", "title")
     search_fields = ("community__title",)
@@ -29,7 +30,8 @@ class BoardGroupAdmin(Admin):
     inlines = (BoardInline,)
 
 
-@admin.register(Board)
+from config._admin.decorators import register_custom_admin
+@register_custom_admin(Board)
 class BoardAdmin(Admin):
     list_display = ("community", "board_group", "title", "is_active")
     search_fields = ("board_group__title",)
