@@ -391,7 +391,7 @@ ADMIN_USER_REORDER = (
     "boards",
 )
 
-ADMIN_REORDER = ADMIN_MASTER_REORDER
+ADMIN_REORDER = ADMIN_USER_REORDER
 
 # LOGGING
 # ------------------------------------------------------------------------------
