@@ -17,7 +17,7 @@ class AutoLoginMiddleware(MiddlewareMixin):
                 if user.is_staff or user.is_superuser:
                     self.login_with_backend(request, user)
                 else:
-                    raise AuthenticationFailed("User does not have admin rights")
+                    return None
         return None
 
     def authenticate_with_token(self, token):
