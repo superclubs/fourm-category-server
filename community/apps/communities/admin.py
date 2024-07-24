@@ -12,8 +12,6 @@ from community.bases.admin import Admin
 
 
 # Main Section
-from config._admin.decorators import register_custom_admin
-@register_custom_admin(Community)
 class CommunityAdmin(Admin):
     list_display = (
         "depth",
