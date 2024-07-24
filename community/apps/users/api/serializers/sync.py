@@ -15,20 +15,24 @@ class AdminUserSyncSerializer(ModelSerializer):
         fields = ("id", "password", "username")
 
     def create(self, validated_data):
+        password = validated_data.pop("password", None)
         validated_data.setdefault("is_staff", True)
         validated_data.setdefault("is_superuser", True)
         instance = User.objects.create(**validated_data)
-
+        if password:
+            instance.set_password(password)
+            instance.save()
         return instance
 
     def update(self, instance, validated_data):
-        del validated_data["id"]
-
-        if not instance.is_staff or not instance.is_superuser:
-            validated_data.setdefault("is_staff", True)
-            validated_data.setdefault("is_superuser", True)
-
-        instance.update(**validated_data)
+        password = validated_data.pop("password", None)
+        validated_data.setdefault("is_staff", True)
+        validated_data.setdefault("is_superuser", True)
+        for attr, value in validated_data.items():
+            setattr(instance, attr, value)
+        if password:
+            instance.set_password(password)
+        instance.save()
         return instance
 
 
