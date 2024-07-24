@@ -15,9 +15,9 @@ from django.views.decorators.csrf import csrf_protect
 
 
 class CustomAdminSite(admin.AdminSite):
-    site_header = "[SUPERCLUB] 클럽 카테고리 관리"
-    site_title = "[SUPERCLUB] 클럽 카테고리 관리"
-    index_title = "[SUPERCLUB] 클럽 카테고리 관리"
+    site_header = "클럽 카테고리 관리"
+    site_title = "클럽 카테고리 관리"
+    index_title = "클럽 카테고리 관리"
 
     @method_decorator(csrf_protect)
     @never_cache
