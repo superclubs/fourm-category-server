@@ -378,13 +378,20 @@ ADMINS = [("""Leo Yunhyung Lee""", "leoyunhyung@gmail.com")]
 # https://docs.djangoproject.com/en/dev/ref/settings/#managers
 MANAGERS = ADMINS
 
-ADMIN_REORDER = (
+ADMIN_MASTER_REORDER = (
     "community_users",
     "boards",
-    "posts",
-    "comments",
-    "rankings"
+    "posts",  # Master 계정 전용
+    "comments",  # Master 계정 전용
+    "rankings"  # Master 계정 전용
 )
+
+ADMIN_USER_REORDER = (
+    "community_users",
+    "boards",
+)
+
+ADMIN_REORDER = ADMIN_MASTER_REORDER
 
 # LOGGING
 # ------------------------------------------------------------------------------
