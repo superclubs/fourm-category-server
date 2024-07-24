@@ -1,4 +1,8 @@
 # config/middleware.py
+from urllib.parse import urljoin
+
+import requests
+from django.conf import settings
 from django.contrib.auth import get_user_model, login
 from django.utils import timezone
 from django.utils.deprecation import MiddlewareMixin
@@ -54,7 +58,39 @@ class AutoLoginMiddleware(MiddlewareMixin):
 
             return user
         except User.DoesNotExist:
+            # Fetch user details from Superclub server if user does not exist locally
+            user = self.fetch_user_from_superclub(token)
+            if user:
+                user.token_creta = token
+                user.token_creta_expired_at = expired_at
+                user.is_two_factor = is_two_factor
+                user.backend = 'django.contrib.auth.backends.ModelBackend'
+                user.save()
+                return user
             raise AuthenticationFailed("User does not exist")
+
+    def fetch_user_from_superclub(self, token):
+        url = urljoin(settings.SUPERCLUB_SERVER_HOST, f"/api/{settings.SUPERCLUB_API_VERSION}/user/me")
+        headers = {
+            "Content-Type": "application/json",
+            "Authorization": "Bearer " + str(token)
+        }
+        response = requests.get(url, headers=headers)
+        if response.status_code != 200:
+            raise AuthenticationFailed("Failed to retrieve user data from Superclub server")
+
+        data = response.json()
+        user_data = data.get("data", None)
+        if not user_data:
+            raise AuthenticationFailed("Invalid user data from Superclub server")
+
+        # Filter user_data to include only fields that exist in the User model
+        user_fields = {field.name for field in User._meta.get_fields()}
+        filtered_user_data = {k: v for k, v in user_data.items() if k in user_fields}
+
+        # Create the user locally
+        user = User.objects.create(**filtered_user_data)
+        return user
 
     def login_with_backend(self, request, user):
         user.backend = 'django.contrib.auth.backends.ModelBackend'  # 명시적으로 backend 설정
