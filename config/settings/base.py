@@ -1,18 +1,16 @@
 # Python
+import logging
 import os
 import urllib.parse
 from datetime import timedelta
-
 # Third Party
 from pathlib import Path
 from typing import List
-import environ
-import logging
 
+import environ
 # Sentry
 import sentry_sdk
 from corsheaders.defaults import default_headers, default_methods
-
 # Django
 from django.utils.translation import ugettext_lazy as _
 from sentry_sdk.integrations.celery import CeleryIntegration
@@ -142,8 +140,7 @@ WSGI_APPLICATION = "config.wsgi.application"
 # ------------------------------------------------------------------------------
 DJANGO_APPS = [
     "jet",
-    "config._admin.apps.AdminConfig",
-    # "django.contrib.admin",
+    "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
     "django.contrib.sessions",
@@ -274,7 +271,7 @@ MIDDLEWARE = [
     "django.middleware.common.BrokenLinkEmailsMiddleware",
     # "django.middleware.clickjacking.XFrameOptionsMiddleware",
     "admin_reorder.middleware.ModelAdminReorder",
-    "config._admin.middleware.AutoLoginMiddleware"
+    "config.middleware.AutoLoginMiddleware"
 ]
 
 # STORAGES

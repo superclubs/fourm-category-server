@@ -3,17 +3,16 @@ from django.contrib import admin
 
 # Models
 from community.apps.communities.models import Community
-
 # Inline
 from community.apps.community_users.inline import CommunityUserInline
-
 # Bases
 from community.bases.admin import Admin
 
 
 # Main Section
-from config._admin.decorators import register_custom_admin
-@register_custom_admin(Community)
+
+
+@admin.register(Community)
 class CommunityAdmin(Admin):
     list_display = (
         "depth",
