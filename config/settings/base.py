@@ -143,8 +143,7 @@ WSGI_APPLICATION = "config.wsgi.application"
 # ------------------------------------------------------------------------------
 DJANGO_APPS = [
     "jet",
-    "config._admin.apps.AdminConfig",
-    # "django.contrib.admin",
+    "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
     "django.contrib.sessions",
@@ -275,7 +274,7 @@ MIDDLEWARE = [
     "django.middleware.common.BrokenLinkEmailsMiddleware",
     # "django.middleware.clickjacking.XFrameOptionsMiddleware",
     "admin_reorder.middleware.ModelAdminReorder",
-    "config._admin.middleware.AutoLoginMiddleware"
+    "config.middleware.AutoLoginMiddleware"
 ]
 
 # STORAGES
