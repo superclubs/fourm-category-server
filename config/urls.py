@@ -2,7 +2,6 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import include, path, re_path
-from django.views import defaults as default_views
 from rest_framework.authtoken.views import obtain_auth_token
 from rest_framework_simplejwt.views import (
     TokenObtainPairView,
@@ -10,7 +9,6 @@ from rest_framework_simplejwt.views import (
     TokenVerifyView,
 )
 
-from config._admin.admin import custom_admin_site
 from config.docs import schema_view
 from config.redirects import redirect_swagger_view
 
@@ -23,8 +21,7 @@ urlpatterns = (
         path("", redirect_swagger_view),
         # Admin
         path("jet/", include("jet.urls", "jet")),
-        # path(settings.ADMIN_URL, admin.site.urls),
-        path(settings.ADMIN_URL, custom_admin_site.urls),
+        path(settings.ADMIN_URL, admin.site.urls),
         # Allauth
         path("accounts/", include("allauth.urls")),
         # Advanced Filters

@@ -1,16 +1,11 @@
-from community.apps.visits.models.index import CommunityVisit, PostVisit
 from community.bases.admin import CountAdmin
 
-from config._admin.decorators import register_custom_admin
 
 class CommunityVisitAdmin(CountAdmin):
     list_display = ("community", "profile")
     search_fields = ("community__title", "profile__user__email")
 
     fieldsets = (("정보", {"fields": ("community", "profile")}),)
-
-
-from config._admin.decorators import register_custom_admin
 
 
 class PostVisitAdmin(CountAdmin):
