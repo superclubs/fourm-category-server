@@ -4,7 +4,6 @@ from django.utils.html import format_html
 
 # Models
 from community.apps.posts.models.index import Post
-
 # Bases
 from community.bases.admin import Admin
 
@@ -16,8 +15,7 @@ def delete_selected_softly(modeladmin, request, queryset):
         post.soft_delete()
 
 
-from config._admin.decorators import register_custom_admin
-@register_custom_admin(Post)
+@admin.register(Post)
 class PostAdmin(Admin):
     list_display = (
         "thumbnail_media_tag",
