@@ -3,17 +3,16 @@ from django.contrib import admin
 
 # Inlines
 from community.apps.rankings.inline import CommunityRankingInline, PostRankingInline
-
 # Models
 from community.apps.rankings.models import CommunityRanking, PostRanking, RankingGroup
-
 # Bases
 from community.bases.admin import Admin
 
 
 # Main Section
-from config._admin.decorators import register_custom_admin
-@register_custom_admin(RankingGroup)
+
+
+@admin.register(RankingGroup)
 class RankingGroupAdmin(Admin):
     list_display = ("model_type", "ranking_type", "is_active")
     search_fields = ()
@@ -27,8 +26,7 @@ class RankingGroupAdmin(Admin):
     inlines = (CommunityRankingInline, PostRankingInline)
 
 
-from config._admin.decorators import register_custom_admin
-@register_custom_admin(CommunityRanking)
+@admin.register(CommunityRanking)
 class CommunityRankingAdmin(Admin):
     list_display = (
         "ranking_group",
@@ -62,8 +60,7 @@ class CommunityRankingAdmin(Admin):
     )
 
 
-from config._admin.decorators import register_custom_admin
-@register_custom_admin(PostRanking)
+@admin.register(PostRanking)
 class PostRankingAdmin(Admin):
     list_display = (
         "ranking_group",

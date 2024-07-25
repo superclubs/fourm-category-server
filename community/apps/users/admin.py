@@ -1,7 +1,6 @@
 # Django
 from django.contrib import admin, messages
 from django.contrib.auth.admin import UserAdmin
-
 # Local
 from django.utils.html import format_html
 from django.utils.translation import ugettext_lazy as _
@@ -11,8 +10,7 @@ from community.apps.users.models import User
 from community.bases.admin import Admin
 
 
-from config._admin.decorators import register_custom_admin
-@register_custom_admin(User)
+@admin.register(User)
 class UserAdmin(Admin, UserAdmin):
     list_display = ("profile_image_tag", "username", "email", "auth_token", "is_staff", "web_url")
     search_fields = ("email", "username")
