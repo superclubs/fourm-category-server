@@ -45,6 +45,13 @@ def post_pre_save_sync_post(sender, instance, *args, **kwargs):
                 "comment_count",
                 "total_like_count",
                 "dislike_count",
+                "like_count",
+                "fun_count",
+                "healing_count",
+                "legend_count",
+                "useful_count",
+                "empathy_count",
+                "devil_count",
                 # Boolean
                 "password",
                 "is_notice",
