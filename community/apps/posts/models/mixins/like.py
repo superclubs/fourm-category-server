@@ -1,5 +1,6 @@
 # Python
 import random
+from collections import Counter
 
 # Django
 from django.db import models, transaction
@@ -34,11 +35,11 @@ class PostLikeModelMixin(models.Model):
         abstract = True
 
     def set_point(self):
-        return self.dislike_point + self.like_point + self.bookmark_point + self.comment_point + self.visit_point
+        self.point = self.dislike_point + self.like_point + self.bookmark_point + self.comment_point + self.visit_point
 
     def set_type_count(self):
-        like_counts = self.post_likes.filter(is_active=True).values('type').annotate(count=Count('type'))
-        counts_dict = {item['type']: item['count'] for item in like_counts}
+        like_counts = self.post_likes.filter(is_active=True).values_list("type", flat=True)
+        counts_dict = Counter(like_counts)
 
         for field in ('like', 'fun', 'healing', 'legend', 'useful', 'empathy', 'devil'):
             setattr(self, f"{field}_count", counts_dict.get(field.upper(), 0))
@@ -58,6 +59,7 @@ class PostLikeModelMixin(models.Model):
         # Point
         self.dislike_point = self.dislike_count * POINT_PER_POST_DISLIKE
         self.set_point()
+        self.set_type_count()
         self.save(update_fields=["dislike_count", "dislike_point", "point"])
 
     def like_post(self, user, like_type):
