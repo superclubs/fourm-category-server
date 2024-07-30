@@ -1,23 +1,16 @@
-"""
-Base settings to build other settings files upon.
-"""
-import logging
-
 # Python
+import logging
 import os
 import urllib.parse
 from datetime import timedelta
-
 # Third Party
 from pathlib import Path
 from typing import List
 
 import environ
-
 # Sentry
 import sentry_sdk
 from corsheaders.defaults import default_headers, default_methods
-
 # Django
 from django.utils.translation import gettext_lazy as _
 from sentry_sdk.integrations.celery import CeleryIntegration
@@ -147,6 +140,7 @@ WSGI_APPLICATION = "config.wsgi.application"
 # ------------------------------------------------------------------------------
 DJANGO_APPS = [
     "jet",
+    "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
     "django.contrib.sessions",
@@ -154,7 +148,6 @@ DJANGO_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "modeltranslation",
-    "django.contrib.admin",
     "django.forms",
 ]
 
@@ -278,6 +271,7 @@ MIDDLEWARE = [
     "django.middleware.common.BrokenLinkEmailsMiddleware",
     # "django.middleware.clickjacking.XFrameOptionsMiddleware",
     "admin_reorder.middleware.ModelAdminReorder",
+    "config.middleware.AutoLoginMiddleware"
 ]
 
 # STORAGES
@@ -360,7 +354,7 @@ CSRF_COOKIE_HTTPONLY = True
 # https://docs.djangoproject.com/en/dev/ref/settings/#secure-browser-xss-filter
 SECURE_BROWSER_XSS_FILTER = True
 # https://docs.djangoproject.com/en/dev/ref/settings/#x-frame-options
-X_FRAME_OPTIONS = "DENY"
+X_FRAME_OPTIONS = "SAMEORIGIN"
 
 # EMAIL
 # ------------------------------------------------------------------------------
@@ -377,28 +371,24 @@ EMAIL_TIMEOUT = 5
 # Django Admin URL.
 ADMIN_URL = "admin/"
 # https://docs.djangoproject.com/en/dev/ref/settings/#admins
-ADMINS = [("""Leo Yunhyung Lee""", "leoyunhyung@gmail.com")]
+ADMINS = [("""RUNNERS""", "admin@runners.im")]
 # https://docs.djangoproject.com/en/dev/ref/settings/#managers
 MANAGERS = ADMINS
 
-ADMIN_REORDER = (
-    "users",
-    "communities",
+ADMIN_MASTER_REORDER = (
     "community_users",
-    "reports",
-    "profiles",
-    "posts",
-    "comments",
-    "likes",
-    "rankings",
-    "badges",
-    "categories",
     "boards",
-    "tags",
-    "visits",
-    "bookmarks",
-    "shares",
+    "posts",  # Master 계정 전용
+    "comments",  # Master 계정 전용
+    "rankings"  # Master 계정 전용
 )
+
+ADMIN_USER_REORDER = (
+    "community_users",
+    "boards",
+)
+
+ADMIN_REORDER = ADMIN_USER_REORDER
 
 # LOGGING
 # ------------------------------------------------------------------------------
@@ -468,7 +458,7 @@ REST_FRAMEWORK = {
         "rest_framework.authentication.TokenAuthentication",
     ),
     "DEFAULT_PERMISSION_CLASSES": ("rest_framework.permissions.AllowAny",),
-    "EXCEPTION_HANDLER": "community.utils.exception_handlers.custom_exception_handler",
+    "EXCEPTION_HANDLER": "community.utils.exception_handlers.exception_handler",
     "NON_FIELD_ERRORS_KEY": "non_field_errors",
 }
 # django-cors-headers - https://github.com/adamchainz/django-cors-headers#setup
@@ -478,18 +468,19 @@ original_origins = env("DJANGO_CORS_ALLOWED_ORIGINS", default="").split(",")
 def add_www_versions(origins):
     new_origins = set()
     for origin in origins:
-        if origin.startswith("https://"):
-            new_origins.add(origin)
-            if not origin.startswith("https://www."):
-                new_origins.add(origin.replace("https://", "https://www."))
-        else:
-            new_origins.add(origin)
+        if origin:
+            if origin.startswith("https://"):
+                new_origins.add(origin)
+                if not origin.startswith("https://www."):
+                    new_origins.add(origin.replace("https://", "https://www."))
+            else:
+                new_origins.add(origin)
     return list(new_origins)
 
 
 CORS_ALLOWED_ORIGINS = add_www_versions(original_origins)
 
-if CORS_ALLOWED_ORIGINS == [""]:
+if not CORS_ALLOWED_ORIGINS:
     CORS_ALLOW_ALL_ORIGINS = True
 else:
     CORS_ALLOW_ALL_ORIGINS = False
@@ -611,15 +602,22 @@ CELERY_BROKER_TRANSPORT_OPTIONS = {
 # "AWS": "arn:aws:iam::543061907465:root"
 CELERY_TASK_DEFAULT_QUEUE = "sqs"
 
-# CACHES
-if env("REDIS_URL", default=None):
+# Redis
+REDIS_URL = env("REDIS_URL", default=None)
+REDIS_REPLICA_URL = env("REDIS_REPLICA_URL", default=None)
+
+if REDIS_URL:
+    # 캐시 설정
     CACHES = {
         "default": {
             "BACKEND": "django_redis.cache.RedisCache",
-            "LOCATION": env("REDIS_URL"),
+            "LOCATION": f"{REDIS_URL}/5",
             "OPTIONS": {
                 "CLIENT_CLASS": "django_redis.client.DefaultClient",
                 "IGNORE_EXCEPTIONS": True,
+                "REPLICA_SET": {
+                    "urls": [f"{REDIS_REPLICA_URL}/5"] if REDIS_REPLICA_URL else [],
+                },
             },
         }
     }
@@ -653,3 +651,7 @@ if SENTRY_DSN := env("SENTRY_DSN", default=None):
         # environment=env("SENTRY_ENVIRONMENT", default="develop"),
         traces_sample_rate=env.float("SENTRY_TRACES_SAMPLE_RATE", default=1.0),
     )
+
+# Creta
+# ------------------------------------------------------------------------------------
+CRETA_AUTH_BASE_URL = env("CRETA_AUTH_BASE_URL")
