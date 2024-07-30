@@ -47,6 +47,7 @@ class UserSyncSerializer(ModelSerializer):
             "gender",
             "birth",
             "nation",
+            "religion",
             "level",
             "grade_title",
             "ring_color",
